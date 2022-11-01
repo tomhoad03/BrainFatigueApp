@@ -7,6 +7,16 @@
         android:layout_height="match_parent"
         tools:context=".HomeActivity">
 
+    <TextView
+            android:layout_width="360dp"
+            android:layout_height="62dp"
+            android:text="@string/activity_home_welcome"
+            android:id="@+id/activity_home_welcome"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/activity_home_survey_button"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.49"
+            app:layout_constraintEnd_toEndOf="parent" android:minHeight="48dp"
+            app:layout_constraintVertical_bias="0.89" app:fontFamily="@font/spartan"/>
     <Button
             android:text="@string/activity_home_take_the_survey"
             android:layout_width="360dp"
@@ -23,14 +33,4 @@
             app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/activity_home_survey_button" app:fontFamily="@font/spartan"/>
-    <TextView
-            android:layout_width="360dp"
-            android:layout_height="62dp"
-            android:text="@string/activity_home_welcome"
-            android:id="@+id/activity_home_welcome"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/activity_home_survey_button"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.49"
-            app:layout_constraintEnd_toEndOf="parent" android:minHeight="48dp"
-            app:layout_constraintVertical_bias="0.89" app:fontFamily="@font/spartan"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,6 +5,15 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
+    <!-- Dull colours -->
     <color name="black">#FF000000</color>
+    <color name="grey">#D9D9D9</color>
+    <color name="off_white">#EAEAEA</color>
     <color name="white">#FFFFFFFF</color>
+    <!-- Custom colours - v1. -->
+    <color name="custom_light_blue_A">#B5FFED</color>
+    <color name="custom_light_blue_B">#B0E9E9</color>
+    <color name="custom_purple_A">#4C34AC</color>
+    <color name="custom_purple_B">#6750A4</color>
+    <color name="custom_navy_A">#244E6C</color>
 </resources>
