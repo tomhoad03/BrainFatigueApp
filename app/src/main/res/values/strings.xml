@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">BrainFatigueApp</string>
+    <string name="take_the_survey">Take The Survey</string>
+    <string name="view_my_dashboard">View My Dashboard</string>
 </resources>

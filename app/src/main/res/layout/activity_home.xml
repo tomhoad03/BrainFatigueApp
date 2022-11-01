@@ -7,4 +7,14 @@
         android:layout_height="match_parent"
         tools:context=".HomeActivity">
 
+    <Button
+            android:text="@string/take_the_survey"
+            android:layout_width="356dp"
+            android:layout_height="302dp" android:id="@+id/survey_button"
+            tools:layout_editor_absoluteY="214dp" tools:layout_editor_absoluteX="18dp"/>
+    <Button
+            android:text="@string/view_my_dashboard"
+            android:layout_width="356dp"
+            android:layout_height="302dp" android:id="@+id/dashboard_button"
+            tools:layout_editor_absoluteY="533dp" tools:layout_editor_absoluteX="18dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
