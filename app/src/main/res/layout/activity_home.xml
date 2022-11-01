@@ -7,4 +7,43 @@
         android:layout_height="match_parent"
         tools:context=".HomeActivity">
 
+    <TextView
+            android:layout_width="360dp"
+            android:layout_height="62dp"
+            android:text="@string/activity_home_welcome"
+            android:textColor="@color/custom_navy_A"
+            android:textSize="20sp"
+            android:id="@+id/activity_home_welcome"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/activity_home_survey_button"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.49"
+            app:layout_constraintEnd_toEndOf="parent" android:minHeight="48dp"
+            app:layout_constraintVertical_bias="0.89" app:fontFamily="@font/spartan"/>
+    <Button
+            android:text="@string/activity_home_take_the_survey"
+            android:textColor="@color/custom_navy_A"
+            android:textSize="20sp"
+            android:background="@drawable/button_gradient_2"
+            app:backgroundTint="@color/blank"
+            app:backgroundTintMode="add"
+            android:layout_width="360dp"
+            android:layout_height="260dp" android:id="@+id/activity_home_survey_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.484" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/activity_home_dashboard_button"
+            android:layout_marginTop="50dp" app:layout_constraintTop_toBottomOf="@+id/activity_home_welcome"
+            app:fontFamily="@font/spartan"/>
+    <Button
+            android:text="@string/activity_home_view_my_dashboard"
+            android:textColor="@color/custom_navy_A"
+            android:textSize="20sp"
+            android:background="@drawable/button_gradient_1"
+            app:backgroundTint="@color/blank"
+            app:backgroundTintMode="add"
+            android:layout_width="360dp"
+            android:layout_height="260dp" android:id="@+id/activity_home_dashboard_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_home_survey_button" app:fontFamily="@font/spartan"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
