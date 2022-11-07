@@ -1,10 +1,9 @@
 package com.example.brainfatigueapp;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
-import com.example.brainfatigueapp.survey.SurveyActivity1;
 
 public class HomeActivity extends AppCompatActivity {
     @Override
@@ -19,7 +18,7 @@ public class HomeActivity extends AppCompatActivity {
         // Start survey button
         final Button startSurveyBtn = findViewById(R.id.activity_home_survey_button);
         startSurveyBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(HomeActivity.this, SurveyActivity1.class);
+            Intent intent = new Intent(HomeActivity.this, SurveyStartActivity.class);
             startActivity(intent);
         });
 
