@@ -12,6 +12,9 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.BrainFatigueApp">
         <activity
+                android:name=".DashboardActivity"
+                android:exported="false"/>
+        <activity
                 android:name=".survey.SurveyActivity1"
                 android:exported="false"/>
         <activity

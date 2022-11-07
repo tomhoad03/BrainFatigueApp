@@ -22,5 +22,12 @@ public class HomeActivity extends AppCompatActivity {
             Intent intent = new Intent(HomeActivity.this, SurveyActivity1.class);
             startActivity(intent);
         });
+
+        // Open the dashboard button
+        final Button dashboardBtn = findViewById(R.id.activity_home_dashboard_button);
+        dashboardBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, DashboardActivity.class);
+            startActivity(intent);
+        });
     }
 }
