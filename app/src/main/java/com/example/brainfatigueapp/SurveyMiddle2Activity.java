@@ -18,8 +18,8 @@ public class SurveyMiddle2Activity extends AppCompatActivity {
             getSupportActionBar().hide();
 
         // Back button
-        final ImageButton startSurveyBtn = findViewById(R.id.activity_survey_middle2_back_button);
-        startSurveyBtn.setOnClickListener(v -> {
+        final ImageButton surveyBackBtn = findViewById(R.id.activity_survey_middle2_back_button);
+        surveyBackBtn.setOnClickListener(v -> {
             Intent intent = new Intent(SurveyMiddle2Activity.this, SurveyMiddle1Activity.class);
             startActivity(intent);
         });
@@ -27,7 +27,7 @@ public class SurveyMiddle2Activity extends AppCompatActivity {
         // Next button
         final Button surveyNextBtn = findViewById(R.id.activity_survey_middle2_next_button);
         surveyNextBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(SurveyMiddle2Activity.this, SurveyMiddle3Activity.class);
+            Intent intent = new Intent(SurveyMiddle2Activity.this, SurveyMiddle4Activity.class);
             startActivity(intent);
         });
     }

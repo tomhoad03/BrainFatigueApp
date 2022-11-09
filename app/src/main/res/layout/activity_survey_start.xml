@@ -14,9 +14,9 @@
             android:layout_marginStart="12dp" android:minHeight="48dp" tools:ignore="SpeakableTextPresentCheck"
             tools:srcCompat="@drawable/ic_back_arrow"/>
     <Button
-            android:text="@string/activity_survey_next"
+            android:text="@string/activity_survey_start"
             android:layout_width="361dp"
-            android:layout_height="62dp" android:id="@+id/activity_survey_start_next_button"
+            android:layout_height="62dp" android:id="@+id/activity_survey_start_start_button"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="9dp" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"/>

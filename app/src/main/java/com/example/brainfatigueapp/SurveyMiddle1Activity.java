@@ -17,8 +17,8 @@ public class SurveyMiddle1Activity extends AppCompatActivity {
             getSupportActionBar().hide();
 
         // Back button
-        final ImageButton startSurveyBtn = findViewById(R.id.activity_survey_middle1_back_button);
-        startSurveyBtn.setOnClickListener(v -> {
+        final ImageButton surveyBackBtn = findViewById(R.id.activity_survey_middle1_back_button);
+        surveyBackBtn.setOnClickListener(v -> {
             Intent intent = new Intent(SurveyMiddle1Activity.this, SurveyStartActivity.class);
             startActivity(intent);
         });
