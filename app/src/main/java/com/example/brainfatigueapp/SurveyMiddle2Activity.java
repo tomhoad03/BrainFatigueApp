@@ -31,7 +31,7 @@ public class SurveyMiddle2Activity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        // Next button
+        // Option 2 - Somewhere else
         final Button somewhereElseBtn = findViewById(R.id.activity_home_survey_button_somewhere_else);
         somewhereElseBtn.setOnClickListener(v -> {
             Intent intent = new Intent(SurveyMiddle2Activity.this, SurveyMiddle4Activity.class);
