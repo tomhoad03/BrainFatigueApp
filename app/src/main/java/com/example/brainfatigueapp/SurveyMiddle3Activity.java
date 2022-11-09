@@ -6,6 +6,8 @@ import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
+import java.util.ArrayList;
+
 public class SurveyMiddle3Activity extends AppCompatActivity {
 
     @Override
@@ -24,11 +26,21 @@ public class SurveyMiddle3Activity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        // Next button
-        final Button surveyNextBtn = findViewById(R.id.activity_survey_middle3_next_button);
-        surveyNextBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(SurveyMiddle3Activity.this, SurveyMiddle4Activity.class);
-            startActivity(intent);
-        });
+        // Select activity buttons
+        ArrayList<Button> activityButtons = new ArrayList<>();
+        activityButtons.add(findViewById(R.id.activity_survey_middle3_button1));
+        activityButtons.add(findViewById(R.id.activity_survey_middle3_button2));
+        activityButtons.add(findViewById(R.id.activity_survey_middle3_button3));
+        activityButtons.add(findViewById(R.id.activity_survey_middle3_button4));
+        activityButtons.add(findViewById(R.id.activity_survey_middle3_button5));
+        activityButtons.add(findViewById(R.id.activity_survey_middle3_button6));
+        activityButtons.add(findViewById(R.id.activity_survey_middle3_button7));
+
+        for (Button activityButton : activityButtons) {
+            activityButton.setOnClickListener(v -> {
+                Intent intent = new Intent(SurveyMiddle3Activity.this, SurveyMiddle4Activity.class);
+                startActivity(intent);
+            });
+        }
     }
 }
