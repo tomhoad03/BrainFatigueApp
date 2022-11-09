@@ -18,10 +18,34 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.BrainFatigueApp">
         <activity
-                android:name=".SurveyEndActivity"
+                android:name=".SurveyMiddle9Activity"
+                android:exported="false"/>
+        <activity
+                android:name=".SurveyMiddle8Activity"
+                android:exported="false"/>
+        <activity
+                android:name=".SurveyMiddle7Activity"
+                android:exported="false"/>
+        <activity
+                android:name=".SurveyMiddle6Activity"
+                android:exported="false"/>
+        <activity
+                android:name=".SurveyMiddle5Activity"
+                android:exported="false"/>
+        <activity
+                android:name=".SurveyMiddle4Activity"
+                android:exported="false"/>
+        <activity
+                android:name=".SurveyMiddle3Activity"
+                android:exported="false"/>
+        <activity
+                android:name=".SurveyMiddle2Activity"
                 android:exported="false"/>
         <activity
                 android:name=".SurveyMiddle1Activity"
+                android:exported="false"/>
+        <activity
+                android:name=".SurveyEndActivity"
                 android:exported="false"/>
         <activity
                 android:name=".SurveyStartActivity"

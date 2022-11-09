@@ -24,7 +24,7 @@ public class SurveyStartActivity extends AppCompatActivity {
         });
 
         // Next button
-        final Button surveyNextBtn = findViewById(R.id.activity_survey_start_next_button);
+        final Button surveyNextBtn = findViewById(R.id.activity_survey_start_start_button);
         surveyNextBtn.setOnClickListener(v -> {
             Intent intent = new Intent(SurveyStartActivity.this, SurveyMiddle1Activity.class);
             startActivity(intent);
