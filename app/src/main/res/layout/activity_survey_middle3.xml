@@ -7,6 +7,16 @@
         android:layout_height="match_parent"
         tools:context=".SurveyMiddle3Activity">
 
+    <TextView
+            android:layout_width="360dp"
+            android:layout_height="62dp"
+            android:text="@string/activity_survey_middle3_question"
+            android:textColor="@color/custom_navy_A"
+            android:textSize="20sp"
+            android:id="@+id/activity_survey_middle3_question"
+            app:fontFamily="@font/spartan" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.484"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="84dp"/>
     <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" app:srcCompat="@drawable/ic_back_arrow"

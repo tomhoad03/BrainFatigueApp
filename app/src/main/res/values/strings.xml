@@ -5,4 +5,13 @@
     <string name="activity_home_welcome">Hi Andrea, What would you like to do today?</string>
     <string name="activity_survey_next">Next</string>
     <string name="activity_survey_submit">Submit</string>
+    <string name="activity_survey_middle1_question">How are your energy levels?</string>
+    <string name="activity_survey_middle2_question">Where are you at the moment?</string>
+    <string name="activity_survey_middle3_question">What have you been doing the last 10 minutes?</string>
+    <string name="activity_survey_middle4_question">What are you doing right now?</string>
+    <string name="activity_survey_middle5_question">How much effort did this activity take?</string>
+    <string name="activity_survey_middle6_question">How fatigued are you at the moment?</string>
+    <string name="activity_survey_middle7_question">How much did you enjoy this activity?</string>
+    <string name="activity_survey_middle8_question">How does this activity affect your energy levels?</string>
+    <string name="activity_survey_middle9_question">How would you describe your fatigue?</string>
 </resources>
