@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" tools:ignore="ScopedStorage"/>
     <uses-permission android:name="android.permission.CAPTURE_AUDIO_OUTPUT" tools:ignore="ProtectedPermissions"/>
     <!--The above doesn't work unless this app is declared as a system app -->
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
             android:allowBackup="true"
