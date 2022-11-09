@@ -7,16 +7,6 @@
         android:layout_height="match_parent"
         tools:context=".SurveyMiddle2Activity">
 
-    <TextView
-            android:layout_width="360dp"
-            android:layout_height="62dp"
-            android:text="@string/activity_survey_middle2_question"
-            android:textColor="@color/custom_navy_A"
-            android:textSize="20sp"
-            android:id="@+id/activity_survey_middle2_question"
-            app:fontFamily="@font/spartan" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.484"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="84dp"/>
     <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" app:srcCompat="@drawable/ic_back_arrow"
@@ -24,11 +14,56 @@
             android:layout_marginTop="14dp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="12dp" android:minHeight="48dp" tools:ignore="SpeakableTextPresentCheck"
             tools:srcCompat="@drawable/ic_back_arrow"/>
+    <TextView
+            android:background="@null"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/activity_survey_middle2_question"
+            android:textColor="@color/custom_navy_A"
+            android:textSize="24sp"
+            android:id="@+id/activity_survey_middle2_question"
+            android:textStyle="bold"
+            app:fontFamily="@font/spartan"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="84dp"/>
+    <EditText
+            android:background="@null"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="Please choose one."
+            android:textColor="@color/grey_text"
+            android:textSize="16sp"
+            android:id="@+id/editTextTextPersonName"
+            app:layout_constraintTop_toBottomOf="@+id/activity_survey_middle2_question" android:layout_marginTop="12dp"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintEnd_toEndOf="parent"/>
     <Button
-            android:text="@string/activity_survey_next"
-            android:layout_width="361dp"
-            android:layout_height="62dp" android:id="@+id/activity_survey_middle2_next_button"
+            android:backgroundTint="@color/grey"
+            android:text="@string/activity_survey_middle2_at_home"
+            android:textAllCaps="false"
+            android:textColor="@color/custom_navy_A"
+            android:textSize="28sp"
+            android:layout_width="365dp"
+            android:layout_height="196dp"
+            android:id="@+id/activity_home_survey_button_at_home"
+            app:fontFamily="@font/spartan"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/activity_home_survey_button_somewhere_else"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"/>
+    <Button
+            android:backgroundTint="@color/grey"
+            android:text="@string/activity_survey_middle2_somewhere_else"
+            android:textAllCaps="false"
+            android:textColor="@color/custom_navy_A"
+            android:textSize="28sp"
+            android:layout_width="365dp"
+            android:layout_height="196dp"
+            android:id="@+id/activity_home_survey_button_somewhere_else"
+            app:fontFamily="@font/spartan"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="9dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginBottom="120dp" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

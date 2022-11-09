@@ -5,12 +5,16 @@
     <string name="activity_home_welcome">Hi Tom, What would you like to do today?</string>
 
     <string name="activity_survey_start">Start</string>
+    <string name="activity_survey_start_mainMessage">Welcome to your fatigue survey</string>
+    <string name="activity_survey_start_subMessage">To begin, press Start</string>
     <string name="activity_survey_next">Next</string>
     <string name="activity_survey_submit">Submit</string>
 
     <!-- survey questions -->
     <string name="activity_survey_middle1_question">How are your energy levels?</string>
     <string name="activity_survey_middle2_question">Where are you at the moment?</string>
+    <string name="activity_survey_middle2_at_home">At home</string>
+    <string name="activity_survey_middle2_somewhere_else">Somewhere else</string>
     <string name="activity_survey_middle3_question">What have you been doing the last 10 minutes?</string>
     <string name="activity_survey_middle4_question">What are you doing right now?</string>
     <string name="activity_survey_middle5_question">How much effort did this activity take?</string>
