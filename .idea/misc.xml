@@ -17,6 +17,8 @@
         <entry key="..\:/Users/tomho/IdeaProjects/BrainFatigueApp/app/src/main/res/layout/activity_load.xml" value="0.55" />
         <entry key="..\:/Users/tomho/IdeaProjects/BrainFatigueApp/app/src/main/res/layout/activity_main.xml" value="0.4512820512820513" />
         <entry key="..\:/Users/tomho/IdeaProjects/BrainFatigueApp/app/src/main/res/layout/activity_survey1.xml" value="0.33" />
+        <entry key="..\:/Users/tomho/IdeaProjects/BrainFatigueApp/app/src/main/res/layout/activity_survey_end.xml" value="0.22055137844611528" />
+        <entry key="..\:/Users/tomho/IdeaProjects/BrainFatigueApp/app/src/main/res/layout/activity_survey_middle_1.xml" value="0.33" />
         <entry key="..\:/Users/tomho/IdeaProjects/BrainFatigueApp/app/src/main/res/layout/activity_survey_start.xml" value="0.4512820512820513" />
         <entry key="..\:/Users/tomho/IdeaProjects/BrainFatigueApp/app/src/main/res/layout/fragment_survey.xml" value="0.4512820512820513" />
         <entry key="..\:/Users/tomho/IdeaProjects/BrainFatigueApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.45864978902953585" />
@@ -27,7 +29,7 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$" />
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17_PREVIEW" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
