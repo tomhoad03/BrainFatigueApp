@@ -8,15 +8,20 @@
         tools:context=".SurveyMiddle6Activity">
 
     <TextView
-            android:layout_width="360dp"
-            android:layout_height="62dp"
+            android:layout_width="263dp"
+            android:layout_height="78dp"
             android:text="@string/activity_survey_middle6_question"
             android:textColor="@color/custom_navy_A"
             android:textSize="20sp"
             android:id="@+id/activity_survey_middle6_question"
-            app:fontFamily="@font/spartan" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.484"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="84dp"/>
+            android:textStyle="bold"
+            android:gravity="center"
+            app:fontFamily="@font/spartan"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.484"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="180dp"/>
     <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" app:srcCompat="@drawable/ic_back_arrow"
@@ -31,4 +36,44 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="9dp" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"/>
+
+    <com.google.android.material.slider.Slider
+            android:id="@+id/slide"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:value="0"
+            android:stepSize="1"
+            android:valueFrom="0"
+            android:valueTo="10"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintVertical_bias="0.491"/>
+
+    <TextView
+            android:text="no fatigue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView"
+            app:fontFamily="@font/spartan"
+            tools:layout_editor_absoluteY="384dp"
+            tools:layout_editor_absoluteX="26dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginEnd="306dp"
+            app:layout_constraintVertical_bias="0.536"/>
+    <TextView
+            android:text="worst possible fatigue"
+            android:gravity="center"
+            android:layout_width="70dp"
+            android:layout_height="61dp"
+            android:id="@+id/textView2"
+            app:fontFamily="@font/spartan"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="13dp"
+            app:layout_constraintVertical_bias="0.556"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
