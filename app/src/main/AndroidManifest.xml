@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android">
-    <!--Think the 3 we need are the save, load and access microphone for the sound things-->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" tools:ignore="ScopedStorage"/>
-    <uses-permission android:name="android.permission.CAPTURE_AUDIO_OUTPUT" tools:ignore="ProtectedPermissions"/>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools">
+    <!-- Think the 3 we need are the save, load and access microphone for the sound things -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission
+            android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+            tools:ignore="ScopedStorage"/>
+    <uses-permission
+            android:name="android.permission.CAPTURE_AUDIO_OUTPUT"
+            tools:ignore="ProtectedPermissions"/>
     <!--The above doesn't work unless this app is declared as a system app -->
     <uses-permission android:name="android.permission.INTERNET" />
+
 
     <application
             android:allowBackup="true"
@@ -14,6 +20,36 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.BrainFatigueApp">
+        <activity
+                android:name=".SurveyMiddle9Activity"
+                android:exported="false"/>
+        <activity
+                android:name=".SurveyMiddle8Activity"
+                android:exported="false"/>
+        <activity
+                android:name=".SurveyMiddle7Activity"
+                android:exported="false"/>
+        <activity
+                android:name=".SurveyMiddle6Activity"
+                android:exported="false"/>
+        <activity
+                android:name=".SurveyMiddle5Activity"
+                android:exported="false"/>
+        <activity
+                android:name=".SurveyMiddle4Activity"
+                android:exported="false"/>
+        <activity
+                android:name=".SurveyMiddle3Activity"
+                android:exported="false"/>
+        <activity
+                android:name=".SurveyMiddle2Activity"
+                android:exported="false"/>
+        <activity
+                android:name=".SurveyMiddle1Activity"
+                android:exported="false"/>
+        <activity
+                android:name=".SurveyEndActivity"
+                android:exported="false"/>
         <activity
                 android:name=".SurveyStartActivity"
                 android:exported="false"/>

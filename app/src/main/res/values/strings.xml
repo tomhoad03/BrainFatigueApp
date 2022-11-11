@@ -2,7 +2,33 @@
     <string name="app_name">BrainFatigueApp</string>
     <string name="activity_home_take_the_survey">Take The Survey</string>
     <string name="activity_home_view_my_dashboard">View My Dashboard</string>
-    <string name="activity_home_welcome">Hi Andrea, What would you like to do today?</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="activity_home_welcome">Hi Tom, What would you like to do today?</string>
+
+    <string name="activity_survey_start">Start</string>
+    <string name="activity_survey_start_mainMessage">Welcome to your fatigue survey</string>
+    <string name="activity_survey_start_subMessage">To begin, press Start</string>
+    <string name="activity_survey_next">Next</string>
+    <string name="activity_survey_submit">Submit</string>
+
+    <!-- survey questions -->
+    <string name="activity_survey_middle1_question">How are your energy levels?</string>
+    <string name="activity_survey_middle2_question">Where are you at the moment?</string>
+    <string name="activity_survey_middle2_at_home">At home</string>
+    <string name="activity_survey_middle2_somewhere_else">Somewhere else</string>
+    <string name="activity_survey_middle3_question">What have you been doing the last 10 minutes?</string>
+    <string name="activity_survey_middle4_question">What are you doing right now?</string>
+    <string name="activity_survey_middle5_question">How much effort did this activity take?</string>
+    <string name="activity_survey_middle6_question">How fatigued are you at the moment?</string>
+    <string name="activity_survey_middle7_question">How much did you enjoy this activity?</string>
+    <string name="activity_survey_middle8_question">How does this activity affect your energy levels?</string>
+    <string name="activity_survey_middle9_question">How would you describe your fatigue?</string>
+
+    <!-- question 3 -->
+    <string name="activity_survey_middle3_button1">Looking after myself</string>
+    <string name="activity_survey_middle3_button2">Household or family tasks</string>
+    <string name="activity_survey_middle3_button3">Working or studying</string>
+    <string name="activity_survey_middle3_button4">Social activities</string>
+    <string name="activity_survey_middle3_button5">Using a computer/phone/tablet</string>
+    <string name="activity_survey_middle3_button6">Exercising</string>
+    <string name="activity_survey_middle3_button7">Hobby or quiet past time</string>
 </resources>
