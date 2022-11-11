@@ -4,6 +4,8 @@
     <string name="activity_home_view_my_dashboard">View My Dashboard</string>
     <string name="activity_home_welcome">Hi Tom, What would you like to do today?</string>
 
+    <string name="activity_dashboard_title">My dashboard</string>
+
     <string name="activity_survey_start">Start</string>
     <string name="activity_survey_start_mainMessage">Welcome to your fatigue survey</string>
     <string name="activity_survey_start_subMessage">To begin, press Start</string>
