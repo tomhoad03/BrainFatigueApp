@@ -26,6 +26,9 @@
             tools:srcCompat="@drawable/ic_back_arrow"/>
     <Button
             android:text="@string/activity_survey_middle3_button1"
+            android:backgroundTint="@color/grey"
+            android:textAllCaps="false"
+            android:textColor="@color/custom_navy_A"
             android:layout_width="355dp"
             android:layout_height="57dp" android:id="@+id/activity_survey_middle3_button1"
             app:layout_constraintStart_toStartOf="parent"
@@ -34,9 +37,13 @@
             app:layout_constraintVertical_bias="0.289"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintTop_toBottomOf="@+id/activity_survey_middle3_question"
-            app:layout_constraintBottom_toTopOf="@+id/activity_survey_middle3_button2"/>
+            app:layout_constraintBottom_toTopOf="@+id/activity_survey_middle3_button2"
+    />
     <Button
             android:text="@string/activity_survey_middle3_button2"
+            android:backgroundTint="@color/grey"
+            android:textAllCaps="false"
+            android:textColor="@color/custom_navy_A"
             android:layout_width="355dp"
             android:layout_height="57dp" android:id="@+id/activity_survey_middle3_button2"
             app:layout_constraintStart_toStartOf="parent"
@@ -45,36 +52,51 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintVertical_bias="0.413"
             app:layout_constraintTop_toBottomOf="@+id/activity_survey_middle3_button1"
-            app:layout_constraintBottom_toTopOf="@+id/activity_survey_middle3_button4"/>
+            app:layout_constraintBottom_toTopOf="@+id/activity_survey_middle3_button3"
+    />
     <Button
             android:text="@string/activity_survey_middle3_button3"
+            android:backgroundTint="@color/grey"
+            android:textAllCaps="false"
+            android:textColor="@color/custom_navy_A"
             android:layout_width="355dp"
             android:layout_height="57dp" android:id="@+id/activity_survey_middle3_button3"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/activity_survey_middle3_button4"
-            app:layout_constraintBottom_toTopOf="@+id/activity_survey_middle3_button5"/>
+            app:layout_constraintTop_toBottomOf="@+id/activity_survey_middle3_button2"
+            app:layout_constraintBottom_toTopOf="@+id/activity_survey_middle3_button4"
+    />
     <Button
             android:text="@string/activity_survey_middle3_button4"
+            android:backgroundTint="@color/grey"
+            android:textAllCaps="false"
+            android:textColor="@color/custom_navy_A"
             android:layout_width="355dp"
             android:layout_height="57dp" android:id="@+id/activity_survey_middle3_button4"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintVertical_bias="0.591"
-            app:layout_constraintTop_toBottomOf="@+id/activity_survey_middle3_button2"
-            app:layout_constraintBottom_toTopOf="@+id/activity_survey_middle3_button3"/>
+            app:layout_constraintTop_toBottomOf="@+id/activity_survey_middle3_button3"
+            app:layout_constraintBottom_toTopOf="@+id/activity_survey_middle3_button5"
+    />
     <Button
             android:text="@string/activity_survey_middle3_button5"
+            android:backgroundTint="@color/grey"
+            android:textAllCaps="false"
+            android:textColor="@color/custom_navy_A"
             android:layout_width="355dp"
             android:layout_height="57dp" android:id="@+id/activity_survey_middle3_button5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintVertical_bias="0.804"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintTop_toBottomOf="@+id/activity_survey_middle3_button3"
+            app:layout_constraintTop_toBottomOf="@+id/activity_survey_middle3_button4"
             app:layout_constraintBottom_toTopOf="@+id/activity_survey_middle3_button6"/>
     <Button
             android:text="@string/activity_survey_middle3_button6"
+            android:backgroundTint="@color/grey"
+            android:textAllCaps="false"
+            android:textColor="@color/custom_navy_A"
             android:layout_width="355dp"
             android:layout_height="57dp" android:id="@+id/activity_survey_middle3_button6"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.5"
@@ -84,6 +106,9 @@
             app:layout_constraintBottom_toTopOf="@+id/activity_survey_middle3_button7"/>
     <Button
             android:text="@string/activity_survey_middle3_button7"
+            android:backgroundTint="@color/grey"
+            android:textAllCaps="false"
+            android:textColor="@color/custom_navy_A"
             android:layout_width="355dp"
             android:layout_height="57dp" android:id="@+id/activity_survey_middle3_button7"
             app:layout_constraintStart_toStartOf="parent"
