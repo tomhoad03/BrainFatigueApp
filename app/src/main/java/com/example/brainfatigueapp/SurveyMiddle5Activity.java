@@ -20,7 +20,7 @@ public class SurveyMiddle5Activity extends AppCompatActivity {
         // Back button
         final ImageButton surveyBackBtn = findViewById(R.id.activity_survey_middle5_back_button);
         surveyBackBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(SurveyMiddle5Activity.this, SurveyMiddle4Activity.class);
+            Intent intent = new Intent(SurveyMiddle5Activity.this, SurveyMiddle2Activity.class);
             startActivity(intent);
         });
 
