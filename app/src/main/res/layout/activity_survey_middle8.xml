@@ -17,6 +17,57 @@
             app:fontFamily="@font/spartan" app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.484"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="84dp"/>
+    <Button
+            android:text="@string/activity_survey_middle8_button1"
+            android:backgroundTint="@color/grey"
+            android:textAllCaps="false"
+            android:textColor="@color/custom_navy_A"
+            android:layout_width="355dp"
+            android:layout_height="57dp" android:id="@+id/activity_survey_middle8_button1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintVertical_chainStyle="spread"
+            app:layout_constraintVertical_bias="0.289"
+            app:layout_constraintTop_toBottomOf="@+id/activity_survey_middle8_question"
+            app:layout_constraintBottom_toTopOf="@+id/activity_survey_middle8_button2"
+            app:layout_constraintHorizontal_bias="0.5"/>
+    <Button
+            android:text="@string/activity_survey_middle8_button2"
+            android:backgroundTint="@color/grey"
+            android:textAllCaps="false"
+            android:textColor="@color/custom_navy_A"
+            android:layout_width="355dp"
+            android:layout_height="57dp" android:id="@+id/activity_survey_middle8_button2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintVertical_chainStyle="spread"
+            app:layout_constraintVertical_bias="0.413"
+            app:layout_constraintTop_toBottomOf="@+id/activity_survey_middle8_button1"
+            app:layout_constraintBottom_toTopOf="@+id/activity_survey_middle8_button3"
+            app:layout_constraintHorizontal_bias="0.5"/>
+    <Button
+            android:text="@string/activity_survey_middle8_button3"
+            android:backgroundTint="@color/grey"
+            android:textAllCaps="false"
+            android:textColor="@color/custom_navy_A"
+            android:layout_width="355dp"
+            android:layout_height="57dp" android:id="@+id/activity_survey_middle8_button3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_survey_middle8_button2"
+            app:layout_constraintBottom_toTopOf="@+id/activity_survey_middle8_button4"
+            app:layout_constraintHorizontal_bias="0.5"/>
+    <Button
+            android:text="@string/activity_survey_middle8_button4"
+            android:backgroundTint="@color/grey"
+            android:textAllCaps="false"
+            android:textColor="@color/custom_navy_A"
+            android:layout_width="355dp"
+            android:layout_height="57dp" android:id="@+id/activity_survey_middle8_button4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_survey_middle8_button3"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.5"/>
     <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" app:srcCompat="@drawable/ic_back_arrow"
@@ -24,11 +75,4 @@
             android:layout_marginTop="14dp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="12dp" android:minHeight="48dp" tools:ignore="SpeakableTextPresentCheck"
             tools:srcCompat="@drawable/ic_back_arrow"/>
-    <Button
-            android:text="@string/activity_survey_next"
-            android:layout_width="361dp"
-            android:layout_height="62dp" android:id="@+id/activity_survey_middle8_next_button"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="9dp" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
