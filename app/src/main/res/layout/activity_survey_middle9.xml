@@ -14,6 +14,7 @@
             android:textColor="@color/custom_navy_A"
             android:textSize="24sp"
             android:textStyle="bold"
+            android:gravity="center"
             android:id="@+id/activity_survey_middle9_question"
             app:fontFamily="@font/spartan" app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.484"
