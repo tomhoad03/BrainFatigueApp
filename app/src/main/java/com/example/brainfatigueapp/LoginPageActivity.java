@@ -31,12 +31,15 @@ public class LoginPageActivity extends AppCompatActivity{
         if (getSupportActionBar() != null)
             getSupportActionBar().hide();
 
+        gsi_options = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+        gsi_client = GoogleSignIn.getClient(this, gsi_options);
+
         TextView username = (TextView) findViewById(R.id.username);
         TextView password = (TextView) findViewById(R.id.password);
         ImageView google_button = (ImageView) findViewById(R.id.google_icon) ;
-        google_button.setOnClickListener(v -> {
-            Intent signinIntent = gsi_client.getSignInIntent();
 
+        google_button.setOnClickListener(v -> {
+            signIn();
         });
 
         Button loginButton = (Button) findViewById(R.id.login_continue_button);
@@ -53,15 +56,25 @@ public class LoginPageActivity extends AppCompatActivity{
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1000){
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-
             try {
                 task.getResult(ApiException.class);
-                Intent intent = new Intent(LoginPageActivity.this, HomeActivity.class);
-                startActivity(intent);
+                navigateToHomeActivity();
 
             } catch (ApiException e) {
                 e.printStackTrace();
             }
         }
     }
+
+    void signIn(){
+        Intent signinIntent = gsi_client.getSignInIntent();
+        startActivityForResult(signinIntent, 1000);
+    }
+
+    void navigateToHomeActivity(){
+        finish();
+        Intent intent = new Intent(LoginPageActivity.this, HomeActivity.class);
+        startActivity(intent);
+    }
+
 }
