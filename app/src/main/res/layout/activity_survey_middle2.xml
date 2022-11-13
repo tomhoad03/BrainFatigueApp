@@ -21,6 +21,7 @@
             android:textColor="@color/custom_navy_A"
             android:textSize="24sp"
             android:textStyle="bold"
+            android:gravity="center"
             android:id="@+id/activity_survey_middle2_question"
             app:fontFamily="@font/spartan" app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="@+id/activity_survey_middle2_button1"

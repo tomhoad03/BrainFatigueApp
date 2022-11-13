@@ -17,7 +17,6 @@ tools:context=".SurveyMiddle1Activity">
             android:id="@+id/activity_survey_middle1_question"
             android:gravity="center"
             app:fontFamily="@font/spartan"
-            android:textStyle="bold"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_bias="0.472"
