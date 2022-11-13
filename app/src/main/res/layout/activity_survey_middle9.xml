@@ -17,6 +17,17 @@
             app:fontFamily="@font/spartan" app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.484"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="84dp"/>
+    <TextView
+            android:background="@null"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/activity_survey_prompt"
+            android:textColor="@color/grey_text"
+            android:textSize="16sp"
+            android:id="@+id/activity_survey_middle2_prompt"
+            app:layout_constraintTop_toBottomOf="@+id/activity_survey_middle9_question" android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintEnd_toEndOf="parent" android:minHeight="48dp"/>
     <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" app:srcCompat="@drawable/ic_back_arrow"
@@ -33,7 +44,7 @@
             android:layout_height="57dp" android:id="@+id/activity_survey_middle9_button1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintVertical_chainStyle="spread"
+            app:layout_constraintVertical_chainStyle="packed"
             app:layout_constraintVertical_bias="0.289"
             app:layout_constraintTop_toBottomOf="@+id/activity_survey_middle9_question"
             app:layout_constraintBottom_toTopOf="@+id/activity_survey_middle9_button2"

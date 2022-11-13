@@ -9,6 +9,7 @@
     <string name="activity_survey_start_subMessage">To begin, press Start</string>
     <string name="activity_survey_next">Next</string>
     <string name="activity_survey_submit">Submit</string>
+    <string name="activity_survey_prompt">Please choose one</string>
 
     <!-- survey questions -->
     <string name="activity_survey_middle1_question">How are your energy levels?</string>
