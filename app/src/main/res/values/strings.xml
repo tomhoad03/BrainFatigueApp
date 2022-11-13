@@ -5,6 +5,18 @@
     <string name="activity_home_welcome">Hi Tom, What would you like to do today?</string>
 
     <string name="activity_dashboard_title">My dashboard</string>
+    <string name="activity_dashboard_left_group1_top">Steps</string>
+    <string name="activity_dashboard_left_group1_bottom">358 steps done today</string>
+    <string name="activity_dashboard_left_group2_top">Sleep</string>
+    <string name="activity_dashboard_left_group2_bottom">7hr 20m</string>
+    <string name="activity_dashboard_left_group3_top">Audio Levels</string>
+    <string name="activity_dashboard_left_group3_bottom">50 dB on average</string>
+    <string name="activity_dashboard_left_group4_top">Lorem Ipsum</string>
+    <string name="activity_dashboard_left_group4_bottom">Lorem ipsum dolor sit amet.</string>
+    <string name="activity_dashboard_right_group1">Example data 1</string>
+    <string name="activity_dashboard_right_group2">Example data 2</string>
+    <string name="activity_dashboard_right_group3">Example data 3</string>
+    <string name="activity_dashboard_right_group4">Example data 4</string>
 
     <string name="activity_survey_start">Start</string>
     <string name="activity_survey_start_mainMessage">Welcome to your fatigue survey</string>
