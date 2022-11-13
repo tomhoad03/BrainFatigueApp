@@ -38,4 +38,9 @@
     <string name="activity_survey_middle8_button3">There is no change in my energy levels</string>
     <string name="activity_survey_middle8_button4">I feel somewhat drained</string>
     <string name="activity_survey_middle8_button5">I feel drained</string>
+
+    <!-- question 9 -->
+    <string name="activity_survey_middle9_button1">Physical fatigue</string>
+    <string name="activity_survey_middle9_button2">Mental fatigue</string>
+    <string name="activity_survey_middle9_button3">Mixture of both</string>
 </resources>
