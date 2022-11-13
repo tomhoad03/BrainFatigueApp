@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Display homepage after delay
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
-            Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+            Intent intent = new Intent(MainActivity.this, LoginPageActivity.class);
             startActivity(intent);
             finish();
         }, 3000);
