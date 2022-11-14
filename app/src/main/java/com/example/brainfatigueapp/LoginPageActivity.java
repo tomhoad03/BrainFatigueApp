@@ -39,7 +39,13 @@ public class LoginPageActivity extends AppCompatActivity{
         ImageView google_button = (ImageView) findViewById(R.id.google_icon) ;
 
         google_button.setOnClickListener(v -> {
-            signIn();
+            GoogleSignInAccount lastAccount = GoogleSignIn.getLastSignedInAccount(this);
+            if(lastAccount == null) {
+                signIn();
+            }
+            else{
+                navigateToHomeActivity();
+            }
         });
 
         Button loginButton = (Button) findViewById(R.id.login_continue_button);
