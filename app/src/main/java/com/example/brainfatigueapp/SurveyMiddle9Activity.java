@@ -6,6 +6,8 @@ import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
+import java.util.ArrayList;
+
 public class SurveyMiddle9Activity extends AppCompatActivity {
 
     @Override
@@ -24,11 +26,17 @@ public class SurveyMiddle9Activity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        // Next button
-        final Button surveyNextBtn = findViewById(R.id.activity_survey_middle9_next_button);
-        surveyNextBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(SurveyMiddle9Activity.this, SurveyEndActivity.class);
-            startActivity(intent);
-        });
+        // Select activity buttons
+        ArrayList<Button> activityButtons = new ArrayList<>();
+        activityButtons.add(findViewById(R.id.activity_survey_middle9_button1));
+        activityButtons.add(findViewById(R.id.activity_survey_middle9_button2));
+        activityButtons.add(findViewById(R.id.activity_survey_middle9_button3));
+
+        for (Button activityButton : activityButtons) {
+            activityButton.setOnClickListener(v -> {
+                Intent intent = new Intent(SurveyMiddle9Activity.this, SurveyEndActivity.class);
+                startActivity(intent);
+            });
+        }
     }
 }

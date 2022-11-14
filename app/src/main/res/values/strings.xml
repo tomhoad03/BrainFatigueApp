@@ -4,11 +4,27 @@
     <string name="activity_home_view_my_dashboard">View My Dashboard</string>
     <string name="activity_home_welcome">Hi, What would you like to do today?</string>
 
+    <string name="activity_dashboard_title">My dashboard</string>
+    <string name="activity_dashboard_left_group1_top">Steps</string>
+    <string name="activity_dashboard_left_group1_bottom">358 steps done today</string>
+    <string name="activity_dashboard_left_group2_top">Sleep</string>
+    <string name="activity_dashboard_left_group2_bottom">7hr 20m</string>
+    <string name="activity_dashboard_left_group3_top">Audio Levels</string>
+    <string name="activity_dashboard_left_group3_bottom">50 dB on average</string>
+    <string name="activity_dashboard_left_group4_top">Lorem Ipsum</string>
+    <string name="activity_dashboard_left_group4_bottom">Lorem ipsum dolor sit amet.</string>
+    <string name="activity_dashboard_right_group1">Example data 1</string>
+    <string name="activity_dashboard_right_group2">Example data 2</string>
+    <string name="activity_dashboard_right_group3">Example data 3</string>
+    <string name="activity_dashboard_right_group4">Example data 4</string>
+
+    <!-- survey start messages -->
     <string name="activity_survey_start">Start</string>
     <string name="activity_survey_start_mainMessage">Welcome to your fatigue survey</string>
     <string name="activity_survey_start_subMessage">To begin, press Start</string>
     <string name="activity_survey_next">Next</string>
     <string name="activity_survey_submit">Submit</string>
+    <string name="activity_survey_prompt">Please choose one</string>
 
     <!-- survey questions -->
     <string name="activity_survey_middle1_question">How are your energy levels?</string>
@@ -31,4 +47,20 @@
     <string name="activity_survey_middle3_button5">Using a computer/phone/tablet</string>
     <string name="activity_survey_middle3_button6">Exercising</string>
     <string name="activity_survey_middle3_button7">Hobby or quiet past time</string>
+
+    <!-- question 8 -->
+    <string name="activity_survey_middle8_button1">I feel full of energy</string>
+    <string name="activity_survey_middle8_button2">I feel somewhat energised</string>
+    <string name="activity_survey_middle8_button3">There is no change in my energy levels</string>
+    <string name="activity_survey_middle8_button4">I feel somewhat drained</string>
+    <string name="activity_survey_middle8_button5">I feel drained</string>
+
+    <!-- question 9 -->
+    <string name="activity_survey_middle9_button1">Physical fatigue</string>
+    <string name="activity_survey_middle9_button2">Mental fatigue</string>
+    <string name="activity_survey_middle9_button3">Mixture of both</string>
+
+    <!-- survey end messages -->
+    <string name="activity_survey_end_mainMessage">Thank you!</string>
+    <string name="activity_survey_end_subMessage">To finish, press Submit</string>
 </resources>
