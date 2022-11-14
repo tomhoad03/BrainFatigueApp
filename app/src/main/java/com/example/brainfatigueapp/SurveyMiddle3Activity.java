@@ -26,10 +26,24 @@ public class SurveyMiddle3Activity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        // Option 1 - Looking after myself
+        final Button lookAfterMyselfBtn = findViewById(R.id.activity_survey_middle3_button1);
+        lookAfterMyselfBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(SurveyMiddle3Activity.this, SurveyMiddle4aActivity.class);
+            startActivity(intent);
+        });
+
+        // Option 2 - Household or family tasks
+        final Button houseFamTaskBtn = findViewById(R.id.activity_survey_middle3_button2);
+        houseFamTaskBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(SurveyMiddle3Activity.this, SurveyMiddle4bActivity.class);
+            startActivity(intent);
+        });
+
         // Select activity buttons
         ArrayList<Button> activityButtons = new ArrayList<>();
-        activityButtons.add(findViewById(R.id.activity_survey_middle3_button1));
-        activityButtons.add(findViewById(R.id.activity_survey_middle3_button2));
+//        activityButtons.add(findViewById(R.id.activity_survey_middle3_button1));
+//        activityButtons.add(findViewById(R.id.activity_survey_middle3_button2));
         activityButtons.add(findViewById(R.id.activity_survey_middle3_button3));
         activityButtons.add(findViewById(R.id.activity_survey_middle3_button4));
         activityButtons.add(findViewById(R.id.activity_survey_middle3_button5));
@@ -38,9 +52,10 @@ public class SurveyMiddle3Activity extends AppCompatActivity {
 
         for (Button activityButton : activityButtons) {
             activityButton.setOnClickListener(v -> {
-                Intent intent = new Intent(SurveyMiddle3Activity.this, SurveyMiddle5Activity.class);
+                Intent intent = new Intent(SurveyMiddle3Activity.this, SurveyMiddle4aActivity.class);
                 startActivity(intent);
             });
         }
+
     }
 }

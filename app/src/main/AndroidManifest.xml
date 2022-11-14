@@ -39,6 +39,12 @@
                 android:name=".SurveyMiddle4Activity"
                 android:exported="false"/>
         <activity
+                android:name=".SurveyMiddle4bActivity"
+                android:exported="false"/>
+        <activity
+                android:name=".SurveyMiddle4aActivity"
+                android:exported="false"/>
+        <activity
                 android:name=".SurveyMiddle3Activity"
                 android:exported="false"/>
         <activity
