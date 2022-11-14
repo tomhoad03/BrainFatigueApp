@@ -33,14 +33,14 @@
     <string name="activity_survey_middle3_button6">Exercising</string>
     <string name="activity_survey_middle3_button7">Hobby or quiet past time</string>
 
-    <!-- question 4a (after selecting "Looking after myself" -->
+    <!-- question 4a (after selecting "Looking after myself") -->
     <string name="activity_survey_middle4a_button1">Getting washed or dressed</string>
     <string name="activity_survey_middle4a_button2">Eating</string>
     <string name="activity_survey_middle4a_button3">Sleeping</string>
     <string name="activity_survey_middle4a_button4">Taking time out to rest</string>
     <string name="activity_survey_middle4a_button5">Unwell in bed</string>
 
-    <!-- question 4b (after selecting "Household or family tasks" -->
+    <!-- question 4b (after selecting "Household or family tasks") -->
     <string name="activity_survey_middle4b_button1">Cooking</string>
     <string name="activity_survey_middle4b_button2">Cleaning house or car</string>
     <string name="activity_survey_middle4b_button3">Gardening</string>
@@ -50,9 +50,34 @@
     <string name="activity_survey_middle4b_button7">Laundry</string>
     <string name="activity_survey_middle4b_button8">House repairs</string>
 
-    <!-- question 4c (after selecting "Working or studying" -->
+    <!-- question 4c (after selecting "Working or studying") -->
     <string name="activity_survey_middle4c_button1">Working from home</string>
     <string name="activity_survey_middle4c_button2">Studying at home</string>
+
+    <!-- question 4d (after selecting "Social activities") -->
+    <string name="activity_survey_middle4d_button1">Socialising at home</string>
+    <string name="activity_survey_middle4d_button2">Talking on the telephone</string>
+    <string name="activity_survey_middle4d_button3">Playing games</string>
+
+    <!-- question 4e (after selecting "Using a computer/tablet/phone") -->
+    <string name="activity_survey_middle4e_button1">Playing a game</string>
+    <string name="activity_survey_middle4e_button2">Watching videos</string>
+    <string name="activity_survey_middle4e_button3">Checking emails</string>
+    <string name="activity_survey_middle4e_button4">Browsing the internet</string>
+    <string name="activity_survey_middle4e_button5">Reading</string>
+    <string name="activity_survey_middle4e_button6">Listening to music/radio</string>
+
+    <!-- question 4f (after selecting "Exercising") -->
+    <string name="activity_survey_middle4f_button1">Exercises (for example physiotherapy exercises, light weights, aerobics)</string>
+    <string name="activity_survey_middle4f_button2">Yoga, pilates or stretching</string>
+    <string name="activity_survey_middle4f_button3">Using an exercise machine</string>
+
+    <!-- question 4e (after selecting "Hobby or quiet past time") -->
+    <string name="activity_survey_middle4g_button1">Watching television</string>
+    <string name="activity_survey_middle4g_button2">Reading</string>
+    <string name="activity_survey_middle4g_button3">Listening to music/radio</string>
+    <string name="activity_survey_middle4g_button4">Playing a musical instrument</string>
+    <string name="activity_survey_middle4g_button5">Art or craft work</string>
 
     <!-- question 8 -->
     <string name="activity_survey_middle8_button1">I feel full of energy</string>

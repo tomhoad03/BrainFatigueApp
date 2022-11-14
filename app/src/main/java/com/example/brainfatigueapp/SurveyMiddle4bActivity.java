@@ -20,7 +20,8 @@ public class SurveyMiddle4bActivity extends AppCompatActivity {
         if (getSupportActionBar() != null)
             getSupportActionBar().hide();
 
-        // Back button points back to middle3 "What have you been doing the last 10 minutes?" page
+        // Back button
+        // points back to middle3 "What have you been doing the last 10 minutes?" page
         final ImageButton surveyBackBtn = findViewById(R.id.activity_survey_middle4b_back_button);
         surveyBackBtn.setOnClickListener(v -> {
             Intent intent = new Intent(SurveyMiddle4bActivity.this, SurveyMiddle3Activity.class);
