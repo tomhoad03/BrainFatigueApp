@@ -32,6 +32,7 @@
         <entry key="..\:/Users/tomho/IdeaProjects/BrainFatigueApp/app/src/main/res/layout/activity_dashboard.xml" value="0.4512820512820513" />
         <entry key="..\:/Users/tomho/IdeaProjects/BrainFatigueApp/app/src/main/res/layout/activity_home.xml" value="0.33" />
         <entry key="..\:/Users/tomho/IdeaProjects/BrainFatigueApp/app/src/main/res/layout/activity_load.xml" value="0.55" />
+        <entry key="..\:/Users/tomho/IdeaProjects/BrainFatigueApp/app/src/main/res/layout/activity_login.xml" value="0.4512820512820513" />
         <entry key="..\:/Users/tomho/IdeaProjects/BrainFatigueApp/app/src/main/res/layout/activity_main.xml" value="0.4512820512820513" />
         <entry key="..\:/Users/tomho/IdeaProjects/BrainFatigueApp/app/src/main/res/layout/activity_survey1.xml" value="0.33" />
         <entry key="..\:/Users/tomho/IdeaProjects/BrainFatigueApp/app/src/main/res/layout/activity_survey_end.xml" value="0.22055137844611528" />
@@ -46,9 +47,20 @@
         <entry key="..\:/Users/tomho/IdeaProjects/BrainFatigueApp/app/src/main/res/layout/activity_survey_middle9.xml" value="0.4512820512820513" />
         <entry key="..\:/Users/tomho/IdeaProjects/BrainFatigueApp/app/src/main/res/layout/activity_survey_middle_1.xml" value="0.3786231884057971" />
         <entry key="..\:/Users/tomho/IdeaProjects/BrainFatigueApp/app/src/main/res/layout/activity_survey_start.xml" value="0.4512820512820513" />
+        <entry key="..\:/Users/tomho/IdeaProjects/BrainFatigueApp/app/src/main/res/layout/fragment_dashboard_left.xml" value="0.4512820512820513" />
+        <entry key="..\:/Users/tomho/IdeaProjects/BrainFatigueApp/app/src/main/res/layout/fragment_dashboard_right.xml" value="0.4512820512820513" />
         <entry key="..\:/Users/tomho/IdeaProjects/BrainFatigueApp/app/src/main/res/layout/fragment_survey.xml" value="0.4512820512820513" />
         <entry key="..\:/Users/tomho/IdeaProjects/BrainFatigueApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.45864978902953585" />
         <entry key="..\:/Users/tomho/IdeaProjects/BrainFatigueApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.46452991452991454" />
+        <entry key="app/src/main/res/layout/activity_survey_middle3.xml" value="0.2792098999023438" />
+        <entry key="app/src/main/res/layout/activity_survey_middle4.xml" value="0.1203125" />
+        <entry key="app/src/main/res/layout/activity_survey_middle4a.xml" value="0.22350158691406252" />
+        <entry key="app/src/main/res/layout/activity_survey_middle4b.xml" value="0.31012695312500005" />
+        <entry key="app/src/main/res/layout/activity_survey_middle4c.xml" value="0.26351165771484375" />
+        <entry key="app/src/main/res/layout/activity_survey_middle4d.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_survey_middle4e.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_survey_middle4f.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_survey_middle5.xml" value="0.20742753623188406" />
       </map>
     </option>
   </component>
