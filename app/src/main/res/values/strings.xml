@@ -4,6 +4,7 @@
     <string name="activity_home_view_my_dashboard">View My Dashboard</string>
     <string name="activity_home_welcome">Hi user, What would you like to do today?</string>
 
+
     <string name="activity_dashboard_title">My dashboard</string>
     <string name="activity_dashboard_left_group1_top">Steps</string>
     <string name="activity_dashboard_left_group1_bottom">358 steps done today</string>
