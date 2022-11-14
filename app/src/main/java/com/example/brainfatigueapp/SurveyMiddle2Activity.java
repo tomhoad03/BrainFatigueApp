@@ -18,21 +18,21 @@ public class SurveyMiddle2Activity extends AppCompatActivity {
             getSupportActionBar().hide();
 
         // Back button
-        final Button surveyBackBtn = findViewById(R.id.activity_home_survey_button_somewhere_else);
+        final ImageButton surveyBackBtn = findViewById(R.id.activity_survey_middle2_back_button);
         surveyBackBtn.setOnClickListener(v -> {
             Intent intent = new Intent(SurveyMiddle2Activity.this, SurveyMiddle1Activity.class);
             startActivity(intent);
         });
 
         // Option 1 - At home
-        final Button atHomeBtn = findViewById(R.id.activity_home_survey_button_at_home);
+        final Button atHomeBtn = findViewById(R.id.activity_survey_middle2_button1);
         atHomeBtn.setOnClickListener(v -> {
             Intent intent = new Intent(SurveyMiddle2Activity.this, SurveyMiddle3Activity.class);
             startActivity(intent);
         });
 
         // Option 2 - Somewhere else
-        final Button somewhereElseBtn = findViewById(R.id.activity_home_survey_button_somewhere_else);
+        final Button somewhereElseBtn = findViewById(R.id.activity_survey_middle2_button2);
         somewhereElseBtn.setOnClickListener(v -> {
             Intent intent = new Intent(SurveyMiddle2Activity.this, SurveyMiddle4Activity.class);
             startActivity(intent);

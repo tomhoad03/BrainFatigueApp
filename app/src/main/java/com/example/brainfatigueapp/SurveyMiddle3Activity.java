@@ -38,7 +38,7 @@ public class SurveyMiddle3Activity extends AppCompatActivity {
 
         for (Button activityButton : activityButtons) {
             activityButton.setOnClickListener(v -> {
-                Intent intent = new Intent(SurveyMiddle3Activity.this, SurveyMiddle4Activity.class);
+                Intent intent = new Intent(SurveyMiddle3Activity.this, SurveyMiddle5Activity.class);
                 startActivity(intent);
             });
         }

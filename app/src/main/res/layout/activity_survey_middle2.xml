@@ -15,30 +15,29 @@
             android:layout_marginStart="12dp" android:minHeight="48dp" tools:ignore="SpeakableTextPresentCheck"
             tools:srcCompat="@drawable/ic_back_arrow"/>
     <TextView
-            android:background="@null"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="351dp"
+            android:layout_height="76dp"
             android:text="@string/activity_survey_middle2_question"
             android:textColor="@color/custom_navy_A"
             android:textSize="24sp"
-            android:id="@+id/activity_survey_middle2_question"
             android:textStyle="bold"
-            app:fontFamily="@font/spartan"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="84dp"/>
-    <EditText
+            android:gravity="center"
+            android:id="@+id/activity_survey_middle2_question"
+            app:fontFamily="@font/spartan" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/activity_survey_middle2_button1"
+            app:layout_constraintHorizontal_bias="0.484"
+            app:layout_constraintEnd_toEndOf="@+id/activity_survey_middle2_button1" android:layout_marginTop="132dp"/>
+    <TextView
             android:background="@null"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:text="Please choose one."
+            android:text="@string/activity_survey_prompt"
             android:textColor="@color/grey_text"
             android:textSize="16sp"
-            android:id="@+id/editTextTextPersonName"
-            app:layout_constraintTop_toBottomOf="@+id/activity_survey_middle2_question" android:layout_marginTop="12dp"
+            android:id="@+id/activity_survey_middle2_prompt"
+            app:layout_constraintTop_toBottomOf="@+id/activity_survey_middle2_question" android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent" android:minHeight="48dp"/>
     <Button
             android:backgroundTint="@color/grey"
             android:text="@string/activity_survey_middle2_at_home"
@@ -47,12 +46,12 @@
             android:textSize="28sp"
             android:layout_width="365dp"
             android:layout_height="196dp"
-            android:id="@+id/activity_home_survey_button_at_home"
+            android:id="@+id/activity_survey_middle2_button1"
             app:fontFamily="@font/spartan"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/activity_home_survey_button_somewhere_else"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"/>
+            app:layout_constraintBottom_toTopOf="@+id/activity_survey_middle2_button2"
+            app:layout_constraintTop_toBottomOf="@+id/activity_survey_middle2_prompt"/>
     <Button
             android:backgroundTint="@color/grey"
             android:text="@string/activity_survey_middle2_somewhere_else"
@@ -61,7 +60,7 @@
             android:textSize="28sp"
             android:layout_width="365dp"
             android:layout_height="196dp"
-            android:id="@+id/activity_home_survey_button_somewhere_else"
+            android:id="@+id/activity_survey_middle2_button2"
             app:fontFamily="@font/spartan"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="120dp" app:layout_constraintStart_toStartOf="parent"
