@@ -22,7 +22,7 @@
             android:theme="@style/Theme.BrainFatigueApp">
         <activity
                 android:name=".SurveyMiddle9Activity"
-                android:exported="false"/>
+                    android:exported="false"/>
         <activity
                 android:name=".SurveyMiddle8Activity"
                 android:exported="false"/>

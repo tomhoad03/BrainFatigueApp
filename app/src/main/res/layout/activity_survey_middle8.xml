@@ -8,8 +8,8 @@
         tools:context=".SurveyMiddle8Activity">
 
     <TextView
-            android:layout_width="360dp"
-            android:layout_height="62dp"
+            android:layout_width="351dp"
+            android:layout_height="76dp"
             android:text="@string/activity_survey_middle8_question"
             android:textColor="@color/custom_navy_A"
             android:textSize="24sp"
@@ -19,7 +19,7 @@
             app:fontFamily="@font/spartan" app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="@+id/activity_survey_middle8_button1"
             app:layout_constraintHorizontal_bias="0.484"
-            app:layout_constraintEnd_toEndOf="@+id/activity_survey_middle8_button1" android:layout_marginTop="84dp"/>
+            app:layout_constraintEnd_toEndOf="@+id/activity_survey_middle8_button1" android:layout_marginTop="132dp"/>
     <TextView
             android:background="@null"
             android:layout_width="wrap_content"
