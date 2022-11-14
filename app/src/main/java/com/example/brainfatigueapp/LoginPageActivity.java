@@ -39,7 +39,13 @@ public class LoginPageActivity extends AppCompatActivity{
         ImageView google_button = (ImageView) findViewById(R.id.google_icon) ;
 
         google_button.setOnClickListener(v -> {
-            signIn();
+            GoogleSignInAccount lastAccount = GoogleSignIn.getLastSignedInAccount(this);
+            if(lastAccount == null) {
+                signIn();
+            }
+            else{
+                navigateToHomeActivity();
+            }
         });
 
         Button loginButton = (Button) findViewById(R.id.login_continue_button);
@@ -54,21 +60,24 @@ public class LoginPageActivity extends AppCompatActivity{
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1000){
+        if (requestCode == 100){
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            try {
-                task.getResult(ApiException.class);
-                navigateToHomeActivity();
-
-            } catch (ApiException e) {
-                e.printStackTrace();
-            }
+            handleSignInResult(task);
         }
     }
 
-    void signIn(){
-        Intent signinIntent = gsi_client.getSignInIntent();
-        startActivityForResult(signinIntent, 1000);
+    private void signIn() {
+        Intent signInIntent = gsi_client.getSignInIntent();
+        startActivityForResult(signInIntent, 100);
+    }
+
+    void handleSignInResult(Task<GoogleSignInAccount> finishedTask){
+        try{
+            GoogleSignInAccount account = finishedTask.getResult(ApiException.class);
+            navigateToHomeActivity();
+        } catch (ApiException e){
+            e.printStackTrace();
+        }
     }
 
     void navigateToHomeActivity(){

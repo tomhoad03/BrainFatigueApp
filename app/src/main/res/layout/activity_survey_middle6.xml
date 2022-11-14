@@ -8,8 +8,8 @@
         tools:context=".SurveyMiddle6Activity">
 
     <TextView
-            android:layout_width="263dp"
-            android:layout_height="78dp"
+            android:layout_width="351dp"
+            android:layout_height="76dp"
             android:text="@string/activity_survey_middle6_question"
             android:textColor="@color/custom_navy_A"
             android:textSize="24sp"
