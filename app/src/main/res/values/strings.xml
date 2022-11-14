@@ -18,6 +18,7 @@
     <string name="activity_dashboard_right_group3">Example data 3</string>
     <string name="activity_dashboard_right_group4">Example data 4</string>
 
+    <!-- survey start messages -->
     <string name="activity_survey_start">Start</string>
     <string name="activity_survey_start_mainMessage">Welcome to your fatigue survey</string>
     <string name="activity_survey_start_subMessage">To begin, press Start</string>
@@ -58,4 +59,8 @@
     <string name="activity_survey_middle9_button1">Physical fatigue</string>
     <string name="activity_survey_middle9_button2">Mental fatigue</string>
     <string name="activity_survey_middle9_button3">Mixture of both</string>
+
+    <!-- survey end messages -->
+    <string name="activity_survey_end_mainMessage">Thank you!</string>
+    <string name="activity_survey_end_subMessage">To finish, press Submit</string>
 </resources>

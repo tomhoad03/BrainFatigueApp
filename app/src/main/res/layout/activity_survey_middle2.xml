@@ -63,6 +63,6 @@
             android:id="@+id/activity_survey_middle2_button2"
             app:fontFamily="@font/spartan"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="120dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginBottom="60dp" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

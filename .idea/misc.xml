@@ -4,17 +4,17 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/lewis/Documents/Uni/Year 2/Semester 1/COMP 2209/Haskell/Random/BrainFatigueApp/app/src/main/res/font/spartan.xml" value="0.284375" />
-        <entry key="..\:/Users/lewis/Documents/Uni/Year 2/Semester 1/COMP 2209/Haskell/Random/BrainFatigueApp/app/src/main/res/layout/activity_dashboard.xml" value="0.2" />
+        <entry key="..\:/Users/lewis/Documents/Uni/Year 2/Semester 1/COMP 2209/Haskell/Random/BrainFatigueApp/app/src/main/res/layout/activity_dashboard.xml" value="0.264" />
         <entry key="..\:/Users/lewis/Documents/Uni/Year 2/Semester 1/COMP 2209/Haskell/Random/BrainFatigueApp/app/src/main/res/layout/activity_home.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/lewis/Documents/Uni/Year 2/Semester 1/COMP 2209/Haskell/Random/BrainFatigueApp/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/lewis/Documents/Uni/Year 2/Semester 1/COMP 2209/Haskell/Random/BrainFatigueApp/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/lewis/Documents/Uni/Year 2/Semester 1/COMP 2209/Haskell/Random/BrainFatigueApp/app/src/main/res/layout/activity_survey_end.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/lewis/Documents/Uni/Year 2/Semester 1/COMP 2209/Haskell/Random/BrainFatigueApp/app/src/main/res/layout/activity_survey_middle1.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/lewis/Documents/Uni/Year 2/Semester 1/COMP 2209/Haskell/Random/BrainFatigueApp/app/src/main/res/layout/activity_survey_middle1.xml" value="0.1" />
         <entry key="..\:/Users/lewis/Documents/Uni/Year 2/Semester 1/COMP 2209/Haskell/Random/BrainFatigueApp/app/src/main/res/layout/activity_survey_middle2.xml" value="0.264" />
         <entry key="..\:/Users/lewis/Documents/Uni/Year 2/Semester 1/COMP 2209/Haskell/Random/BrainFatigueApp/app/src/main/res/layout/activity_survey_middle3.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/lewis/Documents/Uni/Year 2/Semester 1/COMP 2209/Haskell/Random/BrainFatigueApp/app/src/main/res/layout/activity_survey_middle4.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/lewis/Documents/Uni/Year 2/Semester 1/COMP 2209/Haskell/Random/BrainFatigueApp/app/src/main/res/layout/activity_survey_start.xml" value="0.264" />
-        <entry key="..\:/Users/lewis/Documents/Uni/Year 2/Semester 1/COMP 2209/Haskell/Random/BrainFatigueApp/app/src/main/res/layout/fragment_dashboard_left.xml" value="0.1" />
+        <entry key="..\:/Users/lewis/Documents/Uni/Year 2/Semester 1/COMP 2209/Haskell/Random/BrainFatigueApp/app/src/main/res/layout/fragment_dashboard_left.xml" value="0.4" />
         <entry key="..\:/Users/lewis/Documents/Uni/Year 2/Semester 1/COMP 2209/Haskell/Random/BrainFatigueApp/app/src/main/res/layout/fragment_dashboard_right.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/tomho/IdeaProjects/BrainFatigueApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.46452991452991454" />
         <entry key="..\:/Users/tomho/IdeaProjects/BrainFatigueApp/app/src/main/res/drawable/button_gradient_1.xml" value="0.33034188034188033" />
