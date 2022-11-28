@@ -11,8 +11,6 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 public class MainActivity extends AppCompatActivity {
-    private final String CHANNEL_ID = "BrainFatigueApp 1";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,30 +29,10 @@ public class MainActivity extends AppCompatActivity {
 
         // Create the notification channel
         createNotificationChannel();
-
-        // Create a notification intent
-        Intent intent = new Intent(this, AlertDialog.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
-
-        // Build the notification
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_vector)
-                .setContentTitle("Brain Fatigue App")
-                .setContentText("It's time to take the survey!")
-                .setDefaults(Notification.DEFAULT_ALL)
-                .setContentIntent(pendingIntent)
-                .setAutoCancel(true);
-
-        // Display the notification
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-        notificationManager.notify(0, builder.build());
     }
 
     private void createNotificationChannel() {
-        int importance = NotificationManager.IMPORTANCE_HIGH;
-        NotificationChannel channel = new NotificationChannel(CHANNEL_ID, "BrainFatigueApp 2", importance);
-
+        NotificationChannel channel = new NotificationChannel("", "BrainFatigueApp", NotificationManager.IMPORTANCE_HIGH);
         NotificationManager notificationManager = getSystemService(NotificationManager.class);
         notificationManager.createNotificationChannel(channel);
     }

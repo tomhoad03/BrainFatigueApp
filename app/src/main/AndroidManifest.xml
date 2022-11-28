@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools">
-    <!-- Think the 3 we need are the save, load and access microphone for the sound things -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission
@@ -22,82 +21,102 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.BrainFatigueApp">
         <activity
-                android:name=".SurveyMiddle9Activity"
-                    android:exported="false"/>
-        <activity
-                android:name=".SurveyMiddle8Activity"
-                android:exported="false"/>
-        <activity
-                android:name=".SurveyMiddle7Activity"
-                android:exported="false"/>
-        <activity
-                android:name=".SurveyMiddle6Activity"
-                android:exported="false"/>
-        <activity
-                android:name=".SurveyMiddle5Activity"
-                android:exported="false"/>
-        <activity
-                android:name=".SurveyMiddle4Activity"
-                android:exported="false"/>
-        <activity
-                android:name=".SurveyMiddle4gActivity"
-                android:exported="false"/>
-        <activity
-                android:name=".SurveyMiddle4fActivity"
-                android:exported="false"/>
-        <activity
-                android:name=".SurveyMiddle4eActivity"
-                android:exported="false"/>
-        <activity
-                android:name=".SurveyMiddle4dActivity"
-                android:exported="false"/>
-        <activity
-                android:name=".SurveyMiddle4cActivity"
-                android:exported="false"/>
-        <activity
-                android:name=".SurveyMiddle4bActivity"
-                android:exported="false"/>
-        <activity
-                android:name=".SurveyMiddle4aActivity"
-                android:exported="false"/>
-        <activity
-                android:name=".SurveyMiddle3Activity"
-                android:exported="false"/>
-        <activity
-                android:name=".SurveyMiddle2Activity"
-                android:exported="false"/>
-        <activity
-                android:name=".SurveyMiddle1Activity"
-                android:exported="false"/>
-        <activity
-                android:name=".SurveyEndActivity"
-                android:exported="false"/>
-        <activity
-                android:name=".SurveyStartActivity"
-                android:exported="false"/>
-        <activity
-                android:name=".DashboardActivity"
-                android:exported="false"/>
-        <activity
-                android:name=".HomeActivity"
-                android:exported="true"/>
-        <activity
-            android:name=".LoginPageActivity"
-            android:exported="true"/>
-        <activity
                 android:name=".MainActivity"
                 android:exported="true"
                 android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity
+                android:name=".LoginPageActivity"
+                android:exported="true"
+                android:parentActivityName=".MainActivity"/>
+        <activity
+                android:name=".HomeActivity"
+                android:exported="true"
+                android:parentActivityName=".LoginPageActivity"/>
+        <activity
+                android:name=".DashboardActivity"
+                android:exported="false"
+                android:parentActivityName=".HomeActivity"/>
+        <activity
+                android:name=".SurveyStartActivity"
+                android:exported="false"
+                android:parentActivityName=".HomeActivity"
+                android:launchMode="singleTop"/>
+        <activity
+                android:name=".SurveyMiddle9Activity"
+                    android:exported="false"
+                android:parentActivityName=".SurveyMiddle8Activity"/>
+        <activity
+                android:name=".SurveyMiddle8Activity"
+                android:exported="false"
+                android:parentActivityName=".SurveyMiddle7Activity"/>
+        <activity
+                android:name=".SurveyMiddle7Activity"
+                android:exported="false"
+                android:parentActivityName=".SurveyMiddle6Activity"/>
+        <activity
+                android:name=".SurveyMiddle6Activity"
+                android:exported="false"
+                android:parentActivityName=".SurveyMiddle5Activity"/>
+        <activity
+                android:name=".SurveyMiddle5Activity"
+                android:exported="false"
+                android:parentActivityName=".SurveyMiddle4Activity"/>
+        <activity
+                android:name=".SurveyMiddle4Activity"
+                android:exported="false"
+                android:parentActivityName=".SurveyMiddle3Activity"/>
+        <activity
+                android:name=".SurveyMiddle4gActivity"
+                android:exported="false"
+                android:parentActivityName=".SurveyMiddle4Activity"/>
+        <activity
+                android:name=".SurveyMiddle4fActivity"
+                android:exported="false"
+                android:parentActivityName=".SurveyMiddle4Activity"/>
+        <activity
+                android:name=".SurveyMiddle4eActivity"
+                android:exported="false"
+                android:parentActivityName=".SurveyMiddle4Activity"/>
+        <activity
+                android:name=".SurveyMiddle4dActivity"
+                android:exported="false"
+                android:parentActivityName=".SurveyMiddle4Activity"/>
+        <activity
+                android:name=".SurveyMiddle4cActivity"
+                android:exported="false"
+                android:parentActivityName=".SurveyMiddle4Activity"/>
+        <activity
+                android:name=".SurveyMiddle4bActivity"
+                android:exported="false"
+                android:parentActivityName=".SurveyMiddle4Activity"/>
+        <activity
+                android:name=".SurveyMiddle4aActivity"
+                android:exported="false"
+                android:parentActivityName=".SurveyMiddle4Activity"/>
+        <activity
+                android:name=".SurveyMiddle3Activity"
+                android:exported="false"
+                android:parentActivityName=".SurveyMiddle2Activity"/>
+        <activity
+                android:name=".SurveyMiddle2Activity"
+                android:exported="false"
+                android:parentActivityName=".SurveyMiddle1Activity"/>
+        <activity
+                android:name=".SurveyMiddle1Activity"
+                android:exported="false"
+                android:parentActivityName=".SurveyStartActivity"/>
+        <activity
+                android:name=".SurveyEndActivity"
+                android:exported="false"
+                android:parentActivityName=".SurveyMiddle9Activity"/>
 
         <meta-data
                 android:name="preloaded_fonts"
                 android:resource="@array/preloaded_fonts"/>
     </application>
-
 </manifest>
