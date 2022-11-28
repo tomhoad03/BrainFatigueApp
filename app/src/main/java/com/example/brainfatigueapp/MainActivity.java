@@ -1,6 +1,7 @@
 package com.example.brainfatigueapp;
 
 import android.app.*;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Handler;
@@ -29,6 +30,11 @@ public class MainActivity extends AppCompatActivity {
 
         // Create the notification channel
         createNotificationChannel();
+
+        Intent notifyIntent = new Intent(this, NotificationReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+        AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,  System.currentTimeMillis(), 60000, pendingIntent);
     }
 
     private void createNotificationChannel() {

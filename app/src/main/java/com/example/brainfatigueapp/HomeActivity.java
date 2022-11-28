@@ -58,7 +58,7 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = new Intent(this, SurveyStartActivity.class);
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
         stackBuilder.addNextIntentWithParentStack(intent);
-        PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
 
         // Build the notification
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "")
@@ -66,7 +66,7 @@ public class HomeActivity extends AppCompatActivity {
                 .setContentTitle("Brain Fatigue App")
                 .setContentText("It's time to take the survey!")
                 .setDefaults(Notification.DEFAULT_ALL)
-                .setContentIntent(resultPendingIntent)
+                .setContentIntent(pendingIntent)
                 .setAutoCancel(true);
 
         // Display the notification

@@ -20,6 +20,15 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.BrainFatigueApp">
+        <receiver
+                android:name=".NotificationReceiver"
+                android:enabled="true"
+                android:exported="false" >
+        </receiver>
+        <service
+                android:name=".NotificationReceiverService"
+                android:exported="false" >
+        </service>
         <activity
                 android:name=".MainActivity"
                 android:exported="true"
