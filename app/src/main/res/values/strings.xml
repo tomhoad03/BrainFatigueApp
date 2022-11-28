@@ -19,6 +19,10 @@
     <string name="activity_dashboard_right_group3">Example data 3</string>
     <string name="activity_dashboard_right_group4">Example data 4</string>
 
+    <!-- login stuff I am in agony send help -->
+    <string name="facebook_app_id">1841804132826804</string>
+    <string name="fb_login_protocol_scheme">fb1841804132826804</string>
+
     <!-- survey start messages -->
     <string name="activity_survey_start">Start</string>
     <string name="activity_survey_start_mainMessage">Welcome to your fatigue survey</string>
