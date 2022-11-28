@@ -2,12 +2,12 @@
     xmlns:aapt="http://schemas.android.com/aapt"
     android:width="106dp"
     android:height="112dp"
-    android:viewportWidth="106"
-    android:viewportHeight="112">
+    android:viewportWidth="53"
+    android:viewportHeight="56">
 
   <group
-          android:pivotX="53.0"
-          android:pivotY="56.0"
+          android:pivotX="0.0"
+          android:pivotY="0.0"
           android:scaleX="0.5"
           android:scaleY="0.5">
     <path

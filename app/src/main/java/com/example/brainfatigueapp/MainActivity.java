@@ -1,9 +1,6 @@
 package com.example.brainfatigueapp;
 
-import android.app.AlertDialog;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
+import android.app.*;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Handler;
@@ -14,7 +11,7 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 public class MainActivity extends AppCompatActivity {
-    private final String CHANNEL_ID = "BrainFatigueApp";
+    private final String CHANNEL_ID = "BrainFatigueApp 1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }, 3000);
 
+        // Create the notification channel
         createNotificationChannel();
 
         // Create a notification intent
@@ -41,10 +39,10 @@ public class MainActivity extends AppCompatActivity {
 
         // Build the notification
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_launcher_background)
+                .setSmallIcon(R.drawable.ic_vector)
                 .setContentTitle("Brain Fatigue App")
                 .setContentText("It's time to take the survey!")
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setDefaults(Notification.DEFAULT_ALL)
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true);
 
@@ -54,12 +52,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void createNotificationChannel() {
-        // Create the NotificationChannel, but only on API 26+ because
-        // the NotificationChannel class is new and not in the support library
-        int importance = NotificationManager.IMPORTANCE_DEFAULT;
-        NotificationChannel channel = new NotificationChannel(CHANNEL_ID, "BrainFatigueApp", importance);
-        // Register the channel with the system; you can't change the importance
-        // or other notification behaviors after this
+        int importance = NotificationManager.IMPORTANCE_HIGH;
+        NotificationChannel channel = new NotificationChannel(CHANNEL_ID, "BrainFatigueApp 2", importance);
+
         NotificationManager notificationManager = getSystemService(NotificationManager.class);
         notificationManager.createNotificationChannel(channel);
     }
