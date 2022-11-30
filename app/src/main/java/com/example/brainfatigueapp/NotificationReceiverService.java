@@ -24,7 +24,7 @@ public class NotificationReceiverService extends IntentService {
 
         // Build the notification
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "")
-                .setSmallIcon(R.drawable.ic_vector)
+                .setSmallIcon(R.drawable.ic_notification_vector)
                 .setContentTitle("Brain Fatigue App")
                 .setContentText("It's time to take the survey!")
                 .setDefaults(Notification.DEFAULT_ALL)
