@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools">
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name = "android.permission.VIBRATE"/>
+    <uses-permission android:name = "android.permission.SET_ALARM"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission
             android:name="android.permission.WRITE_EXTERNAL_STORAGE"
@@ -20,15 +22,6 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.BrainFatigueApp">
-        <receiver
-                android:name=".NotificationReceiver"
-                android:enabled="true"
-                android:exported="false" >
-        </receiver>
-        <service
-                android:name=".NotificationReceiverService"
-                android:exported="false" >
-        </service>
         <activity
                 android:name=".MainActivity"
                 android:exported="true"
@@ -38,6 +31,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <receiver android:name=".NotificationReceiver"/>
         <activity
                 android:name=".LoginPageActivity"
                 android:exported="true"

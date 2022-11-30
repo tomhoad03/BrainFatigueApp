@@ -54,6 +54,7 @@ public class HomeActivity extends AppCompatActivity {
             welcomeMessage.setText("Hi " + firstName + ", What would you like to do today?");
         }
 
+        /*
         // Create a notification intent
         Intent intent = new Intent(this, SurveyStartActivity.class);
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
@@ -62,15 +63,15 @@ public class HomeActivity extends AppCompatActivity {
 
         // Build the notification
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "")
-                .setSmallIcon(R.drawable.ic_vector)
+                .setSmallIcon(R.drawable.ic_notification_vector)
                 .setContentTitle("Brain Fatigue App")
                 .setContentText("It's time to take the survey!")
-                .setDefaults(Notification.DEFAULT_ALL)
+                .setDefaults(Notification.DEFAULT_VIBRATE)
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true);
 
         // Display the notification
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-        notificationManager.notify(0, builder.build());
+        notificationManager.notify(0, builder.build());*/
     }
 }
