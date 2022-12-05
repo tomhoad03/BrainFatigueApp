@@ -53,25 +53,5 @@ public class HomeActivity extends AppCompatActivity {
             String firstName = googleAccount.getGivenName();
             welcomeMessage.setText("Hi " + firstName + ", What would you like to do today?");
         }
-
-        /*
-        // Create a notification intent
-        Intent intent = new Intent(this, SurveyStartActivity.class);
-        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
-        stackBuilder.addNextIntentWithParentStack(intent);
-        PendingIntent pendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
-
-        // Build the notification
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "")
-                .setSmallIcon(R.drawable.ic_notification_vector)
-                .setContentTitle("Brain Fatigue App")
-                .setContentText("It's time to take the survey!")
-                .setDefaults(Notification.DEFAULT_VIBRATE)
-                .setContentIntent(pendingIntent)
-                .setAutoCancel(true);
-
-        // Display the notification
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-        notificationManager.notify(0, builder.build());*/
     }
 }
