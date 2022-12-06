@@ -27,10 +27,11 @@ public class MainActivity extends AppCompatActivity {
         // Work manager notifications
         WorkManager workManager = WorkManager.getInstance(getApplicationContext());
         Constraints constraints = new Constraints.Builder()
-                .setRequiredNetworkType(NetworkType.CONNECTED)
+                .setRequiredNetworkType(NetworkType.NOT_REQUIRED)
                 .setRequiresBatteryNotLow(false)
                 .build();
-        WorkRequest uploadWorkRequest = new PeriodicWorkRequest.Builder(NotificationWorker.class, 180, TimeUnit.MINUTES, 30, TimeUnit.MINUTES) // Use OneTimeWorkRequest for loud noises and high spikes of activity
+        WorkRequest uploadWorkRequest = new OneTimeWorkRequest.Builder(NotificationWorker.class)
+                .setInitialDelay(15, TimeUnit.SECONDS)
                 .setConstraints(constraints)
                 .build();
         workManager.enqueue(uploadWorkRequest);

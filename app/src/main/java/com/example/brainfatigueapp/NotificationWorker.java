@@ -38,8 +38,8 @@ public class NotificationWorker extends Worker {
                 .setDefaults(Notification.DEFAULT_VIBRATE)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setCategory(NotificationCompat.CATEGORY_CALL)
-                //.setContentIntent(pendingIntent)
-                .setFullScreenIntent(pendingIntent, true)
+                .setContentIntent(pendingIntent)
+                //.setFullScreenIntent(pendingIntent, true)
                 .setAutoCancel(true);
 
         // Display the notification
