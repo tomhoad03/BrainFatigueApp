@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools">
+
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
-    <uses-permission android:name = "android.permission.VIBRATE"/>
-    <uses-permission android:name = "android.permission.SET_ALARM"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.SET_ALARM"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT"/>
     <uses-permission
@@ -11,10 +12,8 @@
             tools:ignore="ScopedStorage"/>
     <uses-permission
             android:name="android.permission.CAPTURE_AUDIO_OUTPUT"
-            tools:ignore="ProtectedPermissions"/>
-    <!--The above doesn't work unless this app is declared as a system app -->
-    <uses-permission android:name="android.permission.INTERNET" />
-
+            tools:ignore="ProtectedPermissions"/> <!-- The above doesn't work unless this app is declared as a system app -->
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
             android:allowBackup="true"
@@ -24,15 +23,24 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.BrainFatigueApp">
         <activity
+                android:name=".SettingsActivity"
+                android:exported="false"
+                android:label="@string/title_activity_settings"/>
+        <activity
                 android:name=".MainActivity"
                 android:exported="true"
                 android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
+
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <receiver android:name=".NotificationReceiver" android:exported="true"/>
+
+        <receiver
+                android:name=".NotificationReceiver"
+                android:exported="true"/>
+
         <activity
                 android:name=".LoginPageActivity"
                 android:exported="true"
@@ -48,11 +56,11 @@
         <activity
                 android:name=".SurveyStartActivity"
                 android:exported="false"
-                android:parentActivityName=".HomeActivity"
-                android:launchMode="singleTop"/>
+                android:launchMode="singleTop"
+                android:parentActivityName=".HomeActivity"/>
         <activity
                 android:name=".SurveyMiddle9Activity"
-                    android:exported="false"
+                android:exported="false"
                 android:parentActivityName=".SurveyMiddle8Activity"/>
         <activity
                 android:name=".SurveyMiddle8Activity"
@@ -122,16 +130,16 @@
         <meta-data
                 android:name="preloaded_fonts"
                 android:resource="@array/preloaded_fonts"/>
-
         <meta-data
-            android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id"/>
-        <activity
-            tools:replace="android:theme"
-            android:name="com.facebook.FacebookActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-            android:label="@string/app_name" />
+                android:name="com.facebook.sdk.ApplicationId"
+                android:value="@string/facebook_app_id"/>
 
+        <activity
+                android:name="com.facebook.FacebookActivity"
+                android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+                android:label="@string/app_name"
+                android:theme="@android:style/Theme.Translucent.NoTitleBar"
+                tools:replace="android:theme"/>
     </application>
+
 </manifest>

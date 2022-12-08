@@ -5,6 +5,10 @@
     <string name="activity_home_view_my_dashboard">View My Dashboard</string>
     <string name="activity_home_welcome">Hello, what would you like to do today?</string>
 
+    <!-- settings and user customisation -->
+    <string name="activity_settings_title">Settings</string>
+    <string name="activity_settings_dark_mode_switch">Dark Mode</string>
+
     <string name="activity_dashboard_title">My dashboard</string>
     <string name="activity_dashboard_left_group1_top">Mood</string>
     <string name="activity_dashboard_left_group1_bottom">You reported a low mood today.</string>
@@ -88,7 +92,9 @@
     <string name="activity_survey_middle4e_button6">Listening to music/radio</string>
 
     <!-- question 4f (after selecting "Exercising") -->
-    <string name="activity_survey_middle4f_button1">Exercises (for example physiotherapy exercises, light weights, aerobics)</string>
+    <string name="activity_survey_middle4f_button1">Exercises (for example physiotherapy exercises, light weights,
+        aerobics)
+    </string>
     <string name="activity_survey_middle4f_button2">Yoga, pilates or stretching</string>
     <string name="activity_survey_middle4f_button3">Using an exercise machine</string>
 
@@ -114,4 +120,19 @@
     <!-- survey end messages -->
     <string name="activity_survey_end_mainMessage">Thank you!</string>
     <string name="activity_survey_end_subMessage">To finish, press Submit</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails</string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
 </resources>

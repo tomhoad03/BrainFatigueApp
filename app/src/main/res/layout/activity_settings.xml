@@ -1,0 +1,33 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" app:srcCompat="@drawable/ic_back_arrow"
+            android:id="@+id/activity_settings_back_button"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="14dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="12dp" android:minHeight="48dp" tools:ignore="SpeakableTextPresentCheck"
+            tools:srcCompat="@drawable/ic_back_arrow"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/activity_settings_title"
+            android:textColor="@color/custom_navy_A"
+            android:textStyle="bold"
+            android:textSize="26sp"
+            android:id="@+id/activity_settings_title"
+            app:fontFamily="@font/spartan"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/activity_settings_back_button"
+            app:layout_constraintBottom_toBottomOf="@+id/activity_settings_back_button"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout
+>
