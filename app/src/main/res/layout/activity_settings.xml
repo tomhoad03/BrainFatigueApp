@@ -55,6 +55,61 @@
             app:layout_constraintEnd_toEndOf="@+id/activity_settings_button_faq" android:layout_marginEnd="16dp"
             app:layout_constraintVertical_bias="0.523"/>
 
+    <Button
+            android:id="@+id/activity_settings_button_about"
+            android:text="@+string/activity_settings_button_about"
+            android:layout_width="409dp"
+            android:layout_height="64dp"
+            android:gravity="start|center_vertical"
+            app:cornerRadius="0dp"
+            android:backgroundTint="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_settings_button_faq" android:layout_marginTop="2dp"
+            app:layout_constraintHorizontal_bias="0.0"/>
+    <TextView
+            android:id="@+id/activity_settings_button_about_arrow"
+            android:text="@+string/activity_settings_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fontFamily="@font/spartan"
+            android:textColor="@color/white"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:translationZ="90dp"
+            app:layout_constraintTop_toTopOf="@+id/activity_settings_button_about"
+            app:layout_constraintBottom_toBottomOf="@+id/activity_settings_button_about"
+            app:layout_constraintEnd_toEndOf="@+id/activity_settings_button_about" android:layout_marginEnd="16dp"
+            app:layout_constraintVertical_bias="0.523"/>
+
+    <Button
+            android:id="@+id/activity_settings_button_logout"
+            android:text="@+string/activity_settings_button_logout"
+            android:layout_width="409dp"
+            android:layout_height="64dp"
+            android:gravity="start|center_vertical"
+            app:cornerRadius="0dp"
+            android:backgroundTint="@color/custom_red"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_settings_button_about" android:layout_marginTop="2dp"
+            app:layout_constraintHorizontal_bias="0.0"/>
+    <TextView
+            android:id="@+id/activity_settings_button_logout_arrow"
+            android:text="@+string/activity_settings_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fontFamily="@font/spartan"
+            android:textColor="@color/white"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:translationZ="90dp"
+            app:layout_constraintTop_toTopOf="@+id/activity_settings_button_logout"
+            app:layout_constraintBottom_toBottomOf="@+id/activity_settings_button_logout"
+            app:layout_constraintEnd_toEndOf="@+id/activity_settings_button_logout" android:layout_marginEnd="16dp"
+            app:layout_constraintVertical_bias="0.523"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout
 >

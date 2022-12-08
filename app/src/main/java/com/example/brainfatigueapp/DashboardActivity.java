@@ -31,6 +31,14 @@ public class DashboardActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        // Back button
+        final ImageButton settingsBtn = findViewById(R.id.activity_dashboard_settings_button);
+        settingsBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(DashboardActivity.this, SettingsActivity.class);
+            startActivity(intent);
+        });
+
+        // Fragments
         FragmentManager fm = getSupportFragmentManager();
         ViewStateAdapter sa = new ViewStateAdapter(fm, getLifecycle());
         final ViewPager2 pa = findViewById(R.id.activity_dashboard_view_pager_1);

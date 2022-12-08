@@ -17,5 +17,6 @@
     <color name="custom_purple_A">#4C34AC</color>
     <color name="custom_purple_B">#6750A4</color>
     <color name="custom_navy_A">#244E6C</color>
+    <color name="custom_red">#FF4444</color>
     <color name="blank">#00FFFFFF</color>
 </resources>
