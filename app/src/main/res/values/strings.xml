@@ -8,7 +8,7 @@
     <!-- settings and user customisation -->
     <string name="activity_settings_title">Settings</string>
     <string name="activity_settings_arrow">&#43;</string>
-    <string name="activity_settings_dark_mode_switch">Dark Mode</string>
+    <string name="activity_settings_button_dark_mode">Dark Mode</string>
     <string name="activity_settings_button_faq">FAQs</string>
     <string name="activity_settings_button_about">About info</string>
     <string name="activity_settings_button_logout">LOG OUT</string>
