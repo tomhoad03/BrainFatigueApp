@@ -12,10 +12,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
+import androidx.work.*;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+
+import java.util.concurrent.TimeUnit;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -53,5 +56,17 @@ public class HomeActivity extends AppCompatActivity {
             String firstName = googleAccount.getGivenName();
             welcomeMessage.setText("Hi " + firstName + ", What would you like to do today?");
         }
+
+        // Work manager notifications
+        WorkManager workManager = WorkManager.getInstance(getApplicationContext());
+        Constraints constraints = new Constraints.Builder()
+                .setRequiredNetworkType(NetworkType.NOT_REQUIRED)
+                .setRequiresBatteryNotLow(false)
+                .build();
+        WorkRequest uploadWorkRequest = new OneTimeWorkRequest.Builder(NotificationWorker.class)
+                .setInitialDelay(30, TimeUnit.MINUTES)
+                .setConstraints(constraints)
+                .build();
+        workManager.enqueue(uploadWorkRequest);
     }
 }

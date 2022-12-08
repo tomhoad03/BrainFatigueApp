@@ -24,18 +24,6 @@ public class MainActivity extends AppCompatActivity {
         // Create the notification channel
         createNotificationChannel();
 
-        // Work manager notifications
-        WorkManager workManager = WorkManager.getInstance(getApplicationContext());
-        Constraints constraints = new Constraints.Builder()
-                .setRequiredNetworkType(NetworkType.NOT_REQUIRED)
-                .setRequiresBatteryNotLow(false)
-                .build();
-        WorkRequest uploadWorkRequest = new OneTimeWorkRequest.Builder(NotificationWorker.class)
-                .setInitialDelay(15, TimeUnit.SECONDS)
-                .setConstraints(constraints)
-                .build();
-        workManager.enqueue(uploadWorkRequest);
-
         // Display homepage after delay
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
             Intent intent = new Intent(MainActivity.this, LoginPageActivity.class);
