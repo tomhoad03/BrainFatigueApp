@@ -31,19 +31,6 @@ public class DashboardActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        // Fragments
-        /*
-        tabLayout = findViewById(R.id.activity_dashboard_tab_bar);
-        viewPager = findViewById(R.id.activity_dashboard_view_pager_1);
-
-        tabLayout.setupWithViewPager(viewPager);
-
-        ViewStateAdapter adapter = new ViewStateAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
-        adapter.addFragment(new DashboardLeftFrag(), "Activity Tab");
-        adapter.addFragment(new DashboardRightFrag(), "Trends Tab");
-
-         */
-
         FragmentManager fm = getSupportFragmentManager();
         ViewStateAdapter sa = new ViewStateAdapter(fm, getLifecycle());
         final ViewPager2 pa = findViewById(R.id.activity_dashboard_view_pager_1);
