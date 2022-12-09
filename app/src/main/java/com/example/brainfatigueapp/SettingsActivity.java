@@ -3,10 +3,13 @@ package com.example.brainfatigueapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.*;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceFragmentCompat;
+import com.google.android.material.slider.LabelFormatter;
 import com.google.android.material.slider.RangeSlider;
+import org.jetbrains.annotations.NotNull;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -22,13 +25,34 @@ public class SettingsActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // default layouts
         frequencySpinner.setAdapter(adapter);
 
-        // Multiple thumbs on the 'available' range slider
+        // Get the slider objects
         RangeSlider availableSlider = findViewById(R.id.activity_settings_available_slider);
-        availableSlider.setValues(9f, 21f);
-
-        // Multiple thumbs on the 'unavailable' range slider
         RangeSlider unavailableSlider = findViewById(R.id.activity_settings_unavailable_slider);
+        RangeSlider summarySlider = findViewById(R.id.activity_settings_summary_slider);
+
+        // Multiple thumbs on the 'available' and 'unavailable' sliders
+        availableSlider.setValues(9f, 21f);
         unavailableSlider.setValues(9f, 21f);
+
+        // Format the labels that appear on the slider thumbs to display times and not just numbers
+        LabelFormatter timeFormatter = new LabelFormatter() {
+            @NonNull
+            @NotNull
+            @Override
+            public String getFormattedValue(float value) {
+                int hour = (int) value;
+                if (hour == 24) {
+                    return "00:00am";
+                } else if (hour >= 12) {
+                    return String.valueOf(hour) + ":00pm";
+                } else {
+                    return String.valueOf(hour) + ":00am";
+                }
+            }
+        };
+        availableSlider.setLabelFormatter(timeFormatter);
+        unavailableSlider.setLabelFormatter(timeFormatter);
+        summarySlider.setLabelFormatter(timeFormatter);
 
         // Hide action bar
         if (getSupportActionBar() != null)
