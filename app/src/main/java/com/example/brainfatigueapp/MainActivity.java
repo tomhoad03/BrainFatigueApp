@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, LoginPageActivity.class);
             startActivity(intent);
             finish();
-        }, 3000);
+        }, 2500);
     }
 
     private void createNotificationChannel() {

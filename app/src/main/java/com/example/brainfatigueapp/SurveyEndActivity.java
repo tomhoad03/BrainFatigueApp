@@ -1,5 +1,8 @@
 package com.example.brainfatigueapp;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -30,17 +33,10 @@ public class SurveyEndActivity extends AppCompatActivity {
         // Next button
         final Button surveySubmitBtn = findViewById(R.id.activity_survey_end_submit_button);
         surveySubmitBtn.setOnClickListener(v -> {
-            // Work manager notifications
-            WorkManager workManager = WorkManager.getInstance(getApplicationContext());
-            Constraints constraints = new Constraints.Builder()
-                    .setRequiredNetworkType(NetworkType.NOT_REQUIRED)
-                    .setRequiresBatteryNotLow(false)
-                    .build();
-            WorkRequest uploadWorkRequest = new OneTimeWorkRequest.Builder(NotificationWorker.class)
-                    .setInitialDelay(30, TimeUnit.MINUTES)
-                    .setConstraints(constraints)
-                    .build();
-            workManager.enqueue(uploadWorkRequest);
+            Intent notifyIntent = new Intent(getApplicationContext(), NotificationReceiver.class);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+            AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+            alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (60000 * 30), pendingIntent);
 
             Intent intent = new Intent(SurveyEndActivity.this, HomeActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
