@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM"/>
     <uses-permission android:name = "android.permission.VIBRATE"/>
     <uses-permission android:name = "android.permission.SET_ALARM"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT"/>
-    <uses-permission
-            android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-            tools:ignore="ScopedStorage"/>
-    <uses-permission
-            android:name="android.permission.CAPTURE_AUDIO_OUTPUT"
-            tools:ignore="ProtectedPermissions"/>
-    <!--The above doesn't work unless this app is declared as a system app -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" tools:ignore="ScopedStorage"/>
+    <uses-permission android:name="android.permission.CAPTURE_AUDIO_OUTPUT" tools:ignore="ProtectedPermissions"/>
     <uses-permission android:name="android.permission.INTERNET" />
-
 
     <application
             android:allowBackup="true"
