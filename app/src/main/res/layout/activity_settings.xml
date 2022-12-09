@@ -206,7 +206,7 @@
             app:layout_constraintEnd_toEndOf="@id/activity_settings_button_faq" android:layout_marginEnd="28dp"
             app:layout_constraintVertical_bias="0.523"/>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
             android:id="@+id/activity_settings_button_about"
             android:text="@string/activity_settings_button_about"
             android:layout_width="match_parent"
@@ -216,6 +216,8 @@
             android:backgroundTint="@color/off_white"
             android:textColor="@color/custom_navy_A"
             android:textStyle="bold"
+            app:icon="@drawable/ic_android_black_24dp"
+            app:iconTint="@color/custom_navy_A"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/activity_settings_button_faq" android:layout_marginTop="2dp"
