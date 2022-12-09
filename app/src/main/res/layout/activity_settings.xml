@@ -156,7 +156,7 @@
     <Button
             android:id="@+id/activity_settings_button_about"
             android:text="@string/activity_settings_button_about"
-            android:layout_width="409dp"
+            android:layout_width="match_parent"
             android:layout_height="64dp"
             android:gravity="start|center_vertical"
             app:cornerRadius="0dp"
@@ -184,7 +184,7 @@
     <Button
             android:id="@+id/activity_settings_button_logout"
             android:text="@string/activity_settings_button_logout"
-            android:layout_width="409dp"
+            android:layout_width="match_parent"
             android:layout_height="64dp"
             android:gravity="start|center_vertical"
             app:cornerRadius="0dp"
