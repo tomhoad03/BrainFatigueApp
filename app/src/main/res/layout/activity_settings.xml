@@ -161,6 +161,8 @@
             android:backgroundTint="@color/off_white"
             android:textColor="@color/custom_navy_A"
             android:textStyle="bold"
+            app:icon="@drawable/ic_baseline_dark_mode_24"
+            app:iconTint="@color/custom_navy_A"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/activity_settings_button_divider"
@@ -187,6 +189,8 @@
             android:backgroundTint="@color/off_white"
             android:textColor="@color/custom_navy_A"
             android:textStyle="bold"
+            app:icon="@drawable/ic_baseline_question_answer_24"
+            app:iconTint="@color/custom_navy_A"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/activity_settings_button_dark_mode"
@@ -246,10 +250,13 @@
             app:cornerRadius="0dp"
             android:backgroundTint="@color/custom_red"
             android:textStyle="bold"
+            app:icon="@drawable/ic_baseline_login_24"
+            app:iconTint="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/activity_settings_button_about" android:layout_marginTop="2dp"
             app:layout_constraintHorizontal_bias="0.0"/>
+    <!-- Commented out the + on the 'log out' button, looks better without?
     <TextView
             android:id="@+id/activity_settings_button_logout_arrow"
             android:text="@string/activity_settings_arrow"
@@ -264,6 +271,6 @@
             app:layout_constraintBottom_toBottomOf="@id/activity_settings_button_logout"
             app:layout_constraintEnd_toEndOf="@id/activity_settings_button_logout" android:layout_marginEnd="28dp"
             app:layout_constraintVertical_bias="0.523"/>
-
+    -->
 </androidx.constraintlayout.widget.ConstraintLayout
 >
