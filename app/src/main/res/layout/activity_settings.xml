@@ -53,6 +53,17 @@
             android:layout_marginStart="12dp"
             android:layout_marginTop="24dp"/>
 
+    <com.google.android.material.slider.RangeSlider
+            android:id="@+id/activity_settings_available_slider"
+            android:valueFrom="6.0"
+            android:valueTo="24.0"
+            android:layout_width="240dp"
+            android:layout_height="49dp"
+            app:layout_constraintStart_toStartOf="@id/activity_settings_slider_barrier"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintTop_toBottomOf="@id/activity_settings_title"
+            android:layout_marginTop="100dp"/>
     <TextView
             android:id="@+id/activity_settings_unavailable_slider_label"
             android:text="@string/activity_settings_unavailable_slider_label"

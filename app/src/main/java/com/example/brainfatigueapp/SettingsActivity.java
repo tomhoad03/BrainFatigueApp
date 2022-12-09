@@ -8,6 +8,7 @@ import android.widget.Switch;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceFragmentCompat;
+import com.google.android.material.slider.RangeSlider;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -15,6 +16,10 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
+        // Multiple thumbs on the range slider
+        RangeSlider slider = findViewById(R.id.activity_settings_available_slider);
+        slider.setValues(9f, 21f);
 
         // Hide action bar
         if (getSupportActionBar() != null)
@@ -27,13 +32,16 @@ public class SettingsActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        // The dark mode toggles the switch, as well as the switch itself
+        // The dark mode button toggles the switch
         final Button darkModeBtn = findViewById(R.id.activity_settings_button_dark_mode);
         darkModeBtn.setOnClickListener(v -> {
             // Toggle the switch to the opposite state
             final Switch darkModeSwitch = findViewById(R.id.activity_settings_switch_dark_mode);
             Boolean currentState = darkModeSwitch.isChecked();
             darkModeSwitch.setChecked(!currentState);
+
+            // Call the function to do the dark mode things
+            
         });
     }
 }
