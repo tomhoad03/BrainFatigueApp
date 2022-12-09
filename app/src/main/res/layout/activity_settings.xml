@@ -27,6 +27,18 @@
             app:layout_constraintTop_toTopOf="@+id/activity_settings_back_button"
             app:layout_constraintBottom_toBottomOf="@+id/activity_settings_back_button"/>
 
+    <TextView
+            android:id="@+id/activity_settings_button_divider"
+            android:text="@+string/activity_settings_button_divider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/grey"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/activity_settings_button_dark_mode"
+            android:layout_marginBottom="12dp"/>
     <Button
             android:id="@+id/activity_settings_button_dark_mode"
             android:text="@+string/activity_settings_button_dark_mode"
