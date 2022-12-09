@@ -7,13 +7,6 @@
         android:layout_height="match_parent"
         tools:context=".SurveyMiddle2Activity">
 
-    <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" app:srcCompat="@drawable/ic_back_arrow"
-            android:id="@+id/activity_survey_middle2_back_button" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="14dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="12dp" android:minHeight="48dp" tools:ignore="SpeakableTextPresentCheck"
-            tools:srcCompat="@drawable/ic_back_arrow"/>
     <TextView
             android:layout_width="351dp"
             android:layout_height="76dp"

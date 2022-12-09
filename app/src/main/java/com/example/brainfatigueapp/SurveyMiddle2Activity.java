@@ -5,6 +5,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import com.google.android.material.slider.Slider;
 
 public class SurveyMiddle2Activity extends AppCompatActivity {
 
@@ -17,24 +18,25 @@ public class SurveyMiddle2Activity extends AppCompatActivity {
         if (getSupportActionBar() != null)
             getSupportActionBar().hide();
 
-        // Back button
-        final ImageButton surveyBackBtn = findViewById(R.id.activity_survey_middle2_back_button);
-        surveyBackBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(SurveyMiddle2Activity.this, SurveyMiddle1Activity.class);
-            startActivity(intent);
-        });
-
         // Option 1 - At home
         final Button atHomeBtn = findViewById(R.id.activity_survey_middle2_button1);
         atHomeBtn.setOnClickListener(v -> {
+            SurveyResult surveyResult = (SurveyResult) getIntent().getSerializableExtra("survey_result");
+            surveyResult.setQuestion2(1);
+
             Intent intent = new Intent(SurveyMiddle2Activity.this, SurveyMiddle3Activity.class);
+            intent.putExtra("survey_result", surveyResult);
             startActivity(intent);
         });
 
         // Option 2 - Somewhere else
         final Button somewhereElseBtn = findViewById(R.id.activity_survey_middle2_button2);
         somewhereElseBtn.setOnClickListener(v -> {
+            SurveyResult surveyResult = (SurveyResult) getIntent().getSerializableExtra("survey_result");
+            surveyResult.setQuestion2(2);
+
             Intent intent = new Intent(SurveyMiddle2Activity.this, SurveyMiddle4Activity.class);
+            intent.putExtra("survey_result", surveyResult);
             startActivity(intent);
         });
     }
