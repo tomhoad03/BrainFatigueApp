@@ -29,7 +29,7 @@
 
     <TextView
             android:id="@+id/activity_settings_frequency_slider_label"
-            android:text="@+string/activity_settings_frequency_slider_label"
+            android:text="@string/activity_settings_frequency_slider_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/custom_navy_A"
@@ -42,7 +42,7 @@
 
     <TextView
             android:id="@+id/activity_settings_available_slider_label"
-            android:text="@+string/activity_settings_available_slider_label"
+            android:text="@string/activity_settings_available_slider_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/custom_navy_A"
@@ -55,7 +55,7 @@
 
     <TextView
             android:id="@+id/activity_settings_unavailable_slider_label"
-            android:text="@+string/activity_settings_unavailable_slider_label"
+            android:text="@string/activity_settings_unavailable_slider_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/custom_navy_A"
@@ -68,7 +68,7 @@
 
     <TextView
             android:id="@+id/activity_settings_summary_slider_label"
-            android:text="@+string/activity_settings_summary_slider_label"
+            android:text="@string/activity_settings_summary_slider_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/custom_navy_A"
@@ -79,9 +79,20 @@
             android:layout_marginStart="12dp"
             android:layout_marginTop="24dp"/>
 
+    <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/activity_settings_slider_barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="end"
+            app:constraint_referenced_ids="activity_settings_frequency_slider_label,
+                                           activity_settings_summary_slider_label,
+                                           activity_settings_unavailable_slider_label,
+                                           activity_settings_available_slider_label"
+            tools:layout_editor_absoluteX="411dp"/>
+
     <TextView
             android:id="@+id/activity_settings_button_divider"
-            android:text="@+string/activity_settings_button_divider"
+            android:text="@string/activity_settings_button_divider"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -93,7 +104,7 @@
             android:layout_marginBottom="12dp"/>
     <Button
             android:id="@+id/activity_settings_button_dark_mode"
-            android:text="@+string/activity_settings_button_dark_mode"
+            android:text="@string/activity_settings_button_dark_mode"
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:gravity="start|center_vertical"
@@ -110,13 +121,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:translationZ="90dp"
-            app:layout_constraintTop_toTopOf="@+id/activity_settings_button_dark_mode"
-            app:layout_constraintBottom_toBottomOf="@+id/activity_settings_button_dark_mode"
-            app:layout_constraintEnd_toEndOf="@+id/activity_settings_button_dark_mode" android:layout_marginEnd="16dp"/>
+            app:layout_constraintTop_toTopOf="@id/activity_settings_button_dark_mode"
+            app:layout_constraintBottom_toBottomOf="@id/activity_settings_button_dark_mode"
+            app:layout_constraintEnd_toEndOf="@id/activity_settings_button_dark_mode" android:layout_marginEnd="16dp"/>
 
     <Button
             android:id="@+id/activity_settings_button_faq"
-            android:text="@+string/activity_settings_button_faq"
+            android:text="@string/activity_settings_button_faq"
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:gravity="start|center_vertical"
@@ -125,11 +136,11 @@
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/activity_settings_button_dark_mode"
+            app:layout_constraintTop_toBottomOf="@id/activity_settings_button_dark_mode"
             app:layout_constraintHorizontal_bias="0.0"/>
     <TextView
             android:id="@+id/activity_settings_button_faq_arrow"
-            android:text="@+string/activity_settings_arrow"
+            android:text="@string/activity_settings_arrow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:fontFamily="@font/spartan"
@@ -137,14 +148,14 @@
             android:textSize="32sp"
             android:textStyle="bold"
             android:translationZ="90dp"
-            app:layout_constraintTop_toTopOf="@+id/activity_settings_button_faq"
-            app:layout_constraintBottom_toBottomOf="@+id/activity_settings_button_faq"
-            app:layout_constraintEnd_toEndOf="@+id/activity_settings_button_faq" android:layout_marginEnd="28dp"
+            app:layout_constraintTop_toTopOf="@id/activity_settings_button_faq"
+            app:layout_constraintBottom_toBottomOf="@id/activity_settings_button_faq"
+            app:layout_constraintEnd_toEndOf="@id/activity_settings_button_faq" android:layout_marginEnd="28dp"
             app:layout_constraintVertical_bias="0.523"/>
 
     <Button
             android:id="@+id/activity_settings_button_about"
-            android:text="@+string/activity_settings_button_about"
+            android:text="@string/activity_settings_button_about"
             android:layout_width="409dp"
             android:layout_height="64dp"
             android:gravity="start|center_vertical"
@@ -153,11 +164,11 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/activity_settings_button_faq" android:layout_marginTop="2dp"
+            app:layout_constraintTop_toBottomOf="@id/activity_settings_button_faq" android:layout_marginTop="2dp"
             app:layout_constraintHorizontal_bias="0.0"/>
     <TextView
             android:id="@+id/activity_settings_button_about_arrow"
-            android:text="@+string/activity_settings_arrow"
+            android:text="@string/activity_settings_arrow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:fontFamily="@font/spartan"
@@ -165,14 +176,14 @@
             android:textSize="32sp"
             android:textStyle="bold"
             android:translationZ="90dp"
-            app:layout_constraintTop_toTopOf="@+id/activity_settings_button_about"
-            app:layout_constraintBottom_toBottomOf="@+id/activity_settings_button_about"
-            app:layout_constraintEnd_toEndOf="@+id/activity_settings_button_about" android:layout_marginEnd="28dp"
+            app:layout_constraintTop_toTopOf="@id/activity_settings_button_about"
+            app:layout_constraintBottom_toBottomOf="@id/activity_settings_button_about"
+            app:layout_constraintEnd_toEndOf="@id/activity_settings_button_about" android:layout_marginEnd="28dp"
             app:layout_constraintVertical_bias="0.523"/>
 
     <Button
             android:id="@+id/activity_settings_button_logout"
-            android:text="@+string/activity_settings_button_logout"
+            android:text="@string/activity_settings_button_logout"
             android:layout_width="409dp"
             android:layout_height="64dp"
             android:gravity="start|center_vertical"
@@ -181,11 +192,11 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/activity_settings_button_about" android:layout_marginTop="2dp"
+            app:layout_constraintTop_toBottomOf="@id/activity_settings_button_about" android:layout_marginTop="2dp"
             app:layout_constraintHorizontal_bias="0.0"/>
     <TextView
             android:id="@+id/activity_settings_button_logout_arrow"
-            android:text="@+string/activity_settings_arrow"
+            android:text="@string/activity_settings_arrow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:fontFamily="@font/spartan"
@@ -193,14 +204,10 @@
             android:textSize="32sp"
             android:textStyle="bold"
             android:translationZ="90dp"
-            app:layout_constraintTop_toTopOf="@+id/activity_settings_button_logout"
-            app:layout_constraintBottom_toBottomOf="@+id/activity_settings_button_logout"
-            app:layout_constraintEnd_toEndOf="@+id/activity_settings_button_logout" android:layout_marginEnd="28dp"
+            app:layout_constraintTop_toTopOf="@id/activity_settings_button_logout"
+            app:layout_constraintBottom_toBottomOf="@id/activity_settings_button_logout"
+            app:layout_constraintEnd_toEndOf="@id/activity_settings_button_logout" android:layout_marginEnd="28dp"
             app:layout_constraintVertical_bias="0.523"/>
-    <androidx.constraintlayout.widget.Barrier android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                              android:id="@+id/barrier2" app:barrierDirection="right"
-                                              app:constraint_referenced_ids="activity_settings_frequency_slider_label,activity_settings_summary_slider_label,activity_settings_unavailable_slider_label,activity_settings_available_slider_label"
-                                              tools:layout_editor_absoluteX="411dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout
 >
