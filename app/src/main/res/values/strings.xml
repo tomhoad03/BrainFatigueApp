@@ -8,11 +8,16 @@
     <!-- settings and user customisation -->
     <string name="activity_settings_title">Settings</string>
     <string name="activity_settings_arrow">&#43;</string>
+    <string name="activity_settings_button_heading">----- Notifications -----</string>
     <string name="activity_settings_frequency_slider_label">Frequency</string>
-    <string name="activity_settings_available_slider_label">Available</string>
-    <string name="activity_settings_unavailable_slider_label">Unavailable</string>
+    <string name="activity_settings_frequency_slider_text">How often we\'ll remind you to take your fatigue survey</string>
+    <string name="activity_settings_available_slider_label">Awake Time</string>
+    <string name="activity_settings_available_slider_text">We\'ll only send you reminders between these times in the day</string>
+    <string name="activity_settings_unavailable_slider_label">Do Not Disturb</string>
+    <string name="activity_settings_unavailable_slider_text">We won\'t notify you between these times</string>
     <string name="activity_settings_summary_slider_label">Summary</string>
-    <string name="activity_settings_button_divider">____________________</string>
+    <string name="activity_settings_summary_slider_text">This is when we\'ll let you know that your daily summary is ready</string>
+    <string name="activity_settings_button_divider">--------- Other ---------</string>
     <string name="activity_settings_button_dark_mode">Dark Mode</string>
     <string name="activity_settings_button_faq">FAQs</string>
     <string name="activity_settings_button_about">About info</string>
