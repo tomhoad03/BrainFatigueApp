@@ -8,6 +8,7 @@ import androidx.constraintlayout.motion.utils.ViewState;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager2.widget.ViewPager2;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.tabs.TabLayout;
 
 public class DashboardActivity extends AppCompatActivity {
@@ -32,7 +33,7 @@ public class DashboardActivity extends AppCompatActivity {
         });
 
         // Back button
-        final ImageButton settingsBtn = findViewById(R.id.activity_dashboard_settings_button);
+        final MaterialButton settingsBtn = findViewById(R.id.activity_dashboard_settings_button);
         settingsBtn.setOnClickListener(v -> {
             Intent intent = new Intent(DashboardActivity.this, SettingsActivity.class);
             startActivity(intent);
