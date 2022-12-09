@@ -95,23 +95,5 @@ public class SurveyMiddle3Activity extends AppCompatActivity {
             intent.putExtra("survey_result", surveyResult);
             startActivity(intent);
         });
-
-        // Select activity buttons
-//        ArrayList<Button> activityButtons = new ArrayList<>();
-//        activityButtons.add(findViewById(R.id.activity_survey_middle3_button1));
-//        activityButtons.add(findViewById(R.id.activity_survey_middle3_button2));
-//        activityButtons.add(findViewById(R.id.activity_survey_middle3_button3));
-//        activityButtons.add(findViewById(R.id.activity_survey_middle3_button4));
-//        activityButtons.add(findViewById(R.id.activity_survey_middle3_button5));
-//        activityButtons.add(findViewById(R.id.activity_survey_middle3_button6));
-//        activityButtons.add(findViewById(R.id.activity_survey_middle3_button7));
-
-//        for (Button activityButton : activityButtons) {
-//            activityButton.setOnClickListener(v -> {
-//                Intent intent = new Intent(SurveyMiddle3Activity.this, SurveyMiddle4aActivity.class);
-//                startActivity(intent);
-//            });
-//        }
-
     }
 }

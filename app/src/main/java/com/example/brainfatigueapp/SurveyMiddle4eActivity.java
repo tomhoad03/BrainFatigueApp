@@ -20,14 +20,6 @@ public class SurveyMiddle4eActivity extends AppCompatActivity {
         if (getSupportActionBar() != null)
             getSupportActionBar().hide();
 
-        // Back button
-        // points back to middle3 "What have you been doing the last 10 minutes?" page
-        final ImageButton surveyBackBtn = findViewById(R.id.activity_survey_middle4e_back_button);
-        surveyBackBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(SurveyMiddle4eActivity.this, SurveyMiddle3Activity.class);
-            startActivity(intent);
-        });
-
         // Select activity buttons
         ArrayList<Button> activityButtons = new ArrayList<>();
         activityButtons.add(findViewById(R.id.activity_survey_middle4e_button1));
@@ -36,11 +28,16 @@ public class SurveyMiddle4eActivity extends AppCompatActivity {
         activityButtons.add(findViewById(R.id.activity_survey_middle4e_button4));
         activityButtons.add(findViewById(R.id.activity_survey_middle4e_button5));
         activityButtons.add(findViewById(R.id.activity_survey_middle4e_button6));
+        int count = 1;
 
-        // each button points forward to middle5
         for (Button activityButton : activityButtons) {
+            SurveyResult surveyResult = (SurveyResult) getIntent().getSerializableExtra("survey_result");
+            surveyResult.setQuestion4(count);
+            count++;
+
             activityButton.setOnClickListener(v -> {
                 Intent intent = new Intent(SurveyMiddle4eActivity.this, SurveyMiddle5Activity.class);
+                intent.putExtra("survey_result", surveyResult);
                 startActivity(intent);
             });
         }

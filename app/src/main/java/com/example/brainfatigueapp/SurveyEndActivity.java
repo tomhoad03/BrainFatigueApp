@@ -17,13 +17,6 @@ public class SurveyEndActivity extends AppCompatActivity {
         if (getSupportActionBar() != null)
             getSupportActionBar().hide();
 
-        // Back button
-        final ImageButton surveyBackBtn = findViewById(R.id.activity_survey_end_back_button);
-        surveyBackBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(SurveyEndActivity.this, SurveyMiddle9Activity.class);
-            startActivity(intent);
-        });
-
         // Next button
         final Button surveySubmitBtn = findViewById(R.id.activity_survey_end_submit_button);
         surveySubmitBtn.setOnClickListener(v -> {

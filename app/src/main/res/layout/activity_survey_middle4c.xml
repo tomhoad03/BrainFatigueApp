@@ -52,11 +52,4 @@
             app:layout_constraintVertical_chainStyle="packed"
             app:layout_constraintTop_toBottomOf="@+id/activity_survey_middle4c_button1"
             android:layout_marginTop="8dp"/>
-    <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" app:srcCompat="@drawable/ic_back_arrow"
-            android:id="@+id/activity_survey_middle4c_back_button" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="14dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="12dp" android:minHeight="48dp" tools:ignore="SpeakableTextPresentCheck"
-            tools:srcCompat="@drawable/ic_back_arrow"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

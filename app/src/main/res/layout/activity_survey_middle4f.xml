@@ -64,11 +64,4 @@
             app:fontFamily="@font/spartan" app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.484"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="84dp"/>
-    <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" app:srcCompat="@drawable/ic_back_arrow"
-            android:id="@+id/activity_survey_middle4f_back_button" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="14dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="12dp" android:minHeight="48dp" tools:ignore="SpeakableTextPresentCheck"
-            tools:srcCompat="@drawable/ic_back_arrow"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
