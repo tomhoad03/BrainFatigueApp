@@ -32,7 +32,9 @@ public class SettingsActivity extends AppCompatActivity {
 
         // Multiple thumbs on the 'available' and 'unavailable' sliders
         availableSlider.setValues(9f, 21f);
+        availableSlider.setMinSeparationValue(5.0f);
         unavailableSlider.setValues(9f, 21f);
+        unavailableSlider.setMinSeparationValue(1f);
 
         // Format the labels that appear on the slider thumbs to display times and not just numbers
         LabelFormatter timeFormatter = new LabelFormatter() {
@@ -63,6 +65,13 @@ public class SettingsActivity extends AppCompatActivity {
         settingsBackBtn.setOnClickListener(v -> {
             Intent intent = new Intent(SettingsActivity.this, DashboardActivity.class);
             startActivity(intent);
+
+            // Seem unable to set an artificial limit on the sliders (perhaps use onSomethingListener,
+            // and check if the value its jumping to is less/more than what's on the other slider?), a
+            // possible alternative is to simply check if the sliders are in valid positions when the
+            // user tries to leave the settings page... Need to check:
+            //     - Either thumb of the 'unavailable' slider is outside the thumbs of the 'available' slider
+            //     - The thumb on the 'summary' slider can't be lower than the greater thumb on the 'available' slider
         });
 
         // The dark mode button toggles the switch

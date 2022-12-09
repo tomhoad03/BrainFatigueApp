@@ -121,6 +121,7 @@
             android:layout_width="240dp"
             android:layout_height="49dp"
             app:trackColorActive="@color/grey"
+            app:trackColorInactive="@color/grey"
             app:layout_constraintStart_toStartOf="@id/activity_settings_slider_barrier"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginStart="12dp"
