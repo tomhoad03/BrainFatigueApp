@@ -2,9 +2,7 @@ package com.example.brainfatigueapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.Switch;
+import android.widget.*;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceFragmentCompat;
@@ -16,6 +14,13 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
+        // Set the content of the drop-down menu (spinner)
+        Spinner frequencySpinner = findViewById(R.id.activity_settings_frequency_slider);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.notification_intervals,
+                                                                            android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // default layouts
+        frequencySpinner.setAdapter(adapter);
 
         // Multiple thumbs on the 'available' range slider
         RangeSlider availableSlider = findViewById(R.id.activity_settings_available_slider);
