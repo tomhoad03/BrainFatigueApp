@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class SurveyResult implements Serializable {
     public Integer question1; // 0 to 100 in 5 point intervals
     public Integer question2; // 1 or 2
-    public Integer question3;
+    public Integer question3; // tom smells lol
     public Integer question4;
     public Integer question5;
     public Integer question6;
