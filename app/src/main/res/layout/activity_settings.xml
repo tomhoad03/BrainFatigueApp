@@ -39,6 +39,14 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="12dp"
             android:layout_marginTop="60dp"/>
+    <Spinner
+            android:id="@+id/activity_settings_frequency_slider"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/activity_settings_slider_barrier"
+            android:layout_marginStart="24dp"
+            app:layout_constraintTop_toTopOf="@id/activity_settings_frequency_slider_label"
+            app:layout_constraintBottom_toBottomOf="@id/activity_settings_frequency_slider_label"/>
 
     <TextView
             android:id="@+id/activity_settings_available_slider_label"
@@ -52,7 +60,6 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="12dp"
             android:layout_marginTop="24dp"/>
-
     <com.google.android.material.slider.RangeSlider
             android:id="@+id/activity_settings_available_slider"
             android:valueFrom="6.0"
@@ -61,9 +68,10 @@
             android:layout_height="49dp"
             app:layout_constraintStart_toStartOf="@id/activity_settings_slider_barrier"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintTop_toBottomOf="@id/activity_settings_title"
-            android:layout_marginTop="100dp"/>
+            android:layout_marginStart="12dp"
+            app:layout_constraintTop_toTopOf="@+id/activity_settings_available_slider_label"
+            app:layout_constraintBottom_toBottomOf="@+id/activity_settings_available_slider_label"/>
+
     <TextView
             android:id="@+id/activity_settings_unavailable_slider_label"
             android:text="@string/activity_settings_unavailable_slider_label"
@@ -76,6 +84,20 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="12dp"
             android:layout_marginTop="24dp"/>
+    <com.google.android.material.slider.RangeSlider
+            android:id="@+id/activity_settings_unavailable_slider"
+            android:valueFrom="6.0"
+            android:valueTo="24.0"
+            android:layout_width="240dp"
+            android:layout_height="49dp"
+            app:thumbColor="@color/custom_red"
+            app:haloColor="@color/custom_red"
+            app:trackColorActive="@color/custom_red"
+            app:layout_constraintStart_toStartOf="@id/activity_settings_slider_barrier"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="12dp"
+            app:layout_constraintTop_toTopOf="@+id/activity_settings_unavailable_slider_label"
+            app:layout_constraintBottom_toBottomOf="@+id/activity_settings_unavailable_slider_label"/>
 
     <TextView
             android:id="@+id/activity_settings_summary_slider_label"
@@ -89,6 +111,18 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="12dp"
             android:layout_marginTop="24dp"/>
+    <com.google.android.material.slider.RangeSlider
+            android:id="@+id/activity_settings_summary_slider"
+            android:valueFrom="6.0"
+            android:valueTo="24.0"
+            android:layout_width="240dp"
+            android:layout_height="49dp"
+            app:trackColorActive="@color/grey"
+            app:layout_constraintStart_toStartOf="@id/activity_settings_slider_barrier"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="12dp"
+            app:layout_constraintTop_toTopOf="@+id/activity_settings_summary_slider_label"
+            app:layout_constraintBottom_toBottomOf="@+id/activity_settings_summary_slider_label"/>
 
     <androidx.constraintlayout.widget.Barrier
             android:id="@+id/activity_settings_slider_barrier"

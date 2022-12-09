@@ -17,9 +17,13 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        // Multiple thumbs on the range slider
-        RangeSlider slider = findViewById(R.id.activity_settings_available_slider);
-        slider.setValues(9f, 21f);
+        // Multiple thumbs on the 'available' range slider
+        RangeSlider availableSlider = findViewById(R.id.activity_settings_available_slider);
+        availableSlider.setValues(9f, 21f);
+
+        // Multiple thumbs on the 'unavailable' range slider
+        RangeSlider unavailableSlider = findViewById(R.id.activity_settings_unavailable_slider);
+        unavailableSlider.setValues(9f, 21f);
 
         // Hide action bar
         if (getSupportActionBar() != null)
