@@ -28,6 +28,58 @@
             app:layout_constraintBottom_toBottomOf="@+id/activity_settings_back_button"/>
 
     <TextView
+            android:id="@+id/activity_settings_frequency_slider_label"
+            android:text="@+string/activity_settings_frequency_slider_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/custom_navy_A"
+            android:textSize="20sp"
+            android:translationZ="90dp"
+            app:layout_constraintTop_toBottomOf="@+id/activity_settings_title"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="60dp"/>
+
+    <TextView
+            android:id="@+id/activity_settings_available_slider_label"
+            android:text="@+string/activity_settings_available_slider_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/custom_navy_A"
+            android:textSize="20sp"
+            android:translationZ="90dp"
+            app:layout_constraintTop_toBottomOf="@+id/activity_settings_frequency_slider_label"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="24dp"/>
+
+    <TextView
+            android:id="@+id/activity_settings_unavailable_slider_label"
+            android:text="@+string/activity_settings_unavailable_slider_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/custom_navy_A"
+            android:textSize="20sp"
+            android:translationZ="90dp"
+            app:layout_constraintTop_toBottomOf="@+id/activity_settings_available_slider_label"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="24dp"/>
+
+    <TextView
+            android:id="@+id/activity_settings_summary_slider_label"
+            android:text="@+string/activity_settings_summary_slider_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/custom_navy_A"
+            android:textSize="20sp"
+            android:translationZ="90dp"
+            app:layout_constraintTop_toBottomOf="@+id/activity_settings_unavailable_slider_label"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="24dp"/>
+
+    <TextView
             android:id="@+id/activity_settings_button_divider"
             android:text="@+string/activity_settings_button_divider"
             android:layout_width="match_parent"
@@ -145,6 +197,10 @@
             app:layout_constraintBottom_toBottomOf="@+id/activity_settings_button_logout"
             app:layout_constraintEnd_toEndOf="@+id/activity_settings_button_logout" android:layout_marginEnd="28dp"
             app:layout_constraintVertical_bias="0.523"/>
+    <androidx.constraintlayout.widget.Barrier android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                              android:id="@+id/barrier2" app:barrierDirection="right"
+                                              app:constraint_referenced_ids="activity_settings_frequency_slider_label,activity_settings_summary_slider_label,activity_settings_unavailable_slider_label,activity_settings_available_slider_label"
+                                              tools:layout_editor_absoluteX="411dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout
 >

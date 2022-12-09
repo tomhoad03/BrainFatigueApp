@@ -8,6 +8,10 @@
     <!-- settings and user customisation -->
     <string name="activity_settings_title">Settings</string>
     <string name="activity_settings_arrow">&#43;</string>
+    <string name="activity_settings_frequency_slider_label">Frequency</string>
+    <string name="activity_settings_available_slider_label">Available</string>
+    <string name="activity_settings_unavailable_slider_label">Unavailable</string>
+    <string name="activity_settings_summary_slider_label">Summary</string>
     <string name="activity_settings_button_divider">____________________</string>
     <string name="activity_settings_button_dark_mode">Dark Mode</string>
     <string name="activity_settings_button_faq">FAQs</string>
