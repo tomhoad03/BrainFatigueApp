@@ -6,7 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
+
+import java.util.List;
+import java.util.concurrent.Executors;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -27,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }, 2500);
+
+        SurveyDatabase surveyDatabase = SurveyDatabase.getDatabase(getApplicationContext());
     }
 
     private void createNotificationChannel() {
