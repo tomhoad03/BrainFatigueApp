@@ -7,12 +7,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
-public class SurveyMiddle4bActivity extends AppCompatActivity {
+public class SurveyMiddle4hActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_survey_middle4b);
+        setContentView(R.layout.activity_survey_middle4h);
 
         // Hide action bar
         if (getSupportActionBar() != null)
@@ -20,10 +20,12 @@ public class SurveyMiddle4bActivity extends AppCompatActivity {
 
         // Select activity buttons
         ArrayList<Button> activityButtons = new ArrayList<>();
-        activityButtons.add(findViewById(R.id.activity_survey_middle4b_button1));
-        activityButtons.add(findViewById(R.id.activity_survey_middle4b_button2));
-        activityButtons.add(findViewById(R.id.activity_survey_middle4b_button3));
-        activityButtons.add(findViewById(R.id.activity_survey_middle4b_button4));
+        activityButtons.add(findViewById(R.id.activity_survey_middle4h_button1));
+        activityButtons.add(findViewById(R.id.activity_survey_middle4h_button2));
+        activityButtons.add(findViewById(R.id.activity_survey_middle4h_button3));
+        activityButtons.add(findViewById(R.id.activity_survey_middle4h_button4));
+        activityButtons.add(findViewById(R.id.activity_survey_middle4h_button5));
+        activityButtons.add(findViewById(R.id.activity_survey_middle4h_button6));
         int count = 1;
 
         for (Button activityButton : activityButtons) {
@@ -32,7 +34,7 @@ public class SurveyMiddle4bActivity extends AppCompatActivity {
             count++;
 
             activityButton.setOnClickListener(v -> {
-                Intent intent = new Intent(SurveyMiddle4bActivity.this, SurveyMiddle5Activity.class);
+                Intent intent = new Intent(SurveyMiddle4hActivity.this, SurveyMiddle5Activity.class);
                 intent.putExtra("survey_result", surveyResult);
                 startActivity(intent);
             });

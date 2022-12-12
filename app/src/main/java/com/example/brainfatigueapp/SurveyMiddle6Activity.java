@@ -1,10 +1,10 @@
 package com.example.brainfatigueapp;
 
 import android.content.Intent;
-import android.widget.Button;
-import android.widget.ImageButton;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Button;
+import androidx.appcompat.app.AppCompatActivity;
+import com.google.android.material.slider.Slider;
 
 public class SurveyMiddle6Activity extends AppCompatActivity {
 
@@ -17,17 +17,15 @@ public class SurveyMiddle6Activity extends AppCompatActivity {
         if (getSupportActionBar() != null)
             getSupportActionBar().hide();
 
-        // Back button
-        final ImageButton surveyBackBtn = findViewById(R.id.activity_survey_middle6_back_button);
-        surveyBackBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(SurveyMiddle6Activity.this, SurveyMiddle5Activity.class);
-            startActivity(intent);
-        });
-
         // Next button
         final Button surveyNextBtn = findViewById(R.id.activity_survey_middle6_next_button);
         surveyNextBtn.setOnClickListener(v -> {
+            SurveyResult surveyResult = (SurveyResult) getIntent().getSerializableExtra("survey_result"); // getIntent().getSerializableExtra("survey_result", SurveyResult.class); for API33+
+            final Slider slider = findViewById(R.id.activity_survey_middle6_slider);
+            surveyResult.setQuestion6((int) slider.getValue());
+
             Intent intent = new Intent(SurveyMiddle6Activity.this, SurveyMiddle7Activity.class);
+            intent.putExtra("survey_result", surveyResult);
             startActivity(intent);
         });
     }
