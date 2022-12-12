@@ -16,6 +16,21 @@ public class SurveyResult implements Serializable {
     public SurveyResult() {
     }
 
+    @Override
+    public String toString() {
+        return "SurveyResult{" +
+                "question1=" + question1 +
+                ", question2=" + question2 +
+                ", question3=" + question3 +
+                ", question4=" + question4 +
+                ", question5=" + question5 +
+                ", question6=" + question6 +
+                ", question7=" + question7 +
+                ", question8=" + question8 +
+                ", question9=" + question9 +
+                '}';
+    }
+
     public Integer getQuestion1() {
         return question1;
     }

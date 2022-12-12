@@ -25,10 +25,16 @@ public class SurveyMiddle8Activity extends AppCompatActivity {
         activityButtons.add(findViewById(R.id.activity_survey_middle8_button2));
         activityButtons.add(findViewById(R.id.activity_survey_middle8_button3));
         activityButtons.add(findViewById(R.id.activity_survey_middle8_button4));
+        int count = 1;
 
         for (Button activityButton : activityButtons) {
+            SurveyResult surveyResult = (SurveyResult) getIntent().getSerializableExtra("survey_result");
+            surveyResult.setQuestion8(count);
+            count++;
+
             activityButton.setOnClickListener(v -> {
                 Intent intent = new Intent(SurveyMiddle8Activity.this, SurveyMiddle9Activity.class);
+                intent.putExtra("survey_result", surveyResult);
                 startActivity(intent);
             });
         }

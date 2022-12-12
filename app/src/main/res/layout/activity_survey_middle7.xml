@@ -30,7 +30,7 @@
             android:layout_marginBottom="9dp" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"/>
     <com.google.android.material.slider.Slider
-            android:id="@+id/slide"
+            android:id="@+id/activity_survey_middle7_slider"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:value="0"
