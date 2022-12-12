@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent" android:minHeight="48dp">
+    <Button
+            android:text="@string/activity_survey_middle4a_button3"
+            android:backgroundTint="@color/grey"
+            android:textAllCaps="false"
+            android:textColor="@color/custom_navy_A"
+            android:layout_width="355dp"
+            android:layout_height="57dp" android:id="@+id/activity_survey_middle4a_button3"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintTop_toBottomOf="@+id/activity_survey_middle4a_button2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.446"
+            android:layout_marginTop="8dp"/>
+    <Button
+            android:text="@string/activity_survey_middle4a_button2"
+            android:backgroundTint="@color/grey"
+            android:textAllCaps="false"
+            android:textColor="@color/custom_navy_A"
+            android:layout_width="355dp"
+            android:layout_height="57dp" android:id="@+id/activity_survey_middle4a_button2"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintTop_toBottomOf="@+id/activity_survey_middle4a_button1"
+            android:layout_marginTop="8dp" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+    <Button
+            android:text="@string/activity_survey_middle4a_button1"
+            android:backgroundTint="@color/grey"
+            android:textAllCaps="false"
+            android:textColor="@color/custom_navy_A"
+            android:layout_width="355dp"
+            android:layout_height="57dp" android:id="@+id/activity_survey_middle4a_button1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintTop_toBottomOf="@+id/activity_survey_middle4a_prompt"
+            android:layout_marginTop="24dp"/>
+    <TextView
+            android:background="@null"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/activity_survey_prompt"
+            android:textColor="@color/grey_text"
+            android:textSize="16sp"
+            android:id="@+id/activity_survey_middle4a_prompt"
+            app:layout_constraintTop_toBottomOf="@+id/activity_survey_middle4a_question"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintEnd_toEndOf="parent" android:minHeight="48dp" android:layout_marginTop="8dp"/>
+    <TextView
+            android:layout_width="360dp"
+            android:layout_height="62dp"
+            android:text="@string/activity_survey_middle4_question"
+            android:textColor="@color/custom_navy_A"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:id="@+id/activity_survey_middle4a_question"
+            app:fontFamily="@font/spartan" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.484"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="84dp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
