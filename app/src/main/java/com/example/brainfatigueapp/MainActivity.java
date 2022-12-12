@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
 import java.util.List;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,14 +27,15 @@ public class MainActivity extends AppCompatActivity {
         // Create the notification channel
         createNotificationChannel();
 
+        // Create the database
+        SurveyDatabase.getDatabase(getApplicationContext());
+
         // Display homepage after delay
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
             Intent intent = new Intent(MainActivity.this, LoginPageActivity.class);
             startActivity(intent);
             finish();
         }, 2500);
-
-        SurveyDatabase surveyDatabase = SurveyDatabase.getDatabase(getApplicationContext());
     }
 
     private void createNotificationChannel() {

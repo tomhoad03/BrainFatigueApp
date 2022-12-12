@@ -3,13 +3,14 @@ package com.example.brainfatigueapp;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.Serializable;
 
 @Entity
 public class SurveyResult implements Serializable {
     @PrimaryKey
-    public Integer surveyResultId;
+    public Long surveyResultId; // Corresponds to the time (in milliseconds) the survey is started
     @ColumnInfo(name = "question1")
 
     public Integer question1; // 0 to 100 in 5 point intervals (slider)
@@ -34,7 +35,7 @@ public class SurveyResult implements Serializable {
     @ColumnInfo(name = "question9")
     public Integer question9; // 1 to 3
 
-    public SurveyResult(Integer surveyResultId) {
+    public SurveyResult(Long surveyResultId) {
         this.surveyResultId = surveyResultId;
         this.question1 = -1;
         this.question2 = -1;
@@ -52,7 +53,8 @@ public class SurveyResult implements Serializable {
     @Override
     public String toString() {
         return "SurveyResult{" +
-                "question1=" + question1 +
+                "surveyResultId=" + surveyResultId +
+                ", question1=" + question1 +
                 ", question2=" + question2 +
                 ", question3=" + question3 +
                 ", question3Extended=" + question3Extended +

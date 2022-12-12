@@ -21,20 +21,10 @@ public class SurveyStartActivity extends AppCompatActivity {
         if (getSupportActionBar() != null)
             getSupportActionBar().hide();
 
-        ExecutorService executorService = Executors.newSingleThreadExecutor();
-        executorService.execute(() -> {
-            SurveyDatabase surveyDatabase = SurveyDatabase.getDatabase(getApplicationContext());
-            SurveyResultDao surveyResultDao = surveyDatabase.surveyResultDao();
-            surveyResultDao.insert(new SurveyResult(1));
-            List<SurveyResult> surveyResults = surveyResultDao.getAll();
-            Log.d("survey_results", surveyResults.toString());
-        });
-        executorService.shutdown();
-
         // Next button
         final Button surveyNextBtn = findViewById(R.id.activity_survey_start_start_button);
         surveyNextBtn.setOnClickListener(v -> {
-            SurveyResult surveyResult = new SurveyResult(1);
+            SurveyResult surveyResult = new SurveyResult(System.currentTimeMillis());
 
             Intent intent = new Intent(SurveyStartActivity.this, SurveyMiddle1Activity.class);
             intent.putExtra("survey_result", surveyResult);
