@@ -8,10 +8,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
-import androidx.work.*;
-
-import java.util.concurrent.TimeUnit;
 
 public class SurveyEndActivity extends AppCompatActivity {
 
