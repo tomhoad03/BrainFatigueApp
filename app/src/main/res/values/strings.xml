@@ -99,7 +99,7 @@
     <string name="activity_survey_middle3g_button4">Playing a musical instrument</string>
     <string name="activity_survey_middle3g_button5">Art or craft work</string>
 
-    <!-- question 3 -->
+    <!-- question 4 -->
     <string name="activity_survey_middle4_button1">Looking after myself</string>
     <string name="activity_survey_middle4_button2">Household or family tasks</string>
     <string name="activity_survey_middle4_button3">Working or studying</string>
@@ -108,6 +108,12 @@
     <string name="activity_survey_middle4_button6">Using a computer/phone/tablet</string>
     <string name="activity_survey_middle4_button7">Sports or exercise</string>
     <string name="activity_survey_middle4_button8">Hobby or quiet past time</string>
+
+    <!-- question 4a (after selecting "Looking after myself") -->
+    <string name="activity_survey_middle4a_button1">Eating</string>
+    <string name="activity_survey_middle4a_button2">Sleeping</string>
+    <string name="activity_survey_middle4a_button3">Taking time out to rest</string>
+
 
     <!-- question 8 -->
     <string name="activity_survey_middle8_button1">I feel full of energy</string>

@@ -27,7 +27,7 @@ public class SurveyMiddle3cActivity extends AppCompatActivity {
 
         for (Button activityButton : activityButtons) {
             SurveyResult surveyResult = (SurveyResult) getIntent().getSerializableExtra("survey_result");
-            surveyResult.setQuestion4(count);
+            surveyResult.setQuestion3Extended(count);
             count++;
 
             activityButton.setOnClickListener(v -> {
