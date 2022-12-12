@@ -8,10 +8,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
-import androidx.work.*;
 
-import java.util.concurrent.TimeUnit;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class SurveyEndActivity extends AppCompatActivity {
 
@@ -24,12 +24,23 @@ public class SurveyEndActivity extends AppCompatActivity {
         if (getSupportActionBar() != null)
             getSupportActionBar().hide();
 
-        SurveyResult surveyResult = (SurveyResult) getIntent().getSerializableExtra("survey_result");
-        Log.d("survey_result", surveyResult.toString());
-
         // Next button
         final Button surveySubmitBtn = findViewById(R.id.activity_survey_end_submit_button);
         surveySubmitBtn.setOnClickListener(v -> {
+            ExecutorService executorService = Executors.newSingleThreadExecutor();
+            executorService.execute(() -> {
+                SurveyDatabase surveyDatabase = SurveyDatabase.getDatabase(getApplicationContext());
+                SurveyResultDao surveyResultDao = surveyDatabase.surveyResultDao();
+
+                SurveyResult surveyResult = (SurveyResult) getIntent().getSerializableExtra("survey_result");
+                surveyResultDao.insert(surveyResult);
+
+                List<SurveyResult> surveyResults = surveyResultDao.getAll();
+                Log.d("survey_results", surveyResults.toString());
+            });
+            executorService.shutdown();
+
+            // Setup the next notification
             Intent notifyIntent = new Intent(getApplicationContext(), NotificationReceiver.class);
             PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
             AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);

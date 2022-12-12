@@ -1,21 +1,71 @@
 package com.example.brainfatigueapp;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+import org.jetbrains.annotations.NotNull;
+
 import java.io.Serializable;
 
+@Entity
 public class SurveyResult implements Serializable {
+    @PrimaryKey
+    public Long surveyResultId; // Corresponds to the time (in milliseconds) the survey is started
+    @ColumnInfo(name = "question1")
+
     public Integer question1; // 0 to 100 in 5 point intervals (slider)
+    @ColumnInfo(name = "question2")
     public Integer question2; // 1 or 2
+    @ColumnInfo(name = "question3")
     public Integer question3; // 1 to 7
+    @ColumnInfo(name = "question3_extended")
     public Integer question3Extended;
+    @ColumnInfo(name = "question4")
     public Integer question4; // 1 to 8
+    @ColumnInfo(name = "question4_extended")
     public Integer question4Extended;
+    @ColumnInfo(name = "question5")
     public Integer question5; // 0 to 10 in 1 point intervals (slider)
+    @ColumnInfo(name = "question6")
     public Integer question6; // 0 to 10 in 1 point intervals (slider)
+    @ColumnInfo(name = "question7")
     public Integer question7; // 0 to 10 in 1 point intervals (slider)
+    @ColumnInfo(name = "question8")
     public Integer question8; // 1 to 4
+    @ColumnInfo(name = "question9")
     public Integer question9; // 1 to 3
 
-    public SurveyResult() {
+    public SurveyResult(Long surveyResultId) {
+        this.surveyResultId = surveyResultId;
+        this.question1 = -1;
+        this.question2 = -1;
+        this.question3 = -1;
+        this.question3Extended = -1;
+        this.question4 = -1;
+        this.question4Extended = -1;
+        this.question5 = -1;
+        this.question6 = -1;
+        this.question7 = -1;
+        this.question8 = -1;
+        this.question9 = -1;
+    }
+
+    @Override
+    public String toString() {
+        return "SurveyResult{" +
+                "surveyResultId=" + surveyResultId +
+                ", question1=" + question1 +
+                ", question2=" + question2 +
+                ", question3=" + question3 +
+                ", question3Extended=" + question3Extended +
+                ", question4=" + question4 +
+                ", question4Extended=" + question4Extended +
+                ", question5=" + question5 +
+                ", question6=" + question6 +
+                ", question7=" + question7 +
+                ", question8=" + question8 +
+                ", question9=" + question9 +
+                '}';
     }
 
     public Integer getQuestion1() {
