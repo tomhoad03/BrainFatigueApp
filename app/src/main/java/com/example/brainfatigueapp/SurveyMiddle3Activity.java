@@ -2,11 +2,8 @@ package com.example.brainfatigueapp;
 
 import android.content.Intent;
 import android.widget.Button;
-import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-
-import java.util.ArrayList;
 
 public class SurveyMiddle3Activity extends AppCompatActivity {
 
@@ -25,7 +22,7 @@ public class SurveyMiddle3Activity extends AppCompatActivity {
             SurveyResult surveyResult = (SurveyResult) getIntent().getSerializableExtra("survey_result");
             surveyResult.setQuestion3(1);
 
-            Intent intent = new Intent(SurveyMiddle3Activity.this, SurveyMiddle4aActivity.class);
+            Intent intent = new Intent(SurveyMiddle3Activity.this, SurveyMiddle3aActivity.class);
             intent.putExtra("survey_result", surveyResult);
             startActivity(intent);
         });
@@ -36,7 +33,7 @@ public class SurveyMiddle3Activity extends AppCompatActivity {
             SurveyResult surveyResult = (SurveyResult) getIntent().getSerializableExtra("survey_result");
             surveyResult.setQuestion3(2);
 
-            Intent intent = new Intent(SurveyMiddle3Activity.this, SurveyMiddle4bActivity.class);
+            Intent intent = new Intent(SurveyMiddle3Activity.this, SurveyMiddle3bActivity.class);
             intent.putExtra("survey_result", surveyResult);
             startActivity(intent);
         });
@@ -47,7 +44,7 @@ public class SurveyMiddle3Activity extends AppCompatActivity {
             SurveyResult surveyResult = (SurveyResult) getIntent().getSerializableExtra("survey_result");
             surveyResult.setQuestion3(3);
 
-            Intent intent = new Intent(SurveyMiddle3Activity.this, SurveyMiddle4cActivity.class);
+            Intent intent = new Intent(SurveyMiddle3Activity.this, SurveyMiddle3cActivity.class);
             intent.putExtra("survey_result", surveyResult);
             startActivity(intent);
         });
@@ -58,7 +55,7 @@ public class SurveyMiddle3Activity extends AppCompatActivity {
             SurveyResult surveyResult = (SurveyResult) getIntent().getSerializableExtra("survey_result");
             surveyResult.setQuestion3(4);
 
-            Intent intent = new Intent(SurveyMiddle3Activity.this, SurveyMiddle4dActivity.class);
+            Intent intent = new Intent(SurveyMiddle3Activity.this, SurveyMiddle3dActivity.class);
             intent.putExtra("survey_result", surveyResult);
             startActivity(intent);
         });
@@ -69,7 +66,7 @@ public class SurveyMiddle3Activity extends AppCompatActivity {
             SurveyResult surveyResult = (SurveyResult) getIntent().getSerializableExtra("survey_result");
             surveyResult.setQuestion3(5);
 
-            Intent intent = new Intent(SurveyMiddle3Activity.this, SurveyMiddle4eActivity.class);
+            Intent intent = new Intent(SurveyMiddle3Activity.this, SurveyMiddle3eActivity.class);
             intent.putExtra("survey_result", surveyResult);
             startActivity(intent);
         });
@@ -80,7 +77,7 @@ public class SurveyMiddle3Activity extends AppCompatActivity {
             SurveyResult surveyResult = (SurveyResult) getIntent().getSerializableExtra("survey_result");
             surveyResult.setQuestion3(6);
 
-            Intent intent = new Intent(SurveyMiddle3Activity.this, SurveyMiddle4fActivity.class);
+            Intent intent = new Intent(SurveyMiddle3Activity.this, SurveyMiddle3fActivity.class);
             intent.putExtra("survey_result", surveyResult);
             startActivity(intent);
         });
@@ -91,7 +88,7 @@ public class SurveyMiddle3Activity extends AppCompatActivity {
             SurveyResult surveyResult = (SurveyResult) getIntent().getSerializableExtra("survey_result");
             surveyResult.setQuestion3(7);
 
-            Intent intent = new Intent(SurveyMiddle3Activity.this, SurveyMiddle4gActivity.class);
+            Intent intent = new Intent(SurveyMiddle3Activity.this, SurveyMiddle3gActivity.class);
             intent.putExtra("survey_result", surveyResult);
             startActivity(intent);
         });

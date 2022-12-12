@@ -3,18 +3,17 @@ package com.example.brainfatigueapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
 // this activity shows the options when "Household or family tasks" is chosen
-public class SurveyMiddle4bActivity extends AppCompatActivity {
+public class SurveyMiddle3bActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_survey_middle4b);
+        setContentView(R.layout.activity_survey_middle3b);
 
         // Hide action bar
         if (getSupportActionBar() != null)
@@ -22,14 +21,14 @@ public class SurveyMiddle4bActivity extends AppCompatActivity {
 
         // Select activity buttons
         ArrayList<Button> activityButtons = new ArrayList<>();
-        activityButtons.add(findViewById(R.id.activity_survey_middle4b_button1));
-        activityButtons.add(findViewById(R.id.activity_survey_middle4b_button2));
-        activityButtons.add(findViewById(R.id.activity_survey_middle4b_button3));
-        activityButtons.add(findViewById(R.id.activity_survey_middle4b_button4));
-        activityButtons.add(findViewById(R.id.activity_survey_middle4b_button5));
-        activityButtons.add(findViewById(R.id.activity_survey_middle4b_button6));
-        activityButtons.add(findViewById(R.id.activity_survey_middle4b_button7));
-        activityButtons.add(findViewById(R.id.activity_survey_middle4b_button8));
+        activityButtons.add(findViewById(R.id.activity_survey_middle3b_button1));
+        activityButtons.add(findViewById(R.id.activity_survey_middle3b_button2));
+        activityButtons.add(findViewById(R.id.activity_survey_middle3b_button3));
+        activityButtons.add(findViewById(R.id.activity_survey_middle3b_button4));
+        activityButtons.add(findViewById(R.id.activity_survey_middle3b_button5));
+        activityButtons.add(findViewById(R.id.activity_survey_middle3b_button6));
+        activityButtons.add(findViewById(R.id.activity_survey_middle3b_button7));
+        activityButtons.add(findViewById(R.id.activity_survey_middle3b_button8));
         int count = 1;
 
         for (Button activityButton : activityButtons) {
@@ -38,7 +37,7 @@ public class SurveyMiddle4bActivity extends AppCompatActivity {
             count++;
 
             activityButton.setOnClickListener(v -> {
-                Intent intent = new Intent(SurveyMiddle4bActivity.this, SurveyMiddle5Activity.class);
+                Intent intent = new Intent(SurveyMiddle3bActivity.this, SurveyMiddle5Activity.class);
                 intent.putExtra("survey_result", surveyResult);
                 startActivity(intent);
             });

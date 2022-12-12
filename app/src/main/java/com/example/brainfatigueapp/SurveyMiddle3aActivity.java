@@ -1,20 +1,20 @@
 package com.example.brainfatigueapp;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.widget.Button;
-import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent;
+import android.widget.Button;
+import android.os.Bundle;
 
 import java.util.ArrayList;
 
-// this activity shows the options when "Working or studying" is chosen
-public class SurveyMiddle4cActivity extends AppCompatActivity {
+// this activity shows the options when "Looking after myself" is chosen
+public class SurveyMiddle3aActivity extends AppCompatActivity {
 
+    // each button points forward to middle5
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_survey_middle4c);
+        setContentView(R.layout.activity_survey_middle3a);
 
         // Hide action bar
         if (getSupportActionBar() != null)
@@ -22,8 +22,11 @@ public class SurveyMiddle4cActivity extends AppCompatActivity {
 
         // Select activity buttons
         ArrayList<Button> activityButtons = new ArrayList<>();
-        activityButtons.add(findViewById(R.id.activity_survey_middle4c_button1));
-        activityButtons.add(findViewById(R.id.activity_survey_middle4c_button2));
+        activityButtons.add(findViewById(R.id.activity_survey_middle3a_button1));
+        activityButtons.add(findViewById(R.id.activity_survey_middle3a_button2));
+        activityButtons.add(findViewById(R.id.activity_survey_middle3a_button3));
+        activityButtons.add(findViewById(R.id.activity_survey_middle3a_button4));
+        activityButtons.add(findViewById(R.id.activity_survey_middle3a_button5));
         int count = 1;
 
         for (Button activityButton : activityButtons) {
@@ -32,7 +35,7 @@ public class SurveyMiddle4cActivity extends AppCompatActivity {
             count++;
 
             activityButton.setOnClickListener(v -> {
-                Intent intent = new Intent(SurveyMiddle4cActivity.this, SurveyMiddle5Activity.class);
+                Intent intent = new Intent(SurveyMiddle3aActivity.this, SurveyMiddle5Activity.class);
                 intent.putExtra("survey_result", surveyResult);
                 startActivity(intent);
             });

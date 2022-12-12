@@ -3,18 +3,17 @@ package com.example.brainfatigueapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
-// this activity shows the options when "Social activities" is chosen
-public class SurveyMiddle4dActivity extends AppCompatActivity {
+// this activity shows the options when "Using a computer/tablet/phone" is chosen
+public class SurveyMiddle3eActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_survey_middle4d);
+        setContentView(R.layout.activity_survey_middle3e);
 
         // Hide action bar
         if (getSupportActionBar() != null)
@@ -22,9 +21,12 @@ public class SurveyMiddle4dActivity extends AppCompatActivity {
 
         // Select activity buttons
         ArrayList<Button> activityButtons = new ArrayList<>();
-        activityButtons.add(findViewById(R.id.activity_survey_middle4d_button1));
-        activityButtons.add(findViewById(R.id.activity_survey_middle4d_button2));
-        activityButtons.add(findViewById(R.id.activity_survey_middle4d_button3));
+        activityButtons.add(findViewById(R.id.activity_survey_middle3e_button1));
+        activityButtons.add(findViewById(R.id.activity_survey_middle3e_button2));
+        activityButtons.add(findViewById(R.id.activity_survey_middle3e_button3));
+        activityButtons.add(findViewById(R.id.activity_survey_middle3e_button4));
+        activityButtons.add(findViewById(R.id.activity_survey_middle3e_button5));
+        activityButtons.add(findViewById(R.id.activity_survey_middle3e_button6));
         int count = 1;
 
         for (Button activityButton : activityButtons) {
@@ -33,12 +35,10 @@ public class SurveyMiddle4dActivity extends AppCompatActivity {
             count++;
 
             activityButton.setOnClickListener(v -> {
-                Intent intent = new Intent(SurveyMiddle4dActivity.this, SurveyMiddle5Activity.class);
+                Intent intent = new Intent(SurveyMiddle3eActivity.this, SurveyMiddle5Activity.class);
                 intent.putExtra("survey_result", surveyResult);
                 startActivity(intent);
             });
         }
     }
-
 }
-
