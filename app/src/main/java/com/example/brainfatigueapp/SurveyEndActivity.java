@@ -17,12 +17,12 @@ public class SurveyEndActivity extends AppCompatActivity {
         if (getSupportActionBar() != null)
             getSupportActionBar().hide();
 
+        SurveyResult surveyResult = (SurveyResult) getIntent().getSerializableExtra("survey_result");
+        Log.d("survey_result", surveyResult.toString());
+
         // Next button
         final Button surveySubmitBtn = findViewById(R.id.activity_survey_end_submit_button);
         surveySubmitBtn.setOnClickListener(v -> {
-            SurveyResult surveyResult = (SurveyResult) getIntent().getSerializableExtra("survey_result");
-            Log.d("survey_result", surveyResult.toString());
-
             Intent intent = new Intent(SurveyEndActivity.this, HomeActivity.class);
             startActivity(intent);
         });
