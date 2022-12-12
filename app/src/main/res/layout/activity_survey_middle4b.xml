@@ -1,133 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
                                                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                   xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-                                                   android:layout_height="match_parent">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" android:minHeight="48dp">
-        <Button
-                android:text="@string/activity_survey_middle4b_button5"
-                android:backgroundTint="@color/grey"
-                android:textAllCaps="false"
-                android:textColor="@color/custom_navy_A"
-                android:layout_width="355dp"
-                android:layout_height="57dp" android:id="@+id/activity_survey_middle4b_button5"
-                app:layout_constraintVertical_chainStyle="packed"
-                app:layout_constraintTop_toBottomOf="@+id/activity_survey_middle4b_button4"
-                android:layout_marginTop="8dp" app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"/>
-        <Button
-                android:text="@string/activity_survey_middle4b_button4"
-                android:backgroundTint="@color/grey"
-                android:textAllCaps="false"
-                android:textColor="@color/custom_navy_A"
-                android:layout_width="355dp"
-                android:layout_height="57dp" android:id="@+id/activity_survey_middle4b_button4"
-                app:layout_constraintVertical_chainStyle="packed"
-                app:layout_constraintTop_toBottomOf="@+id/activity_survey_middle4b_button3"
-                android:layout_marginTop="8dp" app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.446"/>
-        <Button
-                android:text="@string/activity_survey_middle4b_button3"
-                android:backgroundTint="@color/grey"
-                android:textAllCaps="false"
-                android:textColor="@color/custom_navy_A"
-                android:layout_width="355dp"
-                android:layout_height="57dp" android:id="@+id/activity_survey_middle4b_button3"
-                app:layout_constraintVertical_chainStyle="packed"
-                app:layout_constraintTop_toBottomOf="@+id/activity_survey_middle4b_button2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.446"
-                android:layout_marginTop="8dp"/>
-        <Button
-                android:text="@string/activity_survey_middle4b_button2"
-                android:backgroundTint="@color/grey"
-                android:textAllCaps="false"
-                android:textColor="@color/custom_navy_A"
-                android:layout_width="355dp"
-                android:layout_height="57dp" android:id="@+id/activity_survey_middle4b_button2"
-                app:layout_constraintVertical_chainStyle="packed"
-                app:layout_constraintTop_toBottomOf="@+id/activity_survey_middle4b_button1"
-                android:layout_marginTop="8dp" app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"/>
-        <Button
-                android:text="@string/activity_survey_middle4b_button1"
-                android:backgroundTint="@color/grey"
-                android:textAllCaps="false"
-                android:textColor="@color/custom_navy_A"
-                android:layout_width="355dp"
-                android:layout_height="57dp" android:id="@+id/activity_survey_middle4b_button1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintVertical_chainStyle="packed"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintTop_toBottomOf="@+id/activity_survey_middle4b_prompt"
-        />
-        <TextView
-                android:background="@null"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/activity_survey_prompt"
-                android:textColor="@color/grey_text"
-                android:textSize="16sp"
-                android:id="@+id/activity_survey_middle4b_prompt"
-                app:layout_constraintTop_toBottomOf="@+id/activity_survey_middle4b_question"
-                app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintEnd_toEndOf="parent" android:minHeight="48dp"/>
-        <TextView
-                android:layout_width="360dp"
-                android:layout_height="62dp"
-                android:text="@string/activity_survey_middle4_question"
-                android:textColor="@color/custom_navy_A"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:id="@+id/activity_survey_middle4b_question"
-                app:fontFamily="@font/spartan" app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.484"
-                app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="84dp"/>
-        <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" app:srcCompat="@drawable/ic_back_arrow"
-                android:id="@+id/activity_survey_middle4b_back_button" app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="14dp" app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="12dp" android:minHeight="48dp" tools:ignore="SpeakableTextPresentCheck"
-                tools:srcCompat="@drawable/ic_back_arrow"/>
-        <Button
-                android:text="@string/activity_survey_middle4b_button6"
-                android:backgroundTint="@color/grey"
-                android:textAllCaps="false"
-                android:textColor="@color/custom_navy_A"
-                android:layout_width="355dp"
-                android:layout_height="57dp" android:id="@+id/activity_survey_middle4b_button6"
-                app:layout_constraintTop_toBottomOf="@+id/activity_survey_middle4b_button5"
-                android:layout_marginTop="8dp" app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"/>
-        <Button
-                android:text="@string/activity_survey_middle4b_button7"
-                android:backgroundTint="@color/grey"
-                android:textAllCaps="false"
-                android:textColor="@color/custom_navy_A"
-                android:layout_width="355dp"
-                android:layout_height="57dp" android:id="@+id/activity_survey_middle4b_button7"
-                app:layout_constraintTop_toBottomOf="@+id/activity_survey_middle4b_button6"
-                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="8dp"/>
-        <Button
-                android:text="@string/activity_survey_middle4b_button8"
-                android:backgroundTint="@color/grey"
-                android:textAllCaps="false"
-                android:textColor="@color/custom_navy_A"
-                android:layout_width="355dp"
-                android:layout_height="57dp" android:id="@+id/activity_survey_middle4b_button8"
-                app:layout_constraintTop_toBottomOf="@+id/activity_survey_middle4b_button7"
-                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="8dp"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-    <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" android:minHeight="48dp">
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent" android:minHeight="48dp">
+    <Button
+            android:text="@string/activity_survey_middle4b_button4"
+            android:backgroundTint="@color/grey"
+            android:textAllCaps="false"
+            android:textColor="@color/custom_navy_A"
+            android:layout_width="355dp"
+            android:layout_height="57dp" android:id="@+id/activity_survey_middle4b_button4"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintTop_toBottomOf="@+id/activity_survey_middle4b_button3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.446"
+            android:layout_marginTop="8dp"/>
+    <Button
+            android:text="@string/activity_survey_middle4b_button3"
+            android:backgroundTint="@color/grey"
+            android:textAllCaps="false"
+            android:textColor="@color/custom_navy_A"
+            android:layout_width="355dp"
+            android:layout_height="57dp" android:id="@+id/activity_survey_middle4b_button3"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintTop_toBottomOf="@+id/activity_survey_middle4b_button2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.446"
+            android:layout_marginTop="8dp"/>
+    <Button
+            android:text="@string/activity_survey_middle4b_button2"
+            android:backgroundTint="@color/grey"
+            android:textAllCaps="false"
+            android:textColor="@color/custom_navy_A"
+            android:layout_width="355dp"
+            android:layout_height="57dp" android:id="@+id/activity_survey_middle4b_button2"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintTop_toBottomOf="@+id/activity_survey_middle4b_button1"
+            android:layout_marginTop="8dp" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+    <Button
+            android:text="@string/activity_survey_middle4b_button1"
+            android:backgroundTint="@color/grey"
+            android:textAllCaps="false"
+            android:textColor="@color/custom_navy_A"
+            android:layout_width="355dp"
+            android:layout_height="57dp" android:id="@+id/activity_survey_middle4b_button1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintTop_toBottomOf="@+id/activity_survey_middle4b_prompt"
+            android:layout_marginTop="24dp"/>
+    <TextView
+            android:background="@null"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/activity_survey_prompt"
+            android:textColor="@color/grey_text"
+            android:textSize="16sp"
+            android:id="@+id/activity_survey_middle4b_prompt"
+            app:layout_constraintTop_toBottomOf="@+id/activity_survey_middle4b_question"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintEnd_toEndOf="parent" android:minHeight="48dp" android:layout_marginTop="8dp"/>
+    <TextView
+            android:layout_width="360dp"
+            android:layout_height="62dp"
+            android:text="@string/activity_survey_middle4_question"
+            android:textColor="@color/custom_navy_A"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:id="@+id/activity_survey_middle4b_question"
+            app:fontFamily="@font/spartan" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.484"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="84dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

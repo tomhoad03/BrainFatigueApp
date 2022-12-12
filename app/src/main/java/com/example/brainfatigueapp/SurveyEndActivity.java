@@ -4,8 +4,9 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
-import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.work.*;
@@ -23,12 +24,8 @@ public class SurveyEndActivity extends AppCompatActivity {
         if (getSupportActionBar() != null)
             getSupportActionBar().hide();
 
-        // Back button
-        final ImageButton surveyBackBtn = findViewById(R.id.activity_survey_end_back_button);
-        surveyBackBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(SurveyEndActivity.this, SurveyMiddle9Activity.class);
-            startActivity(intent);
-        });
+        SurveyResult surveyResult = (SurveyResult) getIntent().getSerializableExtra("survey_result");
+        Log.d("survey_result", surveyResult.toString());
 
         // Next button
         final Button surveySubmitBtn = findViewById(R.id.activity_survey_end_submit_button);
