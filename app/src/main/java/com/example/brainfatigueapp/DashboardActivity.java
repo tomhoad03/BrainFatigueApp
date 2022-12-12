@@ -8,6 +8,7 @@ import androidx.constraintlayout.motion.utils.ViewState;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager2.widget.ViewPager2;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.tabs.TabLayout;
 
 public class DashboardActivity extends AppCompatActivity {
@@ -31,19 +32,14 @@ public class DashboardActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        // Back button
+        final MaterialButton settingsBtn = findViewById(R.id.activity_dashboard_settings_button);
+        settingsBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(DashboardActivity.this, SettingsActivity.class);
+            startActivity(intent);
+        });
+
         // Fragments
-        /*
-        tabLayout = findViewById(R.id.activity_dashboard_tab_bar);
-        viewPager = findViewById(R.id.activity_dashboard_view_pager_1);
-
-        tabLayout.setupWithViewPager(viewPager);
-
-        ViewStateAdapter adapter = new ViewStateAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
-        adapter.addFragment(new DashboardLeftFrag(), "Activity Tab");
-        adapter.addFragment(new DashboardRightFrag(), "Trends Tab");
-
-         */
-
         FragmentManager fm = getSupportFragmentManager();
         ViewStateAdapter sa = new ViewStateAdapter(fm, getLifecycle());
         final ViewPager2 pa = findViewById(R.id.activity_dashboard_view_pager_1);

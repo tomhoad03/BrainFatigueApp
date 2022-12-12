@@ -5,6 +5,24 @@
     <string name="activity_home_view_my_dashboard">View My Dashboard</string>
     <string name="activity_home_welcome">Hello, what would you like to do today?</string>
 
+    <!-- settings and user customisation -->
+    <string name="activity_settings_title">Settings</string>
+    <string name="activity_settings_arrow">&#43;</string>
+    <string name="activity_settings_button_heading">----- Notifications -----</string>
+    <string name="activity_settings_frequency_slider_label">Frequency</string>
+    <string name="activity_settings_frequency_slider_text">How often we\'ll remind you to take your fatigue survey</string>
+    <string name="activity_settings_available_slider_label">Awake Time</string>
+    <string name="activity_settings_available_slider_text">We\'ll only send you reminders between these times in the day</string>
+    <string name="activity_settings_unavailable_slider_label">Do Not Disturb</string>
+    <string name="activity_settings_unavailable_slider_text">We won\'t notify you between these times</string>
+    <string name="activity_settings_summary_slider_label">Summary</string>
+    <string name="activity_settings_summary_slider_text">This is when we\'ll let you know that your daily summary is ready</string>
+    <string name="activity_settings_button_divider">--------- Other ---------</string>
+    <string name="activity_settings_button_dark_mode">Dark Mode</string>
+    <string name="activity_settings_button_faq">FAQs</string>
+    <string name="activity_settings_button_about">About info</string>
+    <string name="activity_settings_button_logout">LOG OUT</string>
+
     <string name="activity_dashboard_title">My dashboard</string>
     <string name="activity_dashboard_left_group1_top">Mood</string>
     <string name="activity_dashboard_left_group1_bottom">You reported a low mood today.</string>
@@ -179,4 +197,19 @@
     <!-- survey end messages -->
     <string name="activity_survey_end_mainMessage">Thank you!</string>
     <string name="activity_survey_end_subMessage">To finish, press Submit</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails</string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
 </resources>
