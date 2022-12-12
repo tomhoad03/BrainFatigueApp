@@ -34,9 +34,6 @@ public class SurveyEndActivity extends AppCompatActivity {
 
                 SurveyResult surveyResult = (SurveyResult) getIntent().getSerializableExtra("survey_result");
                 surveyResultDao.insert(surveyResult);
-
-                List<SurveyResult> surveyResults = surveyResultDao.getAll();
-                Log.d("survey_results", surveyResults.toString());
             });
             executorService.shutdown();
 
