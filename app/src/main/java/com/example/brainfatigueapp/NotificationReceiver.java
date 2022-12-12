@@ -26,9 +26,9 @@ public class NotificationReceiver extends BroadcastReceiver {
                 .setDefaults(Notification.DEFAULT_VIBRATE)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setCategory(NotificationCompat.CATEGORY_CALL)
-                //.setContentIntent(pendingIntent)
                 .setFullScreenIntent(pendingIntent, true)
-                .setAutoCancel(true);
+                .setAutoCancel(true)
+                .setOngoing(true);
 
         // Display the notification
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
