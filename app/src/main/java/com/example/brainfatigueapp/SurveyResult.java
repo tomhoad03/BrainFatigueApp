@@ -3,32 +3,19 @@ package com.example.brainfatigueapp;
 import java.io.Serializable;
 
 public class SurveyResult implements Serializable {
-    public Integer question1; // 0 to 100 in 5 point intervals
+    public Integer question1; // 0 to 100 in 5 point intervals (slider)
     public Integer question2; // 1 or 2
-    public Integer question3; // tom smells lol
-    public Integer question4;
-    public Integer question5;
-    public Integer question6;
-    public Integer question7;
-    public Integer question8;
-    public Integer question9;
+    public Integer question3; // 1 to 7
+    public Integer question3Extended;
+    public Integer question4; // 1 to 8
+    public Integer question4Extended;
+    public Integer question5; // 0 to 10 in 1 point intervals (slider)
+    public Integer question6; // 0 to 10 in 1 point intervals (slider)
+    public Integer question7; // 0 to 10 in 1 point intervals (slider)
+    public Integer question8; // 1 to 4
+    public Integer question9; // 1 to 3
 
     public SurveyResult() {
-    }
-
-    @Override
-    public String toString() {
-        return "SurveyResult{" +
-                "question1=" + question1 +
-                ", question2=" + question2 +
-                ", question3=" + question3 +
-                ", question4=" + question4 +
-                ", question5=" + question5 +
-                ", question6=" + question6 +
-                ", question7=" + question7 +
-                ", question8=" + question8 +
-                ", question9=" + question9 +
-                '}';
     }
 
     public Integer getQuestion1() {
@@ -55,12 +42,28 @@ public class SurveyResult implements Serializable {
         this.question3 = question3;
     }
 
+    public Integer getQuestion3Extended() {
+        return question3Extended;
+    }
+
+    public void setQuestion3Extended(Integer question3Extended) {
+        this.question3Extended = question3Extended;
+    }
+
     public Integer getQuestion4() {
         return question4;
     }
 
     public void setQuestion4(Integer question4) {
         this.question4 = question4;
+    }
+
+    public Integer getQuestion4Extended() {
+        return question4Extended;
+    }
+
+    public void setQuestion4Extended(Integer question4Extended) {
+        this.question4Extended = question4Extended;
     }
 
     public Integer getQuestion5() {
