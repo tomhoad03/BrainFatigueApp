@@ -7,6 +7,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.Serializable;
 
+import static android.provider.Settings.System.getString;
+
 @Entity
 public class SurveyResult implements Serializable {
     @PrimaryKey
@@ -17,13 +19,13 @@ public class SurveyResult implements Serializable {
     @ColumnInfo(name = "question2")
     public Integer question2; // 1 or 2
     @ColumnInfo(name = "question3")
-    public Integer question3; // 1 to 7
+    public Integer question3; // 1 to 7 (should be -1 of question 2 = 2)
     @ColumnInfo(name = "question3_extended")
-    public Integer question3Extended;
+    public Integer question3Extended; // 1 to 5, 6 to 13, 14 to 15, 16 to 18, 19 to 24, 25 to 27, 28 to 32 (range corresponds to value in question 3, should be -1 of question 2 = 2)
     @ColumnInfo(name = "question4")
-    public Integer question4; // 1 to 8
+    public Integer question4; // 1 to 8 (should be -1 of question 2 = 1)
     @ColumnInfo(name = "question4_extended")
-    public Integer question4Extended;
+    public Integer question4Extended; // 1 to 3, 4 to 7, 8 to 10, 11 to 15, 16 to 20, 21 to 26, 27 to 33, 34 to 39 (range corresponds to value in question 4, should be -1 of question 2 = 1)
     @ColumnInfo(name = "question5")
     public Integer question5; // 0 to 10 in 1 point intervals (slider)
     @ColumnInfo(name = "question6")
