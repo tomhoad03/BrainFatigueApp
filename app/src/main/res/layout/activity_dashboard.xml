@@ -36,7 +36,7 @@
             android:id="@+id/activity_dashboard_tab_bar"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            app:tabBackground="@color/off_white"
+            app:tabBackground="@color/white"
             app:tabIndicatorColor="@color/custom_purple_A"
             app:tabTextColor="@color/grey_text"
             app:tabSelectedTextColor="@color/custom_navy_A"
