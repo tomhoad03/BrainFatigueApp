@@ -85,6 +85,7 @@ public class DashboardActivity extends AppCompatActivity {
         });
     }
 
+    // Get the string for the corresponding survey result
     public String getSurveyString(SurveyResult surveyResult, Integer questionId, Integer questionResult, @Nullable Boolean extended) {
         if (questionId == 2 || (questionId == 3 && extended != null) || (questionId == 4 && extended != null) || questionId == 8 || questionId == 9) {
             return surveyResult.getSurveyString(getApplicationContext(), questionId, questionResult, extended);
