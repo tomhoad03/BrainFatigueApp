@@ -37,15 +37,48 @@ public class SurveyEndActivity extends AppCompatActivity {
             });
             executorService.shutdown();
 
+            // Schedule the next notification
+            long interval = 10800000L, dayStart = 32400000L, blockStart = 39600000L, blockEnd = 54000000L, dayEnd = 79200000L;
+            long scheduledNotification = scheduleNotification(System.currentTimeMillis(), interval, dayStart, blockStart, blockEnd, dayEnd);
+
             // Setup the next notification
             Intent notifyIntent = new Intent(getApplicationContext(), NotificationReceiver.class);
             PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
             AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-            alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (60000 * 30), pendingIntent);
+            alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, scheduledNotification, pendingIntent);
 
             Intent intent = new Intent(SurveyEndActivity.this, HomeActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         });
+    }
+
+    public Long scheduleNotification(Long startTime, Long interval, Long dayStart, Long blockStart, Long blockEnd, Long dayEnd) {
+        long remainingTime = interval;
+        long alarmTime = startTime;
+
+        while (remainingTime > 0) {
+            if (alarmTime >= dayStart && alarmTime < blockStart) {
+                long gap = blockStart - alarmTime;
+                if (gap > remainingTime) {
+                    alarmTime += remainingTime;
+                    break;
+                } else {
+                    alarmTime = blockEnd;
+                    remainingTime -= gap;
+                }
+            } else {
+                long gap = dayEnd - alarmTime;
+                if (gap > remainingTime) {
+                    alarmTime += remainingTime;
+                    break;
+                } else {
+                    alarmTime = dayStart;
+                    remainingTime -= gap;
+                }
+            }
+        }
+
+        return alarmTime;
     }
 }
