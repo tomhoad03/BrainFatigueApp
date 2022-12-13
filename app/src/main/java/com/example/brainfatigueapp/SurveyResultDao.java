@@ -10,7 +10,7 @@ import java.util.List;
 public interface SurveyResultDao {
     @Query("SELECT * FROM SurveyResult")
     List<SurveyResult> getAll();
-
+    // tom smells
     @Insert
     void insert(SurveyResult surveyResult);
 }

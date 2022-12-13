@@ -68,6 +68,10 @@ public class SurveyResult implements Serializable {
                 '}';
     }
 
+    public Long getSurveyResultId() {
+        return surveyResultId;
+    }
+
     public Integer getQuestion1() {
         return question1;
     }
