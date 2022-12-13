@@ -32,10 +32,8 @@
     <string name="activity_dashboard_left_group3_bottom">358 steps done today.</string>
     <string name="activity_dashboard_left_group4_top">Lorem Ipsum</string>
     <string name="activity_dashboard_left_group4_bottom">Lorem ipsum dolor sit amet.</string>
-    <string name="activity_dashboard_right_group1">Example data 1</string>
-    <string name="activity_dashboard_right_group2">Example data 2</string>
-    <string name="activity_dashboard_right_group3">Example data 3</string>
-    <string name="activity_dashboard_right_group4">Example data 4</string>
+    <string name="activity_dashboard_right_main">Nov 3rd, 10am</string>
+    <string name="activity_dashboard_right_sub">you were super tired!</string>
 
     <!-- login stuff I am in agony send help -->
     <string name="facebook_app_id">1841804132826804</string>
