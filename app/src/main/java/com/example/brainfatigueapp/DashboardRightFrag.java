@@ -14,8 +14,7 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.*;
 
 
 public class DashboardRightFrag extends Fragment {
@@ -40,31 +39,40 @@ public class DashboardRightFrag extends Fragment {
 
         // Get the data from the database
         ExecutorService executorService = Executors.newSingleThreadExecutor();
-        executorService.execute(() -> {
+        Future<List<SurveyResult>> surveyResultsFuture = executorService.submit(() -> {
             SurveyDatabase surveyDatabase = SurveyDatabase.getDatabase(getContext().getApplicationContext());
             SurveyResultDao surveyResultDao = surveyDatabase.surveyResultDao();
 
-            List<SurveyResult> surveyResults = surveyResultDao.getAll();
-            Long timeInMillis = surveyResults.get(0).getSurveyResultId();
-            SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM d, hh:mmaaa", Locale.UK);
-            GregorianCalendar calendar = new GregorianCalendar(TimeZone.getTimeZone("Europe/London"));
-            calendar.setTimeInMillis(timeInMillis);
-            System.out.println("CURRENTLY: " + sdf.format(calendar.getTime()));
-
-            // Log.d("survey_results", surveyResults.toString());
-
-            // Create and format the new button to include data from the database
-            Button newButton = new Button(getActivity());
-            newButton.setLayoutParams(new ConstraintLayout.LayoutParams(350, 84));
-            newButton.setText(sdf.format(calendar.getTime()));
-
-            // newButton.setId(111);
-
-            //add button to the layout
-            layout.addView(newButton);
-
+            return surveyResultDao.getAll();
         });
         executorService.shutdown();
+
+        List<SurveyResult> surveyResults = null;
+        try {
+            surveyResults = surveyResultsFuture.get(200, TimeUnit.MILLISECONDS);
+        } catch (InterruptedException | ExecutionException | TimeoutException e) {
+            e.printStackTrace();
+        }
+        Log.d("survey_results", surveyResults.toString());
+
+        // Calculate the date from milliseconds
+        Long timeInMillis = surveyResults.get(0).getSurveyResultId();
+        SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM d, hh:mmaaa", Locale.UK);
+        GregorianCalendar calendar = new GregorianCalendar(TimeZone.getTimeZone("Europe/London"));
+        calendar.setTimeInMillis(timeInMillis);
+        System.out.println("CURRENTLY: " + sdf.format(calendar.getTime()));
+
+        // Log.d("survey_results", surveyResults.toString());
+
+        // Create and format the new button to include data from the database
+        Button newButton = new Button(getActivity());
+        newButton.setLayoutParams(new ConstraintLayout.LayoutParams(350, 84));
+        newButton.setText(sdf.format(calendar.getTime()));
+
+        // newButton.setId(111);
+
+        //add button to the layout
+        layout.addView(newButton);
 
     }
 }

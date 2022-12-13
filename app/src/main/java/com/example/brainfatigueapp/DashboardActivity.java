@@ -15,8 +15,7 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.*;
 
 public class DashboardActivity extends AppCompatActivity {
 
@@ -41,14 +40,21 @@ public class DashboardActivity extends AppCompatActivity {
 
         // Database access
         ExecutorService executorService = Executors.newSingleThreadExecutor();
-        executorService.execute(() -> {
+        Future<List<SurveyResult>> surveyResultsFuture = executorService.submit(() -> {
             SurveyDatabase surveyDatabase = SurveyDatabase.getDatabase(getApplicationContext());
             SurveyResultDao surveyResultDao = surveyDatabase.surveyResultDao();
 
-            List<SurveyResult> surveyResults = surveyResultDao.getAll();
-            Log.d("survey_results", surveyResults.toString());
+            return surveyResultDao.getAll();
         });
         executorService.shutdown();
+
+        List<SurveyResult> surveyResults = null;
+        try {
+            surveyResults = surveyResultsFuture.get(200, TimeUnit.MILLISECONDS);
+        } catch (InterruptedException | ExecutionException | TimeoutException e) {
+            e.printStackTrace();
+        }
+        Log.d("survey_results", surveyResults.toString());
 
         // Fragments
         FragmentManager fm = getSupportFragmentManager();
