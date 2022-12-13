@@ -1,8 +1,10 @@
 package com.example.brainfatigueapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.widget.ImageButton;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.constraintlayout.motion.utils.ViewState;
@@ -81,5 +83,13 @@ public class DashboardActivity extends AppCompatActivity {
                 tabLayout.selectTab(tabLayout.getTabAt(position));
             }
         });
+    }
+
+    public String getSurveyString(SurveyResult surveyResult, Integer questionId, Integer questionResult, @Nullable Boolean extended) {
+        if (questionId == 2 || (questionId == 3 && extended != null) || (questionId == 4 && extended != null) || questionId == 8 || questionId == 9) {
+            return surveyResult.getSurveyString(getApplicationContext(), questionId, questionResult, extended);
+        } else {
+            return null;
+        }
     }
 }
