@@ -33,7 +33,7 @@
     <string name="activity_dashboard_left_group4_top">Lorem Ipsum</string>
     <string name="activity_dashboard_left_group4_bottom">Lorem ipsum dolor sit amet.</string>
     <string name="activity_dashboard_right_main">Nov 3rd, 10am</string>
-    <string name="activity_dashboard_right_sub">you were super tired!</string>
+    <string name="activity_dashboard_right_sub">you were super tired! and this works now!</string>
 
     <!-- login stuff I am in agony send help -->
     <string name="facebook_app_id">1841804132826804</string>

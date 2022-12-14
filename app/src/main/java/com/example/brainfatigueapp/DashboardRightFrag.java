@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.core.content.ContextCompat;
@@ -81,7 +82,7 @@ public class DashboardRightFrag extends Fragment {
 
         // Apply the drawable for a report box to the button
         newButton.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.report_box));
-        newButton.setText(time); // Placeholder
+        // newButton.setText(time); // Placeholder
 
         // Align and constrain the button into position
         ConstraintSet constrain = new ConstraintSet();
@@ -96,7 +97,37 @@ public class DashboardRightFrag extends Fragment {
         constrain.connect(newButton.getId(), ConstraintSet.TOP,
                           layout.getId(),    ConstraintSet.TOP);
         constrain.setMargin(newButton.getId(), ConstraintSet.TOP, 10);
-
         constrain.applyTo(layout);
+
+        // Create the text that goes in the report boxes (styles applied in constructor)
+        TextView newMainText = new TextView(getActivity(), null, 0, R.style.report_box_main_text);
+        layout.addView(newMainText);
+        TextView newSubText = new TextView(getActivity(), null, 0, R.style.report_box_sub_text);
+        layout.addView(newSubText);
+
+        // Give the texts ids
+        newMainText.setId((int) 1235); // Also needs to be programmatic
+        newSubText.setId((int) 1236);
+
+        ConstraintSet constrainText = new ConstraintSet();
+        constrainText.clone(layout);
+
+        // Set the strings for the text
+        newMainText.setText(time); // Time could be formatted differently
+        newSubText.setText(R.string.activity_dashboard_right_sub); // What data to show before the full popup?
+
+        newMainText.bringToFront();
+        newSubText.bringToFront();
+
+        // Set the constraints on the text
+        constrainText.connect(newMainText.getId(), ConstraintSet.TOP,
+                          newButton.getId(),   ConstraintSet.TOP, 24);
+        constrainText.connect(newMainText.getId(), ConstraintSet.LEFT,
+                          newButton.getId(),   ConstraintSet.LEFT, 36);
+        constrainText.connect(newSubText.getId(),  ConstraintSet.TOP,
+                          newMainText.getId(), ConstraintSet.BOTTOM, 12);
+        constrainText.connect(newSubText.getId(),  ConstraintSet.LEFT,
+                          newMainText.getId(),   ConstraintSet.LEFT);
+        constrainText.applyTo(layout);
     }
 }
