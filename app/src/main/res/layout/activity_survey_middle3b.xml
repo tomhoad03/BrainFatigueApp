@@ -87,7 +87,7 @@
                 android:id="@+id/activity_survey_middle3b_question"
                 app:fontFamily="@font/spartan" app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.484"
-                app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="132dp"/>
+                app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="50dp"/>
         <Button
                 android:text="@string/activity_survey_middle3b_button6"
                 android:backgroundTint="@color/grey"

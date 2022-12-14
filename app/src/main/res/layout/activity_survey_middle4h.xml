@@ -98,5 +98,5 @@
             android:id="@+id/activity_survey_middle4h_question"
             app:fontFamily="@font/spartan" app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.484"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="132dp"/>
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="50dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

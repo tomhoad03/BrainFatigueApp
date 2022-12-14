@@ -13,9 +13,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="160dp"
         android:gravity="center"
-        android:text="App Name"
+        android:text="Brain Fatigue Tracker"
         android:textColor="@color/custom_navy_A"
-        android:textSize="40dp"
+        android:textSize="38dp"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="0dp" />
 
