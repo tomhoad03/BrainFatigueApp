@@ -26,6 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+            <!--
             <Button
                     android:layout_width="350dp"
                     android:layout_height="84dp"
@@ -60,6 +61,7 @@
                     app:layout_constraintTop_toBottomOf="@id/activity_right_fragment_example_report_main"
                     app:layout_constraintStart_toStartOf="@id/activity_right_fragment_example_report_main"
                     android:layout_marginTop="4dp"/>
+                -->
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
