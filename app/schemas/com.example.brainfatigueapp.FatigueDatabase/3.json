@@ -1,8 +1,8 @@
 {
   "formatVersion": 1,
   "database": {
-    "version": 2,
-    "identityHash": "37797b2a774ea21df1a8d90b492debd7",
+    "version": 3,
+    "identityHash": "a5e0e915efefccda04d83930a3b827fe",
     "entities": [
       {
         "tableName": "SurveyResult",
@@ -92,7 +92,7 @@
       },
       {
         "tableName": "Settings",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`settingsId` INTEGER, `day_start` INTEGER, PRIMARY KEY(`settingsId`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`settingsId` INTEGER, `frequency` INTEGER, `day_start` INTEGER, `day_End` INTEGER, `work_start` INTEGER, `work_End` INTEGER, `summary` INTEGER, `dark_mode` INTEGER NOT NULL, PRIMARY KEY(`settingsId`))",
         "fields": [
           {
             "fieldPath": "settingsId",
@@ -101,10 +101,46 @@
             "notNull": false
           },
           {
+            "fieldPath": "frequency",
+            "columnName": "frequency",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
             "fieldPath": "dayStart",
             "columnName": "day_start",
             "affinity": "INTEGER",
             "notNull": false
+          },
+          {
+            "fieldPath": "dayEnd",
+            "columnName": "day_End",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "workStart",
+            "columnName": "work_start",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "workEnd",
+            "columnName": "work_End",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "summary",
+            "columnName": "summary",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "darkMode",
+            "columnName": "dark_mode",
+            "affinity": "INTEGER",
+            "notNull": true
           }
         ],
         "primaryKey": {
@@ -120,7 +156,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '37797b2a774ea21df1a8d90b492debd7')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'a5e0e915efefccda04d83930a3b827fe')"
     ]
   }
 }
