@@ -1,9 +1,12 @@
 package com.example.brainfatigueapp;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -53,7 +56,7 @@ public class DashboardRightFrag extends Fragment {
         } catch (InterruptedException | ExecutionException | TimeoutException e) {
             e.printStackTrace();
         }
-        Log.d("survey_results", surveyResults.toString());
+        // Log.d("survey_results", surveyResults.toString());
 
         // Calculate the date from milliseconds
         Long timeInMillis = surveyResults.get(0).getSurveyResultId();
@@ -62,17 +65,27 @@ public class DashboardRightFrag extends Fragment {
         calendar.setTimeInMillis(timeInMillis);
         System.out.println("CURRENTLY: " + sdf.format(calendar.getTime()));
 
-        // Log.d("survey_results", surveyResults.toString());
-
-        // Create and format the new button to include data from the database
-        Button newButton = new Button(getActivity());
-        newButton.setLayoutParams(new ConstraintLayout.LayoutParams(350, 84));
-        newButton.setText(sdf.format(calendar.getTime()));
-
-        // newButton.setId(111);
-
-        //add button to the layout
+        // Create a new button to add to the page
+        Button newButton = formatButton(sdf.format(calendar.getTime()));
         layout.addView(newButton);
+    }
 
+    private Button formatButton (String time) {
+        // This function takes the required data to create a report and makes it look like it should
+        Button newButton = new Button(getActivity());
+
+        // Set the id of the new button so it can be referred to later
+        // newButton.setId(111)
+
+        // Apply the drawable for a report box to the button
+        newButton.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.report_box));
+        newButton.setText(time); // Placeholder
+
+        // Align and constrain the button into position
+        // centre in parent
+        // constrain top to bottom of previous box in list, unless it's the first one)
+        // set the top margin size to 10dp
+
+        return newButton;
     }
 }
