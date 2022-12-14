@@ -77,8 +77,7 @@ public class DashboardRightFrag extends Fragment {
         layout.addView(newButton);
 
         // Set the id of the new button so that it can be referred to later
-        newButton.setId((int) 1234);
-        newButton.setTag("button1");
+        newButton.setId((int) 1234); // Needs to be done programmatically
 
         // Apply the drawable for a report box to the button
         newButton.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.report_box));
@@ -87,13 +86,17 @@ public class DashboardRightFrag extends Fragment {
         // Align and constrain the button into position
         ConstraintSet constrain = new ConstraintSet();
         constrain.clone(layout);
+        // Horizontally
         constrain.connect(newButton.getId(), ConstraintSet.LEFT,
                           layout.getId(),    ConstraintSet.LEFT); // ConstraintSet.PARENT_ID / layout.getId() both work
         constrain.connect(newButton.getId(), ConstraintSet.RIGHT,
                           layout.getId(),    ConstraintSet.RIGHT);
-        // constrain top to bottom of previous box in list, unless it's the first one)
-        // set the top margin size to 10dp
-        constrain.applyTo(layout);
+        // Vertically
+        // If statement here, if not the first box -> set the top of box to the bottom of the previous box
+        constrain.connect(newButton.getId(), ConstraintSet.TOP,
+                          layout.getId(),    ConstraintSet.TOP);
+        constrain.setMargin(newButton.getId(), ConstraintSet.TOP, 10);
 
+        constrain.applyTo(layout);
     }
 }
