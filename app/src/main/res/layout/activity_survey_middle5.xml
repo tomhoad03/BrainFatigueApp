@@ -27,7 +27,7 @@
             android:layout_width="361dp"
             android:layout_height="62dp" android:id="@+id/activity_survey_middle5_next_button"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="9dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginBottom="28dp" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"/>
     <com.google.android.material.slider.Slider
             android:id="@+id/activity_survey_middle5_slider"
