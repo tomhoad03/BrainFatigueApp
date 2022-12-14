@@ -18,7 +18,7 @@
             app:fontFamily="@font/spartan"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:layout_editor_absoluteY="17dp"/>
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="17dp"/>
     <!-- Settings button width hardcoded below to centre align the icon... -->
     <com.google.android.material.button.MaterialButton
             android:id="@+id/activity_dashboard_settings_button"

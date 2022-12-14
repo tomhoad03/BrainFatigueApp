@@ -21,7 +21,7 @@ public class NotificationReceiver extends BroadcastReceiver {
         // Build the notification
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "")
                 .setSmallIcon(R.drawable.ic_notification_vector)
-                .setContentTitle("Brain Fatigue App")
+                .setContentTitle("Brain Fatigue Tracker")
                 .setContentText("It's time to take the survey!")
                 .setDefaults(Notification.DEFAULT_VIBRATE)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)

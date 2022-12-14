@@ -6,13 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
-
-import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -28,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         createNotificationChannel();
 
         // Create the database
-        SurveyDatabase.getDatabase(getApplicationContext());
+        FatigueDatabase.getDatabase(getApplicationContext());
 
         // Display homepage after delay
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
