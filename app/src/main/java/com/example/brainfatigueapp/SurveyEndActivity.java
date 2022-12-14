@@ -11,7 +11,6 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.SimpleDateFormat;
-import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -43,8 +42,8 @@ public class SurveyEndActivity extends AppCompatActivity {
         surveySubmitBtn.setOnClickListener(v -> {
             ExecutorService executorService = Executors.newSingleThreadExecutor();
             executorService.execute(() -> {
-                SurveyDatabase surveyDatabase = SurveyDatabase.getDatabase(getApplicationContext());
-                SurveyResultDao surveyResultDao = surveyDatabase.surveyResultDao();
+                FatigueDatabase fatigueDatabase = FatigueDatabase.getDatabase(getApplicationContext());
+                SurveyResultDao surveyResultDao = fatigueDatabase.surveyResultDao();
 
                 SurveyResult surveyResult = (SurveyResult) getIntent().getSerializableExtra("survey_result");
                 surveyResultDao.insert(surveyResult);
