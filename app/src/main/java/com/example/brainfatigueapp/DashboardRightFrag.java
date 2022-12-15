@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
@@ -14,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.fragment.app.FragmentManager;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -99,6 +101,13 @@ public class DashboardRightFrag extends Fragment {
         }
         constrain.setMargin(newButton.getId(), ConstraintSet.TOP, 60);
         constrain.applyTo(layout);
+
+        // Set the functionality of the buttons so that they open a popup when clicked
+        newButton.setOnClickListener(v -> {
+            FragmentManager manager = getFragmentManager();
+            DashboardPopupFrag popup = new DashboardPopupFrag();
+            popup.show(manager, "popup");
+        });
 
         // Create the text that goes in the report boxes (styles applied in constructor)
         TextView newMainText = new TextView(getActivity(), null, 0, R.style.report_box_main_text);
