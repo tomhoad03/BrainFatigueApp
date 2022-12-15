@@ -16,10 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.text.SimpleDateFormat;
-import java.util.GregorianCalendar;
-import java.util.List;
-import java.util.Locale;
-import java.util.TimeZone;
+import java.util.*;
 import java.util.concurrent.*;
 
 
@@ -61,28 +58,27 @@ public class DashboardRightFrag extends Fragment {
         }
         // Log.d("survey_results", surveyResults.toString());
 
-        // Calculate the date from milliseconds
-        Long timeInMillis = surveyResults.get(0).getSurveyResultId();
-        SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM d, hh:mmaaa", Locale.UK);
-        GregorianCalendar calendar = new GregorianCalendar(TimeZone.getTimeZone("Europe/London"));
-        calendar.setTimeInMillis(timeInMillis);
-        System.out.println("CURRENTLY: " + sdf.format(calendar.getTime()));
-
-        // Create a new button to add to the page
-        formatButton(sdf.format(calendar.getTime()), layout);
+        // Fill the fragment with a report box for every entry in the database
+        int boxCount = 0;
+        for (SurveyResult nextResult : surveyResults) {
+            // Create a report box for this result
+            Long resultTime = nextResult.getSurveyResultId();
+            Integer resultFatigueLevel = nextResult.getQuestion1();
+            formatButton(resultTime, resultFatigueLevel, boxCount, layout);
+            boxCount++;
+        }
     }
 
-    private void formatButton (String time, ConstraintLayout layout) {
+    private void formatButton (Long time, Integer fatigueLevel, int count, ConstraintLayout layout) {
         // This function takes the required data to create a report and makes it look like it should
         Button newButton = new Button(getActivity());
         layout.addView(newButton);
 
         // Set the id of the new button so that it can be referred to later
-        newButton.setId((int) 1234); // Needs to be done programmatically
+        newButton.setId(1000000 + count); // Needs to be done programmatically
 
         // Apply the drawable for a report box to the button
         newButton.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.report_box));
-        // newButton.setText(time); // Placeholder
 
         // Align and constrain the button into position
         ConstraintSet constrain = new ConstraintSet();
@@ -94,9 +90,14 @@ public class DashboardRightFrag extends Fragment {
                           layout.getId(),    ConstraintSet.RIGHT);
         // Vertically
         // If statement here, if not the first box -> set the top of box to the bottom of the previous box
-        constrain.connect(newButton.getId(), ConstraintSet.TOP,
-                          layout.getId(),    ConstraintSet.TOP);
-        constrain.setMargin(newButton.getId(), ConstraintSet.TOP, 10);
+        if (count == 0) {
+            constrain.connect(newButton.getId(), ConstraintSet.TOP,
+                    layout.getId(), ConstraintSet.TOP); // Constrain the box to the top of the layout
+        } else {
+            constrain.connect(newButton.getId(), ConstraintSet.TOP,
+                    (int) newButton.getId() - 1, ConstraintSet.BOTTOM); // Constrain the box to the bottom of the previous box
+        }
+        constrain.setMargin(newButton.getId(), ConstraintSet.TOP, 60);
         constrain.applyTo(layout);
 
         // Create the text that goes in the report boxes (styles applied in constructor)
@@ -106,26 +107,32 @@ public class DashboardRightFrag extends Fragment {
         layout.addView(newSubText);
 
         // Give the texts ids
-        newMainText.setId((int) 1235); // Also needs to be programmatic
-        newSubText.setId((int) 1236);
+        newMainText.setId(2000000 + count); // Also needs to be programmatic
+        newSubText.setId(3000000 + count);
 
         ConstraintSet constrainText = new ConstraintSet();
         constrainText.clone(layout);
 
         // Set the strings for the text
-        newMainText.setText(time); // Time could be formatted differently
-        newSubText.setText(R.string.activity_dashboard_right_sub); // What data to show before the full popup?
+        SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM d, hh:mmaaa", Locale.UK);
+        GregorianCalendar calendar = new GregorianCalendar(TimeZone.getTimeZone("Europe/London"));
+        calendar.setTimeInMillis(time);
+        System.out.println("CURRENTLY: " + sdf.format(calendar.getTime()));
+        String mainText = sdf.format(calendar.getTime());
+        String subText = "You reported a fatigue level of " + fatigueLevel.toString() + ".";
+        newMainText.setText(mainText); // Time could be formatted differently
+        newSubText.setText(subText);
 
         newMainText.bringToFront();
         newSubText.bringToFront();
 
         // Set the constraints on the text
         constrainText.connect(newMainText.getId(), ConstraintSet.TOP,
-                          newButton.getId(),   ConstraintSet.TOP, 24);
+                          newButton.getId(),   ConstraintSet.TOP, 28);
         constrainText.connect(newMainText.getId(), ConstraintSet.LEFT,
                           newButton.getId(),   ConstraintSet.LEFT, 36);
         constrainText.connect(newSubText.getId(),  ConstraintSet.TOP,
-                          newMainText.getId(), ConstraintSet.BOTTOM, 12);
+                          newMainText.getId(), ConstraintSet.BOTTOM, 16);
         constrainText.connect(newSubText.getId(),  ConstraintSet.LEFT,
                           newMainText.getId(),   ConstraintSet.LEFT);
         constrainText.applyTo(layout);
