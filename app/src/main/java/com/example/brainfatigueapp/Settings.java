@@ -30,8 +30,15 @@ public class Settings {
     @ColumnInfo(name = "dark_mode")
     public boolean darkMode;
 
-    public Settings(Long settingsId) {
+    public Settings(Long settingsId, Long frequency, Long dayStart, Long dayEnd, Long workStart, Long workEnd, Long summary, boolean darkMode) {
         this.settingsId = settingsId;
+        this.frequency = frequency;
+        this.dayStart = dayStart;
+        this.dayEnd = dayEnd;
+        this.workStart = workStart;
+        this.workEnd = workEnd;
+        this.summary = summary;
+        this.darkMode = darkMode;
     }
 
     @Override
@@ -52,63 +59,31 @@ public class Settings {
         return settingsId;
     }
 
-    public void setSettingsId(Long settingsId) {
-        this.settingsId = settingsId;
-    }
-
     public Long getFrequency() {
         return frequency;
-    }
-
-    public void setFrequency(Long frequency) {
-        this.frequency = frequency;
     }
 
     public Long getDayStart() {
         return dayStart;
     }
 
-    public void setDayStart(Long dayStart) {
-        this.dayStart = dayStart;
-    }
-
     public Long getDayEnd() {
         return dayEnd;
-    }
-
-    public void setDayEnd(Long dayEnd) {
-        this.dayEnd = dayEnd;
     }
 
     public Long getWorkStart() {
         return workStart;
     }
 
-    public void setWorkStart(Long workStart) {
-        this.workStart = workStart;
-    }
-
     public Long getWorkEnd() {
         return workEnd;
-    }
-
-    public void setWorkEnd(Long workEnd) {
-        this.workEnd = workEnd;
     }
 
     public Long getSummary() {
         return summary;
     }
 
-    public void setSummary(Long summary) {
-        this.summary = summary;
-    }
-
     public boolean isDarkMode() {
         return darkMode;
-    }
-
-    public void setDarkMode(boolean darkMode) {
-        this.darkMode = darkMode;
     }
 }
