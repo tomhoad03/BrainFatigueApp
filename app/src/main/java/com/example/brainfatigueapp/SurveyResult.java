@@ -317,9 +317,11 @@ public class SurveyResult implements Serializable {
 
     public String getQuestion3and4String(Context context) {
         if (this.getQuestion2() == 1) {
-            return getSurveyString(context, 3, this.getQuestion3Extended(), true);
+            return "You were at home, doing the activity: \"" +
+                    getSurveyString(context, 3, this.getQuestion3Extended(), true).toLowerCase() + "\"";
         } else {
-            return getSurveyString(context, 4, this.getQuestion4Extended(), true);
+            return "You were not home, and selected the activity \"" +
+                    getSurveyString(context, 4, this.getQuestion4Extended(), true).toLowerCase() + "\"";
         }
     }
 

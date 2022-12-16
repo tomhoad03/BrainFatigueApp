@@ -41,23 +41,20 @@ public class DashboardPopupFrag extends DialogFragment {
         titleText.setText(this.title);
 
         TextView question1Text = view.findViewById(R.id.fragment_dashboard_popup_question_1);
-        question1Text.setText("1. " + this.result.getQuestion1String());
-        TextView question2Text = view.findViewById(R.id.fragment_dashboard_popup_question_2);
-        question2Text.setText("2. " + this.result.getQuestion2String());
-        TextView question3Text = view.findViewById(R.id.fragment_dashboard_popup_question_3);
-        question3Text.setText("3. " + this.result.getQuestion3and4String(getActivity()));
-        TextView question4Text = view.findViewById(R.id.fragment_dashboard_popup_question_4);
-        question4Text.setText("NOOOOOOO NEEED " + this.result.getQuestion4().toString());
+        question1Text.setText(this.result.getQuestion1String());
+        // Question 2 also merged into '3 and 4'
+        TextView question3and4Text = view.findViewById(R.id.fragment_dashboard_popup_question_3_and_4);
+        question3and4Text.setText(this.result.getQuestion3and4String(getActivity()));
         TextView question5Text = view.findViewById(R.id.fragment_dashboard_popup_question_5);
-        question5Text.setText("5. " + this.result.getQuestion5String());
+        question5Text.setText(this.result.getQuestion5String());
         TextView question6Text = view.findViewById(R.id.fragment_dashboard_popup_question_6);
-        question6Text.setText("6. " + this.result.getQuestion6String());
+        question6Text.setText(this.result.getQuestion6String());
         TextView question7Text = view.findViewById(R.id.fragment_dashboard_popup_question_7);
-        question7Text.setText("7. " + this.result.getQuestion7String());
+        question7Text.setText(this.result.getQuestion7String());
         TextView question8Text = view.findViewById(R.id.fragment_dashboard_popup_question_8);
-        question8Text.setText("8. " + this.result.getQuestion8String());
+        question8Text.setText(this.result.getQuestion8String());
         TextView question9Text = view.findViewById(R.id.fragment_dashboard_popup_question_9);
-        question9Text.setText("9. " + this.result.getQuestion9String());
+        question9Text.setText(this.result.getQuestion9String());
 
     }
 }
