@@ -5,7 +5,7 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {SurveyResult.class, Settings.class}, version = 3, exportSchema = true)
+@Database(entities = {SurveyResult.class, Settings.class}, version = 4, exportSchema = true)
 public abstract class FatigueDatabase extends RoomDatabase {
     public abstract SurveyResultDao surveyResultDao();
     public abstract SettingsDao settingsDao();

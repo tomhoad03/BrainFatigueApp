@@ -42,7 +42,6 @@ public class SurveyEndActivity extends AppCompatActivity {
             } catch (Exception e) {
                 setting = new Settings();
             }
-            Log.d("survey_results", setting.toString());
             return setting;
         });
         executorService1.shutdown();
@@ -85,7 +84,6 @@ public class SurveyEndActivity extends AppCompatActivity {
                 PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
                 AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
                 alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + scheduledNotification, pendingIntent);
-                Log.d("notification_scheduled", sdf.format(System.currentTimeMillis() + scheduledNotification));
 
                 Intent intent = new Intent(SurveyEndActivity.this, HomeActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

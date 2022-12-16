@@ -49,7 +49,6 @@ public class SettingsActivity extends AppCompatActivity {
             } catch (Exception e) {
                 setting = new Settings();
             }
-            Log.d("survey_results", setting.toString());
             return setting;
         });
         executorService.shutdown();
