@@ -72,6 +72,14 @@ public class DashboardRightFrag extends Fragment {
     }
 
     private void formatButton (Long time, Integer fatigueLevel, int count, ConstraintLayout layout) {
+        // Set the strings for the text
+        SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM d, hh:mmaaa", Locale.UK);
+        GregorianCalendar calendar = new GregorianCalendar(TimeZone.getTimeZone("Europe/London"));
+        calendar.setTimeInMillis(time);
+        System.out.println("CURRENTLY: " + sdf.format(calendar.getTime()));
+        String mainText = sdf.format(calendar.getTime());
+        String subText = "You reported a fatigue level of " + fatigueLevel.toString() + ".";
+
         // This function takes the required data to create a report and makes it look like it should
         Button newButton = new Button(getActivity());
         layout.addView(newButton);
@@ -105,7 +113,7 @@ public class DashboardRightFrag extends Fragment {
         // Set the functionality of the buttons so that they open a popup when clicked
         newButton.setOnClickListener(v -> {
             FragmentManager manager = getFragmentManager();
-            DashboardPopupFrag popup = new DashboardPopupFrag();
+            DashboardPopupFrag popup = new DashboardPopupFrag(mainText);
             popup.show(manager, "popup");
         });
 
@@ -122,13 +130,6 @@ public class DashboardRightFrag extends Fragment {
         ConstraintSet constrainText = new ConstraintSet();
         constrainText.clone(layout);
 
-        // Set the strings for the text
-        SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM d, hh:mmaaa", Locale.UK);
-        GregorianCalendar calendar = new GregorianCalendar(TimeZone.getTimeZone("Europe/London"));
-        calendar.setTimeInMillis(time);
-        System.out.println("CURRENTLY: " + sdf.format(calendar.getTime()));
-        String mainText = sdf.format(calendar.getTime());
-        String subText = "You reported a fatigue level of " + fatigueLevel.toString() + ".";
         newMainText.setText(mainText); // Time could be formatted differently
         newSubText.setText(subText);
 
