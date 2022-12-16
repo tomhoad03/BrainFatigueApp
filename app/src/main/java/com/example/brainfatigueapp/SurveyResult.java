@@ -8,6 +8,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.Serializable;
 
+import static android.provider.Settings.System.getConfiguration;
 import static android.provider.Settings.System.getString;
 
 @Entity
@@ -300,5 +301,65 @@ public class SurveyResult implements Serializable {
                 }
         }
         return null;
+    }
+
+    public String getQuestion1String() {
+        return String.format("You reported an energy level of %s", this.getQuestion1());
+    }
+
+    public String getQuestion2String() {
+        if (this.getQuestion2() == 1) {
+            return "At home";
+        } else {
+            return "Not at home";
+        }
+    }
+
+    public String getQuestion3and4String(Context context) {
+        if (this.getQuestion2() == 1) {
+            return getSurveyString(context, 3, this.getQuestion3Extended(), true);
+        } else {
+            return getSurveyString(context, 4, this.getQuestion4Extended(), true);
+        }
+    }
+
+    public String getQuestion5String() {
+        return String.format("This required an effort level of %s out of 10", this.getQuestion5());
+    }
+
+    public String getQuestion6String() {
+        return String.format("You said your fatigue was a %s out of 10", this.getQuestion6());
+    }
+
+    public String getQuestion7String() {
+        return String.format("You enjoyed this activity %s out of 10", this.getQuestion7());
+    }
+
+    public String getQuestion8String() {
+        Integer question8Response = this.getQuestion8();
+        String question8ResponseString = "";
+        if (question8Response == 1) {
+            question8ResponseString = "After this activity you said you felt full of energy";
+        } else if (question8Response == 2) {
+            question8ResponseString = "After this activity you said you felt somewhat energised";
+        } else if (question8Response == 3) {
+            question8ResponseString = "You said there was no change in your energy levels after this activity";
+        } else if (question8Response == 4) {
+            question8ResponseString = "You said you felt somewhat drained after this activity"; // BEWARE THE CONDITIONAL THAT WE TALKED ABOUT IN THE MEETING
+        }
+        return question8ResponseString;
+    }
+
+    public String getQuestion9String() {
+        Integer question9Response = this.getQuestion9();
+        String question9ResponseString = "";
+        if (question9Response == 1) {
+            question9ResponseString = "You said this was a physical fatigue";
+        } else if (question9Response == 2) {
+            question9ResponseString = "You said this was a mental fatigue";
+        } else if (question9Response == 3) {
+            question9ResponseString = "You said this was a mixture of both physical and mental fatigue";
+        }
+        return question9ResponseString;
     }
 }

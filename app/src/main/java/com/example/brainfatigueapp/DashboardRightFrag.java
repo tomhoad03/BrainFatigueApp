@@ -72,7 +72,7 @@ public class DashboardRightFrag extends Fragment {
         calendar.setTimeInMillis(result.getSurveyResultId());
         System.out.println("CURRENTLY: " + sdf.format(calendar.getTime()));
         String mainText = sdf.format(calendar.getTime());
-        String subText = "You reported a fatigue level of " + result.getQuestion1().toString() + ".";
+        String subText = "You reported a fatigue level of " + result.getQuestion1().toString() + "."; // Update to new string method
 
         // This function takes the required data to create a report and makes it look like it should
         Button newButton = new Button(getActivity());
