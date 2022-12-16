@@ -10,14 +10,14 @@ import android.view.ViewGroup;
 
 public class DashboardPopupFrag extends DialogFragment {
 
+    private SurveyResult result;
+
     public DashboardPopupFrag() {
         // Required empty public constructor
     }
-    public DashboardPopupFrag(String title) {
-        // Required empty public constructor
-        this.title = title;
+    public DashboardPopupFrag(SurveyResult result) {
+        this.result = result;
     }
-    String title = "";
     /*
     public static DashboardPopupFrag newInstance(String param1, String param2) {
         DashboardPopupFrag fragment = new DashboardPopupFrag();
@@ -45,6 +45,26 @@ public class DashboardPopupFrag extends DialogFragment {
     public void onViewCreated (View view, Bundle savedInstanceState) {
         // Update the text in the popup to display the full information of the survey report
         TextView titleText = (TextView) view.findViewById(R.id.fragment_dashboard_popup_title);
-        titleText.setText(this.title);
+        titleText.setText("(pass me in)");
+
+        TextView question1Text = (TextView) view.findViewById(R.id.fragment_dashboard_popup_question_1);
+        question1Text.setText(this.result.getQuestion1().toString());
+        TextView question2Text = (TextView) view.findViewById(R.id.fragment_dashboard_popup_question_2);
+        question2Text.setText(this.result.getQuestion2().toString());
+        TextView question3Text = (TextView) view.findViewById(R.id.fragment_dashboard_popup_question_3);
+        question3Text.setText(this.result.getQuestion3().toString());
+        TextView question4Text = (TextView) view.findViewById(R.id.fragment_dashboard_popup_question_4);
+        question4Text.setText(this.result.getQuestion4().toString());
+        TextView question5Text = (TextView) view.findViewById(R.id.fragment_dashboard_popup_question_5);
+        question5Text.setText(this.result.getQuestion5().toString());
+        TextView question6Text = (TextView) view.findViewById(R.id.fragment_dashboard_popup_question_6);
+        question6Text.setText(this.result.getQuestion6().toString());
+        TextView question7Text = (TextView) view.findViewById(R.id.fragment_dashboard_popup_question_7);
+        question7Text.setText(this.result.getQuestion7().toString());
+        TextView question8Text = (TextView) view.findViewById(R.id.fragment_dashboard_popup_question_8);
+        question8Text.setText(this.result.getQuestion8().toString());
+        TextView question9Text = (TextView) view.findViewById(R.id.fragment_dashboard_popup_question_9);
+        question9Text.setText(this.result.getQuestion9().toString());
+
     }
 }
