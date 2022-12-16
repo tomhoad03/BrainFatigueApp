@@ -11,23 +11,16 @@ import android.view.ViewGroup;
 public class DashboardPopupFrag extends DialogFragment {
 
     private SurveyResult result;
+    private String title;
 
     public DashboardPopupFrag() {
         // Required empty public constructor
     }
-    public DashboardPopupFrag(SurveyResult result) {
+
+    public DashboardPopupFrag(SurveyResult result, String title) {
         this.result = result;
+        this.title = title;
     }
-    /*
-    public static DashboardPopupFrag newInstance(String param1, String param2) {
-        DashboardPopupFrag fragment = new DashboardPopupFrag();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-     */
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,7 +38,7 @@ public class DashboardPopupFrag extends DialogFragment {
     public void onViewCreated (View view, Bundle savedInstanceState) {
         // Update the text in the popup to display the full information of the survey report
         TextView titleText = (TextView) view.findViewById(R.id.fragment_dashboard_popup_title);
-        titleText.setText("(pass me in)");
+        titleText.setText(this.title);
 
         TextView question1Text = (TextView) view.findViewById(R.id.fragment_dashboard_popup_question_1);
         question1Text.setText(this.result.getQuestion1().toString());

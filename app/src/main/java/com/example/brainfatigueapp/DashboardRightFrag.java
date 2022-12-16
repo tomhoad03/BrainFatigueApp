@@ -107,7 +107,7 @@ public class DashboardRightFrag extends Fragment {
         // Set the functionality of the buttons so that they open a popup when clicked
         newButton.setOnClickListener(v -> {
             FragmentManager manager = getFragmentManager();
-            DashboardPopupFrag popup = new DashboardPopupFrag(result);
+            DashboardPopupFrag popup = new DashboardPopupFrag(result, mainText);
             popup.show(manager, "popup");
         });
 
