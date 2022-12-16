@@ -33,11 +33,7 @@ public class DashboardRightFrag extends Fragment {
 
     @Override
     public void onViewCreated (View view, Bundle savedInstanceState) {
-        addReportBox(view);
-    }
-
-    private void addReportBox(View view) {
-        // Adds a new report box to the scrollable list
+        // Add report boxes with data from the database to the scrollable list
 
         // Get the layout
         ConstraintLayout layout = getView().findViewById(R.id.activity_right_fragment_reports_container);
@@ -63,29 +59,27 @@ public class DashboardRightFrag extends Fragment {
         // Fill the fragment with a report box for every entry in the database
         int boxCount = 0;
         for (SurveyResult nextResult : surveyResults) {
-            // Create a report box for this result
-            Long resultTime = nextResult.getSurveyResultId();
-            Integer resultFatigueLevel = nextResult.getQuestion1();
-            formatButton(resultTime, resultFatigueLevel, boxCount, layout);
+            // Create a report box for this survey result
+            formatButton(nextResult, boxCount, layout);
             boxCount++;
         }
     }
 
-    private void formatButton (Long time, Integer fatigueLevel, int count, ConstraintLayout layout) {
+    private void formatButton (SurveyResult result, int count, ConstraintLayout layout) {
         // Set the strings for the text
         SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM d, hh:mmaaa", Locale.UK);
         GregorianCalendar calendar = new GregorianCalendar(TimeZone.getTimeZone("Europe/London"));
-        calendar.setTimeInMillis(time);
+        calendar.setTimeInMillis(result.getSurveyResultId());
         System.out.println("CURRENTLY: " + sdf.format(calendar.getTime()));
         String mainText = sdf.format(calendar.getTime());
-        String subText = "You reported a fatigue level of " + fatigueLevel.toString() + ".";
+        String subText = "You reported a fatigue level of " + result.getQuestion1().toString() + ".";
 
         // This function takes the required data to create a report and makes it look like it should
         Button newButton = new Button(getActivity());
         layout.addView(newButton);
 
         // Set the id of the new button so that it can be referred to later
-        newButton.setId(1000000 + count); // Needs to be done programmatically
+        newButton.setId(10000000 + count);
 
         // Apply the drawable for a report box to the button
         newButton.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.report_box));
@@ -124,8 +118,8 @@ public class DashboardRightFrag extends Fragment {
         layout.addView(newSubText);
 
         // Give the texts ids
-        newMainText.setId(2000000 + count); // Also needs to be programmatic
-        newSubText.setId(3000000 + count);
+        newMainText.setId(20000000 + count);
+        newSubText.setId(30000000 + count);
 
         ConstraintSet constrainText = new ConstraintSet();
         constrainText.clone(layout);
