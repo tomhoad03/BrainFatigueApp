@@ -9,8 +9,8 @@ public class Settings {
     @PrimaryKey
     public Long settingsId;
 
-    @ColumnInfo(name = "frequency")
-    public Long frequency;
+    @ColumnInfo(name = "interval")
+    public Long interval;
 
     @ColumnInfo(name = "day_start")
     public Long dayStart;
@@ -30,9 +30,20 @@ public class Settings {
     @ColumnInfo(name = "dark_mode")
     public boolean darkMode;
 
-    public Settings(Long settingsId, Long frequency, Long dayStart, Long dayEnd, Long workStart, Long workEnd, Long summary, boolean darkMode) {
+    public Settings() {
+        this.settingsId = System.currentTimeMillis();
+        this.interval = 10800000L;
+        this.dayStart = 32400000L;
+        this.dayEnd = 79200000L;
+        this.workStart = 39600000L;
+        this.workEnd = 54000000L;
+        this.summary = 54000000L;
+        this.darkMode = false;
+    }
+
+    public Settings(Long settingsId, Long interval, Long dayStart, Long dayEnd, Long workStart, Long workEnd, Long summary, boolean darkMode) {
         this.settingsId = settingsId;
-        this.frequency = frequency;
+        this.interval = interval;
         this.dayStart = dayStart;
         this.dayEnd = dayEnd;
         this.workStart = workStart;
@@ -45,7 +56,7 @@ public class Settings {
     public String toString() {
         return "Settings{" +
                 "settingsId=" + settingsId +
-                ", frequency=" + frequency +
+                ", interval=" + interval +
                 ", dayStart=" + dayStart +
                 ", dayEnd=" + dayEnd +
                 ", workStart=" + workStart +
@@ -59,8 +70,8 @@ public class Settings {
         return settingsId;
     }
 
-    public Long getFrequency() {
-        return frequency;
+    public Long getInterval() {
+        return interval;
     }
 
     public Long getDayStart() {

@@ -47,7 +47,7 @@ public class SettingsActivity extends AppCompatActivity {
             try {
                 setting = settings.get(settings.size() - 1);
             } catch (Exception e) {
-                setting = new Settings(System.currentTimeMillis(), 10800000L, 32400000L, 79200000L, 39600000L, 54000000L, 54000000L, false);
+                setting = new Settings();
             }
             Log.d("survey_results", setting.toString());
             return setting;
@@ -98,7 +98,6 @@ public class SettingsActivity extends AppCompatActivity {
                 darkModeSwitch.setChecked(!currentState);
 
                 // Call the function to do the dark mode things
-
             });
             break;
         }
