@@ -199,6 +199,18 @@
     <string name="activity_survey_end_subMessage">To finish, press Submit</string>
     <string name="title_activity_settings">SettingsActivity</string>
 
+    <!--  reaction time test messages: a collection :-)))  -->
+    <string name="reaction_time_test_question">We would like you to participate in a reaction time test. Do you have five minutes to take the test?</string>
+    <string name="reaction_time_test_button1">Yes, go to Reaction Test</string>
+    <string name="reaction_time_test_button2">No, I\'m tired right now</string>
+    <string name="reaction_time_test_prompt1">REACTION TIME!</string>
+    <string name="reaction_time_test_prompt2">Tap on the screen when the box below changes colour.</string>
+    <string name="reaction_time_test_button3">Start</string>
+    <string name="reaction_time_test_prompt4">Done!</string>
+    <string name="reaction_time_test_button4">Go to homepage</string>
+    <string name="reaction_time_test_prompt5">NOTHING!</string>
+
+
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
     <string name="sync_header">Sync</string>

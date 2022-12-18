@@ -19,4 +19,6 @@
     <color name="custom_navy_A">#244E6C</color>
     <color name="custom_red">#FF4444</color>
     <color name="blank">#00FFFFFF</color>
+    <!-- Reaction time test colours   -->
+    <color name="grey_start">#C5C2C2</color>
 </resources>
