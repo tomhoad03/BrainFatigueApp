@@ -1,15 +1,11 @@
 package com.example.brainfatigueapp;
 
-import android.location.GnssAntennaInfo;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.*;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.slider.LabelFormatter;
 import com.google.android.material.slider.RangeSlider;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -172,13 +168,27 @@ public class SettingsActivity extends AppCompatActivity {
 
             // The dark mode button toggles the switch
             final Button darkModeBtn = findViewById(R.id.activity_settings_button_dark_mode);
+            final Switch darkModeSwitch = findViewById(R.id.activity_settings_switch_dark_mode);
+            darkModeSwitch.setChecked(finalResultSetting.isDarkMode());
+            darkModeSwitch.setClickable(false);
+
             darkModeBtn.setOnClickListener(v -> {
                 // Toggle the switch to the opposite state
-                final Switch darkModeSwitch = findViewById(R.id.activity_settings_switch_dark_mode);
-                boolean currentState = darkModeSwitch.isChecked();
-                darkModeSwitch.setChecked(!currentState);
+                darkModeSwitch.setChecked(!darkModeSwitch.isChecked());
 
                 // Call the function to do the dark mode things
+                ExecutorService darkExecutorService = Executors.newSingleThreadExecutor();
+                darkExecutorService.submit(() -> {
+                    FatigueDatabase fatigueDatabase = FatigueDatabase.getDatabase(getApplicationContext());
+                    SettingsDao settingsDao = fatigueDatabase.settingsDao();
+
+                    finalResultSetting.setSettingsId(System.currentTimeMillis());
+                    finalResultSetting.setDarkMode(!finalResultSetting.isDarkMode());
+
+                    settingsDao.deleteAll();
+                    settingsDao.insert(finalResultSetting);
+                });
+                darkExecutorService.shutdown();
             });
             break;
         }
