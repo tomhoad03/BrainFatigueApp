@@ -13,4 +13,7 @@ public interface SettingsDao {
 
     @Insert
     void insert(Settings settings);
+
+    @Query("DELETE FROM Settings")
+    void deleteAll();
 }

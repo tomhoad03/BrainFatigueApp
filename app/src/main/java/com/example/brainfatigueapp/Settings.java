@@ -97,4 +97,36 @@ public class Settings {
     public boolean isDarkMode() {
         return darkMode;
     }
+
+    public void setSettingsId(Long settingsId) {
+        this.settingsId = settingsId;
+    }
+
+    public void setInterval(Long interval) {
+        this.interval = interval;
+    }
+
+    public void setDayStart(Long dayStart) {
+        this.dayStart = dayStart;
+    }
+
+    public void setDayEnd(Long dayEnd) {
+        this.dayEnd = dayEnd;
+    }
+
+    public void setWorkStart(Long workStart) {
+        this.workStart = workStart;
+    }
+
+    public void setWorkEnd(Long workEnd) {
+        this.workEnd = workEnd;
+    }
+
+    public void setSummary(Long summary) {
+        this.summary = summary;
+    }
+
+    public void setDarkMode(boolean darkMode) {
+        this.darkMode = darkMode;
+    }
 }

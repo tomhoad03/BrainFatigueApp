@@ -1,13 +1,17 @@
 package com.example.brainfatigueapp;
 
+import android.location.GnssAntennaInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Switch;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.slider.LabelFormatter;
 import com.google.android.material.slider.RangeSlider;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -34,8 +38,8 @@ public class SettingsActivity extends AppCompatActivity {
         RangeSlider summarySlider = findViewById(R.id.activity_settings_summary_slider);
 
         // Database access
-        ExecutorService executorService = Executors.newSingleThreadExecutor();
-        Future<Settings> futureSetting = executorService.submit(() -> {
+        ExecutorService executorService1 = Executors.newSingleThreadExecutor();
+        Future<Settings> futureSetting = executorService1.submit(() -> {
             FatigueDatabase fatigueDatabase = FatigueDatabase.getDatabase(getApplicationContext());
             SettingsDao settingsDao = fatigueDatabase.settingsDao();
 
@@ -46,9 +50,10 @@ public class SettingsActivity extends AppCompatActivity {
             } catch (Exception e) {
                 setting = new Settings();
             }
+            Log.d("setting", String.valueOf(setting));
             return setting;
         });
-        executorService.shutdown();
+        executorService1.shutdown();
 
         long timeout = System.currentTimeMillis() + 10000;
         Settings resultSetting;
@@ -59,15 +64,67 @@ public class SettingsActivity extends AppCompatActivity {
             } catch (ExecutionException | InterruptedException e) {
                 continue;
             }
-
-            // Multiple thumbs on the 'available' and 'unavailable' sliders
             final float milliHour = 3600000L;
+            Settings finalResultSetting = resultSetting;
+
+            // Awake time slider
             availableSlider.setValues(resultSetting.getDayStart() / milliHour, resultSetting.getDayEnd() / milliHour);
             availableSlider.setMinSeparationValue(1.0f);
+
+            availableSlider.addOnChangeListener((slider, value, fromUser) -> {
+                ExecutorService executorService2 = Executors.newSingleThreadExecutor();
+                executorService2.submit(() -> {
+                    FatigueDatabase fatigueDatabase = FatigueDatabase.getDatabase(getApplicationContext());
+                    SettingsDao settingsDao = fatigueDatabase.settingsDao();
+
+                    finalResultSetting.setSettingsId(System.currentTimeMillis());
+                    finalResultSetting.setDayStart((long) (slider.getValues().get(0) * milliHour));
+                    finalResultSetting.setDayEnd((long) (slider.getValues().get(1) * milliHour));
+
+                    settingsDao.deleteAll();
+                    settingsDao.insert(finalResultSetting);
+                });
+                executorService2.shutdown();
+            });
+
+            // Work time slider
             unavailableSlider.setValues(resultSetting.getWorkStart() / milliHour, resultSetting.getWorkEnd() / milliHour);
             unavailableSlider.setMinSeparationValue(1.0f);
+
+            unavailableSlider.addOnChangeListener((slider, value, fromUser) -> {
+                ExecutorService executorService2 = Executors.newSingleThreadExecutor();
+                executorService2.submit(() -> {
+                    FatigueDatabase fatigueDatabase = FatigueDatabase.getDatabase(getApplicationContext());
+                    SettingsDao settingsDao = fatigueDatabase.settingsDao();
+
+                    finalResultSetting.setSettingsId(System.currentTimeMillis());
+                    finalResultSetting.setWorkStart((long) (slider.getValues().get(0) * milliHour));
+                    finalResultSetting.setWorkEnd((long) (slider.getValues().get(1) * milliHour));
+
+                    settingsDao.deleteAll();
+                    settingsDao.insert(finalResultSetting);
+                });
+                executorService2.shutdown();
+            });
+
+            // Summary time slider
             summarySlider.setValues(resultSetting.getSummary() / milliHour);
-            unavailableSlider.setMinSeparationValue(1.0f);
+            summarySlider.setMinSeparationValue(1.0f);
+
+            summarySlider.addOnChangeListener((slider, value, fromUser) -> {
+                ExecutorService executorService2 = Executors.newSingleThreadExecutor();
+                executorService2.submit(() -> {
+                    FatigueDatabase fatigueDatabase = FatigueDatabase.getDatabase(getApplicationContext());
+                    SettingsDao settingsDao = fatigueDatabase.settingsDao();
+
+                    finalResultSetting.setSettingsId(System.currentTimeMillis());
+                    finalResultSetting.setSummary((long) (slider.getValues().get(0) * milliHour));
+
+                    settingsDao.deleteAll();
+                    settingsDao.insert(finalResultSetting);
+                });
+                executorService2.shutdown();
+            });
 
             // Format the labels that appear on the slider thumbs to display times and not just numbers
             LabelFormatter timeFormatter = value -> {
