@@ -162,10 +162,6 @@ public class SettingsActivity extends AppCompatActivity {
             unavailableSlider.setLabelFormatter(timeFormatter);
             summarySlider.setLabelFormatter(timeFormatter);
 
-            // Hide action bar
-            if (getSupportActionBar() != null)
-                getSupportActionBar().hide();
-
             // The dark mode button toggles the switch
             final Button darkModeBtn = findViewById(R.id.activity_settings_button_dark_mode);
             final Switch darkModeSwitch = findViewById(R.id.activity_settings_switch_dark_mode);
@@ -190,6 +186,12 @@ public class SettingsActivity extends AppCompatActivity {
                 });
                 darkExecutorService.shutdown();
             });
+
+            // Hide action bar
+            if (getSupportActionBar() != null)
+                getSupportActionBar().hide();
+
+            // TODO - left/right handed button, notification schedule visualiser, work start/end blockers for day start/end, disable work blocker button
             break;
         }
     }
