@@ -1,16 +1,13 @@
 package com.example.brainfatigueapp;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.*;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.Switch;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.preference.PreferenceFragmentCompat;
 import com.google.android.material.slider.LabelFormatter;
 import com.google.android.material.slider.RangeSlider;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -64,9 +61,12 @@ public class SettingsActivity extends AppCompatActivity {
             }
 
             // Multiple thumbs on the 'available' and 'unavailable' sliders
-            availableSlider.setValues((float) (resultSetting.getDayStart() / 3600000L), (float) (resultSetting.getDayEnd() / 3600000L));
+            final float milliHour = 3600000L;
+            availableSlider.setValues(resultSetting.getDayStart() / milliHour, resultSetting.getDayEnd() / milliHour);
             availableSlider.setMinSeparationValue(1.0f);
-            unavailableSlider.setValues((float) (resultSetting.getWorkStart() / 3600000L), (float) (resultSetting.getWorkEnd() / 3600000L));
+            unavailableSlider.setValues(resultSetting.getWorkStart() / milliHour, resultSetting.getWorkEnd() / milliHour);
+            unavailableSlider.setMinSeparationValue(1.0f);
+            summarySlider.setValues(resultSetting.getSummary() / milliHour);
             unavailableSlider.setMinSeparationValue(1.0f);
 
             // Format the labels that appear on the slider thumbs to display times and not just numbers
@@ -93,7 +93,7 @@ public class SettingsActivity extends AppCompatActivity {
             darkModeBtn.setOnClickListener(v -> {
                 // Toggle the switch to the opposite state
                 final Switch darkModeSwitch = findViewById(R.id.activity_settings_switch_dark_mode);
-                Boolean currentState = darkModeSwitch.isChecked();
+                boolean currentState = darkModeSwitch.isChecked();
                 darkModeSwitch.setChecked(!currentState);
 
                 // Call the function to do the dark mode things
