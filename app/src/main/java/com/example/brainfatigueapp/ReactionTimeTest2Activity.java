@@ -33,20 +33,7 @@ public class ReactionTimeTest2Activity extends AppCompatActivity {
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startButton.setEnabled(false);
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        startTime = System.currentTimeMillis();
-                        colourChangeButton.setBackgroundColor(
-                                ContextCompat.getColor(getApplicationContext(), R.color.custom_light_blue_A) // wuuuut
-                        );
-                        colourChangeButton.setText("TAP!");
-                        colourChangeButton.setEnabled(true);
-                    }
-                }, (long) (Math.random() * 10 + 1) * 1000); // hopefully this works
-
+                doReactionTest();
             }
         });
 
@@ -62,8 +49,38 @@ public class ReactionTimeTest2Activity extends AppCompatActivity {
                 startButton.setEnabled(true);
                 colourChangeButton.setEnabled(false);
 
+                // After the button goes light blue and they react to it, wait a couple seconds
+                // so they have time to see the reaction time they just got before starting again
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        // Reset the button colour, then do another test
+                        colourChangeButton.setBackgroundColor(
+                                ContextCompat.getColor(getApplicationContext(), R.color.grey)
+                        );
+                        colourChangeButton.setText("wait...");
+                        doReactionTest();
+                    }
+                }, (long) (3000)); // Wait 3 secs before starting the next one
             }
         });
 
+    }
+
+    void doReactionTest () {
+        startButton.setEnabled(false);
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                startTime = System.currentTimeMillis();
+                colourChangeButton.setBackgroundColor(
+                        ContextCompat.getColor(getApplicationContext(), R.color.custom_light_blue_A) // wuuuut
+                );
+                colourChangeButton.setText("TAP!");
+                colourChangeButton.setEnabled(true);
+            }
+        }, (long) (Math.random() * 10 + 1) * 1000); // hopefully this works
     }
 }
