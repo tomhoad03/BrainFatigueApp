@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import androidx.fragment.app.FragmentManager;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalTime;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
@@ -53,12 +54,45 @@ public class DashboardLeftFrag extends Fragment {
         }
         // Log.d("survey_results", surveyResults.toString());
 
-        // Fill the fragment with a report box for every entry in the database
+        // Fill the fragment with a report box with the database entries from today only
         int boxCount = 0;
+        // Get the current time
+        LocalTime now = LocalTime.now();
+        // Get the time of the daily summary notification from the settings database
+        Float summaryTimeFloat = 21f; // Hardcoded until Tom shows me how to get stuff from the database
+        LocalTime summaryTime = LocalTime.parse("21:00"); // Convert the float (or whatever is returned from the
+        //                                                   database into a string that LocalTime can parse)
         for (SurveyResult nextResult : surveyResults) {
-            // Create a report box for this survey result
-            formatButton(nextResult, boxCount, layout);
-            boxCount++;
+
+            Long timeNow = System.currentTimeMillis();
+            LocalTime time1 = LocalTime.parse("06:00");
+            LocalTime time2 = LocalTime.parse("23:00");
+            // SimpleDateFormat sdf = new SimpleDateFormat("hh:mm", Locale.UK);
+
+            // If the current time is after the notification time, show only reports from today
+            System.out.println("COMPARE: " + now.compareTo(summaryTime));
+            int compareTime = now.compareTo(summaryTime);
+            if (compareTime > 0) {
+                // Show only today's reports as the time for today's daily summary has passed
+                // "today's reports" defined by the reports that have a time that is AFTER
+                // the (current date and time) MINUS the time now in hours (around 00:00am today)
+                if (nextResult.getSurveyResultId().compareTo(now.minusHours((long) summaryTimeFloat))) {
+                    // Create a report box for this survey result
+                    formatButton(nextResult, boxCount, layout);
+                    boxCount++;
+                }
+            } else {
+                // Show only yesterday's reports as it is not yet time for today's summary
+                // "yesterday's reports" defined by the reports that have a time that is BEFORE
+                // the (current date and time) MINUS the time now in hours (around 00:00am today) but also AFTER
+                // the (current date and time) MINUS the time now in hours + 24 (around 00:00am the day before)
+                if (nextResult.getSurveyResultId().compareTo(now.minusHours((long) summaryTimeFloat)) &&
+                        nextResult.getSurveyResultId().compareTo(now.minusHours((long) (summaryTimeFloat + 24f)))) {
+                    // Create a report box for this survey result
+                    formatButton(nextResult, boxCount, layout);
+                    boxCount++;
+                }
+            }
         }
     }
 
@@ -69,7 +103,7 @@ public class DashboardLeftFrag extends Fragment {
         calendar.setTimeInMillis(result.getSurveyResultId());
         System.out.println("CURRENTLY: " + sdf.format(calendar.getTime()));
         String mainText = sdf.format(calendar.getTime());
-        String subText = "You reported a fatigue level of " + result.getQuestion1().toString() + "."; // Update to new string method
+        String subText = "You reported a fatigue level of " + result.getQuestion1().toString() + ".";
 
         // This function takes the required data to create a report and makes it look like it should
         Button newButton = new Button(getActivity());
@@ -86,7 +120,7 @@ public class DashboardLeftFrag extends Fragment {
         constrain.clone(layout);
         // Horizontally
         constrain.connect(newButton.getId(), ConstraintSet.LEFT,
-                layout.getId(),    ConstraintSet.LEFT); // ConstraintSet.PARENT_ID / layout.getId() both work
+                layout.getId(),    ConstraintSet.LEFT);
         constrain.connect(newButton.getId(), ConstraintSet.RIGHT,
                 layout.getId(),    ConstraintSet.RIGHT);
         // Vertically
