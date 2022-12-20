@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.core.content.ContextCompat;
@@ -39,7 +40,7 @@ public class DashboardLeftFrag extends Fragment {
         // Get the data from the database
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         Future<List<SurveyResult>> surveyResultsFuture = executorService.submit(() -> {
-            SurveyDatabase surveyDatabase = SurveyDatabase.getDatabase(getContext().getApplicationContext());
+            SurveyDatabase surveyDatabase = SurveyDatabase.getDatabase(getContext());
             SurveyResultDao surveyResultDao = surveyDatabase.surveyResultDao();
 
             return surveyResultDao.getAll();
@@ -63,42 +64,44 @@ public class DashboardLeftFrag extends Fragment {
         LocalTime summaryTime = LocalTime.parse("22:00"); // parse whatever the database stores into 'summaryTime'
         SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM d, hh:mmaaa", Locale.UK);
 
-        for (SurveyResult nextResult : surveyResults) {
-            // Get the time that the survey was taken
-            GregorianCalendar surveyCalendar = new GregorianCalendar(TimeZone.getTimeZone("Europe/London"));
-            surveyCalendar.setTimeInMillis(nextResult.getSurveyResultId());
+        if (surveyResults != null) {
+            for (SurveyResult nextResult : surveyResults) {
+                // Get the time that the survey was taken
+                GregorianCalendar surveyCalendar = new GregorianCalendar(TimeZone.getTimeZone("Europe/London"));
+                surveyCalendar.setTimeInMillis(nextResult.getSurveyResultId());
 
-            if (now.compareTo(summaryTime) > 0) {
-                // If the current time is after the notification time, show only reports from today
-                // "today's reports" defined by surveys that were taken AFTER the time now
-                // MINUS the time now in hours (around 00:00am)
-                GregorianCalendar lowerBoundCalendar = new GregorianCalendar(TimeZone.getTimeZone("Europe/London"));
-                lowerBoundCalendar.setTimeInMillis(System.currentTimeMillis());
-                lowerBoundCalendar.add(Calendar.HOUR, -1 * (int) summaryTimeFloat.longValue());
-                System.out.println("(TODAY) Displaying only times after: " + sdf.format(lowerBoundCalendar.getTime()));
-                if (surveyCalendar.compareTo(lowerBoundCalendar) > 0) {
-                    // Create a report box for this survey result
-                    formatButton(nextResult, boxCount, layout);
-                    boxCount++;
-                }
-            } else {
-                // If the current time is after the notification time, show only reports from today
-                // "yesterday's reports" defined by the surveys taken BEFORE
-                // the (current date and time) MINUS the time now in hours (around 00:00am) and also AFTER
-                // the (current date and time) MINUS (the time now in hours + 24) (around 00:00am the day before)
-                GregorianCalendar lowerBoundCalendar = new GregorianCalendar(TimeZone.getTimeZone("Europe/London"));
-                lowerBoundCalendar.setTimeInMillis(System.currentTimeMillis());
-                lowerBoundCalendar.add(Calendar.HOUR, -24 + (-1 * (int) summaryTimeFloat.longValue()));
-                GregorianCalendar upperBoundCalendar = new GregorianCalendar(TimeZone.getTimeZone("Europe/London"));
-                upperBoundCalendar.setTimeInMillis(System.currentTimeMillis());
-                upperBoundCalendar.add(Calendar.HOUR, -1 * (int) summaryTimeFloat.longValue());
-                System.out.println("(YDAY) Displaying only times after: " + sdf.format(lowerBoundCalendar.getTime()));
-                System.out.println("(YDAY) and also only times before : " + sdf.format(upperBoundCalendar.getTime()));
-                if ((surveyCalendar.compareTo(lowerBoundCalendar) > 0) &&
-                        (surveyCalendar.compareTo(upperBoundCalendar) < 0)) {
-                    // Create a report box for this survey result
-                    formatButton(nextResult, boxCount, layout);
-                    boxCount++;
+                if (now.compareTo(summaryTime) > 0) {
+                    // If the current time is after the notification time, show only reports from today
+                    // "today's reports" defined by surveys that were taken AFTER the time now
+                    // MINUS the time now in hours (around 00:00am)
+                    GregorianCalendar lowerBoundCalendar = new GregorianCalendar(TimeZone.getTimeZone("Europe/London"));
+                    lowerBoundCalendar.setTimeInMillis(System.currentTimeMillis());
+                    lowerBoundCalendar.add(Calendar.HOUR, -1 * (int) summaryTimeFloat.longValue());
+                    System.out.println("(TODAY) Displaying only times after: " + sdf.format(lowerBoundCalendar.getTime()));
+                    if (surveyCalendar.compareTo(lowerBoundCalendar) > 0) {
+                        // Create a report box for this survey result
+                        formatButton(nextResult, boxCount, layout);
+                        boxCount++;
+                    }
+                } else {
+                    // If the current time is after the notification time, show only reports from today
+                    // "yesterday's reports" defined by the surveys taken BEFORE
+                    // the (current date and time) MINUS the time now in hours (around 00:00am) and also AFTER
+                    // the (current date and time) MINUS (the time now in hours + 24) (around 00:00am the day before)
+                    GregorianCalendar lowerBoundCalendar = new GregorianCalendar(TimeZone.getTimeZone("Europe/London"));
+                    lowerBoundCalendar.setTimeInMillis(System.currentTimeMillis());
+                    lowerBoundCalendar.add(Calendar.HOUR, -24 + (-1 * (int) summaryTimeFloat.longValue()));
+                    GregorianCalendar upperBoundCalendar = new GregorianCalendar(TimeZone.getTimeZone("Europe/London"));
+                    upperBoundCalendar.setTimeInMillis(System.currentTimeMillis());
+                    upperBoundCalendar.add(Calendar.HOUR, -1 * (int) summaryTimeFloat.longValue());
+                    System.out.println("(YDAY) Displaying only times after: " + sdf.format(lowerBoundCalendar.getTime()));
+                    System.out.println("(YDAY) and also only times before : " + sdf.format(upperBoundCalendar.getTime()));
+                    if ((surveyCalendar.compareTo(lowerBoundCalendar) > 0) &&
+                            (surveyCalendar.compareTo(upperBoundCalendar) < 0)) {
+                        // Create a report box for this survey result
+                        formatButton(nextResult, boxCount, layout);
+                        boxCount++;
+                    }
                 }
             }
         }
@@ -179,5 +182,14 @@ public class DashboardLeftFrag extends Fragment {
         constrainText.connect(newSubText.getId(),  ConstraintSet.LEFT,
                 newMainText.getId(),   ConstraintSet.LEFT);
         constrainText.applyTo(layout);
+    }
+
+    // Get the string for the corresponding survey result
+    public String getSurveyString(SurveyResult surveyResult, Integer questionId, Integer questionResult, @Nullable Boolean extended) {
+        if (questionId == 2 || (questionId == 3 && extended != null) || (questionId == 4 && extended != null) || questionId == 8 || questionId == 9) {
+            return surveyResult.getSurveyString(getContext(), questionId, questionResult, extended);
+        } else {
+            return null;
+        }
     }
 }

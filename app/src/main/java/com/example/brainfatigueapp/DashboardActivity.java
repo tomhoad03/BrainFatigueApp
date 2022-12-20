@@ -1,21 +1,12 @@
 package com.example.brainfatigueapp;
 
-import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
-import android.widget.ImageButton;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import androidx.constraintlayout.motion.utils.ViewState;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.tabs.TabLayout;
-
-import java.util.List;
-import java.util.concurrent.*;
 
 public class DashboardActivity extends AppCompatActivity {
 
@@ -37,24 +28,6 @@ public class DashboardActivity extends AppCompatActivity {
             Intent intent = new Intent(DashboardActivity.this, SettingsActivity.class);
             startActivity(intent);
         });
-
-        // Database access
-        ExecutorService executorService = Executors.newSingleThreadExecutor();
-        Future<List<SurveyResult>> surveyResultsFuture = executorService.submit(() -> {
-            SurveyDatabase surveyDatabase = SurveyDatabase.getDatabase(getApplicationContext());
-            SurveyResultDao surveyResultDao = surveyDatabase.surveyResultDao();
-
-            return surveyResultDao.getAll();
-        });
-        executorService.shutdown();
-
-        List<SurveyResult> surveyResults = null;
-        try {
-            surveyResults = surveyResultsFuture.get(200, TimeUnit.MILLISECONDS);
-        } catch (InterruptedException | ExecutionException | TimeoutException e) {
-            e.printStackTrace();
-        }
-        Log.d("survey_results", surveyResults.toString());
 
         // Fragments
         FragmentManager fm = getSupportFragmentManager();
@@ -89,14 +62,5 @@ public class DashboardActivity extends AppCompatActivity {
                 tabLayout.selectTab(tabLayout.getTabAt(position));
             }
         });
-    }
-
-    // Get the string for the corresponding survey result
-    public String getSurveyString(SurveyResult surveyResult, Integer questionId, Integer questionResult, @Nullable Boolean extended) {
-        if (questionId == 2 || (questionId == 3 && extended != null) || (questionId == 4 && extended != null) || questionId == 8 || questionId == 9) {
-            return surveyResult.getSurveyString(getApplicationContext(), questionId, questionResult, extended);
-        } else {
-            return null;
-        }
     }
 }

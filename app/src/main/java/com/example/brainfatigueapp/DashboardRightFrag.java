@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.widget.*;
+import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.core.content.ContextCompat;
@@ -45,7 +46,7 @@ public class DashboardRightFrag extends Fragment {
         // Get the data from the database
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         Future<List<SurveyResult>> surveyResultsFuture = executorService.submit(() -> {
-            SurveyDatabase surveyDatabase = SurveyDatabase.getDatabase(getContext().getApplicationContext());
+            SurveyDatabase surveyDatabase = SurveyDatabase.getDatabase(getContext());
             SurveyResultDao surveyResultDao = surveyDatabase.surveyResultDao();
 
             return surveyResultDao.getAll();
@@ -72,10 +73,12 @@ public class DashboardRightFrag extends Fragment {
 
         // Fill the fragment with a report box for every entry in the database
         int boxCount = 0;
-        for (SurveyResult nextResult : surveyResults) {
-            // Create a report box for this survey result
-            formatButton(nextResult, boxCount, layout);
-            boxCount++;
+        if (surveyResults != null) {
+            for (SurveyResult nextResult : surveyResults) {
+                // Create a report box for this survey result
+                formatButton(nextResult, boxCount, layout);
+                boxCount++;
+            }
         }
     }
 
@@ -164,5 +167,14 @@ public class DashboardRightFrag extends Fragment {
         constrainText.connect(newSubText.getId(),  ConstraintSet.LEFT,
                           newMainText.getId(),   ConstraintSet.LEFT);
         constrainText.applyTo(layout);
+    }
+
+    // Get the string for the corresponding survey result
+    public String getSurveyString(SurveyResult surveyResult, Integer questionId, Integer questionResult, @Nullable Boolean extended) {
+        if (questionId == 2 || (questionId == 3 && extended != null) || (questionId == 4 && extended != null) || questionId == 8 || questionId == 9) {
+            return surveyResult.getSurveyString(getContext(), questionId, questionResult, extended);
+        } else {
+            return null;
+        }
     }
 }
