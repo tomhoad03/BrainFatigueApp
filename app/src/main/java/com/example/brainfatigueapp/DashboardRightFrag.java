@@ -16,6 +16,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.fragment.app.FragmentManager;
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -56,6 +61,16 @@ public class DashboardRightFrag extends Fragment {
         }
         // Log.d("survey_results", surveyResults.toString());
 
+        // Draw a graph from the data
+        LineChart lineChart = getView().findViewById(R.id.activity_right_fragment_graph_1);
+        LineDataSet lineChartData = new LineDataSet(getChartData(surveyResults), "LINE CHAAAAAAAAAAAAART!");
+        ArrayList<ILineDataSet> iLineDataSets = new ArrayList<ILineDataSet>();
+        iLineDataSets.add(lineChartData);
+
+        LineData lineData = new LineData(iLineDataSets);
+        lineChart.setData(lineData);
+        lineChart.invalidate(); // ??? what do this do
+
         // Fill the fragment with a report box for every entry in the database
         int boxCount = 0;
         for (SurveyResult nextResult : surveyResults) {
@@ -63,6 +78,16 @@ public class DashboardRightFrag extends Fragment {
             formatButton(nextResult, boxCount, layout);
             boxCount++;
         }
+    }
+
+    private ArrayList<Entry> getChartData(List<SurveyResult> database) {
+        ArrayList<Entry> chartData = new ArrayList<Entry>();
+
+        chartData.add(new Entry(1, 15));
+        chartData.add(new Entry(2, 50));
+        chartData.add(new Entry(3, 25));
+
+        return chartData;
     }
 
     private void formatButton (SurveyResult result, int count, ConstraintLayout layout) {
