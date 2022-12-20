@@ -17,6 +17,7 @@
             app:layout_constraintStart_toStartOf="@+id/activity_settings_button_heading"
             app:layout_constraintEnd_toEndOf="@+id/activity_settings_button_heading"
             app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="20dp"/>
+
     <TextView
             android:id="@+id/activity_settings_button_heading"
             android:text="@string/activity_settings_button_heading"

@@ -2,11 +2,16 @@ package com.example.brainfatigueapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.widget.ViewPager2;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.tabs.TabLayout;
+
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class DashboardActivity extends AppCompatActivity {
 
@@ -28,6 +33,17 @@ public class DashboardActivity extends AppCompatActivity {
             Intent intent = new Intent(DashboardActivity.this, SettingsActivity.class);
             startActivity(intent);
         });
+
+        // Database access
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+        executorService.execute(() -> {
+            FatigueDatabase fatigueDatabase = FatigueDatabase.getDatabase(getApplicationContext());
+            SurveyResultDao surveyResultDao = fatigueDatabase.surveyResultDao();
+
+            List<SurveyResult> surveyResults = surveyResultDao.getAll();
+            Log.d("survey_results", surveyResults.toString());
+        });
+        executorService.shutdown();
 
         // Fragments
         FragmentManager fm = getSupportFragmentManager();

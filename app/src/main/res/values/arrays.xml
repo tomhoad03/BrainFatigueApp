@@ -12,6 +12,7 @@
 
     <!-- Settings Menu Notification Intervals -->
     <string-array name="notification_intervals">
+        <item>1hr</item>
         <item>1hr 30m</item>
         <item>2hr</item>
         <item>2hr 30m</item>
