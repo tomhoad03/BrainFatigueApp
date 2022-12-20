@@ -15,10 +15,7 @@ import androidx.fragment.app.FragmentManager;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
-import java.util.GregorianCalendar;
-import java.util.List;
-import java.util.Locale;
-import java.util.TimeZone;
+import java.util.*;
 import java.util.concurrent.*;
 
 public class DashboardLeftFrag extends Fragment {
@@ -62,46 +59,47 @@ public class DashboardLeftFrag extends Fragment {
         // Get the current time
         LocalTime now = LocalTime.now();
         // Get the time of the daily summary notification from the settings database
-        Float summaryTimeFloat = 21f; // Hardcoded until Tom shows me how to get stuff from the database
-        LocalTime summaryTime = LocalTime.parse("21:00"); // Convert the float (or whatever is returned from the
-        //                                                   database into a string that LocalTime can parse)
+        Float summaryTimeFloat = 22f; // Hardcoded until Tom shows me how to get stuff from the database
+        LocalTime summaryTime = LocalTime.parse("22:00"); // parse whatever the database stores into 'summaryTime'
+        SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM d, hh:mmaaa", Locale.UK);
+
         for (SurveyResult nextResult : surveyResults) {
+            // Get the time that the survey was taken
+            GregorianCalendar surveyCalendar = new GregorianCalendar(TimeZone.getTimeZone("Europe/London"));
+            surveyCalendar.setTimeInMillis(nextResult.getSurveyResultId());
 
-            LocalTime time1 = LocalTime.parse("06:00");
-            LocalTime time2 = LocalTime.parse("23:00");
-
-            Long timeNow = System.currentTimeMillis();
-            SimpleDateFormat sdf = new SimpleDateFormat("hh:mm", Locale.UK);
-            GregorianCalendar calendar = new GregorianCalendar(TimeZone.getTimeZone("Europe/London"));
-            calendar.setTimeInMillis(nextResult.getSurveyResultId());
-            LocalTime resultTime = LocalTime.parse(sdf.format(calendar.getTime()));
-
-            // If the current time is after the notification time, show only reports from today
-            System.out.println("COMPARE: " + now.compareTo(summaryTime));
-            int compareTime = now.compareTo(summaryTime);
-            if (compareTime > 0) {
-                // Show only today's reports as the time for today's daily summary has passed
-                // "today's reports" defined by the reports that have a time that is AFTER
-                // the (current date and time) MINUS the time now in hours (around 00:00am today)
-                if (resultTime.compareTo(now.minusHours(summaryTimeFloat.longValue())) > 0) {
+            if (now.compareTo(summaryTime) > 0) {
+                // If the current time is after the notification time, show only reports from today
+                // "today's reports" defined by surveys that were taken AFTER the time now
+                // MINUS the time now in hours (around 00:00am)
+                GregorianCalendar lowerBoundCalendar = new GregorianCalendar(TimeZone.getTimeZone("Europe/London"));
+                lowerBoundCalendar.setTimeInMillis(System.currentTimeMillis());
+                lowerBoundCalendar.add(Calendar.HOUR, -1 * (int) summaryTimeFloat.longValue());
+                System.out.println("(TODAY) Displaying only times after: " + sdf.format(lowerBoundCalendar.getTime()));
+                if (surveyCalendar.compareTo(lowerBoundCalendar) > 0) {
                     // Create a report box for this survey result
                     formatButton(nextResult, boxCount, layout);
                     boxCount++;
                 }
             } else {
-                // Show only yesterday's reports as it is not yet time for today's summary
-                // "yesterday's reports" defined by the reports that have a time that is BEFORE
-                // the (current date and time) MINUS the time now in hours (around 00:00am today) but also AFTER
-                // the (current date and time) MINUS the time now in hours + 24 (around 00:00am the day before)
-                /*
-                if (nextResult.getSurveyResultId().compareTo(now.minusHours((long) summaryTimeFloat)) &&
-                        nextResult.getSurveyResultId().compareTo(now.minusHours((long) (summaryTimeFloat + 24f)))) {
+                // If the current time is after the notification time, show only reports from today
+                // "yesterday's reports" defined by the surveys taken BEFORE
+                // the (current date and time) MINUS the time now in hours (around 00:00am) and also AFTER
+                // the (current date and time) MINUS (the time now in hours + 24) (around 00:00am the day before)
+                GregorianCalendar lowerBoundCalendar = new GregorianCalendar(TimeZone.getTimeZone("Europe/London"));
+                lowerBoundCalendar.setTimeInMillis(System.currentTimeMillis());
+                lowerBoundCalendar.add(Calendar.HOUR, -24 + (-1 * (int) summaryTimeFloat.longValue()));
+                GregorianCalendar upperBoundCalendar = new GregorianCalendar(TimeZone.getTimeZone("Europe/London"));
+                upperBoundCalendar.setTimeInMillis(System.currentTimeMillis());
+                upperBoundCalendar.add(Calendar.HOUR, -1 * (int) summaryTimeFloat.longValue());
+                System.out.println("(YDAY) Displaying only times after: " + sdf.format(lowerBoundCalendar.getTime()));
+                System.out.println("(YDAY) and also only times before : " + sdf.format(upperBoundCalendar.getTime()));
+                if ((surveyCalendar.compareTo(lowerBoundCalendar) > 0) &&
+                        (surveyCalendar.compareTo(upperBoundCalendar) < 0)) {
                     // Create a report box for this survey result
                     formatButton(nextResult, boxCount, layout);
                     boxCount++;
                 }
-
-                 */
             }
         }
     }
@@ -111,7 +109,7 @@ public class DashboardLeftFrag extends Fragment {
         SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM d, hh:mmaaa", Locale.UK);
         GregorianCalendar calendar = new GregorianCalendar(TimeZone.getTimeZone("Europe/London"));
         calendar.setTimeInMillis(result.getSurveyResultId());
-        System.out.println("CURRENTLY: " + sdf.format(calendar.getTime()));
+        //System.out.println("CURRENTLY: " + sdf.format(calendar.getTime()));
         String mainText = sdf.format(calendar.getTime());
         String subText = "You reported a fatigue level of " + result.getQuestion1().toString() + ".";
 
