@@ -1,18 +1,17 @@
 package com.example.brainfatigueapp;
 
-import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Gravity;
-import android.widget.*;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ScrollView;
+import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import androidx.fragment.app.FragmentManager;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.Entry;
@@ -46,7 +45,7 @@ public class DashboardRightFrag extends Fragment {
         // Get the data from the database
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         Future<List<SurveyResult>> surveyResultsFuture = executorService.submit(() -> {
-            SurveyDatabase surveyDatabase = SurveyDatabase.getDatabase(getContext());
+            FatigueDatabase surveyDatabase = FatigueDatabase.getDatabase(getContext());
             SurveyResultDao surveyResultDao = surveyDatabase.surveyResultDao();
 
             return surveyResultDao.getAll();

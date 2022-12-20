@@ -40,7 +40,7 @@ public class DashboardLeftFrag extends Fragment {
         // Get the data from the database
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         Future<List<SurveyResult>> surveyResultsFuture = executorService.submit(() -> {
-            SurveyDatabase surveyDatabase = SurveyDatabase.getDatabase(getContext());
+            FatigueDatabase surveyDatabase = FatigueDatabase.getDatabase(getContext());
             SurveyResultDao surveyResultDao = surveyDatabase.surveyResultDao();
 
             return surveyResultDao.getAll();
