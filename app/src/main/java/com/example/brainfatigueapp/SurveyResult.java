@@ -1,10 +1,14 @@
 package com.example.brainfatigueapp;
 
+import android.content.Context;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
+
+import static android.provider.Settings.System.getConfiguration;
+import static android.provider.Settings.System.getString;
 
 @Entity
 public class SurveyResult implements Serializable {
@@ -16,13 +20,13 @@ public class SurveyResult implements Serializable {
     @ColumnInfo(name = "question2")
     public Integer question2; // 1 or 2
     @ColumnInfo(name = "question3")
-    public Integer question3; // 1 to 7
+    public Integer question3; // 1 to 7 (should be -1 of question 2 = 2)
     @ColumnInfo(name = "question3_extended")
-    public Integer question3Extended;
+    public Integer question3Extended; // 1 to 5, 6 to 13, 14 to 15, 16 to 18, 19 to 24, 25 to 27, 28 to 32 (range corresponds to value in question 3, should be -1 of question 2 = 2)
     @ColumnInfo(name = "question4")
-    public Integer question4; // 1 to 8
+    public Integer question4; // 1 to 8 (should be -1 of question 2 = 1)
     @ColumnInfo(name = "question4_extended")
-    public Integer question4Extended;
+    public Integer question4Extended; // 1 to 3, 4 to 7, 8 to 10, 11 to 15, 16 to 20, 21 to 26, 27 to 33, 34 to 39 (range corresponds to value in question 4, should be -1 of question 2 = 1)
     @ColumnInfo(name = "question5")
     public Integer question5; // 0 to 10 in 1 point intervals (slider)
     @ColumnInfo(name = "question6")
@@ -65,6 +69,10 @@ public class SurveyResult implements Serializable {
                 ", question8=" + question8 +
                 ", question9=" + question9 +
                 '}';
+    }
+
+    public Long getSurveyResultId() {
+        return surveyResultId;
     }
 
     public Integer getQuestion1() {
@@ -153,5 +161,206 @@ public class SurveyResult implements Serializable {
 
     public void setQuestion9(Integer question9) {
         this.question9 = question9;
+    }
+
+    public String getSurveyString(Context context, Integer questionId, Integer questionResult, Boolean extended) {
+        switch (questionId) {
+            case 2:
+                switch (questionResult) {
+                    case 1: return context.getString(R.string.activity_survey_middle2_at_home);
+                    case 2: return context.getString(R.string.activity_survey_middle2_somewhere_else);
+                }
+            case 3:
+                if (!extended) {
+                    switch (questionResult) {
+                        case 1: return context.getString(R.string.activity_survey_middle3_button1);
+                        case 2: return context.getString(R.string.activity_survey_middle3_button2);
+                        case 3: return context.getString(R.string.activity_survey_middle3_button3);
+                        case 4: return context.getString(R.string.activity_survey_middle3_button4);
+                        case 5: return context.getString(R.string.activity_survey_middle3_button5);
+                        case 6: return context.getString(R.string.activity_survey_middle3_button6);
+                        case 7: return context.getString(R.string.activity_survey_middle3_button7);
+                    }
+                } else {
+                    switch (questionResult) {
+                        case 1: return context.getString(R.string.activity_survey_middle3a_button1);
+                        case 2: return context.getString(R.string.activity_survey_middle3a_button2);
+                        case 3: return context.getString(R.string.activity_survey_middle3a_button3);
+                        case 4: return context.getString(R.string.activity_survey_middle3a_button4);
+                        case 5: return context.getString(R.string.activity_survey_middle3a_button5);
+
+                        case 6: return context.getString(R.string.activity_survey_middle3b_button1);
+                        case 7: return context.getString(R.string.activity_survey_middle3b_button2);
+                        case 8: return context.getString(R.string.activity_survey_middle3b_button3);
+                        case 9: return context.getString(R.string.activity_survey_middle3b_button4);
+                        case 10: return context.getString(R.string.activity_survey_middle3b_button5);
+                        case 11: return context.getString(R.string.activity_survey_middle3b_button6);
+                        case 12: return context.getString(R.string.activity_survey_middle3b_button7);
+                        case 13: return context.getString(R.string.activity_survey_middle3b_button8);
+
+                        case 14: return context.getString(R.string.activity_survey_middle3c_button1);
+                        case 15: return context.getString(R.string.activity_survey_middle3c_button2);
+
+                        case 16: return context.getString(R.string.activity_survey_middle3d_button1);
+                        case 17: return context.getString(R.string.activity_survey_middle3d_button2);
+                        case 18: return context.getString(R.string.activity_survey_middle3d_button3);
+
+                        case 19: return context.getString(R.string.activity_survey_middle3e_button1);
+                        case 20: return context.getString(R.string.activity_survey_middle3e_button2);
+                        case 21: return context.getString(R.string.activity_survey_middle3e_button3);
+                        case 22: return context.getString(R.string.activity_survey_middle3e_button4);
+                        case 23: return context.getString(R.string.activity_survey_middle3e_button5);
+                        case 24: return context.getString(R.string.activity_survey_middle3e_button6);
+
+                        case 25: return context.getString(R.string.activity_survey_middle3f_button1);
+                        case 26: return context.getString(R.string.activity_survey_middle3f_button2);
+                        case 27: return context.getString(R.string.activity_survey_middle3f_button3);
+
+                        case 28: return context.getString(R.string.activity_survey_middle3g_button1);
+                        case 29: return context.getString(R.string.activity_survey_middle3g_button2);
+                        case 30: return context.getString(R.string.activity_survey_middle3g_button3);
+                        case 31: return context.getString(R.string.activity_survey_middle3g_button4);
+                        case 32: return context.getString(R.string.activity_survey_middle3g_button5);
+                    }
+                }
+            case 4:
+                if (!extended) {
+                    switch (questionResult) {
+                        case 1: return context.getString(R.string.activity_survey_middle4_button1);
+                        case 2: return context.getString(R.string.activity_survey_middle4_button2);
+                        case 3: return context.getString(R.string.activity_survey_middle4_button3);
+                        case 4: return context.getString(R.string.activity_survey_middle4_button4);
+                        case 5: return context.getString(R.string.activity_survey_middle4_button5);
+                        case 6: return context.getString(R.string.activity_survey_middle4_button6);
+                        case 7: return context.getString(R.string.activity_survey_middle4_button7);
+                        case 8: return context.getString(R.string.activity_survey_middle4_button8);
+                    }
+                } else {
+                    switch (questionResult) {
+                        case 1: return context.getString(R.string.activity_survey_middle4a_button1);
+                        case 2: return context.getString(R.string.activity_survey_middle4a_button2);
+                        case 3: return context.getString(R.string.activity_survey_middle4a_button3);
+
+                        case 4: return context.getString(R.string.activity_survey_middle4b_button1);
+                        case 5: return context.getString(R.string.activity_survey_middle4b_button2);
+                        case 6: return context.getString(R.string.activity_survey_middle4b_button3);
+                        case 7: return context.getString(R.string.activity_survey_middle4b_button4);
+
+                        case 8: return context.getString(R.string.activity_survey_middle4c_button1);
+                        case 9: return context.getString(R.string.activity_survey_middle4c_button2);
+                        case 10: return context.getString(R.string.activity_survey_middle4c_button3);
+
+                        case 11: return context.getString(R.string.activity_survey_middle4d_button1);
+                        case 12: return context.getString(R.string.activity_survey_middle4d_button2);
+                        case 13: return context.getString(R.string.activity_survey_middle4d_button3);
+                        case 14: return context.getString(R.string.activity_survey_middle4d_button4);
+                        case 15: return context.getString(R.string.activity_survey_middle4d_button5);
+
+                        case 16: return context.getString(R.string.activity_survey_middle4e_button1);
+                        case 17: return context.getString(R.string.activity_survey_middle4e_button2);
+                        case 18: return context.getString(R.string.activity_survey_middle4e_button3);
+                        case 19: return context.getString(R.string.activity_survey_middle4e_button4);
+                        case 20: return context.getString(R.string.activity_survey_middle4e_button5);
+
+                        case 21: return context.getString(R.string.activity_survey_middle4f_button1);
+                        case 22: return context.getString(R.string.activity_survey_middle4f_button2);
+                        case 23: return context.getString(R.string.activity_survey_middle4f_button3);
+                        case 24: return context.getString(R.string.activity_survey_middle4f_button4);
+                        case 25: return context.getString(R.string.activity_survey_middle4f_button5);
+                        case 26: return context.getString(R.string.activity_survey_middle4f_button6);
+
+                        case 27: return context.getString(R.string.activity_survey_middle4g_button1);
+                        case 28: return context.getString(R.string.activity_survey_middle4g_button2);
+                        case 29: return context.getString(R.string.activity_survey_middle4g_button3);
+                        case 30: return context.getString(R.string.activity_survey_middle4g_button4);
+                        case 31: return context.getString(R.string.activity_survey_middle4g_button5);
+                        case 32: return context.getString(R.string.activity_survey_middle4g_button6);
+                        case 33: return context.getString(R.string.activity_survey_middle4g_button7);
+
+                        case 34: return context.getString(R.string.activity_survey_middle4h_button1);
+                        case 35: return context.getString(R.string.activity_survey_middle4h_button2);
+                        case 36: return context.getString(R.string.activity_survey_middle4h_button3);
+                        case 37: return context.getString(R.string.activity_survey_middle4h_button4);
+                        case 38: return context.getString(R.string.activity_survey_middle4h_button5);
+                        case 39: return context.getString(R.string.activity_survey_middle4h_button6);
+                    }
+                }
+            case 8:
+                switch (questionResult) {
+                    case 1: return context.getString(R.string.activity_survey_middle8_button1);
+                    case 2: return context.getString(R.string.activity_survey_middle8_button2);
+                    case 3: return context.getString(R.string.activity_survey_middle8_button3);
+                    case 4: return context.getString(R.string.activity_survey_middle8_button4);
+                }
+            case 9:
+                switch (questionResult) {
+                    case 1: return context.getString(R.string.activity_survey_middle9_button1);
+                    case 2: return context.getString(R.string.activity_survey_middle9_button2);
+                    case 3: return context.getString(R.string.activity_survey_middle9_button3);
+                }
+        }
+        return null;
+    }
+
+    public String getQuestion1String() {
+        return String.format("You reported an energy level of %s", this.getQuestion1());
+    }
+
+    public String getQuestion2String() {
+        if (this.getQuestion2() == 1) {
+            return "At home";
+        } else {
+            return "Not at home";
+        }
+    }
+
+    public String getQuestion3and4String(Context context) {
+        if (this.getQuestion2() == 1) {
+            return "You were at home, doing the activity: \"" +
+                    getSurveyString(context, 3, this.getQuestion3Extended(), true).toLowerCase() + "\"";
+        } else {
+            return "You were not home, and selected the activity \"" +
+                    getSurveyString(context, 4, this.getQuestion4Extended(), true).toLowerCase() + "\"";
+        }
+    }
+
+    public String getQuestion5String() {
+        return String.format("This required an effort level of %s out of 10", this.getQuestion5());
+    }
+
+    public String getQuestion6String() {
+        return String.format("You said your fatigue was a %s out of 10", this.getQuestion6());
+    }
+
+    public String getQuestion7String() {
+        return String.format("You enjoyed this activity %s out of 10", this.getQuestion7());
+    }
+
+    public String getQuestion8String() {
+        Integer question8Response = this.getQuestion8();
+        String question8ResponseString = "";
+        if (question8Response == 1) {
+            question8ResponseString = "After this activity you said you felt full of energy";
+        } else if (question8Response == 2) {
+            question8ResponseString = "After this activity you said you felt somewhat energised";
+        } else if (question8Response == 3) {
+            question8ResponseString = "You said there was no change in your energy levels after this activity";
+        } else if (question8Response == 4) {
+            question8ResponseString = "You said you felt somewhat drained after this activity"; // BEWARE THE CONDITIONAL THAT WE TALKED ABOUT IN THE MEETING
+        }
+        return question8ResponseString;
+    }
+
+    public String getQuestion9String() {
+        Integer question9Response = this.getQuestion9();
+        String question9ResponseString = "";
+        if (question9Response == 1) {
+            question9ResponseString = "You said this was a physical fatigue";
+        } else if (question9Response == 2) {
+            question9ResponseString = "You said this was a mental fatigue";
+        } else if (question9Response == 3) {
+            question9ResponseString = "You said this was a mixture of both physical and mental fatigue";
+        }
+        return question9ResponseString;
     }
 }

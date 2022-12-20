@@ -23,7 +23,7 @@ public class SurveyMiddle4Activity extends AppCompatActivity {
             SurveyResult surveyResult = (SurveyResult) getIntent().getSerializableExtra("survey_result");
             surveyResult.setQuestion4(1);
 
-            Intent intent = new Intent(SurveyMiddle4Activity.this, SurveyMiddle3aActivity.class);
+            Intent intent = new Intent(SurveyMiddle4Activity.this, SurveyMiddle4aActivity.class);
             intent.putExtra("survey_result", surveyResult);
             startActivity(intent);
         });
@@ -34,7 +34,7 @@ public class SurveyMiddle4Activity extends AppCompatActivity {
             SurveyResult surveyResult = (SurveyResult) getIntent().getSerializableExtra("survey_result");
             surveyResult.setQuestion4(2);
 
-            Intent intent = new Intent(SurveyMiddle4Activity.this, SurveyMiddle3bActivity.class);
+            Intent intent = new Intent(SurveyMiddle4Activity.this, SurveyMiddle4bActivity.class);
             intent.putExtra("survey_result", surveyResult);
             startActivity(intent);
         });
@@ -45,7 +45,7 @@ public class SurveyMiddle4Activity extends AppCompatActivity {
             SurveyResult surveyResult = (SurveyResult) getIntent().getSerializableExtra("survey_result");
             surveyResult.setQuestion4(3);
 
-            Intent intent = new Intent(SurveyMiddle4Activity.this, SurveyMiddle3cActivity.class);
+            Intent intent = new Intent(SurveyMiddle4Activity.this, SurveyMiddle4cActivity.class);
             intent.putExtra("survey_result", surveyResult);
             startActivity(intent);
         });
@@ -56,7 +56,7 @@ public class SurveyMiddle4Activity extends AppCompatActivity {
             SurveyResult surveyResult = (SurveyResult) getIntent().getSerializableExtra("survey_result");
             surveyResult.setQuestion4(4);
 
-            Intent intent = new Intent(SurveyMiddle4Activity.this, SurveyMiddle3dActivity.class);
+            Intent intent = new Intent(SurveyMiddle4Activity.this, SurveyMiddle4dActivity.class);
             intent.putExtra("survey_result", surveyResult);
             startActivity(intent);
         });
@@ -67,7 +67,7 @@ public class SurveyMiddle4Activity extends AppCompatActivity {
             SurveyResult surveyResult = (SurveyResult) getIntent().getSerializableExtra("survey_result");
             surveyResult.setQuestion4(5);
 
-            Intent intent = new Intent(SurveyMiddle4Activity.this, SurveyMiddle3dActivity.class);
+            Intent intent = new Intent(SurveyMiddle4Activity.this, SurveyMiddle4eActivity.class);
             intent.putExtra("survey_result", surveyResult);
             startActivity(intent);
         });
@@ -78,7 +78,7 @@ public class SurveyMiddle4Activity extends AppCompatActivity {
             SurveyResult surveyResult = (SurveyResult) getIntent().getSerializableExtra("survey_result");
             surveyResult.setQuestion4(6);
 
-            Intent intent = new Intent(SurveyMiddle4Activity.this, SurveyMiddle3eActivity.class);
+            Intent intent = new Intent(SurveyMiddle4Activity.this, SurveyMiddle4fActivity.class);
             intent.putExtra("survey_result", surveyResult);
             startActivity(intent);
         });
@@ -89,7 +89,7 @@ public class SurveyMiddle4Activity extends AppCompatActivity {
             SurveyResult surveyResult = (SurveyResult) getIntent().getSerializableExtra("survey_result");
             surveyResult.setQuestion4(7);
 
-            Intent intent = new Intent(SurveyMiddle4Activity.this, SurveyMiddle3fActivity.class);
+            Intent intent = new Intent(SurveyMiddle4Activity.this, SurveyMiddle4gActivity.class);
             intent.putExtra("survey_result", surveyResult);
             startActivity(intent);
         });
@@ -100,7 +100,7 @@ public class SurveyMiddle4Activity extends AppCompatActivity {
             SurveyResult surveyResult = (SurveyResult) getIntent().getSerializableExtra("survey_result");
             surveyResult.setQuestion4(8);
 
-            Intent intent = new Intent(SurveyMiddle4Activity.this, SurveyMiddle3gActivity.class);
+            Intent intent = new Intent(SurveyMiddle4Activity.this, SurveyMiddle4hActivity.class);
             intent.putExtra("survey_result", surveyResult);
             startActivity(intent);
         });

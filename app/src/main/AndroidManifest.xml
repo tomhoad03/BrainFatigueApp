@@ -75,37 +75,69 @@
                 android:exported="false"
                 android:parentActivityName=".SurveyMiddle4Activity"/>
         <activity
+                android:name=".SurveyMiddle4hActivity"
+                android:exported="false"
+                android:parentActivityName=".SurveyMiddle4Activity"/>
+        <activity
+                android:name=".SurveyMiddle4gActivity"
+                android:exported="false"
+                android:parentActivityName=".SurveyMiddle4Activity"/>
+        <activity
+                android:name=".SurveyMiddle4fActivity"
+                android:exported="false"
+                android:parentActivityName=".SurveyMiddle4Activity"/>
+        <activity
+                android:name=".SurveyMiddle4eActivity"
+                android:exported="false"
+                android:parentActivityName=".SurveyMiddle4Activity"/>
+        <activity
+                android:name=".SurveyMiddle4dActivity"
+                android:exported="false"
+                android:parentActivityName=".SurveyMiddle4Activity"/>
+        <activity
+                android:name=".SurveyMiddle4cActivity"
+                android:exported="false"
+                android:parentActivityName=".SurveyMiddle4Activity"/>
+        <activity
+                android:name=".SurveyMiddle4bActivity"
+                android:exported="false"
+                android:parentActivityName=".SurveyMiddle4Activity"/>
+        <activity
+                android:name=".SurveyMiddle4aActivity"
+                android:exported="false"
+                android:parentActivityName=".SurveyMiddle4Activity"/>
+        <activity
                 android:name=".SurveyMiddle4Activity"
                 android:exported="false"
                 android:parentActivityName=".SurveyMiddle3Activity"/>
         <activity
                 android:name=".SurveyMiddle3gActivity"
                 android:exported="false"
-                android:parentActivityName=".SurveyMiddle4Activity"/>
+                android:parentActivityName=".SurveyMiddle3Activity"/>
         <activity
                 android:name=".SurveyMiddle3fActivity"
                 android:exported="false"
-                android:parentActivityName=".SurveyMiddle4Activity"/>
+                android:parentActivityName=".SurveyMiddle3Activity"/>
         <activity
                 android:name=".SurveyMiddle3eActivity"
                 android:exported="false"
-                android:parentActivityName=".SurveyMiddle4Activity"/>
+                android:parentActivityName=".SurveyMiddle3Activity"/>
         <activity
                 android:name=".SurveyMiddle3dActivity"
                 android:exported="false"
-                android:parentActivityName=".SurveyMiddle4Activity"/>
+                android:parentActivityName=".SurveyMiddle3Activity"/>
         <activity
                 android:name=".SurveyMiddle3cActivity"
                 android:exported="false"
-                android:parentActivityName=".SurveyMiddle4Activity"/>
+                android:parentActivityName=".SurveyMiddle3Activity"/>
         <activity
                 android:name=".SurveyMiddle3bActivity"
                 android:exported="false"
-                android:parentActivityName=".SurveyMiddle4Activity"/>
+                android:parentActivityName=".SurveyMiddle3Activity"/>
         <activity
                 android:name=".SurveyMiddle3aActivity"
                 android:exported="false"
-                android:parentActivityName=".SurveyMiddle4Activity"/>
+                android:parentActivityName=".SurveyMiddle3Activity"/>
         <activity
                 android:name=".SurveyMiddle3Activity"
                 android:exported="false"
