@@ -4,10 +4,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.Switch;
-import android.widget.TextView;
+import android.widget.*;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.core.content.ContextCompat;
@@ -40,7 +37,9 @@ public class DashboardRightFrag extends Fragment {
     public void onViewCreated (View view, Bundle savedInstanceState) {
         // Add report boxes with data from the database to the scrollable list
 
-        // Get the layout
+        // Get the layouts
+        ScrollView vertical = getView().findViewById(R.id.activity_right_fragment_reports_vertical);
+        vertical.setScrollbarFadingEnabled(false); // Make the scrollbar always visible
         ConstraintLayout layout = getView().findViewById(R.id.activity_right_fragment_reports_container);
 
         // Get the data from the database
