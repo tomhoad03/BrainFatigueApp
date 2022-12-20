@@ -64,10 +64,14 @@ public class DashboardLeftFrag extends Fragment {
         //                                                   database into a string that LocalTime can parse)
         for (SurveyResult nextResult : surveyResults) {
 
-            Long timeNow = System.currentTimeMillis();
             LocalTime time1 = LocalTime.parse("06:00");
             LocalTime time2 = LocalTime.parse("23:00");
-            // SimpleDateFormat sdf = new SimpleDateFormat("hh:mm", Locale.UK);
+
+            Long timeNow = System.currentTimeMillis();
+            SimpleDateFormat sdf = new SimpleDateFormat("hh:mm", Locale.UK);
+            GregorianCalendar calendar = new GregorianCalendar(TimeZone.getTimeZone("Europe/London"));
+            calendar.setTimeInMillis(nextResult.getSurveyResultId());
+            LocalTime resultTime = LocalTime.parse(sdf.format(calendar.getTime()));
 
             // If the current time is after the notification time, show only reports from today
             System.out.println("COMPARE: " + now.compareTo(summaryTime));
@@ -76,7 +80,7 @@ public class DashboardLeftFrag extends Fragment {
                 // Show only today's reports as the time for today's daily summary has passed
                 // "today's reports" defined by the reports that have a time that is AFTER
                 // the (current date and time) MINUS the time now in hours (around 00:00am today)
-                if (nextResult.getSurveyResultId().compareTo(now.minusHours((long) summaryTimeFloat))) {
+                if (resultTime.compareTo(now.minusHours(summaryTimeFloat.longValue())) > 0) {
                     // Create a report box for this survey result
                     formatButton(nextResult, boxCount, layout);
                     boxCount++;
@@ -86,12 +90,15 @@ public class DashboardLeftFrag extends Fragment {
                 // "yesterday's reports" defined by the reports that have a time that is BEFORE
                 // the (current date and time) MINUS the time now in hours (around 00:00am today) but also AFTER
                 // the (current date and time) MINUS the time now in hours + 24 (around 00:00am the day before)
+                /*
                 if (nextResult.getSurveyResultId().compareTo(now.minusHours((long) summaryTimeFloat)) &&
                         nextResult.getSurveyResultId().compareTo(now.minusHours((long) (summaryTimeFloat + 24f)))) {
                     // Create a report box for this survey result
                     formatButton(nextResult, boxCount, layout);
                     boxCount++;
                 }
+
+                 */
             }
         }
     }
