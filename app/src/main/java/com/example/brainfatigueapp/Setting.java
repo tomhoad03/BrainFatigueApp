@@ -5,7 +5,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
-public class Settings {
+public class Setting {
     @PrimaryKey
     public Long settingsId;
 
@@ -30,7 +30,7 @@ public class Settings {
     @ColumnInfo(name = "dark_mode")
     public boolean darkMode;
 
-    public Settings() {
+    public Setting() {
         this.settingsId = System.currentTimeMillis();
         this.interval = 10800000L;
         this.dayStart = 32400000L;
@@ -41,7 +41,7 @@ public class Settings {
         this.darkMode = false;
     }
 
-    public Settings(Long settingsId, Long interval, Long dayStart, Long dayEnd, Long workStart, Long workEnd, Long summary, boolean darkMode) {
+    public Setting(Long settingsId, Long interval, Long dayStart, Long dayEnd, Long workStart, Long workEnd, Long summary, boolean darkMode) {
         this.settingsId = settingsId;
         this.interval = interval;
         this.dayStart = dayStart;
@@ -54,7 +54,7 @@ public class Settings {
 
     @Override
     public String toString() {
-        return "Settings{" +
+        return "Setting{" +
                 "settingsId=" + settingsId +
                 ", interval=" + interval +
                 ", dayStart=" + dayStart +
