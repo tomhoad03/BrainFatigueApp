@@ -5,7 +5,6 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,16 +30,16 @@ public class SurveyEndActivity extends AppCompatActivity {
 
         // Database access
         ExecutorService executorService1 = Executors.newSingleThreadExecutor();
-        Future<Settings> futureSetting = executorService1.submit(() -> {
+        Future<Setting> futureSetting = executorService1.submit(() -> {
             FatigueDatabase fatigueDatabase = FatigueDatabase.getDatabase(getApplicationContext());
             SettingsDao settingsDao = fatigueDatabase.settingsDao();
 
-            List<Settings> settings = settingsDao.getAll();
-            Settings setting;
+            List<Setting> settings = settingsDao.getAll();
+            Setting setting;
             try {
                 setting = settings.get(settings.size() - 1);
             } catch (Exception e) {
-                setting = new Settings();
+                setting = new Setting();
             }
             return setting;
         });
@@ -48,7 +47,7 @@ public class SurveyEndActivity extends AppCompatActivity {
 
         // Schedule the next notification
         long timeout = System.currentTimeMillis() + 10000;
-        Settings resultSetting;
+        Setting resultSetting;
 
         while (System.currentTimeMillis() < timeout) {
             try {
