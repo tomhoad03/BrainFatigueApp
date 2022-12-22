@@ -5,31 +5,46 @@
                                                    android:layout_width="match_parent"
                                                    android:layout_height="fill_parent"
                                                    tools:context=".DashboardRightFrag" android:id="@+id/frameLayout2">
-    <!--
     <HorizontalScrollView
             android:id="@+id/activity_right_fragment_graph_horizontal"
-            android:layout_width="match_parent"
+            android:layout_width="400dp"
             android:layout_height="212dp"
+            android:isScrollContainer="false"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent">
+            <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/activity_right_fragment_graph_1"
+                    android:layout_width="300dp"
+                    android:layout_height="180dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_margin="30dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"/>
+
+            <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/activity_right_fragment_graph_2"
+                    android:layout_width="300dp"
+                    android:layout_height="180dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_margin="30dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"/>
+        </LinearLayout>
+
     </HorizontalScrollView>
-    -->
-    <com.github.mikephil.charting.charts.LineChart
-            android:id="@+id/activity_right_fragment_graph_1"
-            android:layout_width="300dp"
-            android:layout_height="212dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="2dp"
-            android:layout_margin="30dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"/>
+
     <ScrollView
             android:id="@+id/activity_right_fragment_reports_vertical"
             android:layout_width="409dp"
             android:layout_height="0dp"
             android:layout_marginTop="64dp"
             android:fadeScrollbars="false"
-            app:layout_constraintTop_toBottomOf="@+id/activity_right_fragment_graph_1"
+            app:layout_constraintTop_toBottomOf="@+id/activity_right_fragment_graph_horizontal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent">

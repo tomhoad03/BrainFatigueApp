@@ -62,13 +62,23 @@ public class DashboardRightFrag extends Fragment {
 
         // Draw a graph from the data
         LineChart lineChart = getView().findViewById(R.id.activity_right_fragment_graph_1);
-        LineDataSet lineChartData = new LineDataSet(getChartData(surveyResults), "LINE CHAAAAAAAAAAAAART!");
+        LineDataSet lineChartData = new LineDataSet(getChartData(surveyResults), "LINE CHART 1!");
         ArrayList<ILineDataSet> iLineDataSets = new ArrayList<ILineDataSet>();
         iLineDataSets.add(lineChartData);
 
         LineData lineData = new LineData(iLineDataSets);
         lineChart.setData(lineData);
         lineChart.invalidate(); // ??? what do this do
+
+        // Draw a second graph from the data
+        LineChart lineChart2 = getView().findViewById(R.id.activity_right_fragment_graph_2);
+        LineDataSet lineChartData2 = new LineDataSet(getChartData(surveyResults), "LINE CHART 2!");
+        ArrayList<ILineDataSet> iLineDataSets2 = new ArrayList<ILineDataSet>();
+        iLineDataSets2.add(lineChartData2);
+
+        LineData lineData2 = new LineData(iLineDataSets2);
+        lineChart2.setData(lineData2);
+        lineChart2.invalidate(); // ??? what do this do
 
         // Fill the fragment with a report box for every entry in the database
         int boxCount = 0;
