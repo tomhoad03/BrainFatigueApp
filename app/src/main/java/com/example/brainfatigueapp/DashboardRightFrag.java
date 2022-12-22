@@ -14,9 +14,12 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.AxisBase;
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import java.text.SimpleDateFormat;
@@ -39,15 +42,21 @@ public class DashboardRightFrag extends Fragment {
         ScrollView vertical = getView().findViewById(R.id.activity_right_fragment_reports_vertical);
         vertical.setScrollbarFadingEnabled(false); // Make the scrollbar always visible
         ConstraintLayout layout = getView().findViewById(R.id.activity_right_fragment_reports_container);
+        LineChart chart1 = getView().findViewById(R.id.activity_right_fragment_graph_1);
+        LineChart chart2 = getView().findViewById(R.id.activity_right_fragment_graph_2);
 
         // Retrieve the stored data from the database
         List<SurveyResult> surveyResults = retrieveDatabaseData();
 
+        // Format the graphs
+        formatGraph(chart1);
+        formatGraph(chart2);
+
         // Draw a graph from the data
-        drawLineGraph1(surveyResults);
+        drawLineGraph1(surveyResults, chart1);
 
         // Draw a second graph from the data
-        drawLineGraph2(surveyResults);
+        drawLineGraph2(surveyResults, chart2);
 
         // Fill the fragment with a report box for every entry in the database
         drawReportBoxes(surveyResults, layout);
@@ -75,17 +84,40 @@ public class DashboardRightFrag extends Fragment {
     }
 
     private ArrayList<Entry> getChartData(List<SurveyResult> database) {
-        ArrayList<Entry> chartData = new ArrayList<Entry>();
+        // Extract the information relevant to the line graph from the database
 
+        ArrayList<Entry> chartData = new ArrayList<Entry>();
+        float dateCount = 0; // Hardcoded for now, need conversion from date (stored as long) to date label for x axis
+        for (SurveyResult result : database) {
+            chartData.add(new Entry(dateCount, result.getQuestion1()));
+            dateCount++;
+        }
+
+        /*
         chartData.add(new Entry(1, 15));
         chartData.add(new Entry(2, 50));
         chartData.add(new Entry(3, 25));
-
+         */
         return chartData;
     }
 
-    private void drawLineGraph1(List<SurveyResult> surveyResults) {
-        LineChart lineChart = getView().findViewById(R.id.activity_right_fragment_graph_1);
+    private void formatGraph(LineChart chart) {
+        // Format the appearance of the graphs
+        String[] datesForNow = new String[] {"Dec 1", "Dec 2", "Dec 3"}; // Hardcoded for now, need correct conversion
+
+        ValueFormatter floatToString = new ValueFormatter() {
+            @Override
+            public String getAxisLabel(float value, AxisBase axis) {
+                return datesForNow[(int) value];
+            }
+        };
+
+        XAxis x = chart.getXAxis();
+        x.setGranularity(1f); // set min step/interval to 1
+        x.setValueFormatter(floatToString); // apply the format/conversion function to the chart axis
+    }
+
+    private void drawLineGraph1(List<SurveyResult> surveyResults, LineChart lineChart) {
         LineDataSet lineChartData = new LineDataSet(getChartData(surveyResults), "LINE CHART 1!");
         ArrayList<ILineDataSet> iLineDataSets = new ArrayList<ILineDataSet>();
         iLineDataSets.add(lineChartData);
@@ -95,8 +127,7 @@ public class DashboardRightFrag extends Fragment {
         lineChart.invalidate(); // ??? what do this do
     }
 
-    private void drawLineGraph2(List<SurveyResult> surveyResults) {
-        LineChart lineChart2 = getView().findViewById(R.id.activity_right_fragment_graph_2);
+    private void drawLineGraph2(List<SurveyResult> surveyResults, LineChart lineChart2) {
         LineDataSet lineChartData2 = new LineDataSet(getChartData(surveyResults), "LINE CHART 2!");
         ArrayList<ILineDataSet> iLineDataSets2 = new ArrayList<ILineDataSet>();
         iLineDataSets2.add(lineChartData2);
