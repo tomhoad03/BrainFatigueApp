@@ -35,13 +35,25 @@ public class DashboardRightFrag extends Fragment {
 
     @Override
     public void onViewCreated (View view, Bundle savedInstanceState) {
-        // Add report boxes with data from the database to the scrollable list
-
         // Get the layouts
         ScrollView vertical = getView().findViewById(R.id.activity_right_fragment_reports_vertical);
         vertical.setScrollbarFadingEnabled(false); // Make the scrollbar always visible
         ConstraintLayout layout = getView().findViewById(R.id.activity_right_fragment_reports_container);
 
+        // Retrieve the stored data from the database
+        List<SurveyResult> surveyResults = retrieveDatabaseData();
+
+        // Draw a graph from the data
+        drawLineGraph1(surveyResults);
+
+        // Draw a second graph from the data
+        drawLineGraph2(surveyResults);
+
+        // Fill the fragment with a report box for every entry in the database
+        drawReportBoxes(surveyResults, layout);
+    }
+
+    private List<SurveyResult> retrieveDatabaseData() {
         // Get the data from the database
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         Future<List<SurveyResult>> surveyResultsFuture = executorService.submit(() -> {
@@ -59,36 +71,7 @@ public class DashboardRightFrag extends Fragment {
             e.printStackTrace();
         }
         // Log.d("survey_results", surveyResults.toString());
-
-        // Draw a graph from the data
-        LineChart lineChart = getView().findViewById(R.id.activity_right_fragment_graph_1);
-        LineDataSet lineChartData = new LineDataSet(getChartData(surveyResults), "LINE CHART 1!");
-        ArrayList<ILineDataSet> iLineDataSets = new ArrayList<ILineDataSet>();
-        iLineDataSets.add(lineChartData);
-
-        LineData lineData = new LineData(iLineDataSets);
-        lineChart.setData(lineData);
-        lineChart.invalidate(); // ??? what do this do
-
-        // Draw a second graph from the data
-        LineChart lineChart2 = getView().findViewById(R.id.activity_right_fragment_graph_2);
-        LineDataSet lineChartData2 = new LineDataSet(getChartData(surveyResults), "LINE CHART 2!");
-        ArrayList<ILineDataSet> iLineDataSets2 = new ArrayList<ILineDataSet>();
-        iLineDataSets2.add(lineChartData2);
-
-        LineData lineData2 = new LineData(iLineDataSets2);
-        lineChart2.setData(lineData2);
-        lineChart2.invalidate(); // ??? what do this do
-
-        // Fill the fragment with a report box for every entry in the database
-        int boxCount = 0;
-        if (surveyResults != null) {
-            for (SurveyResult nextResult : surveyResults) {
-                // Create a report box for this survey result
-                formatButton(nextResult, boxCount, layout);
-                boxCount++;
-            }
-        }
+        return surveyResults;
     }
 
     private ArrayList<Entry> getChartData(List<SurveyResult> database) {
@@ -99,6 +82,39 @@ public class DashboardRightFrag extends Fragment {
         chartData.add(new Entry(3, 25));
 
         return chartData;
+    }
+
+    private void drawLineGraph1(List<SurveyResult> surveyResults) {
+        LineChart lineChart = getView().findViewById(R.id.activity_right_fragment_graph_1);
+        LineDataSet lineChartData = new LineDataSet(getChartData(surveyResults), "LINE CHART 1!");
+        ArrayList<ILineDataSet> iLineDataSets = new ArrayList<ILineDataSet>();
+        iLineDataSets.add(lineChartData);
+
+        LineData lineData = new LineData(iLineDataSets);
+        lineChart.setData(lineData);
+        lineChart.invalidate(); // ??? what do this do
+    }
+
+    private void drawLineGraph2(List<SurveyResult> surveyResults) {
+        LineChart lineChart2 = getView().findViewById(R.id.activity_right_fragment_graph_2);
+        LineDataSet lineChartData2 = new LineDataSet(getChartData(surveyResults), "LINE CHART 2!");
+        ArrayList<ILineDataSet> iLineDataSets2 = new ArrayList<ILineDataSet>();
+        iLineDataSets2.add(lineChartData2);
+
+        LineData lineData2 = new LineData(iLineDataSets2);
+        lineChart2.setData(lineData2);
+        lineChart2.invalidate(); // ??? what do this do
+    }
+
+    private void drawReportBoxes(List<SurveyResult> surveyResults, ConstraintLayout layout) {
+        int boxCount = 0;
+        if (surveyResults != null) {
+            for (SurveyResult nextResult : surveyResults) {
+                // Create a report box for this survey result
+                formatButton(nextResult, boxCount, layout);
+                boxCount++;
+            }
+        }
     }
 
     private void formatButton (SurveyResult result, int count, ConstraintLayout layout) {
