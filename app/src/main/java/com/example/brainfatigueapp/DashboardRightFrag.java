@@ -49,8 +49,8 @@ public class DashboardRightFrag extends Fragment {
         List<SurveyResult> surveyResults = retrieveDatabaseData();
 
         // Format the graphs
-        formatGraph(chart1);
-        formatGraph(chart2);
+        formatGraph(surveyResults, chart1);
+        formatGraph(surveyResults, chart2);
 
         // Draw a graph from the data
         drawLineGraph1(surveyResults, chart1);
@@ -89,6 +89,7 @@ public class DashboardRightFrag extends Fragment {
         ArrayList<Entry> chartData = new ArrayList<Entry>();
         float dateCount = 0; // Hardcoded for now, need conversion from date (stored as long) to date label for x axis
         for (SurveyResult result : database) {
+            System.out.println("GRAPH CAPTION: " + result.getSurveyResultIdAsString());
             chartData.add(new Entry(dateCount, result.getQuestion1()));
             dateCount++;
         }
@@ -101,14 +102,18 @@ public class DashboardRightFrag extends Fragment {
         return chartData;
     }
 
-    private void formatGraph(LineChart chart) {
+    private void formatGraph(List<SurveyResult> database, LineChart chart) {
         // Format the appearance of the graphs
-        String[] datesForNow = new String[] {"Dec 1", "Dec 2", "Dec 3"}; // Hardcoded for now, need correct conversion
+        ArrayList<String> resultDatetimes = new ArrayList<String>();
+        for (SurveyResult result : database) {
+            // System.out.println("GRAPH CAPTION: " + result.getSurveyResultIdAsString());
+            resultDatetimes.add(result.getSurveyResultIdAsString());
+        }
 
         ValueFormatter floatToString = new ValueFormatter() {
             @Override
             public String getAxisLabel(float value, AxisBase axis) {
-                return datesForNow[(int) value];
+                return resultDatetimes.get((int) value);
             }
         };
 
@@ -150,10 +155,10 @@ public class DashboardRightFrag extends Fragment {
 
     private void formatButton (SurveyResult result, int count, ConstraintLayout layout) {
         // Set the strings for the text
-        SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM d, hh:mmaaa", Locale.UK);
+        SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM d, HH:mmaaa", Locale.UK);
         GregorianCalendar calendar = new GregorianCalendar(TimeZone.getTimeZone("Europe/London"));
         calendar.setTimeInMillis(result.getSurveyResultId());
-        System.out.println("CURRENTLY: " + sdf.format(calendar.getTime()));
+        // System.out.println("CURRENTLY: " + sdf.format(calendar.getTime()));
         String mainText = sdf.format(calendar.getTime());
         String subText = "You reported a fatigue level of " + result.getQuestion1().toString() + "."; // Update to new string method
 
