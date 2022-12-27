@@ -16,6 +16,7 @@ import androidx.fragment.app.FragmentManager;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
@@ -107,6 +108,10 @@ public class DashboardRightFrag extends Fragment {
 
         // Set the background colour - actually did this by setting the colour of the LinearLayout in the xml instead
         // chart.setBackgroundColor(getResources().getColor(R.color.off_white));
+        // Disable the legend - this could be used as the label for each of the graphs later (energy, steps, fitbit...)
+        chart.getLegend().setEnabled(false);
+        // Disable the description
+        chart.getDescription().setEnabled(false);
 
         // Format the label of data points on the x axis
         ArrayList<String> resultDatetimes = new ArrayList<String>();
@@ -122,9 +127,21 @@ public class DashboardRightFrag extends Fragment {
             }
         };
 
+        // Format the x axis
         XAxis x = chart.getXAxis();
         x.setGranularity(1f); // set min step/interval to 1
         x.setValueFormatter(floatToString); // apply the format/conversion function to the chart axis
+        x.setPosition(XAxis.XAxisPosition.BOTTOM);
+        x.setDrawGridLines(false);
+
+        // Format the y axes
+        YAxis yLeft = chart.getAxis(YAxis.AxisDependency.LEFT);
+        yLeft.setDrawGridLines(false);
+        yLeft.setAxisMinimum(0f);
+        yLeft.setAxisMaximum(100f);
+        YAxis yRight = chart.getAxisRight();
+        yRight.setEnabled(false);
+
 
         chart.invalidate(); // Don't think I need to update the graph, but might as well at the end of this function
     }
@@ -167,7 +184,7 @@ public class DashboardRightFrag extends Fragment {
         calendar.setTimeInMillis(result.getSurveyResultId());
         // System.out.println("CURRENTLY: " + sdf.format(calendar.getTime()));
         String mainText = sdf.format(calendar.getTime());
-        String subText = "You reported a fatigue level of " + result.getQuestion1().toString() + "."; // Update to new string method
+        String subText = "You reported an energy level of " + result.getQuestion1().toString() + "."; // Update to new string method
 
         // This function takes the required data to create a report and makes it look like it should
         Button newButton = new Button(getActivity());
