@@ -104,6 +104,11 @@ public class DashboardRightFrag extends Fragment {
 
     private void formatGraph(List<SurveyResult> database, LineChart chart) {
         // Format the appearance of the graphs
+
+        // Set the background colour - actually did this by setting the colour of the LinearLayout in the xml instead
+        // chart.setBackgroundColor(getResources().getColor(R.color.off_white));
+
+        // Format the label of data points on the x axis
         ArrayList<String> resultDatetimes = new ArrayList<String>();
         for (SurveyResult result : database) {
             // System.out.println("GRAPH CAPTION: " + result.getSurveyResultIdAsString());
@@ -120,6 +125,8 @@ public class DashboardRightFrag extends Fragment {
         XAxis x = chart.getXAxis();
         x.setGranularity(1f); // set min step/interval to 1
         x.setValueFormatter(floatToString); // apply the format/conversion function to the chart axis
+
+        chart.invalidate(); // Don't think I need to update the graph, but might as well at the end of this function
     }
 
     private void drawLineGraph1(List<SurveyResult> surveyResults, LineChart lineChart) {
