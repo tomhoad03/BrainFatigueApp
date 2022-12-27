@@ -112,6 +112,8 @@ public class DashboardRightFrag extends Fragment {
         chart.getLegend().setEnabled(false);
         // Disable the description
         chart.getDescription().setEnabled(false);
+        // Give the graph a nudge to the right so that the first x axis label doesn't get cutoff
+        chart.setExtraLeftOffset(7f);
 
         // Format the label of data points on the x axis
         ArrayList<String> resultDatetimes = new ArrayList<String>();

@@ -17,13 +17,21 @@
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:background="@color/off_white">
+            <TextView
+                android:layout_width="46dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="6dp"
+                android:gravity="center"
+                android:text="Energy Level"
+                android:textColor="@color/black"
+                android:textSize="15sp"/>
             <com.github.mikephil.charting.charts.LineChart
                     android:id="@+id/activity_right_fragment_graph_1"
                     android:layout_width="400dp"
                     android:layout_height="240dp"
                     android:layout_marginTop="2dp"
                     android:layout_marginBottom="2dp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="0dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"/>
 
