@@ -112,8 +112,9 @@ public class DashboardRightFrag extends Fragment {
         chart.getLegend().setEnabled(false);
         // Disable the description
         chart.getDescription().setEnabled(false);
-        // Give the graph a nudge to the right so that the first x axis label doesn't get cutoff
+        // Give the graph a nudge to the left and right so that the first x axis labels don't get cutoff
         chart.setExtraLeftOffset(7f);
+        chart.setExtraRightOffset(7f); // Doesn't work?
 
         // Format the label of data points on the x axis
         ArrayList<String> resultDatetimes = new ArrayList<String>();
@@ -139,33 +140,42 @@ public class DashboardRightFrag extends Fragment {
         // Format the y axes
         YAxis yLeft = chart.getAxis(YAxis.AxisDependency.LEFT);
         yLeft.setDrawGridLines(false);
+        yLeft.setDrawZeroLine(true);
         yLeft.setAxisMinimum(0f);
         yLeft.setAxisMaximum(100f);
         YAxis yRight = chart.getAxisRight();
         yRight.setEnabled(false);
-
 
         chart.invalidate(); // Don't think I need to update the graph, but might as well at the end of this function
     }
 
     private void drawLineGraph1(List<SurveyResult> surveyResults, LineChart lineChart) {
         LineDataSet lineChartData = new LineDataSet(getChartData(surveyResults), "LINE CHART 1!");
+        lineChartData.setDrawValues(false);
+        lineChartData.setCircleColor(getResources().getColor(R.color.custom_purple_B));
+        lineChartData.setCircleSize(5f);
+        lineChartData.setCircleHoleColor(getResources().getColor(R.color.off_white));
+        lineChartData.setCircleHoleRadius(2f);
+        lineChartData.setLineWidth(3f);
+        lineChartData.setColor(getResources().getColor(R.color.custom_purple_B));
         ArrayList<ILineDataSet> iLineDataSets = new ArrayList<ILineDataSet>();
         iLineDataSets.add(lineChartData);
 
         LineData lineData = new LineData(iLineDataSets);
         lineChart.setData(lineData);
-        lineChart.invalidate(); // ??? what do this do
+        lineChart.invalidate();
     }
 
     private void drawLineGraph2(List<SurveyResult> surveyResults, LineChart lineChart2) {
         LineDataSet lineChartData2 = new LineDataSet(getChartData(surveyResults), "LINE CHART 2!");
+        lineChartData2.setLineWidth(3f);
+        lineChartData2.setColor(getResources().getColor(R.color.custom_purple_A));
         ArrayList<ILineDataSet> iLineDataSets2 = new ArrayList<ILineDataSet>();
         iLineDataSets2.add(lineChartData2);
 
         LineData lineData2 = new LineData(iLineDataSets2);
         lineChart2.setData(lineData2);
-        lineChart2.invalidate(); // ??? what do this do
+        lineChart2.invalidate();
     }
 
     private void drawReportBoxes(List<SurveyResult> surveyResults, ConstraintLayout layout) {
