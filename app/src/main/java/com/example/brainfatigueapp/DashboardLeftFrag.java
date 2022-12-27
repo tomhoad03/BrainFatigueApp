@@ -30,6 +30,9 @@ public class DashboardLeftFrag extends Fragment {
 
     @Override
     public void onViewCreated (View view, Bundle savedInstanceState) {
+        // Set the text that appears if the user didn't take any surveys yesterday
+        //chart.setNoDataText("Check back here later to see your daily summary!");             AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
         // Add report boxes with data from the database to the scrollable list
 
         // Get the layouts

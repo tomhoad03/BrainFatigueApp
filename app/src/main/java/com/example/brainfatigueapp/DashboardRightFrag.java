@@ -1,5 +1,6 @@
 package com.example.brainfatigueapp;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import com.github.mikephil.charting.charts.LineChart;
@@ -108,13 +110,20 @@ public class DashboardRightFrag extends Fragment {
 
         // Set the background colour - actually did this by setting the colour of the LinearLayout in the xml instead
         // chart.setBackgroundColor(getResources().getColor(R.color.off_white));
+        chart.setDrawGridBackground(true);
+        chart.setGridBackgroundColor(getResources().getColor(R.color.custom_light_blue_A)); // Does this look ok???
+        chart.setDrawBorders(true);
+        chart.setBorderWidth(2f);
+
+        // Set the text that appears if the user hasn't taken any surveys yet
+        chart.setNoDataText("Data will appear here after you take your first survey!");
         // Disable the legend - this could be used as the label for each of the graphs later (energy, steps, fitbit...)
         chart.getLegend().setEnabled(false);
         // Disable the description
         chart.getDescription().setEnabled(false);
         // Give the graph a nudge to the left and right so that the first x axis labels don't get cutoff
         chart.setExtraLeftOffset(7f);
-        chart.setExtraRightOffset(7f); // Doesn't work?
+        chart.setExtraRightOffset(14f); // Doesn't work?
 
         // Format the label of data points on the x axis
         ArrayList<String> resultDatetimes = new ArrayList<String>();
@@ -133,6 +142,9 @@ public class DashboardRightFrag extends Fragment {
         // Format the x axis
         XAxis x = chart.getXAxis();
         x.setGranularity(1f); // set min step/interval to 1
+        x.setTextSize(12f);
+        // Typeface tf = ResourcesCompat.getFont(getContext(), R.font.spartan);
+        // x.setTypeface(tf); Maybe this works for other people?
         x.setValueFormatter(floatToString); // apply the format/conversion function to the chart axis
         x.setPosition(XAxis.XAxisPosition.BOTTOM);
         x.setDrawGridLines(false);
@@ -143,6 +155,9 @@ public class DashboardRightFrag extends Fragment {
         yLeft.setDrawZeroLine(true);
         yLeft.setAxisMinimum(0f);
         yLeft.setAxisMaximum(100f);
+        yLeft.setLabelCount(5, true);
+        yLeft.setTextSize(12f);
+        // y.setTypeface(tf); Maybe this works for other people?
         YAxis yRight = chart.getAxisRight();
         yRight.setEnabled(false);
 

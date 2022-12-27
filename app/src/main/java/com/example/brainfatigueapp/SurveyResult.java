@@ -81,7 +81,7 @@ public class SurveyResult implements Serializable {
 
     public String getSurveyResultIdAsString() {
         // Convert the id for this survey result to a date and time
-        SimpleDateFormat sdf = new SimpleDateFormat("d/M/yy HH:mm", Locale.UK);
+        SimpleDateFormat sdf = new SimpleDateFormat("d/M HH:mm", Locale.UK); // Should be d/M/yy to 'year-proof' dates
         GregorianCalendar calendar = new GregorianCalendar(TimeZone.getTimeZone("Europe/London"));
         calendar.setTimeInMillis(this.getSurveyResultId());
         return sdf.format(calendar.getTime());
