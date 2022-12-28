@@ -128,7 +128,7 @@ public class DashboardRightFrag extends Fragment {
 
         // Set the text that appears if the user hasn't taken any surveys yet
         chart.setNoDataText("Data will appear here after you take your first survey!");
-        // Disable the legend - this could be used as the label for each of the graphs later (energy, steps, fitbit...)
+        // Disable the legend
         chart.getLegend().setEnabled(false);
         // Disable the description
         chart.getDescription().setEnabled(false);
