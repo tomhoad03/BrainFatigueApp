@@ -145,6 +145,7 @@ public class DashboardRightFrag extends Fragment {
         ValueFormatter floatToString = new ValueFormatter() {
             @Override
             public String getAxisLabel(float value, AxisBase axis) {
+                // System.out.println("Value: " + value);
                 return resultDatetimes.get((int) value);
             }
         };
@@ -193,8 +194,13 @@ public class DashboardRightFrag extends Fragment {
 
     private void drawLineGraph2(List<SurveyResult> surveyResults, LineChart lineChart2) {
         LineDataSet lineChartData2 = new LineDataSet(getChartData(surveyResults), "LINE CHART 2!");
+        lineChartData2.setDrawValues(false);
+        lineChartData2.setCircleColor(getResources().getColor(R.color.custom_purple_B));
+        lineChartData2.setCircleSize(5f);
+        lineChartData2.setCircleHoleColor(getResources().getColor(R.color.off_white));
+        lineChartData2.setCircleHoleRadius(2f);
         lineChartData2.setLineWidth(3f);
-        lineChartData2.setColor(getResources().getColor(R.color.custom_purple_A));
+        lineChartData2.setColor(getResources().getColor(R.color.custom_purple_B));
         ArrayList<ILineDataSet> iLineDataSets2 = new ArrayList<ILineDataSet>();
         iLineDataSets2.add(lineChartData2);
 
@@ -202,6 +208,8 @@ public class DashboardRightFrag extends Fragment {
         lineChart2.setData(lineData2);
         lineChart2.invalidate();
     }
+
+    // private void drawLineGraph3 to go here...
 
     private void drawReportBoxes(List<SurveyResult> surveyResults, ConstraintLayout layout) {
         int boxCount = 0;
