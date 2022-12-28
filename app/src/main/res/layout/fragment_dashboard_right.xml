@@ -51,9 +51,10 @@
                     android:id="@+id/activity_right_fragment_graph_2"
                     android:layout_width="340dp"
                     android:layout_height="240dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginBottom="2dp"
-                    android:layout_margin="0dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginBottom="0dp"
+                    android:layout_margin="2dp"
+                    android:layout_marginEnd="0dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"/>

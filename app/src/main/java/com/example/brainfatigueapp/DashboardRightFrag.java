@@ -51,15 +51,15 @@ public class DashboardRightFrag extends Fragment {
         // Retrieve the stored data from the database
         List<SurveyResult> surveyResults = retrieveDatabaseData();
 
-        // Format the graphs
-        formatGraph(surveyResults, chart1);
-        formatGraph(surveyResults, chart2);
-
         // Draw a graph from the data
         drawLineGraph1(surveyResults, chart1);
 
         // Draw a second graph from the data
         drawLineGraph2(surveyResults, chart2);
+
+        // Format the graphs
+        formatGraph(surveyResults, chart1);
+        formatGraph(surveyResults, chart2);
 
         // Fill the fragment with a report box for every entry in the database
         drawReportBoxes(surveyResults, layout);
@@ -115,8 +115,16 @@ public class DashboardRightFrag extends Fragment {
         chart.setDrawBorders(true);
         chart.setBorderWidth(2f);
 
-        // set min x visible...
+        // Change the width between data points on the graphs
+        chart.setVisibleXRangeMaximum(3f);
+        chart.setVisibleXRangeMinimum(3f);
 
+        // Set the amount of interaction with the chart
+        chart.setTouchEnabled(true);
+        chart.setScaleYEnabled(false); // Users can't scale the y axis, only x
+        chart.setPinchZoom(false);
+        chart.setDoubleTapToZoomEnabled(false);
+        chart.setDragDecelerationEnabled(false);
 
         // Set the text that appears if the user hasn't taken any surveys yet
         chart.setNoDataText("Data will appear here after you take your first survey!");
@@ -125,8 +133,7 @@ public class DashboardRightFrag extends Fragment {
         // Disable the description
         chart.getDescription().setEnabled(false);
         // Give the graph a nudge to the left and right so that the first x axis labels don't get cutoff
-        chart.setExtraLeftOffset(7f);
-        chart.setExtraRightOffset(14f); // Doesn't work?
+        chart.setExtraOffsets(7f, 0f, 35f, 0f);
 
         // Format the label of data points on the x axis
         ArrayList<String> resultDatetimes = new ArrayList<String>();
