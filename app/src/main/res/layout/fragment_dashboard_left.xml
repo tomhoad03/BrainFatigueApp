@@ -5,19 +5,81 @@
                                                    android:layout_width="match_parent"
                                                    android:layout_height="fill_parent"
                                                    tools:context=".DashboardLeftFrag" android:id="@+id/frameLayout">
-
     <HorizontalScrollView
             android:id="@+id/activity_left_fragment_graph_horizontal"
-            android:layout_width="409dp"
-            android:layout_height="212dp"
+            android:layout_width="400dp"
+            android:layout_height="250dp"
+            android:scrollbarThumbHorizontal="@color/custom_navy_A"
+            android:isScrollContainer="false"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent">
+        <LinearLayout
+                android:id="@+id/activity_left_fragment_graph_horizontal_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:background="@color/off_white">
+            <TextView
+                    android:layout_width="46dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:gravity="center"
+                    android:text="Energy Level"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:fontFamily="@font/spartan"/>
+            <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/activity_left_fragment_graph_1"
+                    android:layout_width="340dp"
+                    android:layout_height="240dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_margin="0dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+            <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginEnd="3dp"
+                    android:gravity="center"
+                    android:text="Reaction Time (ms)"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:fontFamily="@font/spartan"/>
+            <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/activity_left_fragment_graph_2"
+                    android:layout_width="340dp"
+                    android:layout_height="240dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginBottom="0dp"
+                    android:layout_margin="2dp"
+                    android:layout_marginEnd="0dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <TextView
+            android:id="@+id/activity_left_fragment_reports_vertical_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="----- All Responses -----"
+            android:textColor="@color/grey_text"
+            android:textSize="20sp"
+            app:fontFamily="@font/spartan"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/activity_left_fragment_graph_horizontal"/>
 
     <ScrollView
             android:id="@+id/activity_left_fragment_reports_vertical"
             android:layout_width="409dp"
             android:layout_height="0dp"
             android:layout_marginTop="64dp"
+            android:fadeScrollbars="false"
             app:layout_constraintTop_toBottomOf="@+id/activity_left_fragment_graph_horizontal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -27,7 +89,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-            <!-- Example buttons go here -->
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
