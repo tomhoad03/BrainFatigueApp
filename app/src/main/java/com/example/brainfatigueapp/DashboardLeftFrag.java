@@ -62,7 +62,6 @@ public class DashboardLeftFrag extends Fragment {
         // Fill the fragment with a report box for every entry in the database
         drawReportBoxes(surveyResults, layout);
 
-
     }
 
     private List<SurveyResult> retrieveDatabaseData() {
@@ -89,12 +88,56 @@ public class DashboardLeftFrag extends Fragment {
     private ArrayList<Entry> getChartData(List<SurveyResult> database) {
         // Extract the information relevant to the line graph from the database
 
+        int boxCount = 0;
+        // Get the current time
+        LocalTime now = LocalTime.now();
+        // Get the time of the daily summary notification from the settings database
+        Float summaryTimeFloat = 22f; // Hardcoded until Tom shows me how to get stuff from the database
+        LocalTime summaryTime = LocalTime.parse("22:00"); // parse whatever the database stores into 'summaryTime'
+        SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM d, HH:mmaaa", Locale.UK);
+
         ArrayList<Entry> chartData = new ArrayList<Entry>();
-        float dateCount = 0; // Hardcoded for now, need conversion from date (stored as long) to date label for x axis
-        for (SurveyResult result : database) {
-            System.out.println("GRAPH CAPTION: " + result.getSurveyResultIdAsString());
-            chartData.add(new Entry(dateCount, result.getQuestion1()));
-            dateCount++;
+        float dateCount = 0;
+        if (database != null) {
+            for (SurveyResult result : database) {
+                // Get the time that the survey was taken
+                GregorianCalendar surveyCalendar = new GregorianCalendar(TimeZone.getTimeZone("Europe/London"));
+                surveyCalendar.setTimeInMillis(result.getSurveyResultId());
+
+                if (now.compareTo(summaryTime) > 0) {
+                    // If the current time is after the notification time, show only reports from today
+                    // "today's reports" defined by surveys that were taken AFTER the time now
+                    // MINUS the time now in hours (around 00:00am)
+                    GregorianCalendar lowerBoundCalendar = new GregorianCalendar(TimeZone.getTimeZone("Europe/London"));
+                    lowerBoundCalendar.setTimeInMillis(System.currentTimeMillis());
+                    lowerBoundCalendar.add(Calendar.HOUR, -1 * (int) summaryTimeFloat.longValue());
+                    System.out.println("(TODAY) Displaying only times after: " + sdf.format(lowerBoundCalendar.getTime()));
+                    if (surveyCalendar.compareTo(lowerBoundCalendar) > 0) {
+                        // Include this result in the chart
+                        chartData.add(new Entry(dateCount, result.getQuestion1()));
+                        dateCount++;
+                    }
+                } else {
+                    // If the current time is after the notification time, show only reports from today
+                    // "yesterday's reports" defined by the surveys taken BEFORE
+                    // the (current date and time) MINUS the time now in hours (around 00:00am) and also AFTER
+                    // the (current date and time) MINUS (the time now in hours + 24) (around 00:00am the day before)
+                    GregorianCalendar lowerBoundCalendar = new GregorianCalendar(TimeZone.getTimeZone("Europe/London"));
+                    lowerBoundCalendar.setTimeInMillis(System.currentTimeMillis());
+                    lowerBoundCalendar.add(Calendar.HOUR, -24 + (-1 * (int) summaryTimeFloat.longValue()));
+                    GregorianCalendar upperBoundCalendar = new GregorianCalendar(TimeZone.getTimeZone("Europe/London"));
+                    upperBoundCalendar.setTimeInMillis(System.currentTimeMillis());
+                    upperBoundCalendar.add(Calendar.HOUR, -1 * (int) summaryTimeFloat.longValue());
+                    System.out.println("(YDAY) Displaying only times after: " + sdf.format(lowerBoundCalendar.getTime()));
+                    System.out.println("(YDAY) and also only times before : " + sdf.format(upperBoundCalendar.getTime()));
+                    if ((surveyCalendar.compareTo(lowerBoundCalendar) > 0) &&
+                            (surveyCalendar.compareTo(upperBoundCalendar) < 0)) {
+                        // Include this result in the chart
+                        chartData.add(new Entry(dateCount, result.getQuestion1()));
+                        dateCount++;
+                    }
+                }
+            }
         }
 
         return chartData;
@@ -215,7 +258,7 @@ public class DashboardLeftFrag extends Fragment {
         // Get the time of the daily summary notification from the settings database
         Float summaryTimeFloat = 22f; // Hardcoded until Tom shows me how to get stuff from the database
         LocalTime summaryTime = LocalTime.parse("22:00"); // parse whatever the database stores into 'summaryTime'
-        SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM d, hh:mmaaa", Locale.UK);
+        SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM d, HH:mmaaa", Locale.UK);
 
         if (surveyResults != null) {
             for (SurveyResult nextResult : surveyResults) {

@@ -90,18 +90,12 @@ public class DashboardRightFrag extends Fragment {
         // Extract the information relevant to the line graph from the database
 
         ArrayList<Entry> chartData = new ArrayList<Entry>();
-        float dateCount = 0; // Hardcoded for now, need conversion from date (stored as long) to date label for x axis
+        float dateCount = 0;
         for (SurveyResult result : database) {
-            System.out.println("GRAPH CAPTION: " + result.getSurveyResultIdAsString());
             chartData.add(new Entry(dateCount, result.getQuestion1()));
             dateCount++;
         }
 
-        /*
-        chartData.add(new Entry(1, 15));
-        chartData.add(new Entry(2, 50));
-        chartData.add(new Entry(3, 25));
-         */
         return chartData;
     }
 
