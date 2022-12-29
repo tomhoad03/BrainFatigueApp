@@ -228,6 +228,13 @@ public class DashboardRightFrag extends Fragment {
     }
 
     private void drawReportBoxes(List<SurveyResult> surveyResults, ConstraintLayout layout) {
+        if (surveyResults.size() > 0) {
+            // Disable the default text message
+            ConstraintLayout container = getView().findViewById(R.id.activity_right_fragment_graph_big_container);
+            TextView defaultMessage = getView().findViewById(R.id.activity_right_fragment_reports_container_message);
+            container.removeView(defaultMessage);
+        }
+
         int boxCount = 0;
         if (surveyResults != null) {
             for (SurveyResult nextResult : surveyResults) {
