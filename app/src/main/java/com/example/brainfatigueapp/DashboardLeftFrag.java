@@ -45,19 +45,24 @@ public class DashboardLeftFrag extends Fragment {
         ConstraintLayout layout = getView().findViewById(R.id.activity_left_fragment_reports_container);
         LineChart chart1 = getView().findViewById(R.id.activity_left_fragment_graph_1);
         LineChart chart2 = getView().findViewById(R.id.activity_left_fragment_graph_2);
+        LineChart chart3 = getView().findViewById(R.id.activity_left_fragment_graph_3);
 
         // Retrieve the stored data from the database
         List<SurveyResult> surveyResults = retrieveDatabaseData();
 
-        // Draw a graph from the data
+        // Draw a graph from the energy level data
         drawLineGraph1(surveyResults, chart1);
 
-        // Draw a second graph from the data
+        // Draw a second graph from the reaction time data
         drawLineGraph2(surveyResults, chart2);
+
+        // Draw a third graph from the fitbit data
+        drawLineGraph3(surveyResults, chart3);
 
         // Format the graphs
         formatGraph(surveyResults, chart1);
         formatGraph(surveyResults, chart2);
+        formatGraph(surveyResults, chart3);
 
         // Fill the fragment with a report box for every entry in the database
         drawReportBoxes(surveyResults, layout);
@@ -149,7 +154,6 @@ public class DashboardLeftFrag extends Fragment {
         // Set the background colour - actually did this by setting the colour of the LinearLayout in the xml instead
         // chart.setBackgroundColor(getResources().getColor(R.color.off_white));
         chart.setDrawGridBackground(true);
-        chart.setGridBackgroundColor(getResources().getColor(R.color.custom_light_blue_A)); // Does this look ok???
         chart.setDrawBorders(true);
         chart.setBorderWidth(2f);
 
@@ -214,14 +218,15 @@ public class DashboardLeftFrag extends Fragment {
     }
 
     private void drawLineGraph1(List<SurveyResult> surveyResults, LineChart lineChart) {
-        LineDataSet lineChartData = new LineDataSet(getChartData(surveyResults), "LINE CHART 1!");
+        LineDataSet lineChartData = new LineDataSet(getChartData(surveyResults), "(energy level)");
+        lineChart.setGridBackgroundColor(getResources().getColor(R.color.custom_light_blue_A));
         lineChartData.setDrawValues(false);
-        lineChartData.setCircleColor(getResources().getColor(R.color.custom_purple_B));
+        lineChartData.setCircleColor(getResources().getColor(R.color.custom_navy_A));
         lineChartData.setCircleSize(5f);
-        lineChartData.setCircleHoleColor(getResources().getColor(R.color.off_white));
+        lineChartData.setCircleHoleColor(getResources().getColor(R.color.white));
         lineChartData.setCircleHoleRadius(2f);
         lineChartData.setLineWidth(3f);
-        lineChartData.setColor(getResources().getColor(R.color.custom_purple_B));
+        lineChartData.setColor(getResources().getColor(R.color.custom_navy_A));
         ArrayList<ILineDataSet> iLineDataSets = new ArrayList<ILineDataSet>();
         iLineDataSets.add(lineChartData);
 
@@ -231,14 +236,15 @@ public class DashboardLeftFrag extends Fragment {
     }
 
     private void drawLineGraph2(List<SurveyResult> surveyResults, LineChart lineChart2) {
-        LineDataSet lineChartData2 = new LineDataSet(getChartData(surveyResults), "LINE CHART 2!");
+        LineDataSet lineChartData2 = new LineDataSet(getChartData(surveyResults), "(reaction time)");
+        lineChart2.setGridBackgroundColor(getResources().getColor(R.color.custom_graph_purple));
         lineChartData2.setDrawValues(false);
-        lineChartData2.setCircleColor(getResources().getColor(R.color.custom_purple_B));
+        lineChartData2.setCircleColor(getResources().getColor(R.color.custom_navy_A));
         lineChartData2.setCircleSize(5f);
-        lineChartData2.setCircleHoleColor(getResources().getColor(R.color.off_white));
+        lineChartData2.setCircleHoleColor(getResources().getColor(R.color.white));
         lineChartData2.setCircleHoleRadius(2f);
         lineChartData2.setLineWidth(3f);
-        lineChartData2.setColor(getResources().getColor(R.color.custom_purple_B));
+        lineChartData2.setColor(getResources().getColor(R.color.custom_navy_A));
         ArrayList<ILineDataSet> iLineDataSets2 = new ArrayList<ILineDataSet>();
         iLineDataSets2.add(lineChartData2);
 
@@ -247,7 +253,24 @@ public class DashboardLeftFrag extends Fragment {
         lineChart2.invalidate();
     }
 
-    // private void drawLineGraph3 to go here...
+    private void drawLineGraph3(List<SurveyResult> surveyResults, LineChart lineChart3) {
+        LineDataSet lineChartData3 = new LineDataSet(getChartData(surveyResults), "(fitbit data)");
+        lineChart3.setGridBackgroundColor(getResources().getColor(R.color.custom_graph_green));
+        lineChart3.setGridBackgroundColor(getResources().getColor(R.color.custom_graph_green));
+        lineChartData3.setDrawValues(false);
+        lineChartData3.setCircleColor(getResources().getColor(R.color.custom_navy_A));
+        lineChartData3.setCircleSize(5f);
+        lineChartData3.setCircleHoleColor(getResources().getColor(R.color.white));
+        lineChartData3.setCircleHoleRadius(2f);
+        lineChartData3.setLineWidth(3f);
+        lineChartData3.setColor(getResources().getColor(R.color.custom_navy_A));
+        ArrayList<ILineDataSet> iLineDataSets3 = new ArrayList<ILineDataSet>();
+        iLineDataSets3.add(lineChartData3);
+
+        LineData lineData3 = new LineData(iLineDataSets3);
+        lineChart3.setData(lineData3);
+        lineChart3.invalidate();
+    }
 
     private void drawReportBoxes(List<SurveyResult> surveyResults, ConstraintLayout layout) {
         // Fill the fragment with a report box with the database entries from today only
