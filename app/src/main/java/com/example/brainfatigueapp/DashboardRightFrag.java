@@ -130,7 +130,7 @@ public class DashboardRightFrag extends Fragment {
         chart.getLegend().setEnabled(false);
         // Disable the description
         chart.getDescription().setEnabled(false);
-        // Give the graph a nudge to the left and right so that the first x axis labels don't get cutoff
+        // Give the graph a nudge to the left and right so that the x axis labels don't get cutoff
         chart.setExtraOffsets(7f, 0f, 35f, 0f);
 
         // Format the label of data points on the x axis
@@ -143,8 +143,13 @@ public class DashboardRightFrag extends Fragment {
         ValueFormatter floatToString = new ValueFormatter() {
             @Override
             public String getAxisLabel(float value, AxisBase axis) {
-                // System.out.println("Value: " + value);
-                return resultDatetimes.get((int) value);
+                try {
+                    // System.out.println("Value: " + value);
+                    return resultDatetimes.get((int) value);
+                } catch (Exception e) {
+                    // This usually happens when the graph only has one entry, return the first one
+                    return resultDatetimes.get(0);
+                }
             }
         };
 

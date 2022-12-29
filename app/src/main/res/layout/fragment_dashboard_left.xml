@@ -112,6 +112,7 @@
                 android:id="@+id/activity_left_fragment_reports_container_message"
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
+                android:translationZ="90dp"
                 android:gravity="center"
                 android:text="@string/activity_dashboard_left_fragment_default_message"
                 app:layout_constraintStart_toStartOf="parent"
