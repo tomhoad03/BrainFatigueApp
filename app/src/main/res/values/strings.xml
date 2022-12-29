@@ -29,6 +29,9 @@
     <string name="activity_settings_button_logout">LOG OUT</string>
 
     <string name="activity_dashboard_title">My dashboard</string>
+    <string name="activity_dashboard_graph_1_title">Energy Level</string>
+    <string name="activity_dashboard_graph_2_title">Reaction Time (ms)</string>
+    <string name="activity_dashboard_graph_3_title">Fitbit Data</string>
 
     <!-- login stuff I am in agony send help -->
     <string name="facebook_app_id">1841804132826804</string>

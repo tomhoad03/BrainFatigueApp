@@ -18,5 +18,7 @@
     <color name="custom_purple_B">#6750A4</color>
     <color name="custom_navy_A">#244E6C</color>
     <color name="custom_red">#FF4444</color>
+    <color name="custom_graph_purple">#E07CF7</color>
+    <color name="custom_graph_green">#7CF78C</color>
     <color name="blank">#00FFFFFF</color>
 </resources>

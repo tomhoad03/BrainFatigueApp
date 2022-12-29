@@ -92,8 +92,8 @@ public class DashboardLeftFrag extends Fragment {
         // Get the current time
         LocalTime now = LocalTime.now();
         // Get the time of the daily summary notification from the settings database
-        Float summaryTimeFloat = 22f; // Hardcoded until Tom shows me how to get stuff from the database
-        LocalTime summaryTime = LocalTime.parse("22:00"); // parse whatever the database stores into 'summaryTime'
+        Float summaryTimeFloat = 20f; // Hardcoded until Tom shows me how to get stuff from the database
+        LocalTime summaryTime = LocalTime.parse("20:00"); // parse whatever the database stores into 'summaryTime'
         SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM d, HH:mmaaa", Locale.UK);
 
         ArrayList<Entry> chartData = new ArrayList<Entry>();
@@ -256,8 +256,8 @@ public class DashboardLeftFrag extends Fragment {
         // Get the current time
         LocalTime now = LocalTime.now();
         // Get the time of the daily summary notification from the settings database
-        Float summaryTimeFloat = 22f; // Hardcoded until Tom shows me how to get stuff from the database
-        LocalTime summaryTime = LocalTime.parse("22:00"); // parse whatever the database stores into 'summaryTime'
+        Float summaryTimeFloat = 20f; // Hardcoded until Tom shows me how to get stuff from the database
+        LocalTime summaryTime = LocalTime.parse("20:00"); // parse whatever the database stores into 'summaryTime'
         SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM d, HH:mmaaa", Locale.UK);
 
         if (surveyResults != null) {
