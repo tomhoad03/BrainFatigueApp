@@ -32,6 +32,8 @@
     <string name="activity_dashboard_graph_1_title">Energy Level</string>
     <string name="activity_dashboard_graph_2_title">Reaction Time (ms)</string>
     <string name="activity_dashboard_graph_3_title">Fitbit Data</string>
+    <string name="activity_dashboard_left_fragment_default_message">"Check back here later to see your daily summary!"</string>
+    <string name="activity_dashboard_right_fragment_default_message">"Reports will appear here after you take your first survey!"</string>
 
     <!-- login stuff I am in agony send help -->
     <string name="facebook_app_id">1841804132826804</string>

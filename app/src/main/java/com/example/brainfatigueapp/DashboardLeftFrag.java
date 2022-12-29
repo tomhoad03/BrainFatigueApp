@@ -2,6 +2,7 @@ package com.example.brainfatigueapp;
 
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
@@ -301,6 +302,12 @@ public class DashboardLeftFrag extends Fragment {
                         // Create a report box for this survey result
                         formatButton(nextResult, boxCount, layout);
                         boxCount++;
+
+                        // If there's at least one report to draw, disable the default text message
+                        ConstraintLayout container = getView().findViewById(R.id.activity_left_fragment_graph_big_container);
+                        TextView defaultMessage = getView().findViewById(R.id.activity_left_fragment_reports_container_message);
+                        container.removeView(defaultMessage);
+                        // This does get called each time, but it doesn't throw an error...
                     }
                 } else {
                     // If the current time is after the notification time, show only reports from today
