@@ -13,20 +13,29 @@ public class DashboardPopupFrag extends DialogFragment {
 
     private SurveyResult result;
     private String title;
-    private Boolean isFaq;
+    private String mode;
 
-    public DashboardPopupFrag() {
-        // Constructor for the popup as the FAQs section
-        this.result = null;
-        this.title = "FAQs";
-        this.isFaq = true;
+    public DashboardPopupFrag(String mode) {
+        // 'mode' string specifies what the popup is for
+        this.mode = mode;
+        if (mode.equals("faq")) {
+            this.result = null;
+            this.title = "FAQs";
+        } else if (mode.equals("about")) {
+            this.result = null;
+            this.title = "About";
+        } else {
+            System.out.println("Popup created with unexpected mode. Default to 'faq'");
+            this.result = null;
+            this.title = "FAQs";
+        }
     }
 
     public DashboardPopupFrag(SurveyResult result, String title) {
         // Constructor for the popup as a report box
         this.result = result;
         this.title = title;
-        this.isFaq = false;
+        this.mode = "report";
     }
 
     @Override
@@ -56,7 +65,7 @@ public class DashboardPopupFrag extends DialogFragment {
         TextView question9Text = view.findViewById(R.id.fragment_dashboard_popup_question_9);
         TextView reactionTimeText = view.findViewById(R.id.fragment_dashboard_popup_reaction_time);
         TextView fitbitText = view.findViewById(R.id.fragment_dashboard_popup_fitbit);
-        if (this.isFaq) {
+        if (this.mode.equals("faq")) {
             // Update the text in the popup to display the FAQs
             // Q and A 1
             question1Text.setText(getResources().getString(R.string.activity_settings_button_faq_1));
@@ -80,7 +89,7 @@ public class DashboardPopupFrag extends DialogFragment {
 
             // Don't need final box
             fitbitText.setText("");
-        } else {
+        } else if (this.mode.equals("report")) {
             question1Text.setText(this.result.getQuestion1String());
             // Question 2 also merged into '3 and 4'
             question3and4Text.setText(this.result.getQuestion3and4String(getActivity()));
@@ -91,6 +100,23 @@ public class DashboardPopupFrag extends DialogFragment {
             question9Text.setText(this.result.getQuestion9String());
             // reactionTimeText.setText(this.result.getReactionTimeString());
             // fitbitText.setText(this.result.getFitbitString());
+        } else {
+            // Update the text in the popup to display the About information
+            // Main message
+            question1Text.setTypeface(question1Text.getTypeface(), Typeface.BOLD_ITALIC);
+            question1Text.setText("Current version: v1.1.1");
+            // question1Text.setText(getResources().getString(R.string.activity_settings_about_1));
+
+            /*
+            question3and4Text.setText(getResources().getString());
+            question5Text.setText(getResources().getString());
+            question6Text.setText(getResources().getString());
+            question7Text.setText(getResources().getString());
+            question8Text.setText(getResources().getString());
+            question9Text.setText(getResources().getString());
+            reactionTimeText.setText(getResources().getString());
+            fitbitText.setText("");
+             */
         }
     }
 }

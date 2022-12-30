@@ -33,11 +33,12 @@
     <string name="activity_settings_button_faq_3">Q: Where can I see my responses to surveys?</string>
     <string name="activity_settings_button_faq_4">
         A: You can view your responses in the dashboard. There is a tab for your daily summary and a tab for your
-        all-time responses. You can scroll down to see your full list of responses!
+        all-time responses. Scroll down to see your full list of responses! Press the box to view the full data
+        and press off the popup to close it.
     </string>
     <string name="activity_settings_button_faq_5">Q: Why is my daily summary empty?</string>
     <string name="activity_settings_button_faq_6">
-        A: This might be because you didn\'t answer any surveys yesterday. Check again tomorrow. </string>
+        A: This might be because you didn\'t answer any surveys yesterday. Try checking again tomorrow. </string>
     <string name="activity_settings_button_faq_7">Q: Is there more than one graph on my dashboard?</string>
     <string name="activity_settings_button_faq_8">
         A: Yes! Scroll sideways on the Energy Level graph to see graphs for your Reaction Time and Fitbit data.
