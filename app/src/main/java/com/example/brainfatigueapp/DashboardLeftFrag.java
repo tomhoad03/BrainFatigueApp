@@ -212,9 +212,6 @@ public class DashboardLeftFrag extends Fragment {
         YAxis yLeft = chart.getAxis(YAxis.AxisDependency.LEFT);
         yLeft.setDrawGridLines(false);
         yLeft.setDrawZeroLine(true);
-        yLeft.setAxisMinimum(0f);
-        yLeft.setAxisMaximum(100f);
-        yLeft.setLabelCount(5, true);
         yLeft.setTextSize(12f);
         // y.setTypeface(tf); Maybe this works for other people?
         YAxis yRight = chart.getAxisRight();

@@ -53,13 +53,13 @@ public class DashboardRightFrag extends Fragment {
         List<SurveyResult> surveyResults = retrieveDatabaseData();
 
         // Draw a graph from the energy level data
-        drawLineGraph1(surveyResults, chart1);
+        drawEnergyLevelGraph(surveyResults, chart1);
 
         // Draw a second graph from the reaction time data
-        drawLineGraph2(surveyResults, chart2);
+        drawReactionTimeGraph(surveyResults, chart2);
 
         // Draw a third graph from the fitbit data
-        drawLineGraph3(surveyResults, chart3);
+        drawFitbitGraph(surveyResults, chart3);
 
         // Format the graphs
         formatGraph(surveyResults, chart1);
@@ -91,8 +91,8 @@ public class DashboardRightFrag extends Fragment {
         return surveyResults;
     }
 
-    private ArrayList<Entry> getChartData(List<SurveyResult> database) {
-        // Extract the information relevant to the line graph from the database
+    private ArrayList<Entry> getEnergyLevelData(List<SurveyResult> database) {
+        // Extract the energy level data from the database
 
         ArrayList<Entry> chartData = new ArrayList<Entry>();
         float dateCount = 0;
@@ -102,6 +102,43 @@ public class DashboardRightFrag extends Fragment {
         }
 
         return chartData;
+    }
+
+    private ArrayList<Entry> getReactionTimeData(List<SurveyResult> database) {
+        // Extract the reaction time data from the database
+
+        ArrayList<Entry> chartData = new ArrayList<Entry>();
+        float dateCount = 0;
+        for (SurveyResult result : database) {
+            chartData.add(new Entry(dateCount, result.getQuestion1())); // Change to the reaction time method
+            dateCount++;
+        }
+
+        return chartData;
+    }
+
+    private ArrayList<Entry> getFitbitData(List<SurveyResult> database) {
+        // Extract the fitbit data from the database
+
+        ArrayList<Entry> chartData = new ArrayList<Entry>();
+        float dateCount = 0;
+        for (SurveyResult result : database) {
+            chartData.add(new Entry(dateCount, result.getQuestion1())); // Change to the fitbit method
+            dateCount++;
+        }
+
+        return chartData;
+    }
+
+    private float getLargestDatapoint(List<Entry> data) {
+        float largestValue = 0f;
+        for (Entry e : data) {
+            float nextY = e.getY();
+            if (nextY > largestValue){
+                largestValue = nextY;
+            }
+        }
+        return largestValue;
     }
 
     private void formatGraph(List<SurveyResult> database, LineChart chart) {
@@ -167,9 +204,6 @@ public class DashboardRightFrag extends Fragment {
         YAxis yLeft = chart.getAxis(YAxis.AxisDependency.LEFT);
         yLeft.setDrawGridLines(false);
         yLeft.setDrawZeroLine(true);
-        yLeft.setAxisMinimum(0f);
-        yLeft.setAxisMaximum(100f);
-        yLeft.setLabelCount(5, true);
         yLeft.setTextSize(12f);
         // y.setTypeface(tf); Maybe this works for other people?
         YAxis yRight = chart.getAxisRight();
@@ -178,56 +212,89 @@ public class DashboardRightFrag extends Fragment {
         chart.invalidate(); // Don't think I need to update the graph, but might as well at the end of this function
     }
 
-    private void drawLineGraph1(List<SurveyResult> surveyResults, LineChart lineChart) {
-        LineDataSet lineChartData = new LineDataSet(getChartData(surveyResults), "(energy level)");
+    private void drawEnergyLevelGraph(List<SurveyResult> surveyResults, LineChart lineChart) {
+        // Apply energy level data from the database to the graph
+        LineDataSet lineChartData = new LineDataSet(getEnergyLevelData(surveyResults), "(energy level)");
+        ArrayList<ILineDataSet> iLineDataSets = new ArrayList<ILineDataSet>();
+        iLineDataSets.add(lineChartData);
+        LineData lineData = new LineData(iLineDataSets);
+
+        // Format the graph's appearance
         lineChart.setGridBackgroundColor(getResources().getColor(R.color.custom_light_blue_A));
         lineChartData.setDrawValues(false);
         lineChartData.setCircleColor(getResources().getColor(R.color.custom_navy_A));
         lineChartData.setCircleSize(5f);
         lineChartData.setCircleHoleColor(getResources().getColor(R.color.white));
         lineChartData.setCircleHoleRadius(2f);
-        lineChartData.setLineWidth(3f);
         lineChartData.setColor(getResources().getColor(R.color.custom_navy_A));
-        ArrayList<ILineDataSet> iLineDataSets = new ArrayList<ILineDataSet>();
-        iLineDataSets.add(lineChartData);
+        lineChartData.setLineWidth(3f);
 
-        LineData lineData = new LineData(iLineDataSets);
+        YAxis yLeft = lineChart.getAxis(YAxis.AxisDependency.LEFT);
+        yLeft.setAxisMinimum(0f);
+        yLeft.setAxisMaximum(100f);
+        yLeft.setLabelCount(5, true);
+
+        // Set the data and update
         lineChart.setData(lineData);
         lineChart.invalidate();
     }
 
-    private void drawLineGraph2(List<SurveyResult> surveyResults, LineChart lineChart2) {
-        LineDataSet lineChartData2 = new LineDataSet(getChartData(surveyResults), "(reaction time)");
+    private void drawReactionTimeGraph(List<SurveyResult> surveyResults, LineChart lineChart2) {
+        // Apply reaction time data from the database to the graph
+        ArrayList<Entry> data = getReactionTimeData(surveyResults);
+        LineDataSet lineChartData2 = new LineDataSet(data, "(reaction time)");
+        ArrayList<ILineDataSet> iLineDataSets2 = new ArrayList<ILineDataSet>();
+        iLineDataSets2.add(lineChartData2);
+        LineData lineData2 = new LineData(iLineDataSets2);
+
+        // Format the graph's appearance
         lineChart2.setGridBackgroundColor(getResources().getColor(R.color.custom_graph_purple));
         lineChartData2.setDrawValues(false);
         lineChartData2.setCircleColor(getResources().getColor(R.color.custom_navy_A));
         lineChartData2.setCircleSize(5f);
         lineChartData2.setCircleHoleColor(getResources().getColor(R.color.white));
         lineChartData2.setCircleHoleRadius(2f);
-        lineChartData2.setLineWidth(3f);
         lineChartData2.setColor(getResources().getColor(R.color.custom_navy_A));
-        ArrayList<ILineDataSet> iLineDataSets2 = new ArrayList<ILineDataSet>();
-        iLineDataSets2.add(lineChartData2);
+        lineChartData2.setLineWidth(3f);
 
-        LineData lineData2 = new LineData(iLineDataSets2);
+        YAxis yLeft = lineChart2.getAxis(YAxis.AxisDependency.LEFT);
+        yLeft.setAxisMinimum(100f); // Minimum range for reaction times, 100ms?
+        float axisMax = getLargestDatapoint(data);
+        axisMax = (float) (100 * (Math.ceil(Math.abs(axisMax / 100)))); // Round up to the nearest a hundred
+        yLeft.setAxisMaximum(axisMax);
+        yLeft.setLabelCount(5);
+
+        // Set the data and update
         lineChart2.setData(lineData2);
         lineChart2.invalidate();
     }
 
-    private void drawLineGraph3(List<SurveyResult> surveyResults, LineChart lineChart3) {
-        LineDataSet lineChartData3 = new LineDataSet(getChartData(surveyResults), "(fitbit data)");
+    private void drawFitbitGraph(List<SurveyResult> surveyResults, LineChart lineChart3) {
+        // Apply fitbit data from the database to the graph
+        ArrayList<Entry> data = getFitbitData(surveyResults);
+        LineDataSet lineChartData3 = new LineDataSet(data, "(fitbit data)");
+        ArrayList<ILineDataSet> iLineDataSets3 = new ArrayList<ILineDataSet>();
+        iLineDataSets3.add(lineChartData3);
+        LineData lineData3 = new LineData(iLineDataSets3);
+
+        // Format the graph's appearance
         lineChart3.setGridBackgroundColor(getResources().getColor(R.color.custom_graph_green));
         lineChartData3.setDrawValues(false);
         lineChartData3.setCircleColor(getResources().getColor(R.color.custom_navy_A));
         lineChartData3.setCircleSize(5f);
         lineChartData3.setCircleHoleColor(getResources().getColor(R.color.white));
         lineChartData3.setCircleHoleRadius(2f);
-        lineChartData3.setLineWidth(3f);
         lineChartData3.setColor(getResources().getColor(R.color.custom_navy_A));
-        ArrayList<ILineDataSet> iLineDataSets3 = new ArrayList<ILineDataSet>();
-        iLineDataSets3.add(lineChartData3);
+        lineChartData3.setLineWidth(3f);
 
-        LineData lineData3 = new LineData(iLineDataSets3);
+        YAxis yLeft = lineChart3.getAxis(YAxis.AxisDependency.LEFT);
+        yLeft.setAxisMinimum(0f); // Minimum range for fitbit data, default to 0 for now
+        float axisMax = getLargestDatapoint(data);
+        axisMax = (float) (100 * (Math.ceil(Math.abs(axisMax / 100)))); // Round up to the nearest a hundred
+        yLeft.setAxisMaximum(axisMax);
+        yLeft.setLabelCount(4);
+
+        // Set the data and update
         lineChart3.setData(lineData3);
         lineChart3.invalidate();
     }
