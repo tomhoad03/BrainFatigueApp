@@ -208,7 +208,7 @@
     <string name="reaction_time_test_button3">Start</string>
     <string name="reaction_time_test_prompt4">Done!</string>
     <string name="reaction_time_test_button4">Go to homepage</string>
-    <string name="reaction_time_test_prompt5">NOTHING!</string>
+    <string name="reaction_time_test_prompt5">PRESS START TO BEGIN</string>
 
 
     <!-- Preference Titles -->
