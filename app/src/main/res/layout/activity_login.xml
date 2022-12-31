@@ -11,7 +11,7 @@
         android:id="@+id/signintitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="208dp"
+        android:layout_marginTop="280dp"
         android:gravity="center"
         android:text="Brain Fatigue Tracker"
         android:textColor="@color/custom_navy_A"
@@ -23,26 +23,47 @@
         android:id="@+id/login_continue_button"
         android:layout_width="262dp"
         android:layout_height="53dp"
-        android:layout_marginTop="288dp"
-        android:background="@color/com_facebook_messenger_blue"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/common_google_signin_btn_text_dark_pressed"
         android:gravity="center"
         android:text="Continue without login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signintitle" />
+        app:layout_constraintTop_toBottomOf="@+id/login_with_google" />
 
     <Button
         android:id="@+id/login_with_google"
         android:layout_width="262dp"
         android:layout_height="53dp"
-        android:layout_marginTop="216dp"
+        android:layout_marginTop="128dp"
         android:gravity="center"
         android:text="Login with Google"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signintitle" />
+
+    <ImageView
+        android:id="@+id/login_page_google_icon"
+        android:layout_width="36dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:elevation="30dp"
+        app:layout_constraintStart_toStartOf="@+id/login_with_google"
+        app:layout_constraintTop_toTopOf="@+id/login_with_google"
+        app:srcCompat="@drawable/google_icon" />
+
+    <ImageView
+        android:id="@+id/login_page_app_icon"
+        android:layout_width="153dp"
+        android:layout_height="156dp"
+        app:layout_constraintBottom_toTopOf="@+id/signintitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_notification_vector" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
