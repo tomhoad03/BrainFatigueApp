@@ -66,14 +66,16 @@ public class LoginPageActivity extends AppCompatActivity{
         alertDialogBuilder.setMessage("Are you sure, You wanted to make decision");
         gsi_options = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         gsi_client = GoogleSignIn.getClient(this, gsi_options);
-
+        /*
         ImageView facebook_button = (ImageView) findViewById(R.id.facebook_icon);
         FacebookSdk.sdkInitialize(LoginPageActivity.this);
         callbackManager = CallbackManager.Factory.create();
         facebookLogin();
         TextView username = (TextView) findViewById(R.id.username);
         TextView password = (TextView) findViewById(R.id.password);
-        ImageView google_button = (ImageView) findViewById(R.id.google_icon) ;
+
+         */
+        Button google_button = findViewById(R.id.login_with_google);
 
         google_button.setOnClickListener(v -> {
             loginType = "Google";
@@ -85,11 +87,13 @@ public class LoginPageActivity extends AppCompatActivity{
                 navigateToHomeActivity();
             }
         });
-
+        /*
         facebook_button.setOnClickListener(v -> {
             loginType = "Facebook";
             loginManager.logInWithReadPermissions(LoginPageActivity.this, Arrays.asList("email", "public_profile", "user_birthday"));
         });
+
+         */
 
         Button loginButton = (Button) findViewById(R.id.login_continue_button);
         loginButton.setOnClickListener(v -> {
