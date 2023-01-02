@@ -5,6 +5,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +13,15 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+
+import java.time.LocalTime;
+import java.util.Calendar;
+import java.util.List;
+import java.util.Locale;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -48,6 +58,43 @@ public class HomeActivity extends AppCompatActivity {
         if(googleAccount != null){
             String firstName = googleAccount.getGivenName();
             welcomeMessage.setText("Hi " + firstName + ", What would you like to do today?");
+        }
+
+        // Database access
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+        Future<Settings> futureSetting = executorService.submit(() -> {
+            FatigueDatabase fatigueDatabase = FatigueDatabase.getDatabase(getApplicationContext());
+            SettingsDao settingsDao = fatigueDatabase.settingsDao();
+
+            List<Settings> settings = settingsDao.getAll();
+            Settings setting;
+            try {
+                setting = settings.get(settings.size() - 1);
+            } catch (Exception e) {
+                setting = new Settings();
+            }
+            return setting;
+        });
+        executorService.shutdown();
+
+        long timeout = System.currentTimeMillis() + 10000;
+        Settings resultSetting;
+
+        while (System.currentTimeMillis() < timeout) {
+            try {
+                resultSetting = futureSetting.get();
+            } catch (ExecutionException | InterruptedException e) {
+                continue;
+            }
+
+            long scheduledNotification = System.currentTimeMillis() - (((long) LocalTime.now().getHour() * 3600 * 1000) + ((long) LocalTime.now().getMinute() * 60 * 1000) + (LocalTime.now().getSecond() * 1000L)) + resultSetting.getSummary();
+
+            // Setup the daily summary notification
+            Intent notifyIntent = new Intent(getApplicationContext(), NotificationReceiver.class);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+            AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+            alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + scheduledNotification, pendingIntent);
+            break;
         }
     }
 }
