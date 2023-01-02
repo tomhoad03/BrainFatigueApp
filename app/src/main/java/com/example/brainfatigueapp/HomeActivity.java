@@ -5,7 +5,6 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,9 +14,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 
 import java.time.LocalTime;
-import java.util.Calendar;
 import java.util.List;
-import java.util.Locale;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -62,23 +59,23 @@ public class HomeActivity extends AppCompatActivity {
 
         // Database access
         ExecutorService executorService = Executors.newSingleThreadExecutor();
-        Future<Settings> futureSetting = executorService.submit(() -> {
+        Future<Setting> futureSetting = executorService.submit(() -> {
             FatigueDatabase fatigueDatabase = FatigueDatabase.getDatabase(getApplicationContext());
-            SettingsDao settingsDao = fatigueDatabase.settingsDao();
+            SettingsDao SettingDao = fatigueDatabase.settingsDao();
 
-            List<Settings> settings = settingsDao.getAll();
-            Settings setting;
+            List<Setting> Setting = SettingDao.getAll();
+            Setting setting;
             try {
-                setting = settings.get(settings.size() - 1);
+                setting = Setting.get(Setting.size() - 1);
             } catch (Exception e) {
-                setting = new Settings();
+                setting = new Setting();
             }
             return setting;
         });
         executorService.shutdown();
 
         long timeout = System.currentTimeMillis() + 10000;
-        Settings resultSetting;
+        Setting resultSetting;
 
         while (System.currentTimeMillis() < timeout) {
             try {
