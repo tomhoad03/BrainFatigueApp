@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 import com.google.android.material.slider.LabelFormatter;
 import com.google.android.material.slider.RangeSlider;
 
@@ -185,6 +186,32 @@ public class SettingsActivity extends AppCompatActivity {
                     settingsDao.insert(finalResultSetting);
                 });
                 darkExecutorService.shutdown();
+            });
+
+            // Make the FAQ button spawn a popup
+            Button faqButton = findViewById(R.id.activity_settings_button_faq);
+            faqButton.setOnClickListener(v -> {
+                FragmentManager manager = getSupportFragmentManager();
+                DashboardPopupFrag popup = new DashboardPopupFrag("faq");
+                popup.show(manager, "popup");
+            });
+
+            // Make the 'About info' button spawn a popup
+            Button aboutButton = findViewById(R.id.activity_settings_button_about);
+            aboutButton.setOnClickListener(v -> {
+                FragmentManager manager = getSupportFragmentManager();
+                DashboardPopupFrag popup = new DashboardPopupFrag("about");
+                popup.show(manager, "popup");
+            });
+
+            // Make the 'Log out' button do log out stuff
+            Button logOutButton = findViewById(R.id.activity_settings_button_logout);
+            logOutButton.setOnClickListener(v -> {
+                //
+                //
+                //
+                //
+                //
             });
 
             // Hide action bar

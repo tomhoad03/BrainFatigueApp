@@ -1,5 +1,6 @@
 package com.example.brainfatigueapp;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,12 +12,17 @@ import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.AxisBase;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import java.text.SimpleDateFormat;
@@ -35,13 +41,36 @@ public class DashboardRightFrag extends Fragment {
 
     @Override
     public void onViewCreated (View view, Bundle savedInstanceState) {
-        // Add report boxes with data from the database to the scrollable list
-
         // Get the layouts
         ScrollView vertical = getView().findViewById(R.id.activity_right_fragment_reports_vertical);
         vertical.setScrollbarFadingEnabled(false); // Make the scrollbar always visible
         ConstraintLayout layout = getView().findViewById(R.id.activity_right_fragment_reports_container);
+        LineChart chart1 = getView().findViewById(R.id.activity_right_fragment_graph_1);
+        LineChart chart2 = getView().findViewById(R.id.activity_right_fragment_graph_2);
+        LineChart chart3 = getView().findViewById(R.id.activity_right_fragment_graph_3);
 
+        // Retrieve the stored data from the database
+        List<SurveyResult> surveyResults = retrieveDatabaseData();
+
+        // Draw a graph from the energy level data
+        drawEnergyLevelGraph(surveyResults, chart1);
+
+        // Draw a second graph from the reaction time data
+        drawReactionTimeGraph(surveyResults, chart2);
+
+        // Draw a third graph from the fitbit data
+        drawFitbitGraph(surveyResults, chart3);
+
+        // Format the graphs
+        formatGraph(surveyResults, chart1);
+        formatGraph(surveyResults, chart2);
+        formatGraph(surveyResults, chart3);
+
+        // Fill the fragment with a report box for every entry in the database
+        drawReportBoxes(surveyResults, layout);
+    }
+
+    private List<SurveyResult> retrieveDatabaseData() {
         // Get the data from the database
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         Future<List<SurveyResult>> surveyResultsFuture = executorService.submit(() -> {
@@ -59,18 +88,225 @@ public class DashboardRightFrag extends Fragment {
             e.printStackTrace();
         }
         // Log.d("survey_results", surveyResults.toString());
+        return surveyResults;
+    }
 
-        // Draw a graph from the data
-        LineChart lineChart = getView().findViewById(R.id.activity_right_fragment_graph_1);
-        LineDataSet lineChartData = new LineDataSet(getChartData(surveyResults), "LINE CHAAAAAAAAAAAAART!");
+    private ArrayList<Entry> getEnergyLevelData(List<SurveyResult> database) {
+        // Extract the energy level data from the database
+
+        ArrayList<Entry> chartData = new ArrayList<Entry>();
+        float dateCount = 0;
+        for (SurveyResult result : database) {
+            chartData.add(new Entry(dateCount, result.getQuestion1()));
+            dateCount++;
+        }
+
+        return chartData;
+    }
+
+    private ArrayList<Entry> getReactionTimeData(List<SurveyResult> database) {
+        // Extract the reaction time data from the database
+
+        ArrayList<Entry> chartData = new ArrayList<Entry>();
+        float dateCount = 0;
+        for (SurveyResult result : database) {
+            chartData.add(new Entry(dateCount, result.getQuestion1())); // Change to the reaction time method
+            dateCount++;
+        }
+
+        return chartData;
+    }
+
+    private ArrayList<Entry> getFitbitData(List<SurveyResult> database) {
+        // Extract the fitbit data from the database
+
+        ArrayList<Entry> chartData = new ArrayList<Entry>();
+        float dateCount = 0;
+        for (SurveyResult result : database) {
+            chartData.add(new Entry(dateCount, result.getQuestion1())); // Change to the fitbit method
+            dateCount++;
+        }
+
+        return chartData;
+    }
+
+    private float getLargestDatapoint(List<Entry> data) {
+        float largestValue = 0f;
+        for (Entry e : data) {
+            float nextY = e.getY();
+            if (nextY > largestValue){
+                largestValue = nextY;
+            }
+        }
+        return largestValue;
+    }
+
+    private void formatGraph(List<SurveyResult> database, LineChart chart) {
+        // Format the appearance of the graphs
+
+        // Set the background colour - actually did this by setting the colour of the LinearLayout in the xml instead
+        // chart.setBackgroundColor(getResources().getColor(R.color.off_white));
+        chart.setDrawGridBackground(true);
+        chart.setDrawBorders(true);
+        chart.setBorderWidth(2f);
+
+        // Change the width between data points on the graphs
+        chart.setVisibleXRangeMaximum(3f);
+        chart.setVisibleXRangeMinimum(3f);
+
+        // Set the amount of interaction with the chart
+        chart.setTouchEnabled(true);
+        chart.setScaleYEnabled(false); // Users can't scale the y axis, only x
+        chart.setPinchZoom(false);
+        chart.setDoubleTapToZoomEnabled(false);
+        chart.setDragDecelerationEnabled(false);
+
+        // Set the text that appears if the user hasn't taken any surveys yet
+        chart.setNoDataText("Data will appear here after you take your first survey!");
+        // Disable the legend
+        chart.getLegend().setEnabled(false);
+        // Disable the description
+        chart.getDescription().setEnabled(false);
+        // Give the graph a nudge to the left and right so that the x axis labels don't get cutoff
+        chart.setExtraOffsets(7f, 0f, 35f, 0f);
+
+        // Format the label of data points on the x axis
+        ArrayList<String> resultDatetimes = new ArrayList<String>();
+        for (SurveyResult result : database) {
+            // System.out.println("GRAPH CAPTION: " + result.getSurveyResultIdAsString());
+            resultDatetimes.add(result.getSurveyResultIdAsString());
+        }
+
+        ValueFormatter floatToString = new ValueFormatter() {
+            @Override
+            public String getAxisLabel(float value, AxisBase axis) {
+                try {
+                    // System.out.println("Value: " + value);
+                    return resultDatetimes.get((int) value);
+                } catch (Exception e) {
+                    // This usually happens when the graph only has one entry, return the first one
+                    return resultDatetimes.get(0);
+                }
+            }
+        };
+
+        // Format the x axis
+        XAxis x = chart.getXAxis();
+        x.setGranularity(1f); // set min step/interval to 1
+        x.setTextSize(12f);
+        // Typeface tf = ResourcesCompat.getFont(getContext(), R.font.spartan);
+        // x.setTypeface(tf); Maybe this works for other people?
+        x.setValueFormatter(floatToString); // apply the format/conversion function to the chart axis
+        x.setPosition(XAxis.XAxisPosition.BOTTOM);
+        x.setDrawGridLines(false);
+
+        // Format the y axes
+        YAxis yLeft = chart.getAxis(YAxis.AxisDependency.LEFT);
+        yLeft.setDrawGridLines(false);
+        yLeft.setDrawZeroLine(true);
+        yLeft.setTextSize(12f);
+        // y.setTypeface(tf); Maybe this works for other people?
+        YAxis yRight = chart.getAxisRight();
+        yRight.setEnabled(false);
+
+        chart.invalidate(); // Don't think I need to update the graph, but might as well at the end of this function
+    }
+
+    private void drawEnergyLevelGraph(List<SurveyResult> surveyResults, LineChart lineChart) {
+        // Apply energy level data from the database to the graph
+        LineDataSet lineChartData = new LineDataSet(getEnergyLevelData(surveyResults), "(energy level)");
         ArrayList<ILineDataSet> iLineDataSets = new ArrayList<ILineDataSet>();
         iLineDataSets.add(lineChartData);
-
         LineData lineData = new LineData(iLineDataSets);
-        lineChart.setData(lineData);
-        lineChart.invalidate(); // ??? what do this do
 
-        // Fill the fragment with a report box for every entry in the database
+        // Format the graph's appearance
+        lineChart.setGridBackgroundColor(getResources().getColor(R.color.custom_light_blue_A));
+        lineChartData.setDrawValues(false);
+        lineChartData.setCircleColor(getResources().getColor(R.color.custom_navy_A));
+        lineChartData.setCircleSize(5f);
+        lineChartData.setCircleHoleColor(getResources().getColor(R.color.white));
+        lineChartData.setCircleHoleRadius(2f);
+        lineChartData.setColor(getResources().getColor(R.color.custom_navy_A));
+        lineChartData.setLineWidth(3f);
+
+        YAxis yLeft = lineChart.getAxis(YAxis.AxisDependency.LEFT);
+        yLeft.setAxisMinimum(0f);
+        yLeft.setAxisMaximum(100f);
+        yLeft.setLabelCount(5, true);
+
+        // Set the data and update
+        lineChart.setData(lineData);
+        lineChart.invalidate();
+    }
+
+    private void drawReactionTimeGraph(List<SurveyResult> surveyResults, LineChart lineChart2) {
+        // Apply reaction time data from the database to the graph
+        ArrayList<Entry> data = getReactionTimeData(surveyResults);
+        LineDataSet lineChartData2 = new LineDataSet(data, "(reaction time)");
+        ArrayList<ILineDataSet> iLineDataSets2 = new ArrayList<ILineDataSet>();
+        iLineDataSets2.add(lineChartData2);
+        LineData lineData2 = new LineData(iLineDataSets2);
+
+        // Format the graph's appearance
+        lineChart2.setGridBackgroundColor(getResources().getColor(R.color.custom_graph_purple));
+        lineChartData2.setDrawValues(false);
+        lineChartData2.setCircleColor(getResources().getColor(R.color.custom_navy_A));
+        lineChartData2.setCircleSize(5f);
+        lineChartData2.setCircleHoleColor(getResources().getColor(R.color.white));
+        lineChartData2.setCircleHoleRadius(2f);
+        lineChartData2.setColor(getResources().getColor(R.color.custom_navy_A));
+        lineChartData2.setLineWidth(3f);
+
+        YAxis yLeft = lineChart2.getAxis(YAxis.AxisDependency.LEFT);
+        yLeft.setAxisMinimum(100f); // Minimum range for reaction times, 100ms?
+        float axisMax = getLargestDatapoint(data);
+        axisMax = (float) (100 * (Math.ceil(Math.abs(axisMax / 100)))); // Round up to the nearest a hundred
+        yLeft.setAxisMaximum(axisMax);
+        yLeft.setLabelCount(5);
+
+        // Set the data and update
+        lineChart2.setData(lineData2);
+        lineChart2.invalidate();
+    }
+
+    private void drawFitbitGraph(List<SurveyResult> surveyResults, LineChart lineChart3) {
+        // Apply fitbit data from the database to the graph
+        ArrayList<Entry> data = getFitbitData(surveyResults);
+        LineDataSet lineChartData3 = new LineDataSet(data, "(fitbit data)");
+        ArrayList<ILineDataSet> iLineDataSets3 = new ArrayList<ILineDataSet>();
+        iLineDataSets3.add(lineChartData3);
+        LineData lineData3 = new LineData(iLineDataSets3);
+
+        // Format the graph's appearance
+        lineChart3.setGridBackgroundColor(getResources().getColor(R.color.custom_graph_green));
+        lineChartData3.setDrawValues(false);
+        lineChartData3.setCircleColor(getResources().getColor(R.color.custom_navy_A));
+        lineChartData3.setCircleSize(5f);
+        lineChartData3.setCircleHoleColor(getResources().getColor(R.color.white));
+        lineChartData3.setCircleHoleRadius(2f);
+        lineChartData3.setColor(getResources().getColor(R.color.custom_navy_A));
+        lineChartData3.setLineWidth(3f);
+
+        YAxis yLeft = lineChart3.getAxis(YAxis.AxisDependency.LEFT);
+        yLeft.setAxisMinimum(0f); // Minimum range for fitbit data, default to 0 for now
+        float axisMax = getLargestDatapoint(data);
+        axisMax = (float) (100 * (Math.ceil(Math.abs(axisMax / 100)))); // Round up to the nearest a hundred
+        yLeft.setAxisMaximum(axisMax);
+        yLeft.setLabelCount(4);
+
+        // Set the data and update
+        lineChart3.setData(lineData3);
+        lineChart3.invalidate();
+    }
+
+    private void drawReportBoxes(List<SurveyResult> surveyResults, ConstraintLayout layout) {
+        if (surveyResults.size() > 0) {
+            // Disable the default text message
+            ConstraintLayout container = getView().findViewById(R.id.activity_right_fragment_graph_big_container);
+            TextView defaultMessage = getView().findViewById(R.id.activity_right_fragment_reports_container_message);
+            container.removeView(defaultMessage);
+        }
+
         int boxCount = 0;
         if (surveyResults != null) {
             for (SurveyResult nextResult : surveyResults) {
@@ -81,24 +317,14 @@ public class DashboardRightFrag extends Fragment {
         }
     }
 
-    private ArrayList<Entry> getChartData(List<SurveyResult> database) {
-        ArrayList<Entry> chartData = new ArrayList<Entry>();
-
-        chartData.add(new Entry(1, 15));
-        chartData.add(new Entry(2, 50));
-        chartData.add(new Entry(3, 25));
-
-        return chartData;
-    }
-
     private void formatButton (SurveyResult result, int count, ConstraintLayout layout) {
         // Set the strings for the text
-        SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM d, hh:mmaaa", Locale.UK);
+        SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM d, HH:mmaaa", Locale.UK);
         GregorianCalendar calendar = new GregorianCalendar(TimeZone.getTimeZone("Europe/London"));
         calendar.setTimeInMillis(result.getSurveyResultId());
-        System.out.println("CURRENTLY: " + sdf.format(calendar.getTime()));
+        // System.out.println("CURRENTLY: " + sdf.format(calendar.getTime()));
         String mainText = sdf.format(calendar.getTime());
-        String subText = "You reported a fatigue level of " + result.getQuestion1().toString() + "."; // Update to new string method
+        String subText = "You reported an energy level of " + result.getQuestion1().toString() + "."; // Update to new string method
 
         // This function takes the required data to create a report and makes it look like it should
         Button newButton = new Button(getActivity());

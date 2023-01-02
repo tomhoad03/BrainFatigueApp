@@ -25,10 +25,35 @@
     <string name="activity_settings_button_divider">--------- Other ---------</string>
     <string name="activity_settings_button_dark_mode">Dark Mode</string>
     <string name="activity_settings_button_faq">FAQs</string>
+    <string name="activity_settings_button_faq_1">Q: How can I change the notifications that I am sent?</string>
+    <string name="activity_settings_button_faq_2">
+        A: You can adjust the timing and frequency of our notifications in the settings page. You can reach the
+        settings page by tapping the cog in the top-right of the dashboard.
+    </string>
+    <string name="activity_settings_button_faq_3">Q: Where can I see my responses to surveys?</string>
+    <string name="activity_settings_button_faq_4">
+        A: You can view your responses in the dashboard. There is a tab for your daily summary and a tab for your
+        all-time responses. Scroll down to see your full list of responses! Press the box to view the full data
+        and press off the popup to close it.
+    </string>
+    <string name="activity_settings_button_faq_5">Q: Why is my daily summary empty?</string>
+    <string name="activity_settings_button_faq_6">
+        A: This might be because you didn\'t answer any surveys yesterday. Try checking again tomorrow. </string>
+    <string name="activity_settings_button_faq_7">Q: Is there more than one graph on my dashboard?</string>
+    <string name="activity_settings_button_faq_8">
+        A: Yes! Scroll sideways on the Energy Level graph to see graphs for your Reaction Time and Fitbit data.
+    </string>
     <string name="activity_settings_button_about">About info</string>
     <string name="activity_settings_button_logout">LOG OUT</string>
 
     <string name="activity_dashboard_title">My dashboard</string>
+    <string name="activity_dashboard_graph_1_title">Energy Level</string>
+    <string name="activity_dashboard_graph_2_title">Reaction Time (ms)</string>
+    <string name="activity_dashboard_graph_3_title">Fitbit Data</string>
+    <string name="activity_dashboard_left_fragment_default_message">Check back here later to see your daily summary!</string>
+    <string name="activity_dashboard_left_fragment_divider_message">---- Recent Responses ----</string>
+    <string name="activity_dashboard_right_fragment_default_message">Reports will appear here after you take your first survey!</string>
+    <string name="activity_dashboard_right_fragment_divider_message">----- All Responses -----</string>
 
     <!-- login stuff I am in agony send help -->
     <string name="facebook_app_id">1841804132826804</string>

@@ -6,6 +6,10 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.GregorianCalendar;
+import java.util.Locale;
+import java.util.TimeZone;
 
 import static android.provider.Settings.System.getConfiguration;
 import static android.provider.Settings.System.getString;
@@ -74,6 +78,15 @@ public class SurveyResult implements Serializable {
     public Long getSurveyResultId() {
         return surveyResultId;
     }
+
+    public String getSurveyResultIdAsString() {
+        // Convert the id for this survey result to a date and time
+        SimpleDateFormat sdf = new SimpleDateFormat("d/M HH:mm", Locale.UK); // Should be d/M/yy to 'year-proof' dates
+        GregorianCalendar calendar = new GregorianCalendar(TimeZone.getTimeZone("Europe/London"));
+        calendar.setTimeInMillis(this.getSurveyResultId());
+        return sdf.format(calendar.getTime());
+    }
+
 
     public Integer getQuestion1() {
         return question1;
