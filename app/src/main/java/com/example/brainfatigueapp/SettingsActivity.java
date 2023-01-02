@@ -1,10 +1,20 @@
 package com.example.brainfatigueapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
+
+import com.google.android.gms.auth.api.identity.SignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.slider.LabelFormatter;
 import com.google.android.material.slider.RangeSlider;
 
@@ -205,14 +215,20 @@ public class SettingsActivity extends AppCompatActivity {
             });
 
             // Make the 'Log out' button do log out stuff
+            //dw I did :)
             Button logOutButton = findViewById(R.id.activity_settings_button_logout);
             logOutButton.setOnClickListener(v -> {
-                //
-                //
-                //
-                //
-                //
-            });
+                        GoogleSignInOptions gsi_options = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+                        GoogleSignInClient gsi_client = GoogleSignIn.getClient(this, gsi_options);
+                        gsi_client.signOut().addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                Intent intent = new Intent(SettingsActivity.this, LoginPageActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                        });
+                    });
 
             // Hide action bar
             if (getSupportActionBar() != null)
