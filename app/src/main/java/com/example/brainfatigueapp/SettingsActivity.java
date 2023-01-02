@@ -35,23 +35,23 @@ public class SettingsActivity extends AppCompatActivity {
 
         // Database access
         ExecutorService executorService = Executors.newSingleThreadExecutor();
-        Future<Settings> futureSetting = executorService.submit(() -> {
+        Future<Setting> futureSetting = executorService.submit(() -> {
             FatigueDatabase fatigueDatabase = FatigueDatabase.getDatabase(getApplicationContext());
             SettingsDao settingsDao = fatigueDatabase.settingsDao();
 
-            List<Settings> settings = settingsDao.getAll();
-            Settings setting;
+            List<Setting> settings = settingsDao.getAll();
+            Setting setting;
             try {
                 setting = settings.get(settings.size() - 1);
             } catch (Exception e) {
-                setting = new Settings();
+                setting = new Setting();
             }
             return setting;
         });
         executorService.shutdown();
 
         long timeout = System.currentTimeMillis() + 10000;
-        Settings resultSetting;
+        Setting resultSetting;
 
         while (System.currentTimeMillis() < timeout) {
             try {
@@ -60,7 +60,7 @@ public class SettingsActivity extends AppCompatActivity {
                 continue;
             }
             final long milliHour = 3600000L;
-            Settings finalResultSetting = resultSetting;
+            Setting finalResultSetting = resultSetting;
             ArrayList<Long> intervals = new ArrayList<>(Arrays.asList(milliHour, milliHour + (milliHour / 2L), 2L * milliHour, (2L * milliHour) + (milliHour / 2L), 3L * milliHour));
 
             // Interval selector
