@@ -9,12 +9,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 public class ReactionTimeTest2Activity extends AppCompatActivity {
 
     // startButton = button that starts the PVT; colourChangeButton = button that user taps when colour changes
     Button startButton, colourChangeButton;
-    long testBeginsTime, startTime, endTime, currentTime, elapsedTime, averageTime;
+    long testBeginsTime, startTime, endTime, currentTime, elapsedTime, averageTime, elapsedTimeMS;
     ArrayList<Long> results = new ArrayList<Long>();
 
     // @TODO save each iteration's currentTime to an array/arraylist so averageTime can be calculated. What's left to do for this one is to add it to the ArrayList declared above, and then to calculate the average of the values in the list and to display it on colourChangeButton.
@@ -38,7 +39,7 @@ public class ReactionTimeTest2Activity extends AppCompatActivity {
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                testBeginsTime = System.currentTimeMillis();
+                testBeginsTime = System.nanoTime(); // might be able to just keep it this way
                 colourChangeButton.setText("Game started!");
                 doReactionTest();
             }
@@ -47,9 +48,10 @@ public class ReactionTimeTest2Activity extends AppCompatActivity {
         colourChangeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                endTime = System.currentTimeMillis();
-                currentTime = endTime - startTime; // calculates time taken for user to respond
+                endTime = System.nanoTime(); // previously System.nanoTime()
+                currentTime = TimeUnit.NANOSECONDS.toMillis(endTime - startTime); // calculates time taken for user to respond
                 elapsedTime = endTime - testBeginsTime; // calculates time since game was started
+                elapsedTimeMS = TimeUnit.NANOSECONDS.toMillis(elapsedTime);
                 // after colourChangeButton is tapped, add currentTime to results
                 results.add(currentTime);
                 colourChangeButton.setBackgroundColor(
@@ -74,7 +76,7 @@ public class ReactionTimeTest2Activity extends AppCompatActivity {
                         // here we check the elapsed time
                         // if elapsed time has exceeded 2 minutes, then stop the game/do something
                         // else call doReactionTest()
-                        if (elapsedTime > 30000) { // 3000 for testing; 120000 for 2 minutes
+                        if (elapsedTimeMS > 30000) { // 30000 for testing; 120000 for 2 minutes
                             endReactionTest();
                         } else {
                             doReactionTest();
@@ -92,7 +94,7 @@ public class ReactionTimeTest2Activity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                startTime = System.currentTimeMillis();
+                startTime = System.nanoTime();
                 colourChangeButton.setBackgroundColor(
                         ContextCompat.getColor(getApplicationContext(), R.color.custom_light_blue_A) // wuuuut
                 );
