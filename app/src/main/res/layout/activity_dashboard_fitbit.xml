@@ -6,4 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".DashboardFitbit">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/activity_dashboard_title"
+        android:textColor="@color/custom_navy_A"
+        android:textStyle="bold"
+        android:textSize="26sp"
+        android:id="@+id/activity_fitbit_dashboard_title"
+        app:fontFamily="@font/spartan"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="17dp"/>
+    <!-- Settings button width hardcoded below to centre align the icon... -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/activity_fitbit_sync_button"
+        android:layout_width="56dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="12dp"
+        android:backgroundTint="@color/grey"
+        app:icon="@drawable/ic_baseline_settings_24"
+        app:iconTint="@color/custom_navy_A"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"
+        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
