@@ -98,8 +98,8 @@ public class DashboardLeftFrag extends Fragment {
         // Get the current time
         LocalTime now = LocalTime.now();
         // Get the time of the daily summary notification from the settings database
-        Float summaryTimeFloat = 20f; // Hardcoded until Tom shows me how to get stuff from the database
-        LocalTime summaryTime = LocalTime.parse("20:00"); // parse whatever the database stores into 'summaryTime'
+        Float summaryTimeFloat = 21f; // Hardcoded until Tom shows me how to get stuff from the database
+        LocalTime summaryTime = LocalTime.parse("21:00"); // parse whatever the database stores into 'summaryTime'
         SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM d, HH:mmaaa", Locale.UK);
 
         ArrayList<Entry> chartData = new ArrayList<Entry>();
@@ -341,9 +341,11 @@ public class DashboardLeftFrag extends Fragment {
         // Get the current time
         LocalTime now = LocalTime.now();
         // Get the time of the daily summary notification from the settings database
-        Float summaryTimeFloat = 20f; // Hardcoded until Tom shows me how to get stuff from the database
-        LocalTime summaryTime = LocalTime.parse("20:00"); // parse whatever the database stores into 'summaryTime'
+        Float summaryTimeFloat = 21f; // Hardcoded until Tom shows me how to get stuff from the database
+        LocalTime summaryTime = LocalTime.parse("21:00"); // parse whatever the database stores into 'summaryTime'
         SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM d, HH:mmaaa", Locale.UK);
+        SimpleDateFormat dayMonthYear = new SimpleDateFormat("d/M/yy", Locale.UK);
+        TextView dateLabel = getView().findViewById(R.id.activity_left_fragment_reports_vertical_label);
 
         if (surveyResults != null) {
             for (SurveyResult nextResult : surveyResults) {
@@ -370,6 +372,9 @@ public class DashboardLeftFrag extends Fragment {
                         container.removeView(defaultMessage);
                         // This does get called each time, but it doesn't throw an error...
                     }
+                    // Set the text of the label to reflect that the daily summary currently shown is for today
+                    lowerBoundCalendar.add(Calendar.HOUR, 1); // Add an hour to the calendar to ensure it's after midnight
+                    dateLabel.setText("Summary for: " + dayMonthYear.format(lowerBoundCalendar.getTime()));
                 } else {
                     // If the current time is after the notification time, show only reports from today
                     // "yesterday's reports" defined by the surveys taken BEFORE
@@ -389,6 +394,9 @@ public class DashboardLeftFrag extends Fragment {
                         formatButton(nextResult, boxCount, layout);
                         boxCount++;
                     }
+                    // Set the text of the label to reflect that the daily summary currently shown is for yesterday
+                    lowerBoundCalendar.add(Calendar.HOUR, 1);
+                    dateLabel.setText("Summary for: " + dayMonthYear.format(lowerBoundCalendar.getTime()));
                 }
             }
         }
