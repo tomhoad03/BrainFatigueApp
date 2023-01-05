@@ -14,7 +14,6 @@
         android:textStyle="bold"
         android:textSize="26sp"
         android:id="@+id/activity_fitbit_dashboard_title"
-        app:fontFamily="@font/spartan"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="17dp"/>
