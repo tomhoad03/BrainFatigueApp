@@ -243,6 +243,7 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
     <!-- Strings used for the fitbit sections -->
-    <string name="fitbit_integration_title">Use the button below to be taken to the fitbit wesbite to sign in</string>
+    <string name="fitbit_integration_title">Integration Login</string>
+    <string name="fitbit_integration_body">Proceed to be redirected to fitbits login page</string>
 
 </resources>

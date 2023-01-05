@@ -7,40 +7,57 @@
     tools:context=".FitBitLoginActivity">
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/fitbit_login_title"
+        android:layout_width="347dp"
+        android:layout_height="144dp"
+        android:gravity="center"
+        android:text="@string/fitbit_integration_title"
+        android:textColor="@color/custom_navy_A"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.289" />
+
+    <TextView
+        android:id="@+id/fitbit_login_body"
         android:layout_width="298dp"
         android:layout_height="130dp"
-        android:text="@string/fitbit_integration_title"
+        android:gravity="center"
+        android:text="@string/fitbit_integration_body"
         android:textColor="@color/custom_navy_A"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.575"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.527" />
+        app:layout_constraintVertical_bias="0.875" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="Login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:layout_constraintVertical_bias="0.26" />
+        app:layout_constraintTop_toBottomOf="@+id/fitbit_login_title"
+        app:layout_constraintVertical_bias="0.444" />
 
     <ImageView
         android:id="@+id/fitbit_login_logo"
         android:layout_width="281dp"
         android:layout_height="146dp"
         android:elevation="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintBottom_toTopOf="@+id/fitbit_login_body"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.43"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.205"
         app:srcCompat="@drawable/fitbit_logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
