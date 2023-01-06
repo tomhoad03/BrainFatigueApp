@@ -10,7 +10,6 @@ import android.content.Intent;
 import androidx.core.app.NotificationCompat;
 
 public class SummaryReceiver extends BroadcastReceiver {
-    private int NOTIFICATION_ID = 1;
 
     @Override
     public void onReceive(Context context, Intent ignore) {
@@ -35,7 +34,6 @@ public class SummaryReceiver extends BroadcastReceiver {
 
         // Display the notification
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(NOTIFICATION_ID, builder.build());
-        NOTIFICATION_ID++;
+        notificationManager.notify(1, builder.build());
     }
 }
