@@ -139,10 +139,12 @@ public class DashboardRightFrag extends Fragment {
 
     private float getLargestDatapoint(List<Entry> data) {
         float largestValue = 0f;
-        for (Entry e : data) {
-            float nextY = e.getY();
-            if (nextY > largestValue){
-                largestValue = nextY;
+        if (data != null) {
+            for (Entry e : data) {
+                float nextY = e.getY();
+                if (nextY > largestValue){
+                    largestValue = nextY;
+                }
             }
         }
         return largestValue;

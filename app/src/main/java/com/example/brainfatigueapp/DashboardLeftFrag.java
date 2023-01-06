@@ -96,11 +96,12 @@ public class DashboardLeftFrag extends Fragment {
 
         ArrayList<Entry> chartData = new ArrayList<>();
         float dateCount = 0;
-        for (SurveyResult result : database) {
-
-            if (result.getSurveyResultId() > System.currentTimeMillis() - 86400000) {
-                chartData.add(new Entry(dateCount, result.getQuestion1()));
-                dateCount++;
+        if (database != null) {
+            for (SurveyResult result : database) {
+                if (result.getSurveyResultId() > System.currentTimeMillis() - 86400000) {
+                    chartData.add(new Entry(dateCount, result.getQuestion1()));
+                    dateCount++;
+                }
             }
         }
 
@@ -127,10 +128,12 @@ public class DashboardLeftFrag extends Fragment {
 
         ArrayList<Entry> chartData = new ArrayList<>();
         float dateCount = 0;
-        for (Reaction reaction : reactions) {
-            if (reaction.getReactionId() > System.currentTimeMillis() - 86400000) {
-                chartData.add(new Entry(dateCount, reaction.getAverageTime())); // Change to the reaction time method
-                dateCount++;
+        if (reactions != null) {
+            for (Reaction reaction : reactions) {
+                if (reaction.getReactionId() > System.currentTimeMillis() - 86400000) {
+                    chartData.add(new Entry(dateCount, reaction.getAverageTime())); // Change to the reaction time method
+                    dateCount++;
+                }
             }
         }
 
@@ -144,10 +147,12 @@ public class DashboardLeftFrag extends Fragment {
 
     private float getLargestDatapoint(List<Entry> data) {
         float largestValue = 0f;
-        for (Entry e : data) {
-            float nextY = e.getY();
-            if (nextY > largestValue){
-                largestValue = nextY;
+        if (data != null) {
+            for (Entry e : data) {
+                float nextY = e.getY();
+                if (nextY > largestValue){
+                    largestValue = nextY;
+                }
             }
         }
         return largestValue;
