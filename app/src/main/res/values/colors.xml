@@ -21,4 +21,6 @@
     <color name="custom_graph_purple">#E07CF7</color>
     <color name="custom_graph_green">#7CF78C</color>
     <color name="blank">#00FFFFFF</color>
+    <!-- Reaction time test colours   -->
+    <color name="grey_start">#C5C2C2</color>
 </resources>
