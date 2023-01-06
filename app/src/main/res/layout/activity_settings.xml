@@ -15,9 +15,8 @@
             android:id="@+id/activity_settings_title"
             app:fontFamily="@font/spartan"
             app:layout_constraintStart_toStartOf="@+id/activity_settings_button_heading"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintEnd_toEndOf="@+id/activity_settings_button_heading"
-            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="19dp"/>
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="20dp"/>
 
     <TextView
             android:id="@+id/activity_settings_button_heading"

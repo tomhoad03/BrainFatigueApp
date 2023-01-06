@@ -13,6 +13,13 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 
+import java.time.LocalTime;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+
 public class HomeActivity extends AppCompatActivity {
 
     GoogleSignInOptions gsi_options;
@@ -48,6 +55,43 @@ public class HomeActivity extends AppCompatActivity {
         if(googleAccount != null){
             String firstName = googleAccount.getGivenName();
             welcomeMessage.setText("Hi " + firstName + ", What would you like to do today?");
+        }
+
+        // Database access
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+        Future<Setting> futureSetting = executorService.submit(() -> {
+            FatigueDatabase fatigueDatabase = FatigueDatabase.getDatabase(getApplicationContext());
+            SettingsDao SettingDao = fatigueDatabase.settingsDao();
+
+            List<Setting> Setting = SettingDao.getAll();
+            Setting setting;
+            try {
+                setting = Setting.get(Setting.size() - 1);
+            } catch (Exception e) {
+                setting = new Setting();
+            }
+            return setting;
+        });
+        executorService.shutdown();
+
+        long timeout = System.currentTimeMillis() + 10000;
+        Setting resultSetting;
+
+        while (System.currentTimeMillis() < timeout) {
+            try {
+                resultSetting = futureSetting.get();
+            } catch (ExecutionException | InterruptedException e) {
+                continue;
+            }
+
+            long scheduledNotification = System.currentTimeMillis() - (((long) LocalTime.now().getHour() * 3600 * 1000) + ((long) LocalTime.now().getMinute() * 60 * 1000) + (LocalTime.now().getSecond() * 1000L)) + resultSetting.getSummary();
+
+            // Setup the daily summary notification
+            Intent notifyIntent = new Intent(getApplicationContext(), NotificationReceiver.class);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+            AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+            alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + scheduledNotification, pendingIntent);
+            break;
         }
     }
 }
