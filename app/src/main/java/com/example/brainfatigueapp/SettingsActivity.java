@@ -7,6 +7,7 @@ import android.widget.*;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.FragmentManager;
 
 import com.google.android.gms.auth.api.identity.SignInClient;
@@ -182,6 +183,15 @@ public class SettingsActivity extends AppCompatActivity {
             darkModeBtn.setOnClickListener(v -> {
                 // Toggle the switch to the opposite state
                 darkModeSwitch.setChecked(!darkModeSwitch.isChecked());
+
+                // Toggle the switch to the opposite state
+                darkModeSwitch.setChecked(!darkModeSwitch.isChecked());
+
+                if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                } else {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                }
 
                 // Call the function to do the dark mode things
                 ExecutorService darkExecutorService = Executors.newSingleThreadExecutor();
