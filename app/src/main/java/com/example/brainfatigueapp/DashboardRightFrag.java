@@ -59,7 +59,7 @@ public class DashboardRightFrag extends Fragment {
         drawReactionTimeGraph(chart2);
 
         // Draw a third graph from the fitbit data
-        drawFitbitGraph(surveyResults, chart3);
+        drawFitbitGraph(chart3);
 
         // Format the graphs
         formatGraph(surveyResults, chart1);
@@ -132,17 +132,9 @@ public class DashboardRightFrag extends Fragment {
         return chartData;
     }
 
-    private ArrayList<Entry> getFitbitData(List<SurveyResult> database) {
+    private ArrayList<Entry> getFitbitData() {
         // Extract the fitbit data from the database
-
-        ArrayList<Entry> chartData = new ArrayList<Entry>();
-        float dateCount = 0;
-        for (SurveyResult result : database) {
-            chartData.add(new Entry(dateCount, result.getQuestion1())); // Change to the fitbit method
-            dateCount++;
-        }
-
-        return chartData;
+        return null;
     }
 
     private float getLargestDatapoint(List<Entry> data) {
@@ -284,9 +276,9 @@ public class DashboardRightFrag extends Fragment {
         lineChart2.invalidate();
     }
 
-    private void drawFitbitGraph(List<SurveyResult> surveyResults, LineChart lineChart3) {
+    private void drawFitbitGraph(LineChart lineChart3) {
         // Apply fitbit data from the database to the graph
-        ArrayList<Entry> data = getFitbitData(surveyResults);
+        ArrayList<Entry> data = getFitbitData();
         LineDataSet lineChartData3 = new LineDataSet(data, "(fitbit data)");
         ArrayList<ILineDataSet> iLineDataSets3 = new ArrayList<ILineDataSet>();
         iLineDataSets3.add(lineChartData3);

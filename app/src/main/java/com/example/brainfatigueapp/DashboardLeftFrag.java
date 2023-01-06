@@ -58,7 +58,7 @@ public class DashboardLeftFrag extends Fragment {
         drawReactionTimeGraph(chart2);
 
         // Draw a third graph from the fitbit data
-        drawFitbitGraph(surveyResults, chart3);
+        drawFitbitGraph(chart3);
 
         // Format the graphs
         formatGraph(surveyResults, chart1);
@@ -87,80 +87,23 @@ public class DashboardLeftFrag extends Fragment {
         } catch (InterruptedException | ExecutionException | TimeoutException e) {
             e.printStackTrace();
         }
-        // Log.d("survey_results", surveyResults.toString());
+
         return surveyResults;
     }
 
-    private ArrayList<Entry> getChartData(List<SurveyResult> database, String mode) {
-        // Extract the information relevant to the line graph from the database
+    private ArrayList<Entry> getEnergyLevelData(List<SurveyResult> database) {
+        // Extract the energy level data from the database
 
-        int boxCount = 0;
-        // Get the current time
-        LocalTime now = LocalTime.now();
-        // Get the time of the daily summary notification from the settings database
-        Float summaryTimeFloat = 20f; // Hardcoded until Tom shows me how to get stuff from the database
-        LocalTime summaryTime = LocalTime.parse("20:00"); // parse whatever the database stores into 'summaryTime'
-        SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM d, HH:mmaaa", Locale.UK);
-
-        ArrayList<Entry> chartData = new ArrayList<Entry>();
+        ArrayList<Entry> chartData = new ArrayList<>();
         float dateCount = 0;
-        if (database != null) {
-            for (SurveyResult result : database) {
-                // Get the time that the survey was taken
-                GregorianCalendar surveyCalendar = new GregorianCalendar(TimeZone.getTimeZone("Europe/London"));
-                surveyCalendar.setTimeInMillis(result.getSurveyResultId());
+        for (SurveyResult result : database) {
 
-                if (now.compareTo(summaryTime) > 0) {
-                    // If the current time is after the notification time, show only reports from today
-                    // "today's reports" defined by surveys that were taken AFTER the time now
-                    // MINUS the time now in hours (around 00:00am)
-                    GregorianCalendar lowerBoundCalendar = new GregorianCalendar(TimeZone.getTimeZone("Europe/London"));
-                    lowerBoundCalendar.setTimeInMillis(System.currentTimeMillis());
-                    lowerBoundCalendar.add(Calendar.HOUR, -1 * (int) summaryTimeFloat.longValue());
-                    System.out.println("(TODAY) Displaying only times after: " + sdf.format(lowerBoundCalendar.getTime()));
-                    if (surveyCalendar.compareTo(lowerBoundCalendar) > 0) {
-                        // Include this result in the chart
-                        if (mode.equals("energy")) {
-                            chartData.add(new Entry(dateCount, result.getQuestion1()));
-                        } else if (mode.equals("reaction")) {
-                            chartData.add(new Entry(dateCount, result.getQuestion1())); // Change to reaction time method
-                        } else if (mode.equals("fitbit")) {
-                            chartData.add(new Entry(dateCount, result.getQuestion1())); // Change to fitbit method
-                        } else {
-                            System.out.println("getChartData in left fragment called with wrong mode...");
-                        }
-                        dateCount++;
-                    }
-                } else {
-                    // If the current time is after the notification time, show only reports from today
-                    // "yesterday's reports" defined by the surveys taken BEFORE
-                    // the (current date and time) MINUS the time now in hours (around 00:00am) and also AFTER
-                    // the (current date and time) MINUS (the time now in hours + 24) (around 00:00am the day before)
-                    GregorianCalendar lowerBoundCalendar = new GregorianCalendar(TimeZone.getTimeZone("Europe/London"));
-                    lowerBoundCalendar.setTimeInMillis(System.currentTimeMillis());
-                    lowerBoundCalendar.add(Calendar.HOUR, -24 + (-1 * (int) summaryTimeFloat.longValue()));
-                    GregorianCalendar upperBoundCalendar = new GregorianCalendar(TimeZone.getTimeZone("Europe/London"));
-                    upperBoundCalendar.setTimeInMillis(System.currentTimeMillis());
-                    upperBoundCalendar.add(Calendar.HOUR, -1 * (int) summaryTimeFloat.longValue());
-                    System.out.println("(YDAY) Displaying only times after: " + sdf.format(lowerBoundCalendar.getTime()));
-                    System.out.println("(YDAY) and also only times before : " + sdf.format(upperBoundCalendar.getTime()));
-                    if ((surveyCalendar.compareTo(lowerBoundCalendar) > 0) &&
-                            (surveyCalendar.compareTo(upperBoundCalendar) < 0)) {
-                        // Include this result in the chart
-                        if (mode.equals("energy")) {
-                            chartData.add(new Entry(dateCount, result.getQuestion1()));
-                        } else if (mode.equals("reaction")) {
-                            chartData.add(new Entry(dateCount, result.getQuestion1())); // Change to reaction time method
-                        } else if (mode.equals("fitbit")) {
-                            chartData.add(new Entry(dateCount, result.getQuestion1())); // Change to fitbit method
-                        } else {
-                            System.out.println("getChartData in left fragment called with wrong mode...");
-                        }
-                        dateCount++;
-                    }
-                }
+            if (result.getSurveyResultId() > System.currentTimeMillis() - 86400000) {
+                chartData.add(new Entry(dateCount, result.getQuestion1()));
+                dateCount++;
             }
         }
+
         return chartData;
     }
 
@@ -185,11 +128,18 @@ public class DashboardLeftFrag extends Fragment {
         ArrayList<Entry> chartData = new ArrayList<>();
         float dateCount = 0;
         for (Reaction reaction : reactions) {
-            chartData.add(new Entry(dateCount, reaction.getAverageTime())); // Change to the reaction time method
-            dateCount++;
+            if (reaction.getReactionId() > System.currentTimeMillis() - 86400000) {
+                chartData.add(new Entry(dateCount, reaction.getAverageTime())); // Change to the reaction time method
+                dateCount++;
+            }
         }
 
         return chartData;
+    }
+
+    private ArrayList<Entry> getFitbitData() {
+        // Extract the fitbit data from the database
+        return null;
     }
 
     private float getLargestDatapoint(List<Entry> data) {
@@ -276,8 +226,7 @@ public class DashboardLeftFrag extends Fragment {
 
     private void drawEnergyLevelGraph(List<SurveyResult> surveyResults, LineChart lineChart) {
         // Apply energy level data from the database to the graph
-        ArrayList<Entry> data = getChartData(surveyResults, "energy");
-        LineDataSet lineChartData = new LineDataSet(data, "(energy level)");
+        LineDataSet lineChartData = new LineDataSet(getEnergyLevelData(surveyResults), "(energy level)");
         ArrayList<ILineDataSet> iLineDataSets = new ArrayList<ILineDataSet>();
         iLineDataSets.add(lineChartData);
         LineData lineData = new LineData(iLineDataSets);
@@ -332,9 +281,9 @@ public class DashboardLeftFrag extends Fragment {
         lineChart2.invalidate();
     }
 
-    private void drawFitbitGraph(List<SurveyResult> surveyResults, LineChart lineChart3) {
+    private void drawFitbitGraph(LineChart lineChart3) {
         // Apply reaction time data from the database to the graph
-        ArrayList<Entry> data = getChartData(surveyResults, "fitbit");
+        ArrayList<Entry> data = getFitbitData();
         LineDataSet lineChartData3 = new LineDataSet(data, "(fitbit data)");
         ArrayList<ILineDataSet> iLineDataSets3 = new ArrayList<ILineDataSet>();
         iLineDataSets3.add(lineChartData3);
