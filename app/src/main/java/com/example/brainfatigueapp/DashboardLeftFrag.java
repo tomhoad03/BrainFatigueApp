@@ -1,6 +1,7 @@
 package com.example.brainfatigueapp;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -92,52 +93,118 @@ public class DashboardLeftFrag extends Fragment {
     }
 
     private ArrayList<Entry> getEnergyLevelData(List<SurveyResult> database) {
-        // Extract the energy level data from the database
+        // Database access
+        ExecutorService executorService1 = Executors.newSingleThreadExecutor();
+        Future<Setting> futureSetting = executorService1.submit(() -> {
+            FatigueDatabase fatigueDatabase = FatigueDatabase.getDatabase(getContext());
+            SettingsDao settingsDao = fatigueDatabase.settingsDao();
 
-        ArrayList<Entry> chartData = new ArrayList<>();
-        float dateCount = 0;
-        if (database != null) {
-            for (SurveyResult result : database) {
-                if (result.getSurveyResultId() > System.currentTimeMillis() - 86400000) {
-                    chartData.add(new Entry(dateCount, result.getQuestion1()));
-                    dateCount++;
+            List<Setting> settings = settingsDao.getAll();
+            Setting setting;
+            try {
+                setting = settings.get(settings.size() - 1);
+            } catch (Exception e) {
+                setting = new Setting();
+            }
+            return setting;
+        });
+        executorService1.shutdown();
+
+        // Schedule the next notification
+        long timeout = System.currentTimeMillis() + 10000;
+        Setting resultSetting;
+
+        while (System.currentTimeMillis() < timeout) {
+            try {
+                resultSetting = futureSetting.get();
+            } catch (ExecutionException | InterruptedException e) {
+                continue;
+            }
+
+            long time = TimeUnit.HOURS.toMillis(LocalTime.now().getHour()) +
+                    TimeUnit.MINUTES.toMillis(LocalTime.now().getMinute()) +
+                    TimeUnit.SECONDS.toMillis(LocalTime.now().getSecond());
+
+            ArrayList<Entry> chartData = new ArrayList<>();
+            float dateCount = 0;
+            if (database != null) {
+                for (SurveyResult result : database) {
+                    if (((((result.getSurveyResultId() > resultSetting.getSummary()) && (time > resultSetting.getSummary())) || (((result.getSurveyResultId() < (System.currentTimeMillis() + resultSetting.getSummary())) && (result.getSurveyResultId() > (System.currentTimeMillis() - time))) && (time <= resultSetting.getSummary()))))) {
+                        chartData.add(new Entry(dateCount, result.getQuestion1()));
+                        dateCount++;
+                    }
                 }
             }
-        }
 
-        return chartData;
+            return chartData;
+        }
+        return null;
     }
 
     private ArrayList<Entry> getReactionTimeData() {
-        // Extract the reaction time data from the database
-        ExecutorService executorService = Executors.newSingleThreadExecutor();
-        Future<List<Reaction>> reactionsFuture = executorService.submit(() -> {
-            FatigueDatabase surveyDatabase = FatigueDatabase.getDatabase(getContext());
-            ReactionDao reactionDao = surveyDatabase.reactionDao();
+        // Database access
+        ExecutorService executorService1 = Executors.newSingleThreadExecutor();
+        Future<Setting> futureSetting = executorService1.submit(() -> {
+            FatigueDatabase fatigueDatabase = FatigueDatabase.getDatabase(getContext());
+            SettingsDao settingsDao = fatigueDatabase.settingsDao();
 
-            return reactionDao.getAll();
+            List<Setting> settings = settingsDao.getAll();
+            Setting setting;
+            try {
+                setting = settings.get(settings.size() - 1);
+            } catch (Exception e) {
+                setting = new Setting();
+            }
+            return setting;
         });
-        executorService.shutdown();
+        executorService1.shutdown();
 
-        List<Reaction> reactions = null;
-        try {
-            reactions = reactionsFuture.get(200, TimeUnit.MILLISECONDS);
-        } catch (InterruptedException | ExecutionException | TimeoutException e) {
-            e.printStackTrace();
-        }
+        // Schedule the next notification
+        long timeout = System.currentTimeMillis() + 10000;
+        Setting resultSetting;
 
-        ArrayList<Entry> chartData = new ArrayList<>();
-        float dateCount = 0;
-        if (reactions != null) {
-            for (Reaction reaction : reactions) {
-                if (reaction.getReactionId() > System.currentTimeMillis() - 86400000) {
-                    chartData.add(new Entry(dateCount, reaction.getAverageTime())); // Change to the reaction time method
-                    dateCount++;
+        while (System.currentTimeMillis() < timeout) {
+            try {
+                resultSetting = futureSetting.get();
+            } catch (ExecutionException | InterruptedException e) {
+                continue;
+            }
+
+            // Extract the reaction time data from the database
+            ExecutorService executorService = Executors.newSingleThreadExecutor();
+            Future<List<Reaction>> reactionsFuture = executorService.submit(() -> {
+                FatigueDatabase surveyDatabase = FatigueDatabase.getDatabase(getContext());
+                ReactionDao reactionDao = surveyDatabase.reactionDao();
+
+                return reactionDao.getAll();
+            });
+            executorService.shutdown();
+
+            List<Reaction> reactions = null;
+            try {
+                reactions = reactionsFuture.get(200, TimeUnit.MILLISECONDS);
+            } catch (InterruptedException | ExecutionException | TimeoutException e) {
+                e.printStackTrace();
+            }
+
+            long time = TimeUnit.HOURS.toMillis(LocalTime.now().getHour()) +
+                    TimeUnit.MINUTES.toMillis(LocalTime.now().getMinute()) +
+                    TimeUnit.SECONDS.toMillis(LocalTime.now().getSecond());
+
+            ArrayList<Entry> chartData = new ArrayList<>();
+            float dateCount = 0;
+            if (reactions != null) {
+                for (Reaction reaction : reactions) {
+                    if (((((reaction.getReactionId() > resultSetting.getSummary()) && (time > resultSetting.getSummary())) || (((reaction.getReactionId() < (System.currentTimeMillis() + resultSetting.getSummary())) && (reaction.getReactionId() > (System.currentTimeMillis() - time))) && (time <= resultSetting.getSummary()))))) {
+                        chartData.add(new Entry(dateCount, reaction.getAverageTime()));
+                        dateCount++;
+                    }
                 }
             }
-        }
 
-        return chartData;
+            return chartData;
+        }
+        return null;
     }
 
     private ArrayList<Entry> getFitbitData() {
