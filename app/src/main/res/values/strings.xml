@@ -245,5 +245,7 @@
     <!-- Strings used for the fitbit sections -->
     <string name="fitbit_integration_title">Integration Login</string>
     <string name="fitbit_integration_body">Proceed to be redirected to fitbits login page</string>
+    <string name="http_deep_link">HTTP deep link to dashboard</string>
+    <string name="app_deep_link">deep link to dashboard in app form</string>
 
 </resources>

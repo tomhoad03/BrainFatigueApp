@@ -27,6 +27,7 @@
         <activity
             android:name=".FitBitLoginActivity"
             android:exported="false">
+
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -64,8 +65,19 @@
             android:parentActivityName=".LoginPageActivity" />
         <activity
             android:name=".DashboardActivity"
-            android:exported="false"
-            android:parentActivityName=".HomeActivity" />
+            android:exported="true"
+            android:parentActivityName=".HomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:scheme="http"
+                    android:host="www.brainfatigueapp.com"
+                    android:pathPattern="/dashboard" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".SurveyStartActivity"
             android:exported="false"
