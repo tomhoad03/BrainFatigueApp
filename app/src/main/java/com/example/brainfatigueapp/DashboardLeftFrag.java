@@ -55,7 +55,7 @@ public class DashboardLeftFrag extends Fragment {
         drawEnergyLevelGraph(surveyResults, chart1);
 
         // Draw a second graph from the reaction time data
-        drawReactionTimeGraph(surveyResults, chart2);
+        drawReactionTimeGraph(chart2);
 
         // Draw a third graph from the fitbit data
         drawFitbitGraph(surveyResults, chart3);
@@ -161,6 +161,34 @@ public class DashboardLeftFrag extends Fragment {
                 }
             }
         }
+        return chartData;
+    }
+
+    private ArrayList<Entry> getReactionTimeData() {
+        // Extract the reaction time data from the database
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+        Future<List<Reaction>> reactionsFuture = executorService.submit(() -> {
+            FatigueDatabase surveyDatabase = FatigueDatabase.getDatabase(getContext());
+            ReactionDao reactionDao = surveyDatabase.reactionDao();
+
+            return reactionDao.getAll();
+        });
+        executorService.shutdown();
+
+        List<Reaction> reactions = null;
+        try {
+            reactions = reactionsFuture.get(200, TimeUnit.MILLISECONDS);
+        } catch (InterruptedException | ExecutionException | TimeoutException e) {
+            e.printStackTrace();
+        }
+
+        ArrayList<Entry> chartData = new ArrayList<>();
+        float dateCount = 0;
+        for (Reaction reaction : reactions) {
+            chartData.add(new Entry(dateCount, reaction.getAverageTime())); // Change to the reaction time method
+            dateCount++;
+        }
+
         return chartData;
     }
 
@@ -274,9 +302,9 @@ public class DashboardLeftFrag extends Fragment {
         lineChart.invalidate();
     }
 
-    private void drawReactionTimeGraph(List<SurveyResult> surveyResults, LineChart lineChart2) {
+    private void drawReactionTimeGraph(LineChart lineChart2) {
         // Apply reaction time data from the database to the graph
-        ArrayList<Entry> data = getChartData(surveyResults, "reaction");
+        ArrayList<Entry> data = getReactionTimeData();
         LineDataSet lineChartData2 = new LineDataSet(data, "(reaction time)");
         ArrayList<ILineDataSet> iLineDataSets2 = new ArrayList<ILineDataSet>();
         iLineDataSets2.add(lineChartData2);
