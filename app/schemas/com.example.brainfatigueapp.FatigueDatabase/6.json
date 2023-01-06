@@ -1,8 +1,8 @@
 {
   "formatVersion": 1,
   "database": {
-    "version": 3,
-    "identityHash": "7f9d11ce597395956fdeb4ee86cd2db0",
+    "version": 6,
+    "identityHash": "0b2aeee2b3157b7952a5e5a30afbf7ee",
     "entities": [
       {
         "tableName": "SurveyResult",
@@ -91,7 +91,7 @@
         "foreignKeys": []
       },
       {
-        "tableName": "Settings",
+        "tableName": "Setting",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`settingsId` INTEGER, `interval` INTEGER, `day_start` INTEGER, `day_End` INTEGER, `work_start` INTEGER, `work_End` INTEGER, `summary` INTEGER, `dark_mode` INTEGER NOT NULL, PRIMARY KEY(`settingsId`))",
         "fields": [
           {
@@ -151,12 +151,38 @@
         },
         "indices": [],
         "foreignKeys": []
+      },
+      {
+        "tableName": "Reaction",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`reactionId` INTEGER, `average_time` INTEGER, PRIMARY KEY(`reactionId`))",
+        "fields": [
+          {
+            "fieldPath": "reactionId",
+            "columnName": "reactionId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "averageTime",
+            "columnName": "average_time",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "reactionId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
       }
     ],
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '7f9d11ce597395956fdeb4ee86cd2db0')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '0b2aeee2b3157b7952a5e5a30afbf7ee')"
     ]
   }
 }

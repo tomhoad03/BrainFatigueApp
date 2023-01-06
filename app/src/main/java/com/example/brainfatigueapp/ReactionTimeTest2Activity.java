@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 public class ReactionTimeTest2Activity extends AppCompatActivity {
@@ -111,13 +113,21 @@ public class ReactionTimeTest2Activity extends AppCompatActivity {
         // now we have the list of results, all that is left is to display the average on colourChangeButton
         averageTime = calculateAverage(results);
         colourChangeButton.setText("TEST COMPLETED! \n\nYOUR AVERAGE RESPONSE TIME IS: " + averageTime + "ms"); // THANKS FOR PARTICIPATING. PRESS THE BUTTON BELOW TO VIEW YOUR RESULTS
+
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+        executorService.execute(() -> {
+            FatigueDatabase fatigueDatabase = FatigueDatabase.getDatabase(getApplicationContext());
+            ReactionDao reactionDao = fatigueDatabase.reactionDao();
+
+            Reaction reaction = new Reaction(averageTime);
+            reactionDao.insert(reaction);
+        });
+        executorService.shutdown();
+
         // re-map startButton's function into something else i.e. a button that navigates to homepage for now
-        startButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // navigate back to homepage
-                startActivity(new Intent(ReactionTimeTest2Activity.this, HomeActivity.class));
-            }
+        startButton.setOnClickListener(v -> {
+            // navigate back to homepage
+            startActivity(new Intent(ReactionTimeTest2Activity.this, HomeActivity.class));
         });
     }
 

@@ -10,32 +10,50 @@
     <string name="activity_settings_arrow">&#43;</string>
     <string name="activity_settings_button_heading">----- Notifications -----</string>
     <string name="activity_settings_frequency_slider_label">Frequency</string>
-    <string name="activity_settings_frequency_slider_text">How often we\'ll remind you to take your fatigue survey</string>
+    <string name="activity_settings_frequency_slider_text">How often we\'ll remind you to take your fatigue survey
+    </string>
     <string name="activity_settings_available_slider_label">Awake Time</string>
-    <string name="activity_settings_available_slider_text">We\'ll only send you reminders between these times in the day</string>
+    <string name="activity_settings_available_slider_text">We\'ll only send you reminders between these times in the
+        day
+    </string>
     <string name="activity_settings_unavailable_slider_label">Do Not Disturb</string>
     <string name="activity_settings_unavailable_slider_text">We won\'t notify you between these times</string>
     <string name="activity_settings_summary_slider_label">Summary</string>
-    <string name="activity_settings_summary_slider_text">This is when we\'ll let you know that your daily summary is ready</string>
+    <string name="activity_settings_summary_slider_text">This is when we\'ll let you know that your daily summary is
+        ready
+    </string>
     <string name="activity_settings_button_divider">--------- Other ---------</string>
     <string name="activity_settings_button_dark_mode">Dark Mode</string>
     <string name="activity_settings_button_faq">FAQs</string>
+    <string name="activity_settings_button_faq_1">Q: How can I change the notifications that I am sent?</string>
+    <string name="activity_settings_button_faq_2">
+        A: You can adjust the timing and frequency of our notifications in the settings page. You can reach the
+        settings page by tapping the cog in the top-right of the dashboard.
+    </string>
+    <string name="activity_settings_button_faq_3">Q: Where can I see my responses to surveys?</string>
+    <string name="activity_settings_button_faq_4">
+        A: You can view your responses in the dashboard. There is a tab for your daily summary and a tab for your
+        all-time responses. Scroll down to see your full list of responses! Press the box to view the full data
+        and press off the popup to close it.
+    </string>
+    <string name="activity_settings_button_faq_5">Q: Why is my daily summary empty?</string>
+    <string name="activity_settings_button_faq_6">
+        A: This might be because you didn\'t answer any surveys yesterday. Try checking again tomorrow. </string>
+    <string name="activity_settings_button_faq_7">Q: Is there more than one graph on my dashboard?</string>
+    <string name="activity_settings_button_faq_8">
+        A: Yes! Scroll sideways on the Energy Level graph to see graphs for your Reaction Time and Fitbit data.
+    </string>
     <string name="activity_settings_button_about">About info</string>
     <string name="activity_settings_button_logout">LOG OUT</string>
 
     <string name="activity_dashboard_title">My dashboard</string>
-    <string name="activity_dashboard_left_group1_top">Mood</string>
-    <string name="activity_dashboard_left_group1_bottom">You reported a low mood today.</string>
-    <string name="activity_dashboard_left_group2_top">Sleep</string>
-    <string name="activity_dashboard_left_group2_bottom">7hr 20m</string>
-    <string name="activity_dashboard_left_group3_top">Steps</string>
-    <string name="activity_dashboard_left_group3_bottom">358 steps done today.</string>
-    <string name="activity_dashboard_left_group4_top">Lorem Ipsum</string>
-    <string name="activity_dashboard_left_group4_bottom">Lorem ipsum dolor sit amet.</string>
-    <string name="activity_dashboard_right_group1">Example data 1</string>
-    <string name="activity_dashboard_right_group2">Example data 2</string>
-    <string name="activity_dashboard_right_group3">Example data 3</string>
-    <string name="activity_dashboard_right_group4">Example data 4</string>
+    <string name="activity_dashboard_graph_1_title">Energy Level</string>
+    <string name="activity_dashboard_graph_2_title">Reaction Time (ms)</string>
+    <string name="activity_dashboard_graph_3_title">Fitbit Data</string>
+    <string name="activity_dashboard_left_fragment_default_message">Check back here later to see your daily summary!</string>
+    <string name="activity_dashboard_left_fragment_divider_message">---- Recent Responses ----</string>
+    <string name="activity_dashboard_right_fragment_default_message">Reports will appear here after you take your first survey!</string>
+    <string name="activity_dashboard_right_fragment_divider_message">----- All Responses -----</string>
 
     <!-- login stuff I am in agony send help -->
     <string name="facebook_app_id">1841804132826804</string>
@@ -106,7 +124,9 @@
     <string name="activity_survey_middle3e_button6">Listening to music/radio</string>
 
     <!-- question 3f (after selecting "Exercising") -->
-    <string name="activity_survey_middle3f_button1">Exercises (for example physiotherapy exercises, light weights, aerobics)</string>
+    <string name="activity_survey_middle3f_button1">Exercises (for example physiotherapy exercises, light weights,
+        aerobics)
+    </string>
     <string name="activity_survey_middle3f_button2">Yoga, pilates or stretching</string>
     <string name="activity_survey_middle3f_button3">Using an exercise machine</string>
 

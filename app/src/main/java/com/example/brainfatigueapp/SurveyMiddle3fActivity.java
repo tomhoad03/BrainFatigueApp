@@ -24,7 +24,7 @@ public class SurveyMiddle3fActivity extends AppCompatActivity {
         activityButtons.add(findViewById(R.id.activity_survey_middle3f_button1));
         activityButtons.add(findViewById(R.id.activity_survey_middle3f_button2));
         activityButtons.add(findViewById(R.id.activity_survey_middle3f_button3));
-        int count = 1;
+        int count = 25;
 
         for (Button activityButton : activityButtons) {
             SurveyResult surveyResult = (SurveyResult) getIntent().getSerializableExtra("survey_result");

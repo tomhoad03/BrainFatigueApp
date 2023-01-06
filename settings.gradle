@@ -1,10 +1,22 @@
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://jitpack.io' }
         jcenter() // Warning: this repository is going to shut down soon
     }
 }
+/*
+Had this error: "Build was configured to prefer settings repositories over project
+                 repositories but repository 'maven' was added by build file 'build.gradle'"
+
+StackOverflow, the top answer recommended deleting the above 'dependencyResolutionManagement' block as a fix
+(see here):
+https://stackoverflow.com/questions/69163511/build-was-configured-to-prefer-settings-repositories-over-project-repositories-b
+but that didn't work. The second answer said to put maven jitpack.io line inside the block, in this
+file (settings.gradle) and it started working for me.
+ */
 rootProject.name = "BrainFatigueApp"
 include ':app'

@@ -8,9 +8,12 @@ import java.util.List;
 
 @Dao
 public interface SettingsDao {
-    @Query("SELECT * FROM Settings")
-    List<Settings> getAll();
+    @Query("SELECT * FROM Setting")
+    List<Setting> getAll();
 
     @Insert
-    void insert(Settings settings);
+    void insert(Setting setting);
+
+    @Query("DELETE FROM Setting")
+    void deleteAll();
 }

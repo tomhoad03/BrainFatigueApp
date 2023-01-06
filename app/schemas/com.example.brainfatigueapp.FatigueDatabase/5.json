@@ -1,8 +1,8 @@
 {
   "formatVersion": 1,
   "database": {
-    "version": 3,
-    "identityHash": "7f9d11ce597395956fdeb4ee86cd2db0",
+    "version": 5,
+    "identityHash": "a360058b1a00bf910e6333496bbc4ae8",
     "entities": [
       {
         "tableName": "SurveyResult",
@@ -91,7 +91,7 @@
         "foreignKeys": []
       },
       {
-        "tableName": "Settings",
+        "tableName": "Setting",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`settingsId` INTEGER, `interval` INTEGER, `day_start` INTEGER, `day_End` INTEGER, `work_start` INTEGER, `work_End` INTEGER, `summary` INTEGER, `dark_mode` INTEGER NOT NULL, PRIMARY KEY(`settingsId`))",
         "fields": [
           {
@@ -151,12 +151,32 @@
         },
         "indices": [],
         "foreignKeys": []
+      },
+      {
+        "tableName": "Reaction",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`reactionId` INTEGER, PRIMARY KEY(`reactionId`))",
+        "fields": [
+          {
+            "fieldPath": "reactionId",
+            "columnName": "reactionId",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "reactionId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
       }
     ],
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '7f9d11ce597395956fdeb4ee86cd2db0')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'a360058b1a00bf910e6333496bbc4ae8')"
     ]
   }
 }
