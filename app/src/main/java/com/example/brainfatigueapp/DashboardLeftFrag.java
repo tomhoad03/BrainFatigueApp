@@ -68,7 +68,6 @@ public class DashboardLeftFrag extends Fragment {
 
         // Fill the fragment with a report box for every entry in the database
         drawReportBoxes(surveyResults, layout);
-
     }
 
     private List<SurveyResult> retrieveDatabaseData() {
@@ -109,7 +108,7 @@ public class DashboardLeftFrag extends Fragment {
             return setting;
         });
         executorService1.shutdown();
-
+        
         // Schedule the next notification
         long timeout = System.currentTimeMillis() + 10000;
         Setting resultSetting;
@@ -193,11 +192,30 @@ public class DashboardLeftFrag extends Fragment {
 
             ArrayList<Entry> chartData = new ArrayList<>();
             float dateCount = 0;
+
+            long milliDay = 86400000;
+
             if (reactions != null) {
                 for (Reaction reaction : reactions) {
-                    if (((((reaction.getReactionId() > resultSetting.getSummary()) && (time > resultSetting.getSummary())) || (((reaction.getReactionId() < (System.currentTimeMillis() + resultSetting.getSummary())) && (reaction.getReactionId() > (System.currentTimeMillis() - time))) && (time <= resultSetting.getSummary()))))) {
-                        chartData.add(new Entry(dateCount, reaction.getAverageTime()));
-                        dateCount++;
+                    long surveyTime = reaction.getReactionId();
+                    long currentTime = System.currentTimeMillis();
+                    long summaryTime = resultSetting.getSummary();
+
+                    if (time > summaryTime) {
+                        long timeSinceSummary = time - summaryTime;
+
+                        if (surveyTime < currentTime - timeSinceSummary) {
+                            chartData.add(new Entry(dateCount, reaction.getAverageTime()));
+                            dateCount++;
+                        }
+                    } else {
+                        long timeTillSummary = summaryTime - time;
+                        long timeSinceSummary = milliDay - timeTillSummary;
+
+                        if (surveyTime < currentTime - timeSinceSummary) {
+                            chartData.add(new Entry(dateCount, reaction.getAverageTime()));
+                            dateCount++;
+                        }
                     }
                 }
             }
@@ -206,7 +224,7 @@ public class DashboardLeftFrag extends Fragment {
         }
         return null;
     }
-
+    
     private ArrayList<Entry> getFitbitData() {
         // Extract the fitbit data from the database
         return null;
@@ -384,62 +402,72 @@ public class DashboardLeftFrag extends Fragment {
     }
 
     private void drawReportBoxes(List<SurveyResult> surveyResults, ConstraintLayout layout) {
-        // Fill the fragment with a report box with the database entries from today only
+        // Database access
+        ExecutorService executorService1 = Executors.newSingleThreadExecutor();
+        Future<Setting> futureSetting = executorService1.submit(() -> {
+            FatigueDatabase fatigueDatabase = FatigueDatabase.getDatabase(getContext());
+            SettingsDao settingsDao = fatigueDatabase.settingsDao();
 
-        int boxCount = 0;
-        // Get the current time
-        LocalTime now = LocalTime.now();
-        // Get the time of the daily summary notification from the settings database
-        Float summaryTimeFloat = 20f; // Hardcoded until Tom shows me how to get stuff from the database
-        LocalTime summaryTime = LocalTime.parse("20:00"); // parse whatever the database stores into 'summaryTime'
-        SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM d, HH:mmaaa", Locale.UK);
+            List<Setting> settings = settingsDao.getAll();
+            Setting setting;
+            try {
+                setting = settings.get(settings.size() - 1);
+            } catch (Exception e) {
+                setting = new Setting();
+            }
+            return setting;
+        });
+        executorService1.shutdown();
 
-        if (surveyResults != null) {
-            for (SurveyResult nextResult : surveyResults) {
-                // Get the time that the survey was taken
-                GregorianCalendar surveyCalendar = new GregorianCalendar(TimeZone.getTimeZone("Europe/London"));
-                surveyCalendar.setTimeInMillis(nextResult.getSurveyResultId());
+        // Schedule the next notification
+        long timeout = System.currentTimeMillis() + 10000;
+        Setting resultSetting;
 
-                if (now.compareTo(summaryTime) > 0) {
-                    // If the current time is after the notification time, show only reports from today
-                    // "today's reports" defined by surveys that were taken AFTER the time now
-                    // MINUS the time now in hours (around 00:00am)
-                    GregorianCalendar lowerBoundCalendar = new GregorianCalendar(TimeZone.getTimeZone("Europe/London"));
-                    lowerBoundCalendar.setTimeInMillis(System.currentTimeMillis());
-                    lowerBoundCalendar.add(Calendar.HOUR, -1 * (int) summaryTimeFloat.longValue());
-                    System.out.println("(TODAY) Displaying only times after: " + sdf.format(lowerBoundCalendar.getTime()));
-                    if (surveyCalendar.compareTo(lowerBoundCalendar) > 0) {
-                        // Create a report box for this survey result
-                        formatButton(nextResult, boxCount, layout);
-                        boxCount++;
+        while (System.currentTimeMillis() < timeout) {
+            try {
+                resultSetting = futureSetting.get();
+            } catch (ExecutionException | InterruptedException e) {
+                continue;
+            }
 
-                        // If there's at least one report to draw, disable the default text message
-                        ConstraintLayout container = getView().findViewById(R.id.activity_left_fragment_graph_big_container);
-                        TextView defaultMessage = getView().findViewById(R.id.activity_left_fragment_reports_container_message);
-                        container.removeView(defaultMessage);
-                        // This does get called each time, but it doesn't throw an error...
+            long time = TimeUnit.HOURS.toMillis(LocalTime.now().getHour()) +
+                    TimeUnit.MINUTES.toMillis(LocalTime.now().getMinute()) +
+                    TimeUnit.SECONDS.toMillis(LocalTime.now().getSecond());
+
+            int boxCount = 0;
+
+            if (surveyResults != null) {
+                long milliDay = 86400000;
+
+                for (SurveyResult result : surveyResults) {
+                    long surveyTime = result.getSurveyResultId();
+                    long currentTime = System.currentTimeMillis();
+                    long summaryTime = resultSetting.getSummary();
+
+                    if (time > summaryTime) {
+                        long timeSinceSummary = time - summaryTime;
+
+                        if (surveyTime < currentTime - timeSinceSummary) {
+                            formatButton(result, boxCount, layout);
+                            boxCount++;
+                        }
+                    } else {
+                        long timeTillSummary = summaryTime - time;
+                        long timeSinceSummary = milliDay - timeTillSummary;
+
+                        if (surveyTime < currentTime - timeSinceSummary) {
+                            formatButton(result, boxCount, layout);
+                            boxCount++;
+                        }
                     }
-                } else {
-                    // If the current time is after the notification time, show only reports from today
-                    // "yesterday's reports" defined by the surveys taken BEFORE
-                    // the (current date and time) MINUS the time now in hours (around 00:00am) and also AFTER
-                    // the (current date and time) MINUS (the time now in hours + 24) (around 00:00am the day before)
-                    GregorianCalendar lowerBoundCalendar = new GregorianCalendar(TimeZone.getTimeZone("Europe/London"));
-                    lowerBoundCalendar.setTimeInMillis(System.currentTimeMillis());
-                    lowerBoundCalendar.add(Calendar.HOUR, -24 + (-1 * (int) summaryTimeFloat.longValue()));
-                    GregorianCalendar upperBoundCalendar = new GregorianCalendar(TimeZone.getTimeZone("Europe/London"));
-                    upperBoundCalendar.setTimeInMillis(System.currentTimeMillis());
-                    upperBoundCalendar.add(Calendar.HOUR, -1 * (int) summaryTimeFloat.longValue());
-                    System.out.println("(YDAY) Displaying only times after: " + sdf.format(lowerBoundCalendar.getTime()));
-                    System.out.println("(YDAY) and also only times before : " + sdf.format(upperBoundCalendar.getTime()));
-                    if ((surveyCalendar.compareTo(lowerBoundCalendar) > 0) &&
-                            (surveyCalendar.compareTo(upperBoundCalendar) < 0)) {
-                        // Create a report box for this survey result
-                        formatButton(nextResult, boxCount, layout);
-                        boxCount++;
-                    }
+
+                    // If there's at least one report to draw, disable the default text message
+                    ConstraintLayout container = getView().findViewById(R.id.activity_left_fragment_graph_big_container);
+                    TextView defaultMessage = getView().findViewById(R.id.activity_left_fragment_reports_container_message);
+                    container.removeView(defaultMessage);
                 }
             }
+            break;
         }
     }
 
