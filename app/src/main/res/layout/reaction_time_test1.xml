@@ -4,6 +4,7 @@
                                                    android:layout_height="match_parent">
     <Button
             android:text="@string/reaction_time_test_button2"
+            android:textColor="@color/darker_grey_text"
             android:layout_width="361dp"
             android:layout_height="62dp" android:id="@+id/reaction_time_test_button2"
             app:layout_constraintStart_toStartOf="parent"
