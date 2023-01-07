@@ -126,11 +126,30 @@ public class DashboardLeftFrag extends Fragment {
 
             ArrayList<Entry> chartData = new ArrayList<>();
             float dateCount = 0;
+
+            long milliDay = 86400000;
+
             if (database != null) {
                 for (SurveyResult result : database) {
-                    if (((((result.getSurveyResultId() > resultSetting.getSummary()) && (time > resultSetting.getSummary())) || (((result.getSurveyResultId() < (System.currentTimeMillis() + resultSetting.getSummary())) && (result.getSurveyResultId() > (System.currentTimeMillis() - time))) && (time <= resultSetting.getSummary()))))) {
-                        chartData.add(new Entry(dateCount, result.getQuestion1()));
-                        dateCount++;
+                    long surveyTime = result.getSurveyResultId();
+                    long currentTime = System.currentTimeMillis();
+                    long summaryTime = resultSetting.getSummary();
+
+                    if (time > summaryTime) {
+                        long timeSinceSummary = time - summaryTime;
+
+                        if (surveyTime < currentTime - timeSinceSummary) {
+                            chartData.add(new Entry(dateCount, result.getQuestion1()));
+                            dateCount++;
+                        }
+                    } else {
+                        long timeTillSummary = summaryTime - time;
+                        long timeSinceSummary = milliDay - timeTillSummary;
+
+                        if (surveyTime < currentTime - timeSinceSummary) {
+                            chartData.add(new Entry(dateCount, result.getQuestion1()));
+                            dateCount++;
+                        }
                     }
                 }
             }
