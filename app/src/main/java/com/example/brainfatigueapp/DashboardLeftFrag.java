@@ -336,7 +336,7 @@ public class DashboardLeftFrag extends Fragment {
     private void drawEnergyLevelGraph(List<SurveyResult> surveyResults, LineChart lineChart) {
         // Apply energy level data from the database to the graph
         LineDataSet lineChartData = new LineDataSet(getEnergyLevelData(surveyResults), "(energy level)");
-        ArrayList<ILineDataSet> iLineDataSets = new ArrayList<ILineDataSet>();
+        ArrayList<ILineDataSet> iLineDataSets = new ArrayList<>();
         iLineDataSets.add(lineChartData);
         LineData lineData = new LineData(iLineDataSets);
 
@@ -352,8 +352,8 @@ public class DashboardLeftFrag extends Fragment {
 
         YAxis yLeft = lineChart.getAxis(YAxis.AxisDependency.LEFT);
         yLeft.setAxisMinimum(0f);
-        yLeft.setAxisMaximum(100f);
-        yLeft.setLabelCount(5, true);
+        yLeft.setAxisMaximum(10f);
+        yLeft.setLabelCount(6, true);
 
         // Set the data and update
         lineChart.setData(lineData);
