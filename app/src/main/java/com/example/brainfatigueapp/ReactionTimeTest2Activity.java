@@ -78,7 +78,7 @@ public class ReactionTimeTest2Activity extends AppCompatActivity {
                         );
                         colourChangeButton.setText("wait...");
                         colourChangeButton.setTextColor(
-                                ContextCompat.getColor(getApplicationContext(), R.color.black_text)
+                                ContextCompat.getColor(getApplicationContext(), R.color.another_grey_text)
                         );
                         // after each iteration of screen changing colour and user tapping
                         // here we check the elapsed time
@@ -110,7 +110,7 @@ public class ReactionTimeTest2Activity extends AppCompatActivity {
                 colourChangeButton.setTextColor(
                         ContextCompat.getColor(getApplicationContext(), R.color.white)
                 );
-                colourChangeButton.setTextSize(35);
+                colourChangeButton.setTextSize(30);
                 colourChangeButton.setEnabled(true);
             }
         }, (long) (Math.random() * 10 + 1) * 1000); // hopefully this works
@@ -124,8 +124,9 @@ public class ReactionTimeTest2Activity extends AppCompatActivity {
         averageTime = calculateAverage(results);
         colourChangeButton.setText("TEST COMPLETED! \n\nYOUR AVERAGE RESPONSE TIME IS: " + averageTime + "ms"); // THANKS FOR PARTICIPATING. PRESS THE BUTTON BELOW TO VIEW YOUR RESULTS
         colourChangeButton.setTextColor(
-                ContextCompat.getColor(getApplicationContext(),R.color.black_text)
+                ContextCompat.getColor(getApplicationContext(),R.color.another_grey_text)
         );
+        colourChangeButton.setTextSize(25);
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         executorService.execute(() -> {
             FatigueDatabase fatigueDatabase = FatigueDatabase.getDatabase(getApplicationContext());
