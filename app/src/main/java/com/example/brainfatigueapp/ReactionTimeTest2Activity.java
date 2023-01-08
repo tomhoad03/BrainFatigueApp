@@ -38,60 +38,54 @@ public class ReactionTimeTest2Activity extends AppCompatActivity {
         startButton.setEnabled(true);
         colourChangeButton.setEnabled(false);
 
-        startButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                testBeginsTime = System.nanoTime(); // might be able to just keep it this way
-                colourChangeButton.setText("Game started!");
-                doReactionTest();
-            }
+        startButton.setOnClickListener(v -> {
+            testBeginsTime = System.nanoTime(); // might be able to just keep it this way
+            colourChangeButton.setText("Game started!");
+            doReactionTest();
         });
 
-        colourChangeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                endTime = System.nanoTime(); // previously System.nanoTime()
-                currentTime = TimeUnit.NANOSECONDS.toMillis(endTime - startTime); // calculates time taken for user to respond
-                elapsedTime = endTime - testBeginsTime; // calculates time since game was started
-                elapsedTimeMS = TimeUnit.NANOSECONDS.toMillis(elapsedTime);
-                // after colourChangeButton is tapped, add currentTime to results
-                results.add(currentTime);
-                colourChangeButton.setBackgroundColor(
-                        ContextCompat.getColor(getApplicationContext(), R.color.custom_purple_A)
-                );
-                colourChangeButton.setText(currentTime + "ms");
-                colourChangeButton.setTextColor(
-                        ContextCompat.getColor(getApplicationContext(), R.color.white)
-                );
+        colourChangeButton.setOnClickListener(v -> {
+            endTime = System.nanoTime(); // previously System.nanoTime()
+            currentTime = TimeUnit.NANOSECONDS.toMillis(endTime - startTime); // calculates time taken for user to respond
+            elapsedTime = endTime - testBeginsTime; // calculates time since game was started
+            elapsedTimeMS = TimeUnit.NANOSECONDS.toMillis(elapsedTime);
+            // after colourChangeButton is tapped, add currentTime to results
+            results.add(currentTime);
+            colourChangeButton.setBackgroundColor(
+                    ContextCompat.getColor(getApplicationContext(), R.color.custom_purple_B)
+            );
+            colourChangeButton.setText(currentTime + "ms");
+            colourChangeButton.setTextColor(
+                    ContextCompat.getColor(getApplicationContext(), R.color.white)
+            );
 //                startButton.setEnabled(true);
-                colourChangeButton.setEnabled(false);
+            colourChangeButton.setEnabled(false);
 
-                // After the button goes light blue and they react to it, wait a couple seconds
-                // so they have time to see the reaction time they just got before starting again
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        // Reset the button colour, then do another test
-                        colourChangeButton.setBackgroundColor(
-                                ContextCompat.getColor(getApplicationContext(), R.color.grey)
-                        );
-                        colourChangeButton.setText("wait...");
-                        colourChangeButton.setTextColor(
-                                ContextCompat.getColor(getApplicationContext(), R.color.black_text)
-                        );
-                        // after each iteration of screen changing colour and user tapping
-                        // here we check the elapsed time
-                        // if elapsed time has exceeded 2 minutes, then stop the game/do something
-                        // else call doReactionTest()
-                        if (elapsedTimeMS > 120000) { // 30000 for testing; 120000 for 2 minutes
-                            endReactionTest();
-                        } else {
-                            doReactionTest();
-                        }
+            // After the button goes light blue and they react to it, wait a couple seconds
+            // so they have time to see the reaction time they just got before starting again
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    // Reset the button colour, then do another test
+                    colourChangeButton.setBackgroundColor(
+                            ContextCompat.getColor(getApplicationContext(), R.color.grey)
+                    );
+                    colourChangeButton.setText("wait...");
+                    colourChangeButton.setTextColor(
+                            ContextCompat.getColor(getApplicationContext(), R.color.black_text)
+                    );
+                    // after each iteration of screen changing colour and user tapping
+                    // here we check the elapsed time
+                    // if elapsed time has exceeded 2 minutes, then stop the game/do something
+                    // else call doReactionTest()
+                    if (elapsedTimeMS > 120000) { // 30000 for testing; 120000 for 2 minutes
+                        endReactionTest();
+                    } else {
+                        doReactionTest();
                     }
-                }, (long) (3000)); // Wait 3 secs before starting the next one
-            }
+                }
+            }, (long) (3000)); // Wait 3 secs before starting the next one
         });
 
     }
