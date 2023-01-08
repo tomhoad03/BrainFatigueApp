@@ -60,7 +60,7 @@ public class ReactionTimeTest2Activity extends AppCompatActivity {
                         ContextCompat.getColor(getApplicationContext(), R.color.custom_purple_A)
                 );
                 colourChangeButton.setText(currentTime + "ms");
-                colourChangeButton.setTextColor(
+               colourChangeButton.setTextColor(
                         ContextCompat.getColor(getApplicationContext(), R.color.white)
                 );
 //                startButton.setEnabled(true);
@@ -80,6 +80,7 @@ public class ReactionTimeTest2Activity extends AppCompatActivity {
                         colourChangeButton.setTextColor(
                                 ContextCompat.getColor(getApplicationContext(), R.color.another_grey_text)
                         );
+                        colourChangeButton.setTextSize(28);
                         // after each iteration of screen changing colour and user tapping
                         // here we check the elapsed time
                         // if elapsed time has exceeded 2 minutes, then stop the game/do something
@@ -126,7 +127,7 @@ public class ReactionTimeTest2Activity extends AppCompatActivity {
         colourChangeButton.setTextColor(
                 ContextCompat.getColor(getApplicationContext(),R.color.another_grey_text)
         );
-        colourChangeButton.setTextSize(25);
+        colourChangeButton.setTextSize(28);
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         executorService.execute(() -> {
             FatigueDatabase fatigueDatabase = FatigueDatabase.getDatabase(getApplicationContext());
