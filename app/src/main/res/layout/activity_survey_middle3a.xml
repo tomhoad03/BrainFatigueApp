@@ -16,7 +16,7 @@
             app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="28dp"/>
     <Button
             android:text="@string/activity_survey_middle3a_button5"
-            android:backgroundTint="@color/custom_light_blue_B"
+            android:backgroundTint="@color/grey"
             android:textAllCaps="false"
             android:textColor="@color/custom_navy_A"
             android:layout_width="355dp"
@@ -27,7 +27,7 @@
             app:layout_constraintStart_toStartOf="parent"/>
     <Button
             android:text="@string/activity_survey_middle3a_button4"
-            android:backgroundTint="@color/custom_light_blue_B"
+            android:backgroundTint="@color/grey"
             android:textAllCaps="false"
             android:textColor="@color/custom_navy_A"
             android:layout_width="355dp"
@@ -38,7 +38,7 @@
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.446"/>
     <Button
             android:text="@string/activity_survey_middle3a_button3"
-            android:backgroundTint="@color/custom_light_blue_B"
+            android:backgroundTint="@color/grey"
             android:textAllCaps="false"
             android:textColor="@color/custom_navy_A"
             android:layout_width="355dp"
@@ -50,7 +50,7 @@
             android:layout_marginTop="8dp"/>
     <Button
             android:text="@string/activity_survey_middle3a_button2"
-            android:backgroundTint="@color/custom_light_blue_B"
+            android:backgroundTint="@color/grey"
             android:textAllCaps="false"
             android:textColor="@color/custom_navy_A"
             android:layout_width="355dp"
@@ -61,7 +61,7 @@
             app:layout_constraintStart_toStartOf="parent"/>
     <Button
             android:text="@string/activity_survey_middle3a_button1"
-            android:backgroundTint="@color/custom_light_blue_B"
+            android:backgroundTint="@color/grey"
             android:textAllCaps="false"
             android:textColor="@color/custom_navy_A"
             android:layout_width="355dp"

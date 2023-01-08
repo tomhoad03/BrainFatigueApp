@@ -16,7 +16,7 @@
             app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="28dp"/>
     <Button
             android:text="@string/activity_survey_middle4e_button5"
-            android:backgroundTint="@color/custom_light_blue_B"
+            android:backgroundTint="@color/grey"
             android:textAllCaps="false"
             android:textColor="@color/custom_navy_A"
             android:layout_width="355dp"
@@ -28,7 +28,7 @@
             android:layout_marginTop="8dp"/>
     <Button
             android:text="@string/activity_survey_middle4e_button4"
-            android:backgroundTint="@color/custom_light_blue_B"
+            android:backgroundTint="@color/grey"
             android:textAllCaps="false"
             android:textColor="@color/custom_navy_A"
             android:layout_width="355dp"
@@ -40,7 +40,7 @@
             android:layout_marginTop="8dp"/>
     <Button
             android:text="@string/activity_survey_middle4e_button3"
-            android:backgroundTint="@color/custom_light_blue_B"
+            android:backgroundTint="@color/grey"
             android:textAllCaps="false"
             android:textColor="@color/custom_navy_A"
             android:layout_width="355dp"
@@ -52,7 +52,7 @@
             android:layout_marginTop="8dp"/>
     <Button
             android:text="@string/activity_survey_middle4e_button2"
-            android:backgroundTint="@color/custom_light_blue_B"
+            android:backgroundTint="@color/grey"
             android:textAllCaps="false"
             android:textColor="@color/custom_navy_A"
             android:layout_width="355dp"
@@ -63,7 +63,7 @@
             app:layout_constraintStart_toStartOf="parent"/>
     <Button
             android:text="@string/activity_survey_middle4e_button1"
-            android:backgroundTint="@color/custom_light_blue_B"
+            android:backgroundTint="@color/grey"
             android:textAllCaps="false"
             android:textColor="@color/custom_navy_A"
             android:layout_width="355dp"

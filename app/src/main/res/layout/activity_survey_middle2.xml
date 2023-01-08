@@ -41,7 +41,7 @@
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintEnd_toEndOf="parent" android:minHeight="48dp"/>
     <Button
-            android:backgroundTint="@color/custom_light_blue_B"
+            android:backgroundTint="@color/grey"
             android:text="@string/activity_survey_middle2_at_home"
             android:textAllCaps="false"
             android:textColor="@color/custom_navy_A"
@@ -53,9 +53,10 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/activity_survey_middle2_button2"
-            app:layout_constraintTop_toBottomOf="@+id/activity_survey_middle2_prompt"/>
+            app:layout_constraintTop_toBottomOf="@+id/activity_survey_middle2_prompt"
+            app:layout_constraintVertical_bias="0.56"/>
     <Button
-            android:backgroundTint="@color/custom_light_blue_B"
+            android:backgroundTint="@color/grey"
             android:text="@string/activity_survey_middle2_somewhere_else"
             android:textAllCaps="false"
             android:textColor="@color/custom_navy_A"
@@ -65,6 +66,6 @@
             android:id="@+id/activity_survey_middle2_button2"
             app:fontFamily="@font/spartan"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="60dp" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"/>
+            android:layout_marginBottom="112dp" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
