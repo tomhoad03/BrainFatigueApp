@@ -15,6 +15,7 @@
             android:text="@string/reaction_time_test_button1"
             android:layout_width="361dp"
             android:layout_height="62dp" android:id="@+id/reaction_time_test_button1"
+            android:backgroundTint="@color/custom_purple_B"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/reaction_time_test_button2"/>

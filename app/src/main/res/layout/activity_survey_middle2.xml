@@ -12,7 +12,7 @@
             android:layout_width="364dp"
             android:layout_height="22dp"
             android:id="@+id/progressBar"
-            android:progressTint="@color/custom_purple_A"
+            android:progressTint="@color/custom_purple_B"
             android:progress="11"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
             app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="28dp"/>
@@ -41,7 +41,7 @@
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintEnd_toEndOf="parent" android:minHeight="48dp"/>
     <Button
-            android:backgroundTint="@color/grey"
+            android:backgroundTint="@color/custom_light_blue_B"
             android:text="@string/activity_survey_middle2_at_home"
             android:textAllCaps="false"
             android:textColor="@color/custom_navy_A"
@@ -55,7 +55,7 @@
             app:layout_constraintBottom_toTopOf="@+id/activity_survey_middle2_button2"
             app:layout_constraintTop_toBottomOf="@+id/activity_survey_middle2_prompt"/>
     <Button
-            android:backgroundTint="@color/grey"
+            android:backgroundTint="@color/custom_light_blue_B"
             android:text="@string/activity_survey_middle2_somewhere_else"
             android:textAllCaps="false"
             android:textColor="@color/custom_navy_A"

@@ -36,6 +36,7 @@
             android:text="@string/reaction_time_test_button3"
             android:layout_width="119dp"
             android:layout_height="58dp" android:id="@+id/reaction_time_test_start_button"
+            android:backgroundTint="@color/custom_purple_B"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="16dp"
     />

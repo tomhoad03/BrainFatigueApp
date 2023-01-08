@@ -12,7 +12,7 @@
             android:layout_width="364dp"
             android:layout_height="22dp"
             android:id="@+id/progressBar"
-            android:progressTint="@color/custom_purple_A"
+            android:progressTint="@color/custom_purple_B"
             android:progress="22"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
             app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="28dp"/>
@@ -41,7 +41,7 @@
             app:layout_constraintEnd_toEndOf="parent" android:minHeight="48dp"/>
     <Button
             android:text="@string/activity_survey_middle4_button1"
-            android:backgroundTint="@color/grey"
+            android:backgroundTint="@color/custom_light_blue_B"
             android:textAllCaps="false"
             android:textColor="@color/custom_navy_A"
             android:layout_width="355dp"
@@ -56,7 +56,7 @@
     />
     <Button
             android:text="@string/activity_survey_middle4_button2"
-            android:backgroundTint="@color/grey"
+            android:backgroundTint="@color/custom_light_blue_B"
             android:textAllCaps="false"
             android:textColor="@color/custom_navy_A"
             android:layout_width="355dp"
@@ -71,7 +71,7 @@
     />
     <Button
             android:text="@string/activity_survey_middle4_button3"
-            android:backgroundTint="@color/grey"
+            android:backgroundTint="@color/custom_light_blue_B"
             android:textAllCaps="false"
             android:textColor="@color/custom_navy_A"
             android:layout_width="355dp"
@@ -83,7 +83,7 @@
     />
     <Button
             android:text="@string/activity_survey_middle4_button4"
-            android:backgroundTint="@color/grey"
+            android:backgroundTint="@color/custom_light_blue_B"
             android:textAllCaps="false"
             android:textColor="@color/custom_navy_A"
             android:layout_width="355dp"
@@ -96,7 +96,7 @@
     />
     <Button
             android:text="@string/activity_survey_middle4_button5"
-            android:backgroundTint="@color/grey"
+            android:backgroundTint="@color/custom_light_blue_B"
             android:textAllCaps="false"
             android:textColor="@color/custom_navy_A"
             android:layout_width="355dp"
@@ -109,7 +109,7 @@
             app:layout_constraintBottom_toTopOf="@+id/activity_survey_middle4_button6"/>
     <Button
             android:text="@string/activity_survey_middle4_button6"
-            android:backgroundTint="@color/grey"
+            android:backgroundTint="@color/custom_light_blue_B"
             android:textAllCaps="false"
             android:textColor="@color/custom_navy_A"
             android:layout_width="355dp"
@@ -121,7 +121,7 @@
             app:layout_constraintBottom_toTopOf="@+id/activity_survey_middle4_button7"/>
     <Button
             android:text="@string/activity_survey_middle4_button7"
-            android:backgroundTint="@color/grey"
+            android:backgroundTint="@color/custom_light_blue_B"
             android:textAllCaps="false"
             android:textColor="@color/custom_navy_A"
             android:layout_width="355dp"
@@ -134,7 +134,7 @@
             app:layout_constraintBottom_toTopOf="@+id/activity_survey_middle4_button8"/>
     <Button
             android:text="@string/activity_survey_middle4_button8"
-            android:backgroundTint="@color/grey"
+            android:backgroundTint="@color/custom_light_blue_B"
             android:textAllCaps="false"
             android:textColor="@color/custom_navy_A"
             android:layout_width="355dp"
