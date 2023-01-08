@@ -1,6 +1,7 @@
 package com.example.brainfatigueapp;
 
 import android.app.AlarmManager;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -87,9 +88,10 @@ public class HomeActivity extends AppCompatActivity {
             long scheduledNotification = System.currentTimeMillis() - (((long) LocalTime.now().getHour() * 3600 * 1000) + ((long) LocalTime.now().getMinute() * 60 * 1000) + (LocalTime.now().getSecond() * 1000L)) + resultSetting.getSummary();
 
             // Setup the daily summary notification
-            Intent notifyIntent = new Intent(getApplicationContext(), NotificationReceiver.class);
+            Intent notifyIntent = new Intent(getApplicationContext(), SummaryReceiver.class);
             PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
             AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+            getSystemService(NotificationManager.class).cancel(1);
             alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + scheduledNotification, pendingIntent);
             break;
         }
