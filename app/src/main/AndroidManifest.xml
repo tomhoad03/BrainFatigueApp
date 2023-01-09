@@ -77,6 +77,29 @@
                     android:host="www.brainfatigueapp.com"
                     android:pathPattern="/dashboard" />
             </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:scheme="https"
+                    android:host="www.brainfatigueapp.com"
+                    android:pathPattern="/dashboard" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:scheme="app"
+                    android:host="www.brainfatigueapp.com"
+                    android:pathPattern="/dashboard" />
+            </intent-filter>
+
         </activity>
         <activity
             android:name=".SurveyStartActivity"
