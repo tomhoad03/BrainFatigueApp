@@ -33,6 +33,18 @@
             tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"/>
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/activity_dashboard_fitbit_button"
+        android:layout_width="56dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="12dp"
+        android:backgroundTint="@color/grey"
+        app:icon="@drawable/fitbit_icon"
+        app:iconTint="@color/custom_navy_A"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"
+        app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"/>
+
     <com.google.android.material.tabs.TabLayout
             android:id="@+id/activity_dashboard_tab_bar"
             android:layout_width="fill_parent"
