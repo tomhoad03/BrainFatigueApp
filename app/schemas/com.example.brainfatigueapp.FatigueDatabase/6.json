@@ -1,0 +1,188 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 6,
+    "identityHash": "0b2aeee2b3157b7952a5e5a30afbf7ee",
+    "entities": [
+      {
+        "tableName": "SurveyResult",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`surveyResultId` INTEGER, `question1` INTEGER, `question2` INTEGER, `question3` INTEGER, `question3_extended` INTEGER, `question4` INTEGER, `question4_extended` INTEGER, `question5` INTEGER, `question6` INTEGER, `question7` INTEGER, `question8` INTEGER, `question9` INTEGER, PRIMARY KEY(`surveyResultId`))",
+        "fields": [
+          {
+            "fieldPath": "surveyResultId",
+            "columnName": "surveyResultId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "question1",
+            "columnName": "question1",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "question2",
+            "columnName": "question2",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "question3",
+            "columnName": "question3",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "question3Extended",
+            "columnName": "question3_extended",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "question4",
+            "columnName": "question4",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "question4Extended",
+            "columnName": "question4_extended",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "question5",
+            "columnName": "question5",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "question6",
+            "columnName": "question6",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "question7",
+            "columnName": "question7",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "question8",
+            "columnName": "question8",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "question9",
+            "columnName": "question9",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "surveyResultId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Setting",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`settingsId` INTEGER, `interval` INTEGER, `day_start` INTEGER, `day_End` INTEGER, `work_start` INTEGER, `work_End` INTEGER, `summary` INTEGER, `dark_mode` INTEGER NOT NULL, PRIMARY KEY(`settingsId`))",
+        "fields": [
+          {
+            "fieldPath": "settingsId",
+            "columnName": "settingsId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "interval",
+            "columnName": "interval",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "dayStart",
+            "columnName": "day_start",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "dayEnd",
+            "columnName": "day_End",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "workStart",
+            "columnName": "work_start",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "workEnd",
+            "columnName": "work_End",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "summary",
+            "columnName": "summary",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "darkMode",
+            "columnName": "dark_mode",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "settingsId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Reaction",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`reactionId` INTEGER, `average_time` INTEGER, PRIMARY KEY(`reactionId`))",
+        "fields": [
+          {
+            "fieldPath": "reactionId",
+            "columnName": "reactionId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "averageTime",
+            "columnName": "average_time",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "reactionId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '0b2aeee2b3157b7952a5e5a30afbf7ee')"
+    ]
+  }
+}

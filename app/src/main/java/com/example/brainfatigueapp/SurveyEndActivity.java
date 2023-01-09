@@ -84,7 +84,7 @@ public class SurveyEndActivity extends AppCompatActivity {
                 AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
                 alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + scheduledNotification, pendingIntent);
 
-                Intent intent = new Intent(SurveyEndActivity.this, HomeActivity.class);
+                Intent intent = new Intent(SurveyEndActivity.this, ReactionTimeTest1Activity.class); // proceeds to reaction time test
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             });

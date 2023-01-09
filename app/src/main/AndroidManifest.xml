@@ -207,6 +207,15 @@
             android:exported="false"
             android:parentActivityName=".SurveyMiddle9Activity" />
 
+        <activity
+                android:name=".ReactionTimeTest1Activity"
+                android:exported="false"
+                android:parentActivityName=".SurveyEndActivity"/>
+        <activity
+                android:name=".ReactionTimeTest2Activity"
+                android:exported="false"
+                android:parentActivityName=".ReactionTimeTest1Activity"/>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
