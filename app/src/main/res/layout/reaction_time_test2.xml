@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent">
+
+    <TextView
+            android:id="@+id/reaction_time_test_question3"
+            android:layout_width="344dp"
+            android:layout_height="74dp"
+            android:text="@string/reaction_time_test_prompt2"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:textColor="@color/custom_navy_A"
+            app:fontFamily="@font/spartan"
+            android:minHeight="48dp"
+            app:layout_constraintTop_toBottomOf="@+id/reaction_time_test_question2"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"/>
+    <TextView
+            android:id="@+id/reaction_time_test_question2"
+            android:layout_width="316dp"
+            android:layout_height="55dp"
+            android:text="@string/reaction_time_test_prompt1"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="@color/custom_navy_A"
+            app:fontFamily="@font/spartan"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.492" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:minHeight="48dp"
+            android:layout_marginTop="60dp"/>
+    <Button
+            android:text="@string/reaction_time_test_button3"
+            android:layout_width="361dp"
+            android:layout_height="62dp" android:id="@+id/reaction_time_test_start_button"
+            android:backgroundTint="@color/custom_light_blue_B"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            android:textColor="@color/custom_navy_A"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="16dp"
+    />
+    <Button
+            android:text="@string/reaction_time_test_prompt5"
+            android:textSize="20sp"
+            android:layout_width="335dp"
+            android:layout_height="448dp" android:id="@+id/reaction_time_test_colour_change_button"
+            android:backgroundTint="@color/grey_start"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/reaction_time_test_question3"
+            app:layout_constraintBottom_toTopOf="@+id/reaction_time_test_start_button"
+    />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,7 +12,7 @@
             android:layout_width="364dp"
             android:layout_height="22dp"
             android:id="@+id/progressBar"
-            android:progressTint="@color/custom_purple_A"
+            android:progressTint="@color/custom_purple_B"
             android:progress="0"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
             app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="28dp"/>
@@ -48,6 +48,10 @@
             android:text="@string/activity_survey_start"
             android:layout_width="361dp"
             android:layout_height="62dp" android:id="@+id/activity_survey_start_start_button"
+            android:backgroundTint="@color/custom_light_blue_B"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            android:textColor="@color/custom_navy_A"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="28dp" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"/>

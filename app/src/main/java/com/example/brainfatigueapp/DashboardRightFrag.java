@@ -56,10 +56,10 @@ public class DashboardRightFrag extends Fragment {
         drawEnergyLevelGraph(surveyResults, chart1);
 
         // Draw a second graph from the reaction time data
-        drawReactionTimeGraph(surveyResults, chart2);
+        drawReactionTimeGraph(chart2);
 
         // Draw a third graph from the fitbit data
-        drawFitbitGraph(surveyResults, chart3);
+        drawFitbitGraph(chart3);
 
         // Format the graphs
         formatGraph(surveyResults, chart1);
@@ -87,7 +87,7 @@ public class DashboardRightFrag extends Fragment {
         } catch (InterruptedException | ExecutionException | TimeoutException e) {
             e.printStackTrace();
         }
-        // Log.d("survey_results", surveyResults.toString());
+
         return surveyResults;
     }
 
@@ -104,38 +104,47 @@ public class DashboardRightFrag extends Fragment {
         return chartData;
     }
 
-    private ArrayList<Entry> getReactionTimeData(List<SurveyResult> database) {
+    private ArrayList<Entry> getReactionTimeData() {
         // Extract the reaction time data from the database
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+        Future<List<Reaction>> reactionsFuture = executorService.submit(() -> {
+            FatigueDatabase surveyDatabase = FatigueDatabase.getDatabase(getContext());
+            ReactionDao reactionDao = surveyDatabase.reactionDao();
 
-        ArrayList<Entry> chartData = new ArrayList<Entry>();
+            return reactionDao.getAll();
+        });
+        executorService.shutdown();
+
+        List<Reaction> reactions = null;
+        try {
+            reactions = reactionsFuture.get(200, TimeUnit.MILLISECONDS);
+        } catch (InterruptedException | ExecutionException | TimeoutException e) {
+            e.printStackTrace();
+        }
+
+        ArrayList<Entry> chartData = new ArrayList<>();
         float dateCount = 0;
-        for (SurveyResult result : database) {
-            chartData.add(new Entry(dateCount, result.getQuestion1())); // Change to the reaction time method
+        for (Reaction reaction : reactions) {
+            chartData.add(new Entry(dateCount, reaction.getAverageTime())); // Change to the reaction time method
             dateCount++;
         }
 
         return chartData;
     }
 
-    private ArrayList<Entry> getFitbitData(List<SurveyResult> database) {
+    private ArrayList<Entry> getFitbitData() {
         // Extract the fitbit data from the database
-
-        ArrayList<Entry> chartData = new ArrayList<Entry>();
-        float dateCount = 0;
-        for (SurveyResult result : database) {
-            chartData.add(new Entry(dateCount, result.getQuestion1())); // Change to the fitbit method
-            dateCount++;
-        }
-
-        return chartData;
+        return null;
     }
 
     private float getLargestDatapoint(List<Entry> data) {
         float largestValue = 0f;
-        for (Entry e : data) {
-            float nextY = e.getY();
-            if (nextY > largestValue){
-                largestValue = nextY;
+        if (data != null) {
+            for (Entry e : data) {
+                float nextY = e.getY();
+                if (nextY > largestValue){
+                    largestValue = nextY;
+                }
             }
         }
         return largestValue;
@@ -239,9 +248,9 @@ public class DashboardRightFrag extends Fragment {
         lineChart.invalidate();
     }
 
-    private void drawReactionTimeGraph(List<SurveyResult> surveyResults, LineChart lineChart2) {
+    private void drawReactionTimeGraph(LineChart lineChart2) {
         // Apply reaction time data from the database to the graph
-        ArrayList<Entry> data = getReactionTimeData(surveyResults);
+        ArrayList<Entry> data = getReactionTimeData();
         LineDataSet lineChartData2 = new LineDataSet(data, "(reaction time)");
         ArrayList<ILineDataSet> iLineDataSets2 = new ArrayList<ILineDataSet>();
         iLineDataSets2.add(lineChartData2);
@@ -269,9 +278,9 @@ public class DashboardRightFrag extends Fragment {
         lineChart2.invalidate();
     }
 
-    private void drawFitbitGraph(List<SurveyResult> surveyResults, LineChart lineChart3) {
+    private void drawFitbitGraph(LineChart lineChart3) {
         // Apply fitbit data from the database to the graph
-        ArrayList<Entry> data = getFitbitData(surveyResults);
+        ArrayList<Entry> data = getFitbitData();
         LineDataSet lineChartData3 = new LineDataSet(data, "(fitbit data)");
         ArrayList<ILineDataSet> iLineDataSets3 = new ArrayList<ILineDataSet>();
         iLineDataSets3.add(lineChartData3);
