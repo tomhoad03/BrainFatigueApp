@@ -69,7 +69,7 @@ public class EmergencyService extends Service {
         public void run() {
             double amplitude = 20 * Math.log10(getAmplitude() / 32768);
 
-            if (amplitude > -5) {
+            if (amplitude >= 0) {
                 Log.d("Audio", "Pass: " + amplitude);
 
                 if (System.currentTimeMillis() > timeout) {

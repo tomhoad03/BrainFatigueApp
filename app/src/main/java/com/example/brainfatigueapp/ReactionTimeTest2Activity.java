@@ -44,73 +44,57 @@ public class ReactionTimeTest2Activity extends AppCompatActivity {
             doReactionTest();
         });
 
-        colourChangeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                endTime = System.nanoTime(); // previously System.nanoTime()
-                currentTime = TimeUnit.NANOSECONDS.toMillis(endTime - startTime); // calculates time taken for user to respond
-                elapsedTime = endTime - testBeginsTime; // calculates time since game was started
-                elapsedTimeMS = TimeUnit.NANOSECONDS.toMillis(elapsedTime);
-                // after colourChangeButton is tapped, add currentTime to results
-                results.add(currentTime);
-                colourChangeButton.setBackgroundColor(
-                        ContextCompat.getColor(getApplicationContext(), R.color.custom_purple_A)
-                );
-                colourChangeButton.setText(currentTime + "ms");
-               colourChangeButton.setTextColor(
-                        ContextCompat.getColor(getApplicationContext(), R.color.white)
-                );
-//                startButton.setEnabled(true);
-                colourChangeButton.setEnabled(false);
+        // Wait 3 secs before starting the next one
+        colourChangeButton.setOnClickListener(v -> {
+            endTime = System.nanoTime(); // previously System.nanoTime()
+            currentTime = TimeUnit.NANOSECONDS.toMillis(endTime - startTime); // calculates time taken for user to respond
+            elapsedTime = endTime - testBeginsTime; // calculates time since game was started
+            elapsedTimeMS = TimeUnit.NANOSECONDS.toMillis(elapsedTime);
+            // after colourChangeButton is tapped, add currentTime to results
+            results.add(currentTime);
+            colourChangeButton.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.custom_purple_B));
+            colourChangeButton.setText(currentTime + "ms");
+            colourChangeButton.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
+            //startButton.setEnabled(true);
+            colourChangeButton.setEnabled(false);
 
-                // After the button goes light blue and they react to it, wait a couple seconds
-                // so they have time to see the reaction time they just got before starting again
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        // Reset the button colour, then do another test
-                        colourChangeButton.setBackgroundColor(
-                                ContextCompat.getColor(getApplicationContext(), R.color.grey)
-                        );
-                        colourChangeButton.setText("wait...");
-                        colourChangeButton.setTextColor(
-                                ContextCompat.getColor(getApplicationContext(), R.color.another_grey_text)
-                        );
-                        colourChangeButton.setTextSize(28);
-                        // after each iteration of screen changing colour and user tapping
-                        // here we check the elapsed time
-                        // if elapsed time has exceeded 2 minutes, then stop the game/do something
-                        // else call doReactionTest()
-                        if (elapsedTimeMS > 120000) { // 30000 for testing; 120000 for 2 minutes
-                            endReactionTest();
-                        } else {
-                            doReactionTest();
-                        }
-                    }
+            // After the button goes light blue and they react to it, wait a couple seconds
+            // so they have time to see the reaction time they just got before starting again
+            Handler handler = new Handler();
+            handler.postDelayed(() -> {
+                // Reset the button colour, then do another test
+                colourChangeButton.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.grey));
+                colourChangeButton.setText("wait...");
+                colourChangeButton.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.another_grey_text));
+                colourChangeButton.setTextSize(28);
+                // after each iteration of screen changing colour and user tapping
+                // here we check the elapsed time
+                // if elapsed time has exceeded 2 minutes, then stop the game/do something
+                // else call doReactionTest()
+                if (elapsedTimeMS > 120000) { // 30000 for testing; 120000 for 2 minutes
+                    endReactionTest();
+                } else {
+                    doReactionTest();
                 }
-            }, (long) (3000)); // Wait 3 secs before starting the next one
+            }, 3000); // Wait 3 secs before starting the next one
         });
 
     }
 
-    void doReactionTest () {
+    void doReactionTest() {
         startButton.setEnabled(false);
         Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                startTime = System.nanoTime();
-                colourChangeButton.setBackgroundColor(
-                        ContextCompat.getColor(getApplicationContext(), R.color.custom_light_blue_C) // wuuuut
-                );
-                colourChangeButton.setText("TAP!");
-                colourChangeButton.setTextColor(
-                        ContextCompat.getColor(getApplicationContext(), R.color.white)
-                );
-                colourChangeButton.setTextSize(30);
-                colourChangeButton.setEnabled(true);
-            }
+        handler.postDelayed(() -> {
+            startTime = System.nanoTime();
+            colourChangeButton.setBackgroundColor(
+                    ContextCompat.getColor(getApplicationContext(), R.color.custom_light_blue_C) // wuuuut
+            );
+            colourChangeButton.setText("TAP!");
+            colourChangeButton.setTextColor(
+                    ContextCompat.getColor(getApplicationContext(), R.color.white)
+            );
+            colourChangeButton.setTextSize(30);
+            colourChangeButton.setEnabled(true);
         }, (long) (Math.random() * 10 + 1) * 1000); // hopefully this works
     }
 

@@ -51,6 +51,7 @@ public class DashboardRightFrag extends Fragment {
 
         // Retrieve the stored data from the database
         List<SurveyResult> surveyResults = retrieveDatabaseData();
+        Collections.reverse(surveyResults);
 
         // Draw a graph from the energy level data
         drawEnergyLevelGraph(surveyResults, chart1);
@@ -124,6 +125,8 @@ public class DashboardRightFrag extends Fragment {
 
         ArrayList<Entry> chartData = new ArrayList<>();
         float dateCount = 0;
+        Collections.reverse(reactions);
+
         for (Reaction reaction : reactions) {
             chartData.add(new Entry(dateCount, reaction.getAverageTime())); // Change to the reaction time method
             dateCount++;
