@@ -125,6 +125,8 @@ public class DashboardLeftFrag extends Fragment {
 
             ArrayList<Entry> chartData = new ArrayList<>();
             float dateCount = 0;
+            long milliDay = 86400000;
+
             if (database != null) {
                 for (SurveyResult result : database) {
                     long surveyTime = result.getSurveyResultId();
