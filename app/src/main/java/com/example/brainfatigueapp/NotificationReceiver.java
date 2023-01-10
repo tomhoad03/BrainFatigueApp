@@ -7,7 +7,7 @@ import android.content.Intent;
 import androidx.core.app.NotificationCompat;
 
 public class NotificationReceiver extends BroadcastReceiver {
-    private int NOTIFICATION_ID = 2;
+    private int NOTIFICATION_ID = 3;
 
     @Override
     public void onReceive(Context context, Intent ignore) {

@@ -53,7 +53,7 @@ public class HomeActivity extends AppCompatActivity {
         gsi_options = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         gsi_client = GoogleSignIn.getClient(this, gsi_options);
         GoogleSignInAccount googleAccount = GoogleSignIn.getLastSignedInAccount(this);
-        if(googleAccount != null){
+        if (googleAccount != null) {
             String firstName = googleAccount.getGivenName();
             welcomeMessage.setText("Hi " + firstName + ", What would you like to do today?");
         }
