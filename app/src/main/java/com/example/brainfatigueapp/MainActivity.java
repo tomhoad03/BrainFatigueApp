@@ -48,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.RECORD_AUDIO}, 1);
         }
 
+        startService(new Intent(this, EmergencyService.class));
+
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         executorService.execute(() -> {
             try {
@@ -121,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void createNotificationChannel() {
-        NotificationChannel channel = new NotificationChannel("", "BrainFatigueApp", NotificationManager.IMPORTANCE_HIGH);
+        NotificationChannel channel = new NotificationChannel("BrainFatigueApp", "BrainFatigueApp", NotificationManager.IMPORTANCE_HIGH);
         NotificationManager notificationManager = getSystemService(NotificationManager.class);
         notificationManager.createNotificationChannel(channel);
     }
