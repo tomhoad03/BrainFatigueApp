@@ -32,7 +32,7 @@ public class Setting {
 
     public Setting() {
         this.settingsId = System.currentTimeMillis();
-        this.interval = 10800000L;
+        this.interval = 10800000L / 2;
         this.dayStart = 32400000L;
         this.dayEnd = 79200000L;
         this.workStart = 39600000L;

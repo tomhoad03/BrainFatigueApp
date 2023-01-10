@@ -1,13 +1,29 @@
 package com.example.brainfatigueapp;
 
+import android.app.AlarmManager;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.FragmentManager;
+
+import com.google.android.gms.auth.api.identity.SignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.slider.LabelFormatter;
 import com.google.android.material.slider.RangeSlider;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -146,6 +162,15 @@ public class SettingsActivity extends AppCompatActivity {
                     settingsDao.insert(finalResultSetting);
                 });
                 summaryExecutorService.shutdown();
+
+                long scheduledNotification = System.currentTimeMillis() - (((long) LocalTime.now().getHour() * 3600 * 1000) + ((long) LocalTime.now().getMinute() * 60 * 1000) + (LocalTime.now().getSecond() * 1000L)) + ((long) (slider.getValues().get(0) * milliHour));
+
+                // Setup the daily summary notification
+                Intent notifyIntent = new Intent(getApplicationContext(), SummaryReceiver.class);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+                AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                getSystemService(NotificationManager.class).cancel(1);
+                alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + scheduledNotification, pendingIntent);
             });
 
             // Format the labels that appear on the slider thumbs to display times and not just numbers
@@ -172,6 +197,15 @@ public class SettingsActivity extends AppCompatActivity {
             darkModeBtn.setOnClickListener(v -> {
                 // Toggle the switch to the opposite state
                 darkModeSwitch.setChecked(!darkModeSwitch.isChecked());
+
+                // Toggle the switch to the opposite state
+                darkModeSwitch.setChecked(!darkModeSwitch.isChecked());
+
+                if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                } else {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                }
 
                 // Call the function to do the dark mode things
                 ExecutorService darkExecutorService = Executors.newSingleThreadExecutor();
@@ -205,14 +239,20 @@ public class SettingsActivity extends AppCompatActivity {
             });
 
             // Make the 'Log out' button do log out stuff
+            //dw I did :)
             Button logOutButton = findViewById(R.id.activity_settings_button_logout);
             logOutButton.setOnClickListener(v -> {
-                //
-                //
-                //
-                //
-                //
-            });
+                        GoogleSignInOptions gsi_options = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+                        GoogleSignInClient gsi_client = GoogleSignIn.getClient(this, gsi_options);
+                        gsi_client.signOut().addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                Intent intent = new Intent(SettingsActivity.this, LoginPageActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                        });
+                    });
 
             // Hide action bar
             if (getSupportActionBar() != null)

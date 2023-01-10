@@ -84,8 +84,12 @@
         <entry key="..\:/Users/tomho/IdeaProjects/BrainFatigueApp/app/src/main/res/layout/fragment_dashboard_left.xml" value="0.4512820512820513" />
         <entry key="..\:/Users/tomho/IdeaProjects/BrainFatigueApp/app/src/main/res/layout/fragment_dashboard_right.xml" value="0.4512820512820513" />
         <entry key="..\:/Users/tomho/IdeaProjects/BrainFatigueApp/app/src/main/res/layout/fragment_survey.xml" value="0.4512820512820513" />
+        <entry key="..\:/Users/tomho/IdeaProjects/BrainFatigueApp/app/src/main/res/layout/reaction_time_test1.xml" value="0.4512820512820513" />
+        <entry key="..\:/Users/tomho/IdeaProjects/BrainFatigueApp/app/src/main/res/layout/reaction_time_test2.xml" value="0.4512820512820513" />
         <entry key="..\:/Users/tomho/IdeaProjects/BrainFatigueApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.286" />
         <entry key="..\:/Users/tomho/IdeaProjects/BrainFatigueApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.46452991452991454" />
+        <entry key="app/src/main/res/layout/ReactionTimeTest2Activity.xml" value="0.2237659563337053" />
+        <entry key="app/src/main/res/layout/activity_survey_end.xml" value="0.17612202962239587" />
         <entry key="app/src/main/res/layout/activity_survey_middle3.xml" value="0.2792098999023438" />
         <entry key="app/src/main/res/layout/activity_survey_middle4.xml" value="0.1203125" />
         <entry key="app/src/main/res/layout/activity_survey_middle4a.xml" value="0.22350158691406252" />
@@ -95,13 +99,15 @@
         <entry key="app/src/main/res/layout/activity_survey_middle4e.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_survey_middle4f.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_survey_middle5.xml" value="0.20742753623188406" />
+        <entry key="app/src/main/res/layout/activity_survey_middle9.xml" value="0.19851277669270834" />
+        <entry key="app/src/main/res/layout/reaction_time_test1.xml" value="0.21401824951171874" />
       </map>
     </option>
   </component>
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$" />
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_17_PREVIEW" project-jdk-name="17" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
@@ -110,7 +116,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.264" />
+        <option name="scale" value="0.4512820512820513" />
       </ProjectState>
     </option>
   </component>
