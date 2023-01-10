@@ -38,13 +38,10 @@ public class ReactionTimeTest2Activity extends AppCompatActivity {
         startButton.setEnabled(true);
         colourChangeButton.setEnabled(false);
 
-        startButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                testBeginsTime = System.nanoTime(); // might be able to just keep it this way
-                colourChangeButton.setText("Game started!");
-                doReactionTest();
-            }
+        startButton.setOnClickListener(v -> {
+            testBeginsTime = System.nanoTime(); // might be able to just keep it this way
+            colourChangeButton.setText("Game started!");
+            doReactionTest();
         });
 
         colourChangeButton.setOnClickListener(new View.OnClickListener() {
@@ -91,8 +88,8 @@ public class ReactionTimeTest2Activity extends AppCompatActivity {
                             doReactionTest();
                         }
                     }
-                }, (long) (3000)); // Wait 3 secs before starting the next one
-            }
+                }
+            }, (long) (3000)); // Wait 3 secs before starting the next one
         });
 
     }

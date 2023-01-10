@@ -1,7 +1,6 @@
 package com.example.brainfatigueapp;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -419,7 +418,6 @@ public class DashboardLeftFrag extends Fragment {
         });
         executorService1.shutdown();
 
-        // Schedule the next notification
         long timeout = System.currentTimeMillis() + 10000;
         Setting resultSetting;
 
@@ -435,14 +433,24 @@ public class DashboardLeftFrag extends Fragment {
                     TimeUnit.SECONDS.toMillis(LocalTime.now().getSecond());
 
             int boxCount = 0;
+            long milliDay = 86400000;
+            long summaryTime = resultSetting.getSummary();
+            long currentTime = System.currentTimeMillis();
+
+            // Adjust date label
+            TextView dateLabel = getView().findViewById(R.id.activity_left_fragment_reports_vertical_label);
+            SimpleDateFormat dayMonthYear = new SimpleDateFormat("d/M/yy", Locale.UK);
+            if (time > summaryTime) {
+                //
+                dateLabel.setText("Summary for: " + dayMonthYear.format(currentTime));
+            } else {
+                //
+                dateLabel.setText("Summary for: " + dayMonthYear.format(currentTime - milliDay));
+            }
 
             if (surveyResults != null) {
-                long milliDay = 86400000;
-
                 for (SurveyResult result : surveyResults) {
                     long surveyTime = result.getSurveyResultId();
-                    long currentTime = System.currentTimeMillis();
-                    long summaryTime = resultSetting.getSummary();
 
                     if (time > summaryTime) {
                         long timeSinceSummary = time - summaryTime;

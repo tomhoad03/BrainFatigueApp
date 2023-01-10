@@ -1,6 +1,7 @@
 package com.example.brainfatigueapp;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,7 +23,6 @@ public class DashboardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-
         // Hide action bar
         if (getSupportActionBar() != null)
             getSupportActionBar().hide();
@@ -31,6 +31,13 @@ public class DashboardActivity extends AppCompatActivity {
         final MaterialButton settingsBtn = findViewById(R.id.activity_dashboard_settings_button);
         settingsBtn.setOnClickListener(v -> {
             Intent intent = new Intent(DashboardActivity.this, SettingsActivity.class);
+            startActivity(intent);
+        });
+
+        // Fitbit button
+        final MaterialButton fitbitBtn = findViewById(R.id.activity_dashboard_fitbit_button);
+        fitbitBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(DashboardActivity.this, FitBitLoginActivity.class);
             startActivity(intent);
         });
 
@@ -52,7 +59,7 @@ public class DashboardActivity extends AppCompatActivity {
         pa.setAdapter(sa);
 
         tabLayout = findViewById(R.id.activity_dashboard_tab_bar);
-        tabLayout.addTab(tabLayout.newTab().setText("Today"));
+        tabLayout.addTab(tabLayout.newTab().setText("Daily Summary"));
         tabLayout.addTab(tabLayout.newTab().setText("Lifetime"));
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -78,5 +85,20 @@ public class DashboardActivity extends AppCompatActivity {
                 tabLayout.selectTab(tabLayout.getTabAt(position));
             }
         });
+        // ATTENTION: This was auto-generated to handle app links.
+        Intent appLinkIntent = getIntent();
+        String appLinkAction = appLinkIntent.getAction();
+        Uri appLinkData = appLinkIntent.getData();
+        handleIntent(getIntent());
+    }
+
+    private void handleIntent(Intent intent) {
+        String appLinkAction = intent.getAction();
+        Uri appLinkData = intent.getData();
+        if (Intent.ACTION_VIEW.equals(appLinkAction) && appLinkData != null) {
+            String recipeId = appLinkData.getLastPathSegment();
+            Uri appData = Uri.parse("");
+
+        }
     }
 }
