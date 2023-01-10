@@ -58,7 +58,7 @@
             android:layout_width="271dp"
             android:layout_height="61dp"
             android:value="0"
-            android:stepSize="5"
+            android:stepSize="10"
             android:valueFrom="0"
             android:valueTo="100"
             app:thumbColor="@color/custom_purple_B"
