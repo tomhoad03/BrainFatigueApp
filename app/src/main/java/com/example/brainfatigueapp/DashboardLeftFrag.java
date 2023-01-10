@@ -146,7 +146,7 @@ public class DashboardLeftFrag extends Fragment {
                         long timeTillSummary = summaryTime - time;
                         long timeSinceSummary = milliDay - timeTillSummary;
 
-                        if (surveyTime < currentTime - timeSinceSummary) {
+                        if ((surveyTime < currentTime - timeSinceSummary) && (surveyTime > currentTime - timeSinceSummary - milliDay)) {
                             chartData.add(new Entry(dateCount, result.getQuestion1()));
                             dateCount++;
                         }
@@ -231,7 +231,7 @@ public class DashboardLeftFrag extends Fragment {
                         long timeTillSummary = summaryTime - time;
                         long timeSinceSummary = milliDay - timeTillSummary;
 
-                        if (surveyTime < currentTime - timeSinceSummary) {
+                        if ((surveyTime < currentTime - timeSinceSummary) && (surveyTime > currentTime - timeSinceSummary - milliDay)) {
                             chartData.add(new Entry(dateCount, reaction.getAverageTime()));
                             dateCount++;
                         }
@@ -474,7 +474,7 @@ public class DashboardLeftFrag extends Fragment {
                         long timeTillSummary = summaryTime - time;
                         long timeSinceSummary = milliDay - timeTillSummary;
 
-                        if (surveyTime < currentTime - timeSinceSummary) {
+                        if ((surveyTime < currentTime - timeSinceSummary) && (surveyTime > currentTime - timeSinceSummary - milliDay)) {
                             formatButton(result, boxCount, layout);
                             boxCount++;
                         }

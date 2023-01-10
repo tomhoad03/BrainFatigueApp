@@ -59,42 +59,45 @@ public class EmergencyService extends Service {
         }
 
         public double getAmplitude() {
-            if (mediaRecorder != null)
-                return (mediaRecorder.getMaxAmplitude());
-            else
+            if (mediaRecorder != null) {
+                return mediaRecorder.getMaxAmplitude();
+            } else {
                 return 0;
-
+            }
         }
 
         public void run() {
-            double amplitudeDb = 20 * Math.log10(getAmplitude() / 32768);
+            double amplitude = 20 * Math.log10(getAmplitude() / 32768);
 
-            if (amplitudeDb > -5 && System.currentTimeMillis() > timeout) {
-                timeout = System.currentTimeMillis() + 20000;
-                // Create a notification intent
-                Intent intent = new Intent(getApplicationContext(), SurveyStartActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                TaskStackBuilder stackBuilder = TaskStackBuilder.create(getApplicationContext());
-                stackBuilder.addNextIntentWithParentStack(intent);
-                PendingIntent pendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+            if (amplitude > -5) {
+                Log.d("Audio", "Pass: " + amplitude);
 
-                // Build the notification
-                NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), "")
-                        .setSmallIcon(R.drawable.ic_notification_vector)
-                        .setContentTitle("Brain Fatigue Tracker")
-                        .setContentText("We detected a significant jump in volume!")
-                        .setDefaults(Notification.DEFAULT_VIBRATE)
-                        .setPriority(NotificationCompat.PRIORITY_HIGH)
-                        .setCategory(NotificationCompat.CATEGORY_CALL)
-                        .setFullScreenIntent(pendingIntent, true)
-                        .setAutoCancel(true)
-                        .setOngoing(true);
+                if (System.currentTimeMillis() > timeout) {
+                    timeout = System.currentTimeMillis() + 10000;
+                    // Create a notification intent
+                    Intent intent = new Intent(getApplicationContext(), SurveyStartActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    TaskStackBuilder stackBuilder = TaskStackBuilder.create(getApplicationContext());
+                    stackBuilder.addNextIntentWithParentStack(intent);
+                    PendingIntent pendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
 
-                // Display the notification
-                NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
-                notificationManager.notify(2, builder.build());
+                    // Build the notification
+                    NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), "")
+                            .setSmallIcon(R.drawable.ic_notification_vector)
+                            .setContentTitle("Brain Fatigue Tracker")
+                            .setContentText("We detected a significant jump in volume!")
+                            .setDefaults(Notification.DEFAULT_VIBRATE)
+                            .setPriority(NotificationCompat.PRIORITY_HIGH)
+                            .setCategory(NotificationCompat.CATEGORY_CALL)
+                            .setFullScreenIntent(pendingIntent, true)
+                            .setAutoCancel(true)
+                            .setOngoing(true);
+
+                    // Display the notification
+                    NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+                    notificationManager.notify(2, builder.build());
+                }
             }
-            Log.d("Audio", "Pass: " + amplitudeDb);
         }
     }
 
@@ -106,9 +109,8 @@ public class EmergencyService extends Service {
 
         startForeground(NOTIFICATION_ID, new NotificationCompat.Builder(this, "BrainFatigueApp")
                 .setSmallIcon(R.drawable.ic_notification_vector)
-                .setContentTitle("Brain Fatigue App")
-                .setContentText("Service is running background")
                 .setContentIntent(pendingIntent)
+                .setDefaults(Notification.FLAG_AUTO_CANCEL)
                 .build());
     }
 }
