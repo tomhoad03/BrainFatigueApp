@@ -59,7 +59,7 @@ public class DashboardActivity extends AppCompatActivity {
         pa.setAdapter(sa);
 
         tabLayout = findViewById(R.id.activity_dashboard_tab_bar);
-        tabLayout.addTab(tabLayout.newTab().setText("Today"));
+        tabLayout.addTab(tabLayout.newTab().setText("Daily Summary"));
         tabLayout.addTab(tabLayout.newTab().setText("Lifetime"));
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
