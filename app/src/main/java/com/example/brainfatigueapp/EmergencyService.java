@@ -69,7 +69,7 @@ public class EmergencyService extends Service {
         public void run() {
             double amplitudeDb = 20 * Math.log10(getAmplitude() / 32768);
 
-            if (amplitudeDb > -10 && System.currentTimeMillis() > timeout) {
+            if (amplitudeDb > -5 && System.currentTimeMillis() > timeout) {
                 timeout = System.currentTimeMillis() + 20000;
                 // Create a notification intent
                 Intent intent = new Intent(getApplicationContext(), SurveyStartActivity.class);
