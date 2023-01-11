@@ -78,6 +78,9 @@ public class SurveyEndActivity extends AppCompatActivity {
                 });
                 executorService2.shutdown();
 
+                // Start the emergency notification service again
+                startService(new Intent(this, EmergencyService.class));
+
                 // Setup the next notification
                 Intent notifyIntent = new Intent(getApplicationContext(), NotificationReceiver.class);
                 PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);

@@ -96,6 +96,10 @@ public class EmergencyService extends Service {
                     // Display the notification
                     NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
                     notificationManager.notify(2, builder.build());
+
+                    mediaRecorder.stop();
+                    mediaRecorder.release();
+                    onDestroy();
                 }
             }
         }
@@ -110,7 +114,8 @@ public class EmergencyService extends Service {
         startForeground(NOTIFICATION_ID, new NotificationCompat.Builder(this, "BrainFatigueApp")
                 .setSmallIcon(R.drawable.ic_notification_vector)
                 .setContentIntent(pendingIntent)
-                .setDefaults(Notification.FLAG_AUTO_CANCEL)
+                .setAutoCancel(true)
+                .setOngoing(false)
                 .build());
     }
 }
