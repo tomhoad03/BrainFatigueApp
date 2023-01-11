@@ -51,6 +51,7 @@ public class DashboardLeftFrag extends Fragment {
 
         // Retrieve the stored data from the database
         List<SurveyResult> surveyResults = retrieveDatabaseData();
+        Collections.reverse(surveyResults);
 
         // Draw a graph from the energy level data
         drawEnergyLevelGraph(surveyResults, chart1);
@@ -108,8 +109,7 @@ public class DashboardLeftFrag extends Fragment {
             return setting;
         });
         executorService1.shutdown();
-        
-        // Schedule the next notification
+
         long timeout = System.currentTimeMillis() + 10000;
         Setting resultSetting;
 
@@ -126,7 +126,6 @@ public class DashboardLeftFrag extends Fragment {
 
             ArrayList<Entry> chartData = new ArrayList<>();
             float dateCount = 0;
-
             long milliDay = 86400000;
 
             if (database != null) {
@@ -138,7 +137,7 @@ public class DashboardLeftFrag extends Fragment {
                     if (time > summaryTime) {
                         long timeSinceSummary = time - summaryTime;
 
-                        if (surveyTime < currentTime - timeSinceSummary) {
+                        if ((surveyTime < currentTime - timeSinceSummary) && (surveyTime > currentTime - timeSinceSummary - milliDay)) {
                             chartData.add(new Entry(dateCount, result.getQuestion1()));
                             dateCount++;
                         }
@@ -146,14 +145,13 @@ public class DashboardLeftFrag extends Fragment {
                         long timeTillSummary = summaryTime - time;
                         long timeSinceSummary = milliDay - timeTillSummary;
 
-                        if (surveyTime < currentTime - timeSinceSummary) {
+                        if ((surveyTime < currentTime - timeSinceSummary) && (surveyTime > currentTime - timeSinceSummary - milliDay)) {
                             chartData.add(new Entry(dateCount, result.getQuestion1()));
                             dateCount++;
                         }
                     }
                 }
             }
-
             return chartData;
         }
         return null;
@@ -211,8 +209,8 @@ public class DashboardLeftFrag extends Fragment {
 
             ArrayList<Entry> chartData = new ArrayList<>();
             float dateCount = 0;
-
             long milliDay = 86400000;
+            Collections.reverse(reactions);
 
             if (reactions != null) {
                 for (Reaction reaction : reactions) {
@@ -223,7 +221,7 @@ public class DashboardLeftFrag extends Fragment {
                     if (time > summaryTime) {
                         long timeSinceSummary = time - summaryTime;
 
-                        if (surveyTime < currentTime - timeSinceSummary) {
+                        if ((surveyTime < currentTime - timeSinceSummary) && (surveyTime > currentTime - timeSinceSummary - milliDay)) {
                             chartData.add(new Entry(dateCount, reaction.getAverageTime()));
                             dateCount++;
                         }
@@ -231,7 +229,7 @@ public class DashboardLeftFrag extends Fragment {
                         long timeTillSummary = summaryTime - time;
                         long timeSinceSummary = milliDay - timeTillSummary;
 
-                        if (surveyTime < currentTime - timeSinceSummary) {
+                        if ((surveyTime < currentTime - timeSinceSummary) && (surveyTime > currentTime - timeSinceSummary - milliDay)) {
                             chartData.add(new Entry(dateCount, reaction.getAverageTime()));
                             dateCount++;
                         }
@@ -438,7 +436,6 @@ public class DashboardLeftFrag extends Fragment {
         });
         executorService1.shutdown();
 
-        // Schedule the next notification
         long timeout = System.currentTimeMillis() + 10000;
         Setting resultSetting;
 
@@ -454,19 +451,29 @@ public class DashboardLeftFrag extends Fragment {
                     TimeUnit.SECONDS.toMillis(LocalTime.now().getSecond());
 
             int boxCount = 0;
+            long milliDay = 86400000;
+            long summaryTime = resultSetting.getSummary();
+            long currentTime = System.currentTimeMillis();
+
+            // Adjust date label
+            TextView dateLabel = getView().findViewById(R.id.activity_left_fragment_reports_vertical_label);
+            SimpleDateFormat dayMonthYear = new SimpleDateFormat("d/M/yy", Locale.UK);
+            if (time > summaryTime) {
+                //
+                dateLabel.setText("Summary for: " + dayMonthYear.format(currentTime));
+            } else {
+                //
+                dateLabel.setText("Summary for: " + dayMonthYear.format(currentTime - milliDay));
+            }
 
             if (surveyResults != null) {
-                long milliDay = 86400000;
-
                 for (SurveyResult result : surveyResults) {
                     long surveyTime = result.getSurveyResultId();
-                    long currentTime = System.currentTimeMillis();
-                    long summaryTime = resultSetting.getSummary();
 
                     if (time > summaryTime) {
                         long timeSinceSummary = time - summaryTime;
 
-                        if (surveyTime < currentTime - timeSinceSummary) {
+                        if ((surveyTime < currentTime - timeSinceSummary) && (surveyTime > currentTime - timeSinceSummary - milliDay)) {
                             formatButton(result, boxCount, layout);
                             boxCount++;
                         }
@@ -474,7 +481,7 @@ public class DashboardLeftFrag extends Fragment {
                         long timeTillSummary = summaryTime - time;
                         long timeSinceSummary = milliDay - timeTillSummary;
 
-                        if (surveyTime < currentTime - timeSinceSummary) {
+                        if ((surveyTime < currentTime - timeSinceSummary) && (surveyTime > currentTime - timeSinceSummary - milliDay)) {
                             formatButton(result, boxCount, layout);
                             boxCount++;
                         }
