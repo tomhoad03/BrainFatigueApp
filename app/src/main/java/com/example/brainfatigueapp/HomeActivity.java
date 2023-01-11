@@ -93,6 +93,7 @@ public class HomeActivity extends AppCompatActivity {
             AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
             getSystemService(NotificationManager.class).cancel(1);
             alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + scheduledNotification, pendingIntent);
+
             break;
         }
     }
