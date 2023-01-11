@@ -227,7 +227,7 @@ public class DashboardRightFrag extends Fragment {
     private void drawEnergyLevelGraph(List<SurveyResult> surveyResults, LineChart lineChart) {
         // Apply energy level data from the database to the graph
         LineDataSet lineChartData = new LineDataSet(getEnergyLevelData(surveyResults), "(energy level)");
-        ArrayList<ILineDataSet> iLineDataSets = new ArrayList<ILineDataSet>();
+        ArrayList<ILineDataSet> iLineDataSets = new ArrayList<>();
         iLineDataSets.add(lineChartData);
         LineData lineData = new LineData(iLineDataSets);
 
@@ -243,8 +243,8 @@ public class DashboardRightFrag extends Fragment {
 
         YAxis yLeft = lineChart.getAxis(YAxis.AxisDependency.LEFT);
         yLeft.setAxisMinimum(0f);
-        yLeft.setAxisMaximum(100f);
-        yLeft.setLabelCount(5, true);
+        yLeft.setAxisMaximum(10f);
+        yLeft.setLabelCount(6, true);
 
         // Set the data and update
         lineChart.setData(lineData);
@@ -255,7 +255,7 @@ public class DashboardRightFrag extends Fragment {
         // Apply reaction time data from the database to the graph
         ArrayList<Entry> data = getReactionTimeData();
         LineDataSet lineChartData2 = new LineDataSet(data, "(reaction time)");
-        ArrayList<ILineDataSet> iLineDataSets2 = new ArrayList<ILineDataSet>();
+        ArrayList<ILineDataSet> iLineDataSets2 = new ArrayList<>();
         iLineDataSets2.add(lineChartData2);
         LineData lineData2 = new LineData(iLineDataSets2);
 
@@ -320,12 +320,10 @@ public class DashboardRightFrag extends Fragment {
         }
 
         int boxCount = 0;
-        if (surveyResults != null) {
-            for (SurveyResult nextResult : surveyResults) {
-                // Create a report box for this survey result
-                formatButton(nextResult, boxCount, layout);
-                boxCount++;
-            }
+        for (SurveyResult nextResult : surveyResults) {
+            // Create a report box for this survey result
+            formatButton(nextResult, boxCount, layout);
+            boxCount++;
         }
     }
 
