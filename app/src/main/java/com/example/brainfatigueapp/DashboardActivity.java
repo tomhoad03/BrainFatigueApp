@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.widget.ViewPager2;
@@ -85,6 +87,7 @@ public class DashboardActivity extends AppCompatActivity {
                 tabLayout.selectTab(tabLayout.getTabAt(position));
             }
         });
+
         // ATTENTION: This was auto-generated to handle app links.
         Intent appLinkIntent = getIntent();
         String appLinkAction = appLinkIntent.getAction();
@@ -96,9 +99,15 @@ public class DashboardActivity extends AppCompatActivity {
         String appLinkAction = intent.getAction();
         Uri appLinkData = intent.getData();
         if (Intent.ACTION_VIEW.equals(appLinkAction) && appLinkData != null) {
-            String recipeId = appLinkData.getLastPathSegment();
-            Uri appData = Uri.parse("");
-
+            //the full URL
+            String urlString = String.valueOf(appLinkData);
+            //
+            int codeStart = urlString.indexOf("?code=");
+            // codestart + 5 gives you the starting equals so 6 is correct
+            //Toast.makeText(this, "code = "+urlString.substring(codeStart +6), Toast.LENGTH_LONG).show();
+            int codeEnd = urlString.indexOf("#_=_");
+            String accessCode = urlString.substring(codeStart +6, codeEnd);
+            //Toast.makeText(this, "code = "+ accessCode, Toast.LENGTH_LONG).show();
         }
     }
 }
