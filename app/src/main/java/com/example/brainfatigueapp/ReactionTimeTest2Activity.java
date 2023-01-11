@@ -71,7 +71,7 @@ public class ReactionTimeTest2Activity extends AppCompatActivity {
                 // here we check the elapsed time
                 // if elapsed time has exceeded 2 minutes, then stop the game/do something
                 // else call doReactionTest()
-                if (elapsedTimeMS > 120000) { // 30000 for testing; 120000 for 2 minutes
+                if (elapsedTimeMS > 180000) { // 30000 for testing; 180000 for 3 minutes
                     endReactionTest();
                 } else {
                     doReactionTest();
@@ -83,7 +83,7 @@ public class ReactionTimeTest2Activity extends AppCompatActivity {
 
     void doReactionTest() {
         startButton.setEnabled(false);
-        colourChangeButton.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.grey));
+        startButton.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.grey));
 
         Handler handler = new Handler();
         handler.postDelayed(() -> {
@@ -99,7 +99,8 @@ public class ReactionTimeTest2Activity extends AppCompatActivity {
     // @TODO write a method that will be called when elapsedTime has exceeded 2 minutes. The method should end the PVT. The method should also change startButton to a next button that will bring us to the next page or back to home. (optional) The method can also print out the user's average reaction time.
     void endReactionTest () {
         startButton.setEnabled(true);
-        colourChangeButton.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.custom_light_blue_B));
+        startButton.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.custom_light_blue_B));
+
         startButton.setText("BACK TO HOMEPAGE"); // gotta change this text to something else
         // now we have the list of results, all that is left is to display the average on colourChangeButton
         averageTime = calculateAverage(results);

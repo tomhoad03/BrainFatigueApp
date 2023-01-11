@@ -220,7 +220,7 @@
     <string name="title_activity_settings">SettingsActivity</string>
 
     <!--  reaction time test messages: a collection :-)))  -->
-    <string name="reaction_time_test_question">We would like you to participate in a reaction time test. Do you have two minutes to take the test?</string>
+    <string name="reaction_time_test_question">We would like you to participate in a reaction time test. Do you have three minutes to take the test?</string>
     <string name="reaction_time_test_button1">Yes, go to Reaction Test</string>
     <string name="reaction_time_test_button2">No, I\'m tired right now</string>
     <string name="reaction_time_test_prompt1">REACTION TIME!</string>
