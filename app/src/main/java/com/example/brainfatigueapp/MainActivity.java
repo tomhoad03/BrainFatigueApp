@@ -1,25 +1,14 @@
 package com.example.brainfatigueapp;
 
-import android.app.*;
-import android.content.Context;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.media.MediaRecorder;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import androidx.core.app.NotificationCompat;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class MainActivity extends AppCompatActivity {
     @Override
