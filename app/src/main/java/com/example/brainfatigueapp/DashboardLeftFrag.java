@@ -32,6 +32,8 @@ import java.util.concurrent.*;
 
 public class DashboardLeftFrag extends Fragment {
 
+    private FitBitAPIHandler fitBitAPIHandler;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -48,6 +50,10 @@ public class DashboardLeftFrag extends Fragment {
         LineChart chart1 = getView().findViewById(R.id.activity_left_fragment_graph_1);
         LineChart chart2 = getView().findViewById(R.id.activity_left_fragment_graph_2);
         LineChart chart3 = getView().findViewById(R.id.activity_left_fragment_graph_3);
+
+        //trying to transfer data from the dashboard to this fragment
+        DashboardActivity dashboardActivity = (DashboardActivity) getActivity();
+        fitBitAPIHandler = dashboardActivity.getFitBitAPIHandler();
 
         // Retrieve the stored data from the database
         List<SurveyResult> surveyResults = retrieveDatabaseData();
@@ -243,8 +249,16 @@ public class DashboardLeftFrag extends Fragment {
     }
     
     private ArrayList<Entry> getFitbitData() {
-        // Extract the fitbit data from the database
-        return null;
+        if (fitBitAPIHandler == null) {
+            return null;
+        }
+        ArrayList<Entry> chartData = new ArrayList<>();
+        HashMap<String, Integer> hashMap= fitBitAPIHandler.parseDailyHeartrate(fitBitAPIHandler.getDaysHeartrate("2016-01-10"));
+        chartData.add(0, new Entry(0, hashMap.get("Out of Range")));
+        chartData.add(1, new Entry(1, hashMap.get("Fat Burn")));
+        chartData.add(2, new Entry(2, hashMap.get("Cardio")));
+        chartData.add(3, new Entry(3, hashMap.get("Peak")));
+        return chartData;
     }
 
     private float getLargestDatapoint(List<Entry> data) {
