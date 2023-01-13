@@ -2,6 +2,7 @@ package com.example.brainfatigueapp;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +33,8 @@ import java.util.concurrent.*;
 
 public class DashboardRightFrag extends Fragment {
 
+    private FitBitAPIHandler fitBitAPIHandler;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -48,6 +51,10 @@ public class DashboardRightFrag extends Fragment {
         LineChart chart1 = getView().findViewById(R.id.activity_right_fragment_graph_1);
         LineChart chart2 = getView().findViewById(R.id.activity_right_fragment_graph_2);
         LineChart chart3 = getView().findViewById(R.id.activity_right_fragment_graph_3);
+
+        //trying to transfer data from the dashboard to this fragment
+        DashboardActivity dashboardActivity = (DashboardActivity) getActivity();
+        fitBitAPIHandler = dashboardActivity.getFitBitAPIHandler();
 
         // Retrieve the stored data from the database
         List<SurveyResult> surveyResults = retrieveDatabaseData();
@@ -136,8 +143,21 @@ public class DashboardRightFrag extends Fragment {
     }
 
     private ArrayList<Entry> getFitbitData() {
-        // Extract the fitbit data from the database
-        return null;
+        if (fitBitAPIHandler == null) {
+            return null;
+        }
+        ArrayList<Entry> chartData = new ArrayList<>();
+        //add the long term lifetime data to the chart
+        new Thread(() -> {
+            fitBitAPIHandler.parseUserActivities(fitBitAPIHandler.getUserActivities());
+            HashMap<String, DaysActivity> activities = fitBitAPIHandler.getActivitySummaries();
+            float i = 0;
+            for(String s: activities.keySet()){
+                chartData.add(new Entry(i, activities.get(s).getTotalActivityMinutes()));
+                i++;
+            }
+        }).start();
+        return chartData;
     }
 
     private float getLargestDatapoint(List<Entry> data) {

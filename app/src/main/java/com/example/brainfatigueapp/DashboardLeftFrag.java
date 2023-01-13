@@ -32,6 +32,8 @@ import java.util.concurrent.*;
 
 public class DashboardLeftFrag extends Fragment {
 
+    private FitBitAPIHandler fitBitAPIHandler;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -48,6 +50,10 @@ public class DashboardLeftFrag extends Fragment {
         LineChart chart1 = getView().findViewById(R.id.activity_left_fragment_graph_1);
         LineChart chart2 = getView().findViewById(R.id.activity_left_fragment_graph_2);
         LineChart chart3 = getView().findViewById(R.id.activity_left_fragment_graph_3);
+
+        //trying to transfer data from the dashboard to this fragment
+        DashboardActivity dashboardActivity = (DashboardActivity) getActivity();
+        fitBitAPIHandler = dashboardActivity.getFitBitAPIHandler();
 
         // Retrieve the stored data from the database
         List<SurveyResult> surveyResults = retrieveDatabaseData();
@@ -243,8 +249,26 @@ public class DashboardLeftFrag extends Fragment {
     }
     
     private ArrayList<Entry> getFitbitData() {
-        // Extract the fitbit data from the database
-        return null;
+        if (fitBitAPIHandler == null) {
+            return null;
+        }
+        ArrayList<Entry> chartData = new ArrayList<>();
+        /* the below gives: java.lang.nullpointerException
+        new Thread(() -> {
+            HashMap<String, Integer> hashMap= fitBitAPIHandler.parseDailyHeartrate(fitBitAPIHandler.getDaysHeartrate("2016-01-10"));
+            chartData.add(new Entry(0, hashMap.get("Out of Range")));
+            chartData.add(new Entry(1, hashMap.get("Fat Burn")));
+            chartData.add(new Entry(2, hashMap.get("Cardio")));
+            chartData.add(new Entry(3, hashMap.get("Peak")));
+        }).start();
+
+         */
+        //add some example data just so I can see what the chart looks like
+        chartData.add(new Entry(0, 700));
+        chartData.add(new Entry(1, 60));
+        chartData.add(new Entry(2, 15));
+        chartData.add(new Entry(3, 10));
+        return chartData;
     }
 
     private float getLargestDatapoint(List<Entry> data) {

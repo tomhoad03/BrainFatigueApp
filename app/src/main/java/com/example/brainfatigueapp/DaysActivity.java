@@ -66,7 +66,11 @@ public class DaysActivity {
         heartRateZones = totalHeartRateZones;
         activityName = activityType;
         averageActivityHeartrate = Math.round(activityMinutesTimesHeartrate / totalActivityMilliseconds);
-
+        Integer total = 0;
+        for (Integer i: heartRateZones){
+            total = total + i;
+        }
+        totalActivityMinutes = total;
     }
 
     public Integer getAverageActivityHeartrate() {
