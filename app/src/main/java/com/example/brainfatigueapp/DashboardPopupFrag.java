@@ -2,18 +2,17 @@ package com.example.brainfatigueapp;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.widget.TextView;
-import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import androidx.fragment.app.DialogFragment;
 
 public class DashboardPopupFrag extends DialogFragment {
 
-    private SurveyResult result;
-    private String title;
-    private String mode;
+    private final SurveyResult result;
+    private final String title;
+    private final String mode;
 
     public DashboardPopupFrag(String mode) {
         // 'mode' string specifies what the popup is for

@@ -3,7 +3,6 @@ package com.example.brainfatigueapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -18,7 +17,7 @@ public class ReactionTimeTest2Activity extends AppCompatActivity {
     // startButton = button that starts the PVT; colourChangeButton = button that user taps when colour changes
     Button startButton, colourChangeButton;
     long testBeginsTime, startTime, endTime, currentTime, elapsedTime, averageTime, elapsedTimeMS;
-    ArrayList<Long> results = new ArrayList<Long>();
+    ArrayList<Long> results = new ArrayList<>();
 
     // @TODO save each iteration's currentTime to an array/arraylist so averageTime can be calculated. What's left to do for this one is to add it to the ArrayList declared above, and then to calculate the average of the values in the list and to display it on colourChangeButton.
 
