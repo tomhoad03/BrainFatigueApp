@@ -253,11 +253,21 @@ public class DashboardLeftFrag extends Fragment {
             return null;
         }
         ArrayList<Entry> chartData = new ArrayList<>();
-        HashMap<String, Integer> hashMap= fitBitAPIHandler.parseDailyHeartrate(fitBitAPIHandler.getDaysHeartrate("2016-01-10"));
-        chartData.add(0, new Entry(0, hashMap.get("Out of Range")));
-        chartData.add(1, new Entry(1, hashMap.get("Fat Burn")));
-        chartData.add(2, new Entry(2, hashMap.get("Cardio")));
-        chartData.add(3, new Entry(3, hashMap.get("Peak")));
+        /* the below gives: java.lang.nullpointerException
+        new Thread(() -> {
+            HashMap<String, Integer> hashMap= fitBitAPIHandler.parseDailyHeartrate(fitBitAPIHandler.getDaysHeartrate("2016-01-10"));
+            chartData.add(new Entry(0, hashMap.get("Out of Range")));
+            chartData.add(new Entry(1, hashMap.get("Fat Burn")));
+            chartData.add(new Entry(2, hashMap.get("Cardio")));
+            chartData.add(new Entry(3, hashMap.get("Peak")));
+        }).start();
+
+         */
+        //add some example data just so I can see what the chart looks like
+        chartData.add(new Entry(0, 700));
+        chartData.add(new Entry(1, 60));
+        chartData.add(new Entry(2, 15));
+        chartData.add(new Entry(3, 10));
         return chartData;
     }
 
