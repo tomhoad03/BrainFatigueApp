@@ -49,7 +49,8 @@
     <string name="activity_dashboard_title">My dashboard</string>
     <string name="activity_dashboard_graph_1_title">Energy Level</string>
     <string name="activity_dashboard_graph_2_title">Reaction Time (ms)</string>
-    <string name="activity_dashboard_graph_3_title">Fitbit Data</string>
+    <string name="activity_dashboard_graph_3_title">Time in Each Heart Rate Zone Today (m)</string>
+    <string name="activity_dashboard_graph_4_title">Time Doing Exercise per Day (m)</string>
     <string name="activity_dashboard_left_fragment_default_message">Check back here later to see your daily summary!</string>
     <string name="activity_dashboard_left_fragment_divider_message">---- Recent Responses ----</string>
     <string name="activity_dashboard_right_fragment_default_message">Reports will appear here after you take your first survey!</string>
