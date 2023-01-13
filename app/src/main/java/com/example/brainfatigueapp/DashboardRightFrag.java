@@ -2,6 +2,7 @@ package com.example.brainfatigueapp;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -147,13 +148,15 @@ public class DashboardRightFrag extends Fragment {
         }
         ArrayList<Entry> chartData = new ArrayList<>();
         //add the long term lifetime data to the chart
-        fitBitAPIHandler.parseUserActivities(fitBitAPIHandler.getUserActivities());
-        HashMap<String, DaysActivity> activities = fitBitAPIHandler.getActivitySummaries();
-        float i = 0;
-        for(String s: activities.keySet()){
-            chartData.add(new Entry(i, activities.get(s).getTotalActivityMinutes()));
-            i++;
-        }
+        new Thread(() -> {
+            fitBitAPIHandler.parseUserActivities(fitBitAPIHandler.getUserActivities());
+            HashMap<String, DaysActivity> activities = fitBitAPIHandler.getActivitySummaries();
+            float i = 0;
+            for(String s: activities.keySet()){
+                chartData.add(new Entry(i, activities.get(s).getTotalActivityMinutes()));
+                i++;
+            }
+        }).start();
         return chartData;
     }
 
