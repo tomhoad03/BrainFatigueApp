@@ -113,6 +113,8 @@ public class EmergencyService extends Service {
 
         startForeground(NOTIFICATION_ID, new NotificationCompat.Builder(this, "BrainFatigueApp")
                 .setSmallIcon(R.drawable.ic_notification_vector)
+                .setContentTitle("Brain Fatigue Tracker")
+                .setContentText("Emergency survey detector setup.")
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true)
                 .setOngoing(false)

@@ -25,7 +25,7 @@
                 android:gravity="center"
                 android:text="@string/activity_dashboard_graph_1_title"
                 android:textColor="@color/black"
-                android:textSize="15sp"
+                android:textSize="12sp"
                 app:fontFamily="@font/spartan"/>
             <com.github.mikephil.charting.charts.LineChart
                     android:id="@+id/activity_right_fragment_graph_1"
@@ -45,7 +45,7 @@
                     android:gravity="center"
                     android:text="@string/activity_dashboard_graph_2_title"
                     android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textSize="12sp"
                     app:fontFamily="@font/spartan"/>
             <com.github.mikephil.charting.charts.LineChart
                     android:id="@+id/activity_right_fragment_graph_2"
@@ -66,7 +66,7 @@
                     android:gravity="center"
                     android:text="@string/activity_dashboard_graph_3_title"
                     android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textSize="12sp"
                     app:fontFamily="@font/spartan"/>
             <com.github.mikephil.charting.charts.LineChart
                     android:id="@+id/activity_right_fragment_graph_3"

@@ -12,14 +12,20 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.tabs.TabLayout;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
 
 public class DashboardActivity extends AppCompatActivity {
 
     private TabLayout tabLayout;
     private ViewPager2 viewPager;
+    private FitBitAPIHandler fitBitAPIHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +59,8 @@ public class DashboardActivity extends AppCompatActivity {
             Log.d("survey_results", surveyResults.toString());
         });
         executorService.shutdown();
+        //set the fitbitAPI handler to be null
+        fitBitAPIHandler = null;
 
         // Fragments
         FragmentManager fm = getSupportFragmentManager();
@@ -108,6 +116,17 @@ public class DashboardActivity extends AppCompatActivity {
             int codeEnd = urlString.indexOf("#_=_");
             String accessCode = urlString.substring(codeStart +6, codeEnd);
             //Toast.makeText(this, "code = "+ accessCode, Toast.LENGTH_LONG).show();
+
+            new Thread(() -> {
+                fitBitAPIHandler = new FitBitAPIHandler();
+                fitBitAPIHandler.authoriseUser(accessCode);
+                Log.d("userProfile", fitBitAPIHandler.getUserActivities());
+
+            }).start();
         }
+    }
+
+    public FitBitAPIHandler getFitBitAPIHandler() {
+        return fitBitAPIHandler;
     }
 }
