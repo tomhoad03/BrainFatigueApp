@@ -332,7 +332,7 @@ public class DashboardRightFrag extends Fragment {
         float axisMax = getLargestDatapoint(data);
         axisMax = (float) (100 * (Math.ceil(Math.abs(axisMax / 100)))); // Round up to the nearest a hundred
         yLeft.setAxisMaximum(axisMax);
-        yLeft.setLabelCount(4);
+        yLeft.setLabelCount(5);
 
         // Set the data and update
         lineChart3.setData(lineData3);
