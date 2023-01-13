@@ -15,14 +15,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.fragment.app.FragmentManager;
+
+import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.ValueFormatter;
+import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import java.text.SimpleDateFormat;
@@ -49,7 +53,7 @@ public class DashboardLeftFrag extends Fragment {
         ConstraintLayout layout = getView().findViewById(R.id.activity_left_fragment_reports_container);
         LineChart chart1 = getView().findViewById(R.id.activity_left_fragment_graph_1);
         LineChart chart2 = getView().findViewById(R.id.activity_left_fragment_graph_2);
-        LineChart chart3 = getView().findViewById(R.id.activity_left_fragment_graph_3);
+        BarChart chart3 = getView().findViewById(R.id.activity_left_fragment_graph_3);
 
         //trying to transfer data from the dashboard to this fragment
         DashboardActivity dashboardActivity = (DashboardActivity) getActivity();
@@ -71,7 +75,7 @@ public class DashboardLeftFrag extends Fragment {
         // Format the graphs
         formatGraph(surveyResults, chart1);
         formatGraph(surveyResults, chart2);
-        formatGraph(surveyResults, chart3);
+        formatBarGraph(surveyResults, chart3);
 
         // Fill the fragment with a report box for every entry in the database
         drawReportBoxes(surveyResults, layout);
@@ -355,6 +359,77 @@ public class DashboardLeftFrag extends Fragment {
         chart.invalidate(); // Don't think I need to update the graph, but might as well at the end of this function
     }
 
+    private void formatBarGraph(List<SurveyResult> database, BarChart chart) {
+        // Format the appearance of the graphs
+
+        // Set the background colour - actually did this by setting the colour of the LinearLayout in the xml instead
+        // chart.setBackgroundColor(getResources().getColor(R.color.off_white));
+        chart.setDrawGridBackground(true);
+        chart.setDrawBorders(true);
+        chart.setBorderWidth(2f);
+
+        // Change the width between data points on the graphs
+        chart.setVisibleXRangeMaximum(3f);
+        chart.setVisibleXRangeMinimum(3f);
+
+        // Set the amount of interaction with the chart
+        chart.setTouchEnabled(true);
+        chart.setScaleYEnabled(false); // Users can't scale the y axis, only x
+        chart.setPinchZoom(false);
+        chart.setDoubleTapToZoomEnabled(false);
+        chart.setDragDecelerationEnabled(false);
+
+        // Set the text that appears if the user hasn't taken any surveys yet
+        chart.setNoDataText("Check back here later to see your daily summary!");
+        // Disable the legend
+        chart.getLegend().setEnabled(false);
+        // Disable the description
+        chart.getDescription().setEnabled(false);
+        // Give the graph a nudge to the left and right so that the x axis labels don't get cutoff
+        chart.setExtraOffsets(7f, 0f, 35f, 0f);
+
+        // Format the label of data points on the x axis
+        ArrayList<String> resultDatetimes = new ArrayList<String>();
+        for (SurveyResult result : database) {
+            // System.out.println("GRAPH CAPTION: " + result.getSurveyResultIdAsString());
+            resultDatetimes.add(result.getSurveyResultIdAsString());
+        }
+
+        ValueFormatter floatToString = new ValueFormatter() {
+            @Override
+            public String getAxisLabel(float value, AxisBase axis) {
+                try {
+                    // System.out.println("Value: " + value);
+                    return resultDatetimes.get((int) value);
+                } catch (Exception e) {
+                    // This usually happens when the graph only has one entry, return the first one
+                    return resultDatetimes.get(0);
+                }
+            }
+        };
+
+        // Format the x axis
+        XAxis x = chart.getXAxis();
+        x.setGranularity(1f); // set min step/interval to 1
+        x.setTextSize(12f);
+        // Typeface tf = ResourcesCompat.getFont(getContext(), R.font.spartan);
+        // x.setTypeface(tf); Maybe this works for other people?
+        x.setValueFormatter(floatToString); // apply the format/conversion function to the chart axis
+        x.setPosition(XAxis.XAxisPosition.BOTTOM);
+        x.setDrawGridLines(false);
+
+        // Format the y axes
+        YAxis yLeft = chart.getAxis(YAxis.AxisDependency.LEFT);
+        yLeft.setDrawGridLines(false);
+        yLeft.setDrawZeroLine(true);
+        yLeft.setTextSize(12f);
+        // y.setTypeface(tf); Maybe this works for other people?
+        YAxis yRight = chart.getAxisRight();
+        yRight.setEnabled(false);
+
+        chart.invalidate(); // Don't think I need to update the graph, but might as well at the end of this function
+    }
+
     private void drawEnergyLevelGraph(List<SurveyResult> surveyResults, LineChart lineChart) {
         // Apply energy level data from the database to the graph
         LineDataSet lineChartData = new LineDataSet(getEnergyLevelData(surveyResults), "(energy level)");
@@ -412,13 +487,13 @@ public class DashboardLeftFrag extends Fragment {
         lineChart2.invalidate();
     }
 
-    private void drawFitbitGraph(LineChart lineChart3) {
+    private void drawFitbitGraph(BarChart lineChart3) {
         // Apply reaction time data from the database to the graph
         ArrayList<Entry> data = getFitbitData();
         LineDataSet lineChartData3 = new LineDataSet(data, "(fitbit data)");
         ArrayList<ILineDataSet> iLineDataSets3 = new ArrayList<ILineDataSet>();
         iLineDataSets3.add(lineChartData3);
-        LineData lineData3 = new LineData(iLineDataSets3);
+        BarData lineData3 = new BarData((IBarDataSet) iLineDataSets3);
 
         // Format the graph's appearance
         lineChart3.setGridBackgroundColor(getResources().getColor(R.color.custom_graph_green));
