@@ -1,10 +1,9 @@
 package com.example.brainfatigueapp;
 
 import android.content.Intent;
-import android.widget.Button;
-import android.widget.ImageButton;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Button;
+import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.slider.Slider;
 
 public class SurveyMiddle5Activity extends AppCompatActivity {

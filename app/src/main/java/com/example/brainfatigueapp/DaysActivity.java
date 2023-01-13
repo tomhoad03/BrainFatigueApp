@@ -1,8 +1,7 @@
 package com.example.brainfatigueapp;
 
-import org.json.simple.JSONObject;
 import org.json.simple.JSONArray;
-import org.json.simple.parser.JSONParser;
+import org.json.simple.JSONObject;
 
 public class DaysActivity {
     String date;
@@ -17,8 +16,8 @@ public class DaysActivity {
         caloriesBurned = 0;
         Integer[] totalHeartRateZones = {0, 0, 0, 0};
         String activityType = "";
-        Float totalActivityMilliseconds = Float.parseFloat("0");
-        Float activityMinutesTimesHeartrate = Float.parseFloat("0");
+        float totalActivityMilliseconds = Float.parseFloat("0");
+        float activityMinutesTimesHeartrate = Float.parseFloat("0");
         //if we total up avg heartrate * length of acivity for all activities for the day then divide it by total activity time we can get
         // the overall average heartrate
 
@@ -66,7 +65,7 @@ public class DaysActivity {
         heartRateZones = totalHeartRateZones;
         activityName = activityType;
         averageActivityHeartrate = Math.round(activityMinutesTimesHeartrate / totalActivityMilliseconds);
-        Integer total = 0;
+        int total = 0;
         for (Integer i: heartRateZones){
             total = total + i;
         }

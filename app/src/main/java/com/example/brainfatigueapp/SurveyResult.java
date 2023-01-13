@@ -11,9 +11,6 @@ import java.util.GregorianCalendar;
 import java.util.Locale;
 import java.util.TimeZone;
 
-import static android.provider.Settings.System.getConfiguration;
-import static android.provider.Settings.System.getString;
-
 @Entity
 public class SurveyResult implements Serializable {
     @PrimaryKey
