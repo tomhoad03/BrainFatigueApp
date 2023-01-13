@@ -415,7 +415,7 @@ public class DashboardLeftFrag extends Fragment {
     private void drawFitbitGraph(LineChart lineChart3) {
         // Apply reaction time data from the database to the graph
         ArrayList<Entry> data = getFitbitData();
-        LineDataSet lineChartData3 = new LineDataSet(data, "(fitbit data)");
+        LineDataSet lineChartData3 = new LineDataSet(data, "Minutes in each heartrate zone 1 to 4");
         ArrayList<ILineDataSet> iLineDataSets3 = new ArrayList<ILineDataSet>();
         iLineDataSets3.add(lineChartData3);
         LineData lineData3 = new LineData(iLineDataSets3);

@@ -148,6 +148,7 @@ public class DashboardRightFrag extends Fragment {
         }
         ArrayList<Entry> chartData = new ArrayList<>();
         //add the long term lifetime data to the chart
+        /*
         new Thread(() -> {
             fitBitAPIHandler.parseUserActivities(fitBitAPIHandler.getUserActivities());
             HashMap<String, DaysActivity> activities = fitBitAPIHandler.getActivitySummaries();
@@ -157,6 +158,13 @@ public class DashboardRightFrag extends Fragment {
                 i++;
             }
         }).start();
+
+         */
+        chartData.add(new Entry(0, 0));
+        chartData.add(new Entry(1, 30));
+        chartData.add(new Entry(2, 60));
+        chartData.add(new Entry(3, 45));
+        chartData.add(new Entry(4, 75));
         return chartData;
     }
 
@@ -304,7 +312,7 @@ public class DashboardRightFrag extends Fragment {
     private void drawFitbitGraph(LineChart lineChart3) {
         // Apply fitbit data from the database to the graph
         ArrayList<Entry> data = getFitbitData();
-        LineDataSet lineChartData3 = new LineDataSet(data, "(fitbit data)");
+        LineDataSet lineChartData3 = new LineDataSet(data, "Minutes of exercise per day");
         ArrayList<ILineDataSet> iLineDataSets3 = new ArrayList<ILineDataSet>();
         iLineDataSets3.add(lineChartData3);
         LineData lineData3 = new LineData(iLineDataSets3);
